@@ -100,6 +100,7 @@ python pipeline.py
 python pipeline.py qwen25-1b5
 
 # fast plumbing check (tiny token caps, fewer items) — use this first
+# results go to results/smoke/smoke_<model>.json; leaderboard is NOT updated
 python pipeline.py --smoke qwen25-1b5
 
 # only specific tasks (1–6), e.g. structured output + code
@@ -107,6 +108,10 @@ python pipeline.py --tasks 4,6 qwen25-1b5
 
 # also run the optional LLM-judge pass (creative quality + summarization faithfulness)
 python pipeline.py --judge
+
+# rebuild all_results.json + leaderboard.json from existing result files (no model runs)
+# useful after a git pull that brought in new per-model result files
+python pipeline.py --rebuild
 ```
 
 Which models run is controlled by the `MODELS` list near the top of
@@ -120,9 +125,10 @@ once you've downloaded its GGUF.
   pipeline samples them (T=0.6, top_p=0.95), splits the reasoning from the final
   answer, and gives them a larger token budget — all configured per model in the
   `DECODE` table.
-- **Don't use `--smoke` for real numbers.** Smoke mode only runs the first three
-  items per task, so the prose→technical faithfulness drop (the decoupling
-  signal) can come out `null`. Run without `--smoke` for paper-grade results.
+- **Don't use `--smoke` for real numbers.** Smoke mode caps tokens, runs only
+  the first few items per task, and saves to `results/smoke/` without touching the
+  leaderboard. The prose→technical faithfulness drop can come out `null` in smoke
+  mode. Run without `--smoke` for paper-grade results.
 - **Optional judge.** The `--judge` pass uses an Ollama model
   (`EDGELM_JUDGE_MODEL`, default `qwen25-1b5`). Small open judges are unreliable
   for creative writing — point it at a stronger model for serious use:
@@ -135,9 +141,10 @@ once you've downloaded its GGUF.
 Outputs land in `results/` (gitignored, regenerated each run):
 
 ```
-results/<model>.json     # full per-model results: every prompt, response, and score
-results/all_results.json # all models combined
-results/leaderboard.json # compact headline metrics per model
+results/<model>.json          # full per-model results: every prompt, response, and score
+results/all_results.json      # all models combined
+results/leaderboard.json      # compact headline metrics per model
+results/smoke/smoke_<model>.json  # smoke-run outputs (isolated; leaderboard not touched)
 ```
 
 The `headline` block in each per-model JSON gives the at-a-glance scores:

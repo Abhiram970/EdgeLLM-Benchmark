@@ -11,6 +11,9 @@ models/
 *.gguf
 *.Modelfile
 
+# smoke test results
+smoke*
+
 # LaTeX build artifacts
 main.pdf
 *.aux

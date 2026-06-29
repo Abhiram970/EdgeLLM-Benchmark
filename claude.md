@@ -134,3 +134,27 @@ Three controlled comparisons across the whole benchmark: Llama-3.2-3B↔Hermes-3
 - **Scoring is tiered** (objective / small-judge / judge-hard), not uniform.
 - **The benchmark is framed as a test of reasoning–knowledge decoupling**, with per-category predictions.
 - **Lineage pairs are reported as controlled comparisons**, not independent points.
+
+---
+
+## 9. Pipeline CLI reference (`pipeline.py`)
+
+```bash
+python pipeline.py                        # all models, all tasks
+python pipeline.py <model>                # single model, all tasks
+python pipeline.py --smoke <model>        # fast plumbing check (capped tokens, fewer items)
+python pipeline.py --tasks 4,6 <model>   # only tasks 4 and 6
+python pipeline.py --judge               # also run the LLM-judge pass
+python pipeline.py --rebuild             # rebuild leaderboard from existing result files only
+```
+
+**Smoke mode behaviour** (`--smoke`):
+- Runs only the first few items per task with tiny token caps — fast plumbing check, not paper-grade numbers.
+- Results saved to `results/smoke/smoke_<model>.json` (isolated directory).
+- `leaderboard.json` and `all_results.json` are **not** updated.
+
+**Rebuild** (`--rebuild`):
+- Reads all `results/*.json` files and regenerates `all_results.json` + `leaderboard.json`.
+- No Ollama calls, no model loading. Use after pulling new per-model result files from collaborators.
+
+**Timing**: each task prints its elapsed time inline and a summary table is printed at the end of every model run. `elapsed_s` (per task) and `total_elapsed_s` are stored in the result JSON.

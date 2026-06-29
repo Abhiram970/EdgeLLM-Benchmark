@@ -621,23 +621,60 @@ def _headline(model_results: dict) -> dict:
     }
 
 
+def _fmt_elapsed(seconds) -> str:
+    if seconds is None:
+        return "-"
+    if seconds < 60:
+        return f"{seconds:.1f}s"
+    m, s = divmod(int(seconds), 60)
+    return f"{m}m{s:02d}s"
+
+
+def _print_timing_summary(all_model_results: list):
+    completed = [r for r in all_model_results if not r.get("skipped")]
+    if not completed:
+        return
+    task_names = list(dict.fromkeys(
+        name for r in completed for name in r.get("tasks", {})
+    ))
+    label_w, col_w = 24, 12
+    header = f"{'Model':<{label_w}}" + "".join(f"{n[:col_w]:>{col_w}}" for n in task_names) + f"{'TOTAL':>{col_w}}"
+    bar = "─" * len(header)
+    print(f"\n{bar}\n  TIMING SUMMARY\n{bar}")
+    print(header)
+    print(bar)
+    for r in completed:
+        row = f"{r['model'][:label_w]:<{label_w}}"
+        for name in task_names:
+            t = r.get("tasks", {}).get(name, {}).get("elapsed_s")
+            row += f"{_fmt_elapsed(t):>{col_w}}"
+        row += f"{_fmt_elapsed(r.get('total_elapsed_s')):>{col_w}}"
+        print(row)
+    print(bar)
+
+
 def run_model(model_name: str, smoke: bool = False, only_tasks=None, judge=False) -> dict:
     print(f"\n{'='*60}\n  MODEL: {model_name}{'  [SMOKE]' if smoke else ''}\n{'='*60}")
     if not load_model(model_name):
         return {"model": model_name, "skipped": True, "reason": "not available"}
 
+    model_t0 = time.perf_counter()
     model_results = {"model": model_name, "timestamp": datetime.now().isoformat(),
                      "decode_spec": decode_spec(model_name), "smoke": smoke, "tasks": {}}
     tasks = TASKS if not only_tasks else [TASKS[i - 1] for i in only_tasks]
     for task_fn in tqdm(tasks, desc=model_name):
         name = task_fn.__name__.replace("task_", "")
         print(f"\n  Running: {name}")
+        task_t0 = time.perf_counter()
         try:
             model_results["tasks"][name] = task_fn(model_name, smoke=smoke)
-            print(f"  + {name} done")
+            elapsed = round(time.perf_counter() - task_t0, 1)
+            model_results["tasks"][name]["elapsed_s"] = elapsed
+            print(f"  + {name} done  ({_fmt_elapsed(elapsed)})")
         except Exception as e:
-            print(f"  X {name} failed: {e}")
-            model_results["tasks"][name] = {"error": str(e)}
+            elapsed = round(time.perf_counter() - task_t0, 1)
+            print(f"  X {name} failed: {e}  ({_fmt_elapsed(elapsed)})")
+            model_results["tasks"][name] = {"error": str(e), "elapsed_s": elapsed}
 
     if judge:
         print("\n  Running: judge pass")
@@ -646,13 +683,23 @@ def run_model(model_name: str, smoke: bool = False, only_tasks=None, judge=False
         except Exception as e:
             model_results["judge"] = {"error": str(e)}
 
+    model_results["total_elapsed_s"] = round(time.perf_counter() - model_t0, 1)
     model_results["headline"] = _headline(model_results)
+    _print_timing_summary([model_results])
     safe_name = model_name.replace(":", "_")
-    out_path = RESULTS_DIR / f"{safe_name}.json"
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(model_results, f, indent=2, ensure_ascii=False)
-    print(f"\n  Saved: {out_path}")
-    rebuild_leaderboard()
+    if smoke:
+        smoke_dir = RESULTS_DIR / "smoke"
+        smoke_dir.mkdir(exist_ok=True)
+        out_path = smoke_dir / f"smoke_{safe_name}.json"
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(model_results, f, indent=2, ensure_ascii=False)
+        print(f"\n  [smoke] Saved: {out_path}  (leaderboard not updated)")
+    else:
+        out_path = RESULTS_DIR / f"{safe_name}.json"
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(model_results, f, indent=2, ensure_ascii=False)
+        print(f"\n  Saved: {out_path}")
+        rebuild_leaderboard()
     return model_results
 
 
@@ -679,9 +726,11 @@ def rebuild_leaderboard():
 
 
 def run_all(smoke=False, only_tasks=None, judge=False):
+    all_model_results = []
     for m in tqdm(MODELS, desc="All models"):
-        run_model(m, smoke=smoke, only_tasks=only_tasks, judge=judge)
+        all_model_results.append(run_model(m, smoke=smoke, only_tasks=only_tasks, judge=judge))
     board = rebuild_leaderboard()
+    _print_timing_summary(all_model_results)
     print(f"\n\nSaved {RESULTS_DIR/'all_results.json'} and leaderboard.json")
     print(json.dumps(board, indent=2, ensure_ascii=False))
 
@@ -692,7 +741,12 @@ def main():
     ap.add_argument("--smoke", action="store_true", help="tiny token caps + fewer items, fast check")
     ap.add_argument("--tasks", help="comma-separated task numbers 1-6 (e.g. 4,6)")
     ap.add_argument("--judge", action="store_true", help="also run the LLM-judge pass")
+    ap.add_argument("--rebuild", action="store_true", help="rebuild all_results.json + leaderboard.json from existing result files, no model runs")
     args = ap.parse_args()
+    if args.rebuild:
+        board = rebuild_leaderboard()
+        print(json.dumps(board, indent=2, ensure_ascii=False))
+        return
     only = [int(x) for x in args.tasks.split(",")] if args.tasks else None
     if args.model:
         run_model(args.model, smoke=args.smoke, only_tasks=only, judge=args.judge)
