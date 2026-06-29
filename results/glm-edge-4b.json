@@ -1,0 +1,1013 @@
+{
+  "model": "glm-edge-4b",
+  "timestamp": "2026-06-29T17:42:51.603347",
+  "decode_spec": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "think": false,
+    "max_factor": 1.0
+  },
+  "smoke": false,
+  "tasks": {
+    "context_retention": {
+      "task": "context_retention",
+      "score": 1.0,
+      "mean_coherence_horizon": 5.4,
+      "scripts": [
+        {
+          "id": "ret_hydrologist",
+          "score": 1.0,
+          "probe_scores": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "coherence_horizon_turns": 8,
+          "turns": [
+            {
+              "type": "plant",
+              "user": "My name is Mara Okonkwo and I work as a hydrologist in Lisbon.",
+              "prompt_tokens": 25,
+              "gen_tokens": 81,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "Just to confirm: what is my name and what is my job?",
+              "response": "Your name is Mara Okonkwo, and your job is a hydrologist based in Lisbon.",
+              "turn_depth": 1,
+              "fact_hits": {
+                "name": true,
+                "job": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 125,
+              "gen_tokens": 24,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Tell me if this is interesting: \"The concept of plate tectonics was formulated i",
+              "prompt_tokens": 227,
+              "gen_tokens": 338,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "plant",
+              "user": "I have a tortoise named Pim who is 12 years old.",
+              "prompt_tokens": 586,
+              "gen_tokens": 334,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "Quick check: what is my name, my job, and the name of my pet?",
+              "response": "Your name is Mara Okonkwo, your job is a hydrologist based in Lisbon, and the name of your pet is Pim.",
+              "turn_depth": 4,
+              "fact_hits": {
+                "name": true,
+                "job": true,
+                "pet": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 947,
+              "gen_tokens": 33,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Another snippet: \"The singularity constitutes the centre of a black hole and is ",
+              "prompt_tokens": 1030,
+              "gen_tokens": 276,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "plant",
+              "user": "Also, I live in Lisbon and my current project is code-named DELTA-7.",
+              "prompt_tokens": 1330,
+              "gen_tokens": 192,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "One more: \"The French Revolution had general causes common to all the revolution",
+              "prompt_tokens": 1577,
+              "gen_tokens": 489,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "Ignoring everything about tectonics, black holes, and the French Revolution: wha",
+              "response": "Certainly! Based on your previous statements:\n\n- Your name is Mara Okonkwo.\n- Your job is a hydrologist based in Lisbon.\n- Your pet's name is Pim, and it is a tortoise.\n- The species of your pet is likely to be a common species such as the African spur-thighed tortoise (Geochelone sulcata), but without specific information, this remains an assumption.\n- Your pet Pim is 12 years old.\n- Your current project is code-named DELTA-7.",
+              "turn_depth": 8,
+              "fact_hits": {
+                "name": true,
+                "job": true,
+                "city": true,
+                "pet": true,
+                "pet_kind": true,
+                "pet_age": true,
+                "project_code": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 2114,
+              "gen_tokens": 119,
+              "reasoning_truncated": false
+            }
+          ]
+        },
+        {
+          "id": "ret_chef",
+          "score": 1.0,
+          "probe_scores": [
+            1.0,
+            1.0
+          ],
+          "coherence_horizon_turns": 5,
+          "turns": [
+            {
+              "type": "plant",
+              "user": "Hi, I'm Tomas Reyes, a pastry chef based in Montreal.",
+              "prompt_tokens": 22,
+              "gen_tokens": 90,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "What's my name and my profession?",
+              "response": "Your name is Tomas Reyes, and your profession is a pastry chef based in Montreal.",
+              "turn_depth": 1,
+              "fact_hits": {
+                "name": true,
+                "job": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 129,
+              "gen_tokens": 22,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Random fact I read: \"Probabilities are numbers between 0 and 1, with 0 meaning i",
+              "prompt_tokens": 201,
+              "gen_tokens": 119,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "plant",
+              "user": "My signature dessert is a lavender macaron, and I plan to open my own shop in 20",
+              "prompt_tokens": 350,
+              "gen_tokens": 405,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "And this: \"The Pythagorean theorem states that in a right triangle the square of",
+              "prompt_tokens": 807,
+              "gen_tokens": 154,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "Remind me: what is my name, my city, my signature dessert, and the year I plan t",
+              "response": "Certainly! You are Tomas Reyes, based in Montreal. Your signature dessert is a lavender macaron, and you plan to open your own pastry shop in 2027.",
+              "turn_depth": 5,
+              "fact_hits": {
+                "name": true,
+                "city": true,
+                "signature": true,
+                "opens_year": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 992,
+              "gen_tokens": 45,
+              "reasoning_truncated": false
+            }
+          ]
+        },
+        {
+          "id": "ret_astronomer",
+          "score": 1.0,
+          "probe_scores": [
+            1.0
+          ],
+          "coherence_horizon_turns": 4,
+          "turns": [
+            {
+              "type": "plant",
+              "user": "I'm Yuki Tanaka, an astronomer. I mostly use a radio telescope.",
+              "prompt_tokens": 24,
+              "gen_tokens": 107,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Quick aside: \"DNA is made of nucleotides. A nucleotide has a sugar-phosphate bac",
+              "prompt_tokens": 193,
+              "gen_tokens": 284,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "plant",
+              "user": "My main observation target is the Andromeda galaxy, funded under grant NX-119.",
+              "prompt_tokens": 502,
+              "gen_tokens": 258,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Also interesting: \"The Industrial Revolution transformed economies based on agri",
+              "prompt_tokens": 793,
+              "gen_tokens": 405,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "Recall for me: my name, my job, the instrument I use, my observation target, and",
+              "response": "Certainly, Yuki Tanaka is an astronomer who specializes in using radio telescopes for observations. Your primary area of study is the Andromeda galaxy, which you are currently funded under grant NX-119 to further your research into.",
+              "turn_depth": 4,
+              "fact_hits": {
+                "name": true,
+                "job": true,
+                "instrument": true,
+                "target": true,
+                "grant_id": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 1227,
+              "gen_tokens": 58,
+              "reasoning_truncated": false
+            }
+          ]
+        },
+        {
+          "id": "ret_archivist",
+          "score": 1.0,
+          "probe_scores": [
+            1.0,
+            1.0
+          ],
+          "coherence_horizon_turns": 5,
+          "turns": [
+            {
+              "type": "plant",
+              "user": "My name is Priya Nair and I'm an archivist in Edinburgh.",
+              "prompt_tokens": 23,
+              "gen_tokens": 68,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "Confirm my name and where I work.",
+              "response": "You've confirmed your name as Priya Nair and you've mentioned that you work as an archivist in Edinburgh. Is there anything specific you'd like to know or discuss regarding your role as an archivist?",
+              "turn_depth": 1,
+              "fact_hits": {
+                "name": true,
+                "city": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 104,
+              "gen_tokens": 46,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Found this: \"The printing press first became mechanized in Europe. The earliest ",
+              "prompt_tokens": 199,
+              "gen_tokens": 159,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "plant",
+              "user": "I curate a collection of maritime maps; the oldest one dates to 1602.",
+              "prompt_tokens": 382,
+              "gen_tokens": 278,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "And: \"Natural selection is the process by which organisms adapt to their environ",
+              "prompt_tokens": 692,
+              "gen_tokens": 240,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "What is my name, my job, my city, the collection I curate, and the year of the o",
+              "response": "You've previously mentioned that your name is Priya Nair, you work as an archivist in Edinburgh, Scotland. You curate a collection of maritime maps, and the oldest item in your collection dates to 1602.",
+              "turn_depth": 5,
+              "fact_hits": {
+                "name": true,
+                "job": true,
+                "city": true,
+                "collection": true,
+                "oldest_year": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 961,
+              "gen_tokens": 53,
+              "reasoning_truncated": false
+            }
+          ]
+        },
+        {
+          "id": "ret_engineer",
+          "score": 1.0,
+          "probe_scores": [
+            1.0
+          ],
+          "coherence_horizon_turns": 5,
+          "turns": [
+            {
+              "type": "plant",
+              "user": "I'm Dario Conti, a civil engineer working in Oslo.",
+              "prompt_tokens": 19,
+              "gen_tokens": 60,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Read this earlier: \"The Roman Empire was founded in 27 BCE and in 395 AD split i",
+              "prompt_tokens": 126,
+              "gen_tokens": 78,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "plant",
+              "user": "I'm designing a suspension bridge with a 1400-meter main span, due in March.",
+              "prompt_tokens": 230,
+              "gen_tokens": 512,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Also: \"A prime number greater than 1 can be expressed as a product of primes in ",
+              "prompt_tokens": 779,
+              "gen_tokens": 336,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "And one more: \"Photosynthesis is the process by which green plants transform lig",
+              "prompt_tokens": 1149,
+              "gen_tokens": 347,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "Tell me back: my name, my profession, my city, what I'm designing, its main span",
+              "response": "Your name is Dario Conti.\nYou are a civil engineer.\nYou are based in Oslo.\nYou are currently designing a suspension bridge.\nThe main span of this bridge is 1400 meters.\nYour project is due in March.",
+              "turn_depth": 5,
+              "fact_hits": {
+                "name": true,
+                "job": true,
+                "city": true,
+                "structure": true,
+                "span_m": true,
+                "deadline": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 1529,
+              "gen_tokens": 51,
+              "reasoning_truncated": false
+            }
+          ]
+        }
+      ],
+      "mem_before": {
+        "ram_mb": 39.3984375,
+        "vram_used_mb": 2980,
+        "vram_total_mb": 8188
+      },
+      "mem_after": {
+        "ram_mb": 39.38671875,
+        "vram_used_mb": 5961,
+        "vram_total_mb": 8188
+      },
+      "elapsed_s": 234.2
+    },
+    "summarization": {
+      "task": "summarization",
+      "claim_survival_by_domain": {
+        "prose": 0.8,
+        "mathematical": 1.0,
+        "scientific": 1.0
+      },
+      "faithfulness_drop_prose_minus_technical": -0.2,
+      "mean_rouge_l": null,
+      "results": [
+        {
+          "id": "sum_prose_frenchrev",
+          "domain": "prose",
+          "source": "https://www.britannica.com/event/French-Revolution",
+          "summary": "The French Revolution was driven by a combination of general causes shared with other Western revolutions, such as the decline of feudalism and the rise of an influential bourgeoisie seeking political power. Additionally, some peasants aspired to replace feudal restrictions for greater land rights and freedom. However, not all peasants benefited equally; many remained impoverished or landless. The revolution was further fueled by Europe's population explosion, which doubled between 1715 and 1800, leading to significant demographic pressures in France, the most populous country at the time.",
+          "rouge": null,
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 4.91,
+          "tokens_per_sec": 29.2,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_prose_industrial",
+          "domain": "prose",
+          "source": "https://www.britannica.com/event/Industrial-Revolution",
+          "summary": "The Industrial Revolution expanded wealth distribution and grew the middle class but also led to exploitation of workers through long hours, low wages, and hazardous conditions. This sparked the trade union movement. The era transitioned economies from agriculture to industrialization, mechanized production, and introduced new industries like automobiles. Historians divide it into two phases: the first lasting until 1830 in Britain, and the second spanning the mid-19th to early 20th centuries across multiple regions.",
+          "rouge": null,
+          "claims_survived": 3,
+          "claims_total": 5,
+          "claim_survival_rate": 0.6,
+          "latency_s": 3.93,
+          "tokens_per_sec": 29.9,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_math_calculus",
+          "domain": "mathematical",
+          "source": "https://www.britannica.com/science/calculus-mathematics",
+          "summary": "Newton and Leibniz's groundbreaking work led to the development of calculus, particularly the fundamental theorem of calculus. This theorem established that differentiation and integration are inverse processes: integrating a function gives the area under its curve, while differentiating a function provides the rate of change or slope at any point on that curve. Newton's insight was that if F(t) represents the area under y = f(x) from 0 to t, then F'(t) equals f(t). For instance, finding the integral of y = x^2 gives the function x^3/3 + C as its antiderivative, which is denoted by ∫x^2dx. Leibniz's notation for integration, using the symbol ∫ (an elongated S) and dx to represent an infinitesimal sum of rectangles, further solidified this connection between differentiation and integration, as well as their roles in solving differential equations.",
+          "rouge": null,
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 7.28,
+          "tokens_per_sec": 29.4,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_math_pythagorean",
+          "domain": "mathematical",
+          "source": "https://www.britannica.com/science/Pythagorean-theorem",
+          "summary": "The Pythagorean theorem states that in a right triangle, the square of the length of the hypotenuse (c) is equal to the sum of the squares of the lengths of the other two sides (a and b), or a² + b² = c². This theorem predates Pythagoras; evidence from Babylonian tablets suggests knowledge of it around 1900–1600 BCE, including accurate square root calculations and Pythagorean triples. It also appears in the Baudhayana Sulba-sutra from India, written between 800 and 400 BCE. Despite its ancient origins, the theorem is often credited to Pythagoras, who may have popularized it. Iamblichus, a Syrian historian, attributes Pythagoras's introduction to mathematics to Thales of Miletus and his pupil Anaximander.",
+          "rouge": null,
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 7.18,
+          "tokens_per_sec": 29.3,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_sci_tectonics",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/plate-tectonics",
+          "summary": "Plate tectonics, a theory developed in the 1960s, posits that Earth's lithosphere, about 100 km thick, floats on the more pliable asthenosphere. This lithosphere is divided into several plates that interact at their boundaries, leading to seismic and volcanic activity. These interactions cause mountains, continental drift, and the formation of oceans over geological time scales.",
+          "rouge": null,
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 3.64,
+          "tokens_per_sec": 29.9,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_sci_dna",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/DNA",
+          "summary": "DNA molecules are made up of long chains of nucleotides, which consist of deoxyribose sugar, a phosphate group, and one of four nitrogenous bases: adenine, guanine, cytosine, and thymine. These nucleotides form a backbone with phosphodiester bonds and have nitrogenous bases that protrude. The two strands of DNA are held together by hydrogen bonds between the specific base pairs (adenine-thymine and cytosine-guanine). In 1953, James Watson and Francis Crick, along with Rosalind Franklin and Maurice Wilkins, discovered that DNA has a double-helix structure, consisting of two strands wound around each other in opposite directions. This discovery revolutionized the understanding of DNA replication and hereditary information transmission in cells.",
+          "rouge": null,
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 6.32,
+          "tokens_per_sec": 29.3,
+          "reasoning_truncated": false
+        }
+      ],
+      "elapsed_s": 33.2
+    },
+    "open_book_qa": {
+      "task": "open_book_qa",
+      "overall_accuracy": 1.0,
+      "accuracy_by_tier": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 1.0
+      },
+      "results": [
+        {
+          "id": "qa_lit_pride",
+          "domain": "literary",
+          "source": "https://www.britannica.com/topic/Pride-and-Prejudice",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "How many sisters are in the Bennet family?",
+              "gold": "Five.",
+              "predicted": "Five",
+              "correct": true,
+              "latency_s": 0.44,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "Who is the heroine of the novel, and what is her nickname?",
+              "gold": "Elizabeth Bennet, nicknamed “Lizzy.”",
+              "predicted": "Elizabeth, or \"Lizzy\"",
+              "correct": true,
+              "latency_s": 0.52,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Based on the passage, which trait does Elizabeth share with her father, and what does that imply about her view of society?",
+              "gold": "She shares her father's distaste for conventional views about the importance of wealth and rank, implying she does not judge people by social status.",
+              "predicted": "Elizabeth shares her father's distaste for the conventional views of society as to the importance of wealth and rank. This implies that she holds a critical view of societal norms regarding wealth and status.",
+              "correct": true,
+              "latency_s": 1.58,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_lit_gatsby",
+          "domain": "literary",
+          "source": "https://www.britannica.com/topic/The-Great-Gatsby",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "In what year was The Great Gatsby published?",
+              "gold": "1925.",
+              "predicted": "1925",
+              "correct": true,
+              "latency_s": 0.42,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "What does the green light at the end of Daisy's dock symbolize?",
+              "gold": "Gatsby's unattainable dream and ambition.",
+              "predicted": "Gatsby’s unattainable dream and ambition.",
+              "correct": true,
+              "latency_s": 0.61,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "According to the passage, what is the difference between West Egg and East Egg, and which society ultimately triumphs?",
+              "gold": "West Egg represents brash, materialistic 'new money' and East Egg refined, inherited 'old money'; the old-money society ultimately triumphs.",
+              "predicted": "West Egg represents \"new money\" with brashness and materialism, while East Egg represents \"old money\" with refinement and inherited wealth. The \"old money\" society ultimately triumphs.",
+              "correct": true,
+              "latency_s": 1.75,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_sci_blackhole",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/black-hole",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "What is the name of the “surface” that hides the singularity at the centre of a black hole?",
+              "gold": "The event horizon.",
+              "predicted": "Event horizon",
+              "correct": true,
+              "latency_s": 0.36,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "According to the passage, why can not even light escape from inside the event horizon?",
+              "gold": "Because inside the event horizon the escape velocity exceeds the speed of light.",
+              "predicted": "Because the escape velocity exceeds the speed of light.",
+              "correct": true,
+              "latency_s": 0.54,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Using the passage, what would happen to the Schwarzschild radius if the mass of the collapsing star were doubled, and why?",
+              "gold": "It would roughly double, because the Schwarzschild radius is proportional to the mass of the collapsing star.",
+              "predicted": "If the mass of the collapsing star were doubled, the Schwarzschild radius would also double because it is proportional to the mass of the collapsing star.",
+              "correct": true,
+              "latency_s": 1.49,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_sci_evolution",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/evolution-scientific-theory",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "What are the raw material for evolution, according to the passage?",
+              "gold": "Mutations (the genetic variations they introduce).",
+              "predicted": "Mutations",
+              "correct": true,
+              "latency_s": 0.38,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "What happens to variations that enhance an organism's survival and reproduction?",
+              "gold": "They are preserved and passed on to future generations.",
+              "predicted": "These variations are preserved and passed on to future generations.",
+              "correct": true,
+              "latency_s": 0.61,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Based on the passage, explain how a beneficial mutation becomes common in a population over time.",
+              "gold": "A beneficial mutation improves survival and reproduction, so natural selection favors it, causing it to increase in frequency over generations.",
+              "predicted": "A beneficial mutation becomes common through natural selection, where it is favored by differential reproduction due to enhanced survival and reproductive success. Over generations, these advantageous mutations increase in frequency as they are passed on to offspring.",
+              "correct": true,
+              "latency_s": 1.82,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_hist_frenchrev",
+          "domain": "historical",
+          "source": "https://www.britannica.com/event/French-Revolution",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "Why did the rulers of Europe seek to raise money by taxing the nobles and clergy?",
+              "gold": "Because of the heavy expenditure entailed by the wars of the 18th century.",
+              "predicted": "To cover heavy expenditure from wars of the 18th century.",
+              "correct": true,
+              "latency_s": 0.89,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "Which two groups had usually been exempt from taxation before the rulers tried to tax them?",
+              "gold": "The nobles and the clergy.",
+              "predicted": "The nobles and clergy",
+              "correct": true,
+              "latency_s": 0.43,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "According to the passage, how was the American Revolution connected to the same backlash occurring in Europe?",
+              "gold": "The same aristocratic reaction against taxation appeared in North America, where the backlash contributed to the American Revolution, which began with a refusal to pay a tax imposed by the king of Great Britain.",
+              "predicted": "The American Revolution was connected to the backlash in Europe through the refusal of North America's nobility (bourgeois and peasants) to pay a tax imposed by the king of Great Britain.",
+              "correct": true,
+              "latency_s": 1.65,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_hist_printing",
+          "domain": "historical",
+          "source": "https://www.britannica.com/topic/printing-press",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "In what year did Gutenberg use his press to print an edition of the Bible?",
+              "gold": "1455.",
+              "predicted": "1455",
+              "correct": true,
+              "latency_s": 0.41,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "What ancient device was the medieval paper press modeled after?",
+              "gold": "The ancient wine-and-olive press of the Mediterranean area.",
+              "predicted": "The medieval paper press was modeled after the ancient wine-and-olive press of the Mediterranean area.",
+              "correct": true,
+              "latency_s": 0.89,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Based on the passage, what evidence shows that movable-type printing existed outside Europe before Gutenberg's Bible?",
+              "gold": "Jikji, a book of Buddhist teachings, was printed from movable type in Korea in 1377—before Gutenberg's 1455 Bible.",
+              "predicted": "The passage states that \"Jikji, a book of the teachings of Buddhist priests, was printed by hand from movable type in Korea in 1377.\" This indicates that movable-type printing existed outside Europe before Johannes Gutenberg's work.",
+              "correct": true,
+              "latency_s": 2.17,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        }
+      ],
+      "elapsed_s": 16.9
+    },
+    "structured_output": {
+      "task": "structured_output",
+      "strict_compliance_rate": 0.833,
+      "lenient_compliance_rate": 1.0,
+      "results": [
+        {
+          "name": "json_person",
+          "validator": "json",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "required": [
+              "name",
+              "age",
+              "city"
+            ],
+            "had_fence": true
+          },
+          "response": "```json\n{\n  \"name\": \"John Doe\",\n  \"age\": 30,\n  \"city\": \"New York\"\n}\n```",
+          "latency_s": 1.23,
+          "tokens_per_sec": 33.4,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "json_nested",
+          "validator": "json",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "required": [
+              "title",
+              "year",
+              "authors"
+            ],
+            "had_fence": true
+          },
+          "response": "```json\n{\n  \"title\": \"Example Book\",\n  \"year\": 2021,\n  \"authors\": [\"John Doe\", \"Jane Smith\"]\n}\n```",
+          "latency_s": 1.46,
+          "tokens_per_sec": 32.3,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "markdown_doc",
+          "validator": "markdown",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "has_header": true,
+            "has_bold": true,
+            "has_bullet": true
+          },
+          "response": "# How Photosynthesis Works\n\nPhotosynthesis is the process by which green plants, algae, and some bacteria convert light energy into chemical energy stored in glucose. This process primarily occurs in the chloroplasts of plant cells.\n\n## Key Components of Photosynthesis\n\n- **Light Absorption**: Chlorophyll absorbs sunlight to produce ATP (adenosine triphosphate) and NADPH (nicotinamide adenine dinucleotide phosphate).\n- **Carbon Fixation**: CO₂ is converted into glucose through the Calvin Cycle.\n\n## Steps of Photosynthesis\n\n1. **Light-dependent Reactions**\n   - Absorb light energy\n   - Split water molecules (H₂O) to produce O₂, ATP, and NADPH\n   - Release oxygen as a byproduct\n\n2. **Calvin Cycle (Light-independent Reactions)**\n   - Use ATP and NADPH to convert CO₂ into glucose\n\nHere's a visual representation of the process:\n\n![Photosynthesis Diagram](https://user-images.githubusercontent.com/19460375/1287",
+          "latency_s": 8.92,
+          "tokens_per_sec": 29.5,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "code_only_fib",
+          "validator": "code_only",
+          "strict_compliant": false,
+          "lenient_compliant": true,
+          "details": {
+            "has_function": true,
+            "no_backticks": false
+          },
+          "response": "```python\ndef fib(n):\n    if n <= 0:\n        return \"Input should be positive integer\"\n    elif n == 1:\n        return 0\n    elif n == 2:\n        return 1\n    else:\n        a, b = 0, 1\n        for i in range(2, n):\n            a, b = b, a + b\n        return b\n```",
+          "latency_s": 3.12,
+          "tokens_per_sec": 30.8,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "numbered_list_planets",
+          "validator": "numbered_list",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "numbered": 5,
+            "total_lines": 5,
+            "expected": 5
+          },
+          "response": "1. Mercury\n2. Venus\n3. Earth\n4. Mars\n5. Jupiter",
+          "latency_s": 1.03,
+          "tokens_per_sec": 30.5,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "csv_row",
+          "validator": "csv_line",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "lines": 1,
+            "expected_fields": 3
+          },
+          "response": "apple,red,$3.49",
+          "latency_s": 0.52,
+          "tokens_per_sec": 36.2,
+          "reasoning_truncated": false
+        }
+      ],
+      "elapsed_s": 16.3
+    },
+    "creative_generation": {
+      "task": "creative_generation",
+      "mean_constraint_pass_rate": 1.0,
+      "results": [
+        {
+          "type": "article",
+          "text": "**Deep Sea Divers Uncover Mysterious New Species: The 'Abyssal Glimmer'**\n\nIn an extraordinary expedition to the Mariana Trench, marine biologists have announced the discovery of a previously unknown species of deep-sea fish, aptly named the \"Abyssal Glimmer.\" This remarkable find was made during a dive conducted by a team from the National Oceanic and Atmospheric Administration (NOAA) in collaboration with the Monterey Bay Aquarium Research Institute (MBARI).\n\nThe Abyssal Glimmer is described as a small, bioluminescent fish that inhabits the dark depths of the ocean floor. Its unique adaptation to its environment includes a shimmering blue-green glow that serves both as camouflage and as a means of communication with other members of its species.\n\nThe discovery was made using MBARI's remotely operated vehicle (ROV), which captured high-definition footage of the fish swimming gracefully among the abyssal plains. The Abyssal Glimmer is believed to be one of many new species that still await discovery in the world's deepest waters.\n\nThis groundbreaking research not only expands our understanding of marine biodiversity but also highlights the importance of protecting these fragile ecosystems. As climate change and human activity threaten oceanic environments, discoveries like these underscore the need for continued conservation efforts to preserve the beauty and diversity of life beneath the waves.",
+          "word_count": 209,
+          "line_count": 5,
+          "constraints": [
+            "has headline",
+            "~200 words",
+            "journalistic tone"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 10.71,
+          "tokens_per_sec": 28.9,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "poem_unrhymed",
+          "text": "The city lights in all their splendor,\nA symphony of neon, stars and moonlight.\nSkyscrapers pierce the velvet sky,\nIn this urban ballet, I find my place.\n\nNeon signs dance to the night's beat,\nStreets alive with dreams and fears.\nFrom this rooftop vantage point,\nI gaze upon a world so bright.\n\nThe hum of traffic fades into the night,\nAs stars align in a celestial light.\nThis city, sprawling and vast,\nIs a canvas painted by the sunset's last blush.",
+          "word_count": 81,
+          "line_count": 12,
+          "constraints": [
+            "12 lines",
+            "no rhyme",
+            "vivid imagery"
+          ],
+          "constraint_checks": {
+            "line_count_exact": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 4.3,
+          "tokens_per_sec": 30.1,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "short_story",
+          "text": "The last bus had already left. Sarah hurried down the dimly lit alley, her heart pounding in her chest. She needed to find her friend, Alex, who lived across town. The rain poured down, making the streets slippery. \n\nSarah's phone buzzed with a message from Alex: \"Meet me at the corner of Maple and Oak. Now!\" Sarah sprinted towards the address, dodging puddles and avoiding pedestrians. She arrived just in time to see Alex standing there, soaked and shivering.\n\n\"You're late,\" Alex said, wiping rain from her eyes. \"I was waiting for ages.\" \n\nSarah smiled and wrapped her coat around Alex. \"Let's go home,\" she suggested. They huddled together on the bus, laughing and sharing stories until it pulled into their neighborhood.",
+          "word_count": 122,
+          "line_count": 4,
+          "constraints": [
+            "starts with given sentence",
+            "~150 words",
+            "complete arc"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": true,
+            "starts_with_required": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 6.49,
+          "tokens_per_sec": 29.8,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "acrostic",
+          "text": "Ocean's depths, a world untold,\nCreatures swim in colors bold.\nEndless waves, a dance so grand,\nAbyssal life, a mystery vast.\nNature's wonder, blue and vast.",
+          "word_count": 26,
+          "line_count": 5,
+          "constraints": [
+            "5 lines",
+            "acrostic spells OCEAN"
+          ],
+          "constraint_checks": {
+            "line_count_exact": true,
+            "acrostic_ok": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 1.91,
+          "tokens_per_sec": 29.5,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "dialogue",
+          "text": "**Alex:** We should definitely sell the old family house. It's time for new beginnings.\n\n**Jamie:** But it's our heritage! Selling it feels like giving up on our roots.\n\n**Alex:** Times change, Jamie. We need to adapt and move forward.\n\n**Jamie:** Adapting means keeping what's important, not throwing it away!\n\n**Alex:** This house holds memories, but so do new opportunities.\n\n**Jamie:** Opportunities don't come with the weight of nostalgia.\n\n**Alex:** Nostalgia can be beautiful, but it's time for growth.\n\n**Jamie:** Growth doesn't mean forgetting where we came from.\n\n**Alex:** We can always visit. The house doesn't have to define us.\n\n**Jamie:** But it does for me. I can't just let go of that feeling.",
+          "word_count": 113,
+          "line_count": 10,
+          "constraints": [
+            "10 lines",
+            "name: prefix each line"
+          ],
+          "constraint_checks": {
+            "line_count_exact": true,
+            "all_lines_have_name_colon": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 6.11,
+          "tokens_per_sec": 29.7,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "six_word_story",
+          "text": "A lion roars, then runs away.",
+          "word_count": 6,
+          "line_count": 1,
+          "constraints": [
+            "exactly 6 words"
+          ],
+          "constraint_checks": {
+            "exact_word_count": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 0.53,
+          "tokens_per_sec": 41.6,
+          "human_score": null,
+          "judge_score": null
+        }
+      ],
+      "elapsed_s": 30.0
+    },
+    "code_generation": {
+      "task": "code_generation",
+      "pass_at_1": 0.833,
+      "executed_pass_at_1": 0.8,
+      "results": [
+        {
+          "name": "py_process_csv",
+          "language": "python",
+          "code": "import csv\n\ndef process_csv(filename):\n    total_score = 0\n    student_count = 0\n    a_students = []\n\n    with open(filename, mode='r') as file:\n        reader = csv.DictReader(file)\n        for row in reader:\n            if row['grade'] == 'A':\n                a_students.append(row['name'])\n            total_score += float(row['score'])\n            student_count += 1\n\n    average_score = total_score / student_count\n    return {'average_score': average_score, 'a_students': a_students}",
+          "passed": true,
+          "exec_output": "EDGELM_PASS\n",
+          "latency_s": 4.62,
+          "tokens_per_sec": 29.6,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "py_is_palindrome",
+          "language": "python",
+          "code": "def is_palindrome(s):\n    return s == s[::-1].lower().replace(\" \", \"\").translate(str.maketrans('', '', string.punctuation))",
+          "passed": false,
+          "exec_output": "Traceback (most recent call last):\n  File \"C:\\Users\\jesse\\AppData\\Local\\Temp\\tmpi1uu84d8.py\", line 5, in <module>\n    assert is_palindrome('A man, a plan, a canal: Panama') is True\n           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\jesse\\AppData\\Local\\Temp\\tmpi1uu84d8.py\", line 2, in is_palindrome\n    return s == s[::-1].lower().replace(\" \", \"\").translate(str.maketrans('', '', string.punctuation))\n                                                                                 ^^^^^^\nNameError: name 'string' is not defined. Did you forget to import 'string'?\n",
+          "latency_s": 1.83,
+          "tokens_per_sec": 28.5,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "py_fizzbuzz",
+          "language": "python",
+          "code": "def fizzbuzz(n):\n    return [str(i) if i % 3 != 0 and i % 5 != 0 else ('FizzBuzz' if i % 15 == 0 else 'Fizz' if i % 3 == 0 else 'Buzz') for i in range(1, n + 1)]",
+          "passed": true,
+          "exec_output": "EDGELM_PASS\n",
+          "latency_s": 2.9,
+          "tokens_per_sec": 30.7,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "py_two_sum",
+          "language": "python",
+          "code": "def two_sum(nums, target):\n    num_to_index = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in num_to_index:\n            return [num_to_index[complement], i]\n        num_to_index[num] = i",
+          "passed": true,
+          "exec_output": "EDGELM_PASS\n",
+          "latency_s": 2.37,
+          "tokens_per_sec": 30.9,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "perl_error_counter",
+          "language": "perl",
+          "code": "#!/usr/bin/perl\n\nuse strict;\nuse warnings;\n\nif (@ARGV < 1) {\n    die \"Usage: $0 filename\\n\";\n}\n\nmy ($filename) = @ARGV;\nopen my $fh, '<', $filename or die \"$filename: $!\";\n\nmy %counts;\nwhile (my $line = <$fh>) {\n    chomp $line;\n    $counts{lines}++;\n    if (lc($line) =~ /error/) {\n        $counts{errors}++;\n    }\n}\n\nprint \"$counts{lines}\\n\";\nprint \"$counts{errors}\\n\";\n\nclose $fh;",
+          "passed": true,
+          "exec_output": "5\n2\n",
+          "latency_s": 5.17,
+          "tokens_per_sec": 28.9,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "csharp_unity_controller",
+          "language": "csharp",
+          "code": "using UnityEngine;\n\npublic class FirstPersonController : MonoBehaviour\n{\n    public float moveSpeed = 5f;\n    public float lookSensitivity = 2f;\n    public float jumpForce = 7f;\n    private bool isGrounded;\n    private Vector3 velocity;\n    private CharacterController controller;\n\n    void Start()\n    {\n        controller = GetComponent<CharacterController>();\n    }\n\n    void Update()\n    {\n        Move();\n        Look();\n        Jump();\n    }\n\n    void Move()\n    {\n        float x = Input.GetAxis(\"Horizontal\");\n        float z = Input.GetAxis(\"Vertical\");\n\n        Vector3 moveDirection = new Vector3(x, 0f, z).normalized;\n        velocity += moveDirection * moveSpeed;\n\n        controller.Move(velocity * Time.deltaTime);\n    }\n\n    void Look()\n    {\n        float mouseX = Input.GetAxis(\"Mouse X\") * lookSensitivity * Time.deltaTime;\n        float mouseY = -Input.GetAxis(\"Mouse Y\") * lookSensitivity * Time.deltaTime;\n\n        transform.Rotate(0f, mouseX, 0f);\n        controller.transform.Rotate(mouseY, 0f, 0f);\n    }\n\n    void Jump()\n    {\n        isGrounded = controller.isGrounded;\n        if (isGrounded && Input.GetKeyDown(KeyCode.Space))\n        {\n            velocity.y += jumpForce;\n        }\n        velocity.y -= 9.81f * Time.deltaTime; // Apply gravity\n    }\n}",
+          "passed": true,
+          "exec_output": null,
+          "latency_s": 11.98,
+          "tokens_per_sec": 29.0,
+          "reasoning_truncated": false
+        }
+      ],
+      "elapsed_s": 29.0
+    }
+  },
+  "total_elapsed_s": 359.7,
+  "headline": {
+    "context_retention": 1.0,
+    "summarization_claim_survival": {
+      "prose": 0.8,
+      "mathematical": 1.0,
+      "scientific": 1.0
+    },
+    "summarization_faithfulness_drop": -0.2,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 0.833,
+    "structured_lenient": 1.0,
+    "creative_constraints": 1.0,
+    "code_pass_at_1": 0.833
+  }
+}

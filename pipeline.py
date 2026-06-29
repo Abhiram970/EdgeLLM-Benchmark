@@ -50,7 +50,7 @@ from stimuli import (
 # ── CONFIG ──────────────────────────────────────────────────────────────────
 OLLAMA_URL = "http://localhost:11434"
 RESULTS_DIR = Path("./results")
-MODELS_DIR = Path("./models")
+MODELS_DIR = Path("../models")
 RESULTS_DIR.mkdir(exist_ok=True)
 
 # Default roster = the four downloaded 1.5B GGUFs (CONTEXT.md §2 controlled study).
@@ -68,6 +68,11 @@ MODELS = [
     "vibethinker-3b",
     "hermes3-llama32-3b",
     "smollm3-3b",
+    # 4B track
+    "gemma3-4b",
+    "glm-edge-4b",
+    "crow-4b",
+    "qwen35-4b",
 ]
 
 # Optional LLM judge for Task 5 (creative quality) and Task 2 (summarization).
@@ -639,7 +644,7 @@ def _print_timing_summary(all_model_results: list):
     ))
     label_w, col_w = 24, 12
     header = f"{'Model':<{label_w}}" + "".join(f"{n[:col_w]:>{col_w}}" for n in task_names) + f"{'TOTAL':>{col_w}}"
-    bar = "─" * len(header)
+    bar = "-" * len(header)
     print(f"\n{bar}\n  TIMING SUMMARY\n{bar}")
     print(header)
     print(bar)
@@ -685,7 +690,6 @@ def run_model(model_name: str, smoke: bool = False, only_tasks=None, judge=False
 
     model_results["total_elapsed_s"] = round(time.perf_counter() - model_t0, 1)
     model_results["headline"] = _headline(model_results)
-    _print_timing_summary([model_results])
     safe_name = model_name.replace(":", "_")
     if smoke:
         smoke_dir = RESULTS_DIR / "smoke"
@@ -700,6 +704,7 @@ def run_model(model_name: str, smoke: bool = False, only_tasks=None, judge=False
             json.dump(model_results, f, indent=2, ensure_ascii=False)
         print(f"\n  Saved: {out_path}")
         rebuild_leaderboard()
+    _print_timing_summary([model_results])
     return model_results
 
 

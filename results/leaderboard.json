@@ -1,4 +1,99 @@
 {
+  "crow-4b": {
+    "context_retention": 1.0,
+    "summarization_claim_survival": {
+      "prose": 0.9,
+      "mathematical": 1.0,
+      "scientific": 1.0
+    },
+    "summarization_faithfulness_drop": -0.1,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 0.833,
+    "structured_lenient": 1.0,
+    "creative_constraints": 0.583,
+    "code_pass_at_1": 0.833
+  },
+  "deepscaler-1b5": {
+    "context_retention": 0.89,
+    "summarization_claim_survival": {
+      "prose": 0.8,
+      "mathematical": 0.9,
+      "scientific": 1.0
+    },
+    "summarization_faithfulness_drop": -0.15,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 0.333,
+    "structured_lenient": 0.5,
+    "creative_constraints": 0.583,
+    "code_pass_at_1": 0.167
+  },
+  "deepseek-r1-1b5": {
+    "context_retention": 0.863,
+    "summarization_claim_survival": {
+      "prose": 0.7,
+      "mathematical": 1.0,
+      "scientific": 1.0
+    },
+    "summarization_faithfulness_drop": -0.3,
+    "open_book_accuracy": 0.889,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 0.667,
+      "hard": 1.0
+    },
+    "structured_strict": 0.167,
+    "structured_lenient": 0.667,
+    "creative_constraints": 0.25,
+    "code_pass_at_1": 0.167
+  },
+  "gemma3-4b": {
+    "context_retention": 1.0,
+    "summarization_claim_survival": {
+      "prose": 1.0,
+      "mathematical": 0.9,
+      "scientific": 1.0
+    },
+    "summarization_faithfulness_drop": 0.05,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 0.833,
+    "structured_lenient": 1.0,
+    "creative_constraints": 0.583,
+    "code_pass_at_1": 1.0
+  },
+  "glm-edge-4b": {
+    "context_retention": 1.0,
+    "summarization_claim_survival": {
+      "prose": 0.8,
+      "mathematical": 1.0,
+      "scientific": 1.0
+    },
+    "summarization_faithfulness_drop": -0.2,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 0.833,
+    "structured_lenient": 1.0,
+    "creative_constraints": 1.0,
+    "code_pass_at_1": 0.833
+  },
   "hermes3-llama32-3b": {
     "context_retention": 1.0,
     "summarization_claim_survival": {
@@ -56,6 +151,25 @@
     "creative_constraints": 0.667,
     "code_pass_at_1": 0.833
   },
+  "nemotron-1b5": {
+    "context_retention": 0.0,
+    "summarization_claim_survival": {
+      "prose": 0.9,
+      "mathematical": 0.4,
+      "scientific": 0.9
+    },
+    "summarization_faithfulness_drop": 0.25,
+    "open_book_accuracy": 0.111,
+    "open_book_by_tier": {
+      "easy": 0.333,
+      "medium": 0.0,
+      "hard": 0.0
+    },
+    "structured_strict": 0.167,
+    "structured_lenient": 0.167,
+    "creative_constraints": 0.0,
+    "code_pass_at_1": 0.0
+  },
   "phi4-mini:latest": {
     "context_retention": 0.84,
     "summarization_claim_survival": {
@@ -93,6 +207,25 @@
     "structured_lenient": 1.0,
     "creative_constraints": 0.75,
     "code_pass_at_1": 0.333
+  },
+  "qwen25-1b5": {
+    "context_retention": 1.0,
+    "summarization_claim_survival": {
+      "prose": 0.9,
+      "mathematical": 0.9,
+      "scientific": 0.9
+    },
+    "summarization_faithfulness_drop": 0.0,
+    "open_book_accuracy": 0.944,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 0.833
+    },
+    "structured_strict": 0.667,
+    "structured_lenient": 0.833,
+    "creative_constraints": 0.75,
+    "code_pass_at_1": 0.833
   },
   "smollm3-3b": {
     "context_retention": 0.967,
