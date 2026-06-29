@@ -111,10 +111,10 @@ SUMMARIZATION_PASSAGES = [
         ),
         "key_claims": [
             ["middle class", "wealth"],
-            ["factory system", "factory"],
+            ["factory system", "large-scale industry", "mechanized manufacturing", "mass production"],
             ["trade union"],
-            ["women and children", "women", "children"],
-            ["first industrial", "second industrial", "two"],
+            ["women and children"],
+            ["first industrial", "second industrial", "first lasted", "second lasted", "first phase", "second phase"],
         ],
     },
     {
@@ -151,7 +151,7 @@ SUMMARIZATION_PASSAGES = [
             ["fundamental theorem"],
             ["newton", "leibniz"],
             ["inverse", "antiderivative", "indefinite integral"],
-            ["area under", "area"],
+            ["area under", "area under the curve", "area function"],
             ["derivative", "differentiat"],
         ],
     },
@@ -185,9 +185,9 @@ SUMMARIZATION_PASSAGES = [
         "key_claims": [
             ["right triangle"],
             ["hypotenuse"],
-            ["a2 + b2", "a² + b²", "squares"],
+            ["a2 + b2", "a² + b²"],
             ["pythagoras"],
-            ["babylonian", "older", "euclid", "triples"],
+            ["babylonian", "euclid", "pythagorean triple", "triples"],
         ],
     },
     {
@@ -221,8 +221,8 @@ SUMMARIZATION_PASSAGES = [
         "key_claims": [
             ["lithosphere"],
             ["asthenosphere"],
-            ["plate", "plates"],
-            ["converge", "diverge", "boundaries", "slip past"],
+            ["tectonic plates", "lithosphere is broken", "several plates"],
+            ["converge", "diverge", "slip past"],
             ["earthquake", "volcan", "seismic"],
         ],
     },

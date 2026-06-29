@@ -311,7 +311,7 @@ def task_context_retention(model: str, smoke: bool = False) -> dict:
 # ── TASK 2: CROSS-DOMAIN SUMMARIZATION ───────────────────────────────────────
 
 def task_summarization(model: str, smoke: bool = False) -> dict:
-    max_tokens = 64 if smoke else 256
+    max_tokens = 200 if smoke else 350
     items = SUMMARIZATION_PASSAGES[:3] if smoke else SUMMARIZATION_PASSAGES
     results = []
     for content in items:
@@ -617,6 +617,7 @@ def _headline(model_results: dict) -> dict:
         "context_retention": t.get("context_retention", {}).get("score"),
         "summarization_claim_survival": t.get("summarization", {}).get("claim_survival_by_domain"),
         "summarization_faithfulness_drop": t.get("summarization", {}).get("faithfulness_drop_prose_minus_technical"),
+        "summarization_mean_rouge_l": t.get("summarization", {}).get("mean_rouge_l"),
         "open_book_accuracy": t.get("open_book_qa", {}).get("overall_accuracy"),
         "open_book_by_tier": t.get("open_book_qa", {}).get("accuracy_by_tier"),
         "structured_strict": t.get("structured_output", {}).get("strict_compliance_rate"),

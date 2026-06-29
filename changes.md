@@ -42,3 +42,53 @@ Dropped bare `"wine"` and `"olive"` from the accept list; kept only the compound
 | Before | After |
 |---|---|
 | `["wine-and-olive", "wine and olive", "wine", "olive"]` | `["wine-and-olive", "wine and olive"]` |
+
+---
+
+# Task 2 — Summarization Changes (stimuli.py + pipeline.py)
+
+## 1. Key claim lists tightened — 4 passages (stimuli.py)
+
+Removed over-generic single-word variants that would appear in any on-topic summary regardless of whether the model preserved the specific claim. Two passages needed no changes (sum_prose_frenchrev, sum_sci_dna).
+
+### sum_prose_industrial
+
+| Claim | Before | After | Reason |
+|---|---|---|---|
+| 2 | `["factory system", "factory"]` | `["factory system", "large-scale industry", "mechanized manufacturing", "mass production"]` | Dropped bare `"factory"`; expanded with synonyms after smoke test showed model said "large-scale industry" not "factory system" — correct substance, wrong phrase |
+| 4 | `["women and children", "women", "children"]` | `["women and children"]` | Dropped singles — `"women"` and `"children"` appear in any on-topic response |
+| 5 | `["first industrial", "second industrial", "two"]` | `["first industrial", "second industrial", "first lasted", "second lasted", "first phase", "second phase"]` | Dropped `"two"`; expanded after smoke test showed model wrote "the first lasted...the second from" without repeating "Industrial" in each clause |
+
+### sum_math_calculus
+
+| Claim | Before | After | Reason |
+|---|---|---|---|
+| 4 | `["area under", "area"]` | `["area under", "area under the curve", "area function"]` | Dropped bare `"area"` — matches any calculus response; added `"area function"` after smoke test showed model wrote "area function F(t) under the curve" which broke the original `"area under"` substring |
+
+### sum_math_pythagorean
+
+| Claim | Before | After | Reason |
+|---|---|---|---|
+| 3 | `["a2 + b2", "a² + b²", "squares"]` | `["a2 + b2", "a² + b²"]` | Dropped `"squares"` — matches any geometry response |
+| 5 | `["babylonian", "older", "euclid", "triples"]` | `["babylonian", "euclid", "pythagorean triple", "triples"]` | Dropped `"older"` — appears in any response noting antiquity; added `"pythagorean triple"` as more specific variant |
+
+### sum_sci_tectonics
+
+| Claim | Before | After | Reason |
+|---|---|---|---|
+| 3 | `["plate", "plates"]` | `["tectonic plates", "lithosphere is broken", "several plates"]` | `"plate"` matches "plate tectonics" in any response trivially; replaced with compound phrases requiring the model to describe the plate structure specifically |
+| 4 | `["converge", "diverge", "boundaries", "slip past"]` | `["converge", "diverge", "slip past"]` | Dropped `"boundaries"` — appears in any plate tectonics response |
+
+## 2. pipeline.py changes
+
+### _headline() — ROUGE-L surfaced
+Added `"summarization_mean_rouge_l"` to the returned dict, pulling from `tasks["summarization"]["mean_rouge_l"]`. Same pattern as all other headline metrics.
+
+### task_summarization — token budget raised
+| Mode | Before | After | Reason |
+|---|---|---|---|
+| smoke | 64 | 200 | 64-token cap was cutting summaries mid-sentence; frenchrev truncated before France/26M claim fired |
+| full run | 256 | 350 | 256 left frenchrev truncated in full runs too; 350 gives all passages room to complete |
+
+## 3. Environment
+Installed `rouge-score==0.1.2` (+ `nltk==3.9.4`). Previously `_rouge_l()` silently returned `None` on every call; all ROUGE fields were null in results.
