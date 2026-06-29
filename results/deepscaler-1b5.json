@@ -1,0 +1,1030 @@
+{
+  "model": "deepscaler-1b5",
+  "timestamp": "2026-06-29T19:00:48.325019",
+  "decode_spec": {
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "think": true,
+    "max_factor": 8.0
+  },
+  "smoke": false,
+  "tasks": {
+    "context_retention": {
+      "task": "context_retention",
+      "score": 0.89,
+      "mean_coherence_horizon": 3.0,
+      "scripts": [
+        {
+          "id": "ret_hydrologist",
+          "score": 0.619,
+          "probe_scores": [
+            1.0,
+            0.0,
+            0.857
+          ],
+          "coherence_horizon_turns": 1,
+          "turns": [
+            {
+              "type": "plant",
+              "user": "My name is Mara Okonkwo and I work as a hydrologist in Lisbon.",
+              "prompt_tokens": 22,
+              "gen_tokens": 367,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "Just to confirm: what is my name and what is my job?",
+              "response": "Thank you for clarifying! You are indeed Mara Okonkwo, a hydrologist working at the Hydrological Research Institute of Lisbon. If you'd like more detailed information about your field or specific projects, I can provide general insights into hydrology. Let me know if you have any questions!",
+              "turn_depth": 1,
+              "fact_hits": {
+                "name": true,
+                "job": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 94,
+              "gen_tokens": 260,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Tell me if this is interesting: \"The concept of plate tectonics was formulated i",
+              "prompt_tokens": 230,
+              "gen_tokens": 949,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "plant",
+              "user": "I have a tortoise named Pim who is 12 years old.",
+              "prompt_tokens": 473,
+              "gen_tokens": 901,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "Quick check: what is my name, my job, and the name of my pet?",
+              "response": "The statement about Earth's geological layers and plate tectonics you provided contains inaccuracies that can make it seem like a valid concept even though it does not reflect current scientific understanding.\n\n1. **Layer Descriptions**: The statement correctly identifies the lithosphere as the outer, rigid layer around 100 km thick and the asthenosphere as the upper layer where tectonic plates move, but it refers to this as the mantle instead of \"asthenosphere.\" This terminology is less precise for those unfamiliar with geological terms.\n\n2. **Plate Movement Rates**: The statement mentions that plates move at an average rate of 5-10 cm per year, which is too slow compared to actual data. Current research shows subduction zones on Earth's mid-ocean ridges move at rates around 20–30 cm/year, indicating much slower plate movement.\n\n3. **Terminology**: Using \"plastic\" to describe the asthenosphere and referring to it as the mantle introduces confusion for those unfamiliar with geological terminology.\n\nIn conclusion, while the statement accurately describes geological layers, its reliance on outdated or imprecise terminology and an overly slow rate of tectonic movement make it less interesting in comparison to current scientific understanding. It serves more as a simplified explanation than a precise representation of plate tectonics.",
+              "turn_depth": 4,
+              "fact_hits": {
+                "name": false,
+                "job": false,
+                "pet": false
+              },
+              "probe_score": 0.0,
+              "prompt_tokens": 869,
+              "gen_tokens": 724,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Another snippet: \"The singularity constitutes the centre of a black hole and is ",
+              "prompt_tokens": 1184,
+              "gen_tokens": 652,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "plant",
+              "user": "Also, I live in Lisbon and my current project is code-named DELTA-7.",
+              "prompt_tokens": 1559,
+              "gen_tokens": 688,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "One more: \"The French Revolution had general causes common to all the revolution",
+              "prompt_tokens": 1895,
+              "gen_tokens": 897,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "Ignoring everything about tectonics, black holes, and the French Revolution: wha",
+              "response": "Based on the given information and the analysis above:\n\n1. **Name**: The user's name is not explicitly provided but could be \"Mara Okonkwo.\"\n2. **Job**: They are a hydrologist working at the Hydrological Research Institute of Lisbon, involved in research or teaching related to water resources and environmental science.\n3. **Location**: Their location is Lisbon, where they conduct their work.\n4. **Pet Information**: The user mentions Pim, an 12-year-old male pet whose species isn't specified but its age is not provided.\n5. **Project Code Name**: Their project is named DELTA-7.\n\nRegarding the interest in their current project (DELTA-7), while it's challenging to evaluate without additional context about what this code signifies or its specific focus, it can be assumed that if it stands out for uniqueness or methodological approach, it might indicate an interesting and innovative work.",
+              "turn_depth": 8,
+              "fact_hits": {
+                "name": true,
+                "job": true,
+                "city": true,
+                "pet": true,
+                "pet_kind": false,
+                "pet_age": true,
+                "project_code": true
+              },
+              "probe_score": 0.857,
+              "prompt_tokens": 2300,
+              "gen_tokens": 895,
+              "reasoning_truncated": false
+            }
+          ]
+        },
+        {
+          "id": "ret_chef",
+          "score": 1.0,
+          "probe_scores": [
+            1.0,
+            1.0
+          ],
+          "coherence_horizon_turns": 5,
+          "turns": [
+            {
+              "type": "plant",
+              "user": "Hi, I'm Tomas Reyes, a pastry chef based in Montreal.",
+              "prompt_tokens": 17,
+              "gen_tokens": 417,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "What's my name and my profession?",
+              "response": "It looks like you're a pastry chef! Specifically, you are called **Tomas Reyes** and your profession is to create delicious chocolate-based pastries.",
+              "turn_depth": 1,
+              "fact_hits": {
+                "name": true,
+                "job": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 94,
+              "gen_tokens": 229,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Random fact I read: \"Probabilities are numbers between 0 and 1, with 0 meaning i",
+              "prompt_tokens": 176,
+              "gen_tokens": 284,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "plant",
+              "user": "My signature dessert is a lavender macaron, and I plan to open my own shop in 20",
+              "prompt_tokens": 328,
+              "gen_tokens": 395,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "And this: \"The Pythagorean theorem states that in a right triangle the square of",
+              "prompt_tokens": 509,
+              "gen_tokens": 353,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "Remind me: what is my name, my city, my signature dessert, and the year I plan t",
+              "response": "Here are the details about Tomas Reyes:\n\n1. **Name**: Tomas Reyes\n2. **City**: Montreal, Canada\n3. **Signature Dessert**: Lavender Macaron\n4. **Year Opened**: 2027\n\nLet me know if you need further clarification!",
+              "turn_depth": 5,
+              "fact_hits": {
+                "name": true,
+                "city": true,
+                "signature": true,
+                "opens_year": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 711,
+              "gen_tokens": 287,
+              "reasoning_truncated": false
+            }
+          ]
+        },
+        {
+          "id": "ret_astronomer",
+          "score": 1.0,
+          "probe_scores": [
+            1.0
+          ],
+          "coherence_horizon_turns": 4,
+          "turns": [
+            {
+              "type": "plant",
+              "user": "I'm Yuki Tanaka, an astronomer. I mostly use a radio telescope.",
+              "prompt_tokens": 21,
+              "gen_tokens": 1276,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Quick aside: \"DNA is made of nucleotides. A nucleotide has a sugar-phosphate bac",
+              "prompt_tokens": 338,
+              "gen_tokens": 611,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "plant",
+              "user": "My main observation target is the Andromeda galaxy, funded under grant NX-119.",
+              "prompt_tokens": 574,
+              "gen_tokens": 1081,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Also interesting: \"The Industrial Revolution transformed economies based on agri",
+              "prompt_tokens": 1178,
+              "gen_tokens": 372,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "Recall for me: my name, my job, the instrument I use, my observation target, and",
+              "response": "**Step-by-Step Explanation:**\n\n1. **Name and Job:**  \n   - Name: Yuki Tanaka\n   - Role: Astronomer at the National Radio Observatory (NRO), involved in radio telescope observations.\n\n2. **Instrument:**  \n   - Instrument Used: Radio telescope, likely the NRO's new generation telescopes designed for space-based observations.\n\n3. **Observation Target:**  \n   - Observation Target: Andromeda Galaxy\n\n4. **Grant ID:**  \n   - Grant ID: NX-119\n   - Description: This grant funds research into understanding large-scale structures in the universe, including Andromeda using radio astronomy techniques.\n\n**Detailed Process:**\n\n1. **Setup at NRO:**  \n   - Attended telescope setup at NRO's Hawaii site for Andromeda observation.\n\n2. **Observation Plan:**  \n   - Utilized pulsar timing arrays (PTAs) to study Andromeda's motion relative to our galaxy through light curves.\n   - Optimized telescope settings, ensuring low atmospheric interference and sufficient power.\n\n3. **Data Collection:**  \n   - Collected radio data over time as Andromeda moves across the field of view.\n\n4. **Analysis Techniques:**  \n   - Used specialized software (e.g., SExtractor/Fitype) for spectral analysis but primarily focused on data extraction.\n\n5. **Repetition and Replication:**  \n   - Planed to repeat observations at different times when Andromeda is in different parts of its orbit, enhancing the scope of research.\n\n6. **Challenges Addressed:**  \n   - Improved telescope shielding to reduce atmospheric noise.\n   - Minimized background levels for better data quality.\n\n7. **Broader Implications:**  \n   - Considered how advancements in radio astronomy could influence industrial processes and economic transformations, aligning with the historical context provided.\n\nThis structured approach ensures a comprehensive understanding of Andromeda's structure through advanced radio observations, contributing to broader technological and economic perspectives.",
+              "turn_depth": 4,
+              "fact_hits": {
+                "name": true,
+                "job": true,
+                "instrument": true,
+                "target": true,
+                "grant_id": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 1304,
+              "gen_tokens": 918,
+              "reasoning_truncated": false
+            }
+          ]
+        },
+        {
+          "id": "ret_archivist",
+          "score": 1.0,
+          "probe_scores": [
+            1.0,
+            1.0
+          ],
+          "coherence_horizon_turns": 5,
+          "turns": [
+            {
+              "type": "plant",
+              "user": "My name is Priya Nair and I'm an archivist in Edinburgh.",
+              "prompt_tokens": 19,
+              "gen_tokens": 327,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "Confirm my name and where I work.",
+              "response": "It seems like you've reached out again after asking me to confirm your name and location. Based on the conversation so far:\n\n1. You are an archivist at the University of Edinburgh (priya.nair@ed.ac.uk).\n2. You previously asked for confirmation that I can help with questions about your role as an archivist.\n\nI should respond by acknowledging their request and offering assistance in any way possible, while ensuring my role remains appropriate and respectful of your location at the university.\n\nHere's how I can phrase it:\n\n---\n\nThank you for confirming your name and location. I'm happy to assist with any questions or concerns you have regarding my role as an archivist at the University of Edinburgh. Whether it's about managing collections, handling historical materials, or supporting academic research related to archives, feel free to reach out if there's anything specific you'd like to discuss!\n\nIf you need help with any details about my work here—like where I'm based, how I assist others, or access to specific resources—I'll be happy to provide guidance.\n\nBest regards,  \n[Your Name]",
+              "turn_depth": 1,
+              "fact_hits": {
+                "name": true,
+                "city": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 133,
+              "gen_tokens": 443,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Found this: \"The printing press first became mechanized in Europe. The earliest ",
+              "prompt_tokens": 396,
+              "gen_tokens": 464,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "plant",
+              "user": "I curate a collection of maritime maps; the oldest one dates to 1602.",
+              "prompt_tokens": 556,
+              "gen_tokens": 332,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "And: \"Natural selection is the process by which organisms adapt to their environ",
+              "prompt_tokens": 655,
+              "gen_tokens": 591,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "What is my name, my job, my city, the collection I curate, and the year of the o",
+              "response": "Here's the structured information based on your query:\n\n- **Name:** Priya Nair\n- **Job:** Archivist at Edinburgh University\n- **City:** Edinburgh\n- **Collection:** Curated collection of maritime maps from 1602\n- **Oldest Item Year:** 1602\n\nThis provides a clear and organized presentation of the details you asked for.",
+              "turn_depth": 5,
+              "fact_hits": {
+                "name": true,
+                "job": true,
+                "city": true,
+                "collection": true,
+                "oldest_year": true
+              },
+              "probe_score": 1.0,
+              "prompt_tokens": 874,
+              "gen_tokens": 317,
+              "reasoning_truncated": false
+            }
+          ]
+        },
+        {
+          "id": "ret_engineer",
+          "score": 0.833,
+          "probe_scores": [
+            0.833
+          ],
+          "coherence_horizon_turns": 0,
+          "turns": [
+            {
+              "type": "plant",
+              "user": "I'm Dario Conti, a civil engineer working in Oslo.",
+              "prompt_tokens": 17,
+              "gen_tokens": 353,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Read this earlier: \"The Roman Empire was founded in 27 BCE and in 395 AD split i",
+              "prompt_tokens": 161,
+              "gen_tokens": 450,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "plant",
+              "user": "I'm designing a suspension bridge with a 1400-meter main span, due in March.",
+              "prompt_tokens": 421,
+              "gen_tokens": 1244,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "Also: \"A prime number greater than 1 can be expressed as a product of primes in ",
+              "prompt_tokens": 910,
+              "gen_tokens": 793,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "distractor",
+              "user": "And one more: \"Photosynthesis is the process by which green plants transform lig",
+              "prompt_tokens": 1152,
+              "gen_tokens": 1102,
+              "reasoning_truncated": false
+            },
+            {
+              "type": "probe",
+              "user": "Tell me back: my name, my profession, my city, what I'm designing, its main span",
+              "response": "**Design Details:**\n- **Main Span**: The design includes a suspension bridge with a main span of 1400 meters. This bridge will utilize materials such as steel or reinforced concrete for its structural integrity.\n\n**Location Details:**\n- The project is likely to be conducted within Oslo, Norway, due to the context provided earlier about Storkem (a Swedish engineering company known as \"The Master of Bridges\"). However, specific location details are not included here.\n\n**Design Process:**\n- This bridge will follow the fundamental theorem of arithmetic in terms of its structural design. The main span will be supported by a series of cables that span across the river, while additional beams or supports may be incorporated for stability.\n- The design will incorporate materials like steel, which are known for their strength and durability, ensuring the bridge can withstand expected loads such as traffic and environmental factors.\n\n**Project Timeline:**\n- The project is likely to have a deadline month of March. This timeline will need further details about previous projects or specifications to ensure timely delivery.\n\nThis response provides a structured overview of all available information regarding the design, including key components like the main span and potential materials used. Specific details such as name, profession, city, and exact design aspects may require additional information for precise planning.",
+              "turn_depth": 5,
+              "fact_hits": {
+                "name": false,
+                "job": true,
+                "city": true,
+                "structure": true,
+                "span_m": true,
+                "deadline": true
+              },
+              "probe_score": 0.833,
+              "prompt_tokens": 1514,
+              "gen_tokens": 575,
+              "reasoning_truncated": false
+            }
+          ]
+        }
+      ],
+      "mem_before": {
+        "ram_mb": 62.33984375,
+        "vram_used_mb": 1231,
+        "vram_total_mb": 8188
+      },
+      "mem_after": {
+        "ram_mb": 62.33984375,
+        "vram_used_mb": 2462,
+        "vram_total_mb": 8188
+      }
+    },
+    "summarization": {
+      "task": "summarization",
+      "claim_survival_by_domain": {
+        "prose": 0.8,
+        "mathematical": 0.9,
+        "scientific": 1.0
+      },
+      "faithfulness_drop_prose_minus_technical": -0.15,
+      "mean_rouge_l": 0.386,
+      "results": [
+        {
+          "id": "sum_prose_frenchrev",
+          "domain": "prose",
+          "source": "https://www.britannica.com/event/French-Revolution",
+          "summary": "The French Revolution was caused by both general social trends common to other West revolutions and specific factors unique to France. The decline of feudal structures, such as the medieval system, led to a rise in the bourgeoisie, while peasants faced pressure to adopt political authority due to declining standards of living and limited land ownership. This combination of changes accelerated the revolution. Notably, by 1730, mortality rates among adults improved significantly, reducing deaths and contributing to rapid population growth. France experienced a doubling of its population between 1715 and 1800, driven by these social and demographic shifts.",
+          "rouge": {
+            "rouge1": 0.433,
+            "rouge2": 0.1042,
+            "rougeL": 0.2577
+          },
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 5.29,
+          "tokens_per_sec": 166.2,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_prose_industrial",
+          "domain": "prose",
+          "source": "https://www.britannica.com/event/Industrial-Revolution",
+          "summary": "During the Industrial Revolution, wealth increased worldwide, broadening middle class sizes. Domestic systems shifted to factory production, forcing many people into long-hour work at subsistence wages, leading to unions. The revolution transformed economies from agriculture to large industry and mechanized manufacturing, boosting productivity with new tech. New industries like automobiles emerged in the late 19th century. Historians divide the Industrial Revolution into two parts: mid-1800s Britain, mid-1900s across Europe/AM and Japan.",
+          "rouge": {
+            "rouge1": 0.5665,
+            "rouge2": 0.1871,
+            "rougeL": 0.4162
+          },
+          "claims_survived": 3,
+          "claims_total": 5,
+          "claim_survival_rate": 0.6,
+          "latency_s": 6.54,
+          "tokens_per_sec": 164.0,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_math_calculus",
+          "domain": "mathematical",
+          "source": "https://www.britannica.com/science/calculus-mathematics",
+          "summary": "Newton and Leibniz independently discovered the Fundamental Theorem of Calculus, which establishes that differentiation and integration are inverse processes. Specifically, if a function F(t) denotes the area under f(x) from 0 to t, then its derivative equals f(t): F′(t) = f(t). This leads to the indefinite integral ∫x²dx = x³/3 + C, where C is an arbitrary constant. Newton's approach used areas under curves, while Leibniz introduced infinitesimals for integration via summation of thin rectangles.",
+          "rouge": {
+            "rouge1": 0.6012,
+            "rouge2": 0.3602,
+            "rougeL": 0.4785
+          },
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 4.56,
+          "tokens_per_sec": 164.7,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_math_pythagorean",
+          "domain": "mathematical",
+          "source": "https://www.britannica.com/science/Pythagorean-theorem",
+          "summary": "The Pythagorean theorem states that in a right-angled triangle, the sum of squares on legs equals square on hypotenuse (c² = a² + b²). Evidence from ancient Babylonian tablets and early Indian texts like Baudhayana Sulba-sutra suggests knowledge around 1900 BCE. The theorem is often credited to Pythagoras but is also mentioned in the Baudhayana Sulba-sutra.",
+          "rouge": {
+            "rouge1": 0.5694,
+            "rouge2": 0.2676,
+            "rougeL": 0.4306
+          },
+          "claims_survived": 4,
+          "claims_total": 5,
+          "claim_survival_rate": 0.8,
+          "latency_s": 7.48,
+          "tokens_per_sec": 166.7,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_sci_tectonics",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/plate-tectonics",
+          "summary": "The concept of plate tectonics was established in the 1960s, describing Earth's lithosphere (outer layer) as a rigid layer overlain by an asthenosphere. The earth is composed of seven large plates, six medium-sized ones, and numerous small plates, which move at rates up to 10 cm/year, interacting along boundaries for convergence, divergence, or slipping. These interactions explain most seismic/volcanic activity but also allow earthquakes and volcanoes to occur within plate interiors. Plate movements create mountains by pushing plates together and break continents apart, while oceans form through passive drift as plates separate. Over millions of years, this leads to significant geological changes.",
+          "rouge": {
+            "rouge1": 0.4663,
+            "rouge2": 0.1571,
+            "rougeL": 0.3834
+          },
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 5.16,
+          "tokens_per_sec": 160.0,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_sci_dna",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/DNA",
+          "summary": "DNA is composed of two antiparallel strands of monomer nucleotides, each consisting of deoxyribose sugars linked by phosphate groups to nitrogenous bases (A/G for purines and C/T for pyrimidines). These nucleotides are connected via phosphodiester bonds, forming a double helix backbone with nitrogenous bases protruding on opposite strands. Hydrogen bonding specifies that adenine pairs only with thymine, cytosine only with guanine. The discovery of this structure was pivotal in understanding DNA replication and hereditary control of cellular functions by James Watson, Francis Crick, Rosalind Franklin, and Maurice Wilkins in 1953.",
+          "rouge": {
+            "rouge1": 0.5876,
+            "rouge2": 0.1257,
+            "rougeL": 0.3503
+          },
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 5.26,
+          "tokens_per_sec": 168.5,
+          "reasoning_truncated": false
+        }
+      ]
+    },
+    "open_book_qa": {
+      "task": "open_book_qa",
+      "overall_accuracy": 1.0,
+      "accuracy_by_tier": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 1.0
+      },
+      "results": [
+        {
+          "id": "qa_lit_pride",
+          "domain": "literary",
+          "source": "https://www.britannica.com/topic/Pride-and-Prejudice",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "How many sisters are in the Bennet family?",
+              "gold": "Five.",
+              "predicted": "The Bennet family consists of five sisters: Jane, Elizabeth/Lizzy, Mary, Lydia, and Kitty.\n\nAnswer: Five sisters.",
+              "correct": true,
+              "latency_s": 4.02,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "Who is the heroine of the novel, and what is her nickname?",
+              "gold": "Elizabeth Bennet, nicknamed “Lizzy.”",
+              "predicted": "The heroine of the novel, Pride and Prejudice, is Elizabeth, known as Lizzy. She shares her father’s views on society's importance of wealth and rank.\n\nAnswer: The heroine is Elizabeth or Lizzy.",
+              "correct": true,
+              "latency_s": 3.69,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Based on the passage, which trait does Elizabeth share with her father, and what does that imply about her view of society?",
+              "gold": "She shares her father's distaste for conventional views about the importance of wealth and rank, implying she does not judge people by social status.",
+              "predicted": "Elizabeth (\"Lizzy\") shares a trait of valuing intelligent individuals in society. This reflects her view that such individuals hold greater social status, implying she rejects traditional views on wealth and society.\n\nAnswer: Elizabeth shares intelligence with her father. This implies her view is that rich people are superior to others, rejecting conventional societal values.",
+              "correct": true,
+              "latency_s": 4.27,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_lit_gatsby",
+          "domain": "literary",
+          "source": "https://www.britannica.com/topic/The-Great-Gatsby",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "In what year was The Great Gatsby published?",
+              "gold": "1925.",
+              "predicted": "The publication year of F. Scott Fitzgerald’s novel \"The Great Gatsby\" is 1925.\n\nAnswer: The book was published in 1925.",
+              "correct": true,
+              "latency_s": 3.91,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "What does the green light at the end of Daisy's dock symbolize?",
+              "gold": "Gatsby's unattainable dream and ambition.",
+              "predicted": "The green light at the end of Daisy's dock in \"The Great Gatsby\" represents Gatsby's ambitious ideals that are ultimately opposed by the established old money society.\n\nAnswer: The green light at the end of Daisy's dock symbolizes Gatsby's ambition, which is opposed by the old money society.",
+              "correct": true,
+              "latency_s": 4.54,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "According to the passage, what is the difference between West Egg and East Egg, and which society ultimately triumphs?",
+              "gold": "West Egg represents brash, materialistic 'new money' and East Egg refined, inherited 'old money'; the old-money society ultimately triumphs.",
+              "predicted": "West Egg represents modern and innovative values, while East Egg reflects traditionalist values. The societal victory in the novel is attributed to East Egg's contrast leading to deeper insights into their respective societies.\n\nAnswer: The passage contrasts new money (West Egg) with old money (East Egg), where West Egg is brash and materialistic, whereas East Egg is refined with inherited wealth. East Egg society ultimately triumphs due to societal issues in the novel.",
+              "correct": true,
+              "latency_s": 4.58,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_sci_blackhole",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/black-hole",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "What is the name of the “surface” that hides the singularity at the centre of a black hole?",
+              "gold": "The event horizon.",
+              "predicted": "The surface that hides the singularity at the center of a black hole is called the **event horizon** because it's where matter and light are unable to escape due to the extreme gravitational pull near the singularity. \n\nAnswer: event horizon",
+              "correct": true,
+              "latency_s": 4.06,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "According to the passage, why can not even light escape from inside the event horizon?",
+              "gold": "Because inside the event horizon the escape velocity exceeds the speed of light.",
+              "predicted": "According to the passage, inside the event horizon of a black hole, the escape velocity exceeds the speed of light, meaning even light cannot escape because its own speed is limited by c.\n\nAnswer: Inside the event horizon, matter and radiation have an escape velocity exceeding the speed of light. Since light itself travels at c, neither can escape beyond this point.",
+              "correct": true,
+              "latency_s": 4.38,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Using the passage, what would happen to the Schwarzschild radius if the mass of the collapsing star were doubled, and why?",
+              "gold": "It would roughly double, because the Schwarzschild radius is proportional to the mass of the collapsing star.",
+              "predicted": "The Schwarzschild radius is proportional to the mass of the collapsing star. Doubling the mass would result in doubling the Schwarzschild radius. \n\nAnswer: If the mass of the collapsing star were doubled, the Schwarzschild radius would also double because it's directly proportional to mass.",
+              "correct": true,
+              "latency_s": 4.01,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_sci_evolution",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/evolution-scientific-theory",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "What are the raw material for evolution, according to the passage?",
+              "gold": "Mutations (the genetic variations they introduce).",
+              "predicted": "The raw material for evolution consists of mutations in an organism's genetic material. These variations are the foundation for natural selection, allowing beneficial traits to increase over generations as they are selected for based on their survival and reproductive advantages.\n\nAnswer: Mutations provide the raw material for evolution as they introduce new genetic variations that drive natural selection towards favorable traits.",
+              "correct": true,
+              "latency_s": 4.54,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "What happens to variations that enhance an organism's survival and reproduction?",
+              "gold": "They are preserved and passed on to future generations.",
+              "predicted": "The variations that enhance an organism's survival and reproduction are preserved and passed on through natural selection, becoming more common over time.\n\nAnswer: The beneficial variations are preserved and passed on, increasing their frequency due to natural selection.",
+              "correct": true,
+              "latency_s": 4.06,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Based on the passage, explain how a beneficial mutation becomes common in a population over time.",
+              "gold": "A beneficial mutation improves survival and reproduction, so natural selection favors it, causing it to increase in frequency over generations.",
+              "predicted": "A beneficial mutation becomes common through natural selection by allowing it to increase its frequency over generations due to selective advantage. Mutations introduce variations, some of which are advantageous. These mutations are passed on and selected against or favorably selected for based on their ability to enhance survival and reproduction. As a result, the beneficial variation spreads more in the population, leading to its widespread presence.",
+              "correct": true,
+              "latency_s": 4.17,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_hist_frenchrev",
+          "domain": "historical",
+          "source": "https://www.britannica.com/event/French-Revolution",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "Why did the rulers of Europe seek to raise money by taxing the nobles and clergy?",
+              "gold": "Because of the heavy expenditure entailed by the wars of the 18th century.",
+              "predicted": "The rulers sought to justify their heavy war expenditure by taxing nobles and clergy, as they were not paid and used arguments from educated people about governance needs. \n\nAnswer: The rulers raised money by taxing nobles and clergy because it covered war costs and justified it through thinkers' demands.",
+              "correct": true,
+              "latency_s": 4.04,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "Which two groups had usually been exempt from taxation before the rulers tried to tax them?",
+              "gold": "The nobles and the clergy.",
+              "predicted": "The two groups that were usually exempt from taxation before rulers tried to tax them are noblemen (or nobles) and clergy.\n\nAnswer: Noble men and clergy.",
+              "correct": true,
+              "latency_s": 3.82,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "According to the passage, how was the American Revolution connected to the same backlash occurring in Europe?",
+              "gold": "The same aristocratic reaction against taxation appeared in North America, where the backlash contributed to the American Revolution, which began with a refusal to pay a tax imposed by the king of Great Britain.",
+              "predicted": "The American Revolution was connected to a backlash in Europe through taxes imposed by Britain on American colonies. European rulers faced economic crisis ( wars) and sought taxes, triggering a backlash from the aristocracy. This reaction led to internal conflict among classes, which contributed to the internal conflict that eventually caused the American Revolution.\n\nAnswer: The American Revolution began due to taxation and reactions against it in Europe, leading to internal conflicts.",
+              "correct": true,
+              "latency_s": 4.2,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_hist_printing",
+          "domain": "historical",
+          "source": "https://www.britannica.com/topic/printing-press",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "In what year did Gutenberg use his press to print an edition of the Bible?",
+              "gold": "1455.",
+              "predicted": "Gutenberg used his press to print an edition of the Bible in 1455.\n\nAnswer: The passage states that Gutenberg's press was used in 1455 for printing the Bible. This makes it one of the earliest books printed using movable type.\n\nAnswer: In 1455, Gutenberg used his press to print an edition of the Bible.",
+              "correct": true,
+              "latency_s": 3.7,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "What ancient device was the medieval paper press modeled after?",
+              "gold": "The ancient wine-and-olive press of the Mediterranean area.",
+              "predicted": "The medieval paper press was modeled after an ancient wine-and-olive press found in the Mediterranean area.\n\nAnswer: An ancient wine-and-olive press",
+              "correct": true,
+              "latency_s": 3.89,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Based on the passage, what evidence shows that movable-type printing existed outside Europe before Gutenberg's Bible?",
+              "gold": "Jikji, a book of Buddhist teachings, was printed from movable type in Korea in 1377—before Gutenberg's 1455 Bible.",
+              "predicted": "The evidence showing movable-type printing existed outside Europe before Gutenberg's Bible includes the example of movable-type presses in Korea around 1377, where they were used even before Gutenberg's time. This demonstrates that such presses were present in other regions, indicating their existence outside Europe.\n\nAnswer: The example of movable-type presses in Korea from 1377 shows that these presses existed outside Europe before Gutenberg's Bible was printed.",
+              "correct": true,
+              "latency_s": 4.95,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        }
+      ]
+    },
+    "structured_output": {
+      "task": "structured_output",
+      "strict_compliance_rate": 0.333,
+      "lenient_compliance_rate": 0.5,
+      "results": [
+        {
+          "name": "json_person",
+          "validator": "json",
+          "strict_compliant": false,
+          "lenient_compliant": true,
+          "details": {
+            "required": [
+              "name",
+              "age",
+              "city"
+            ],
+            "had_fence": true
+          },
+          "response": "The JSON object containing the name, age, and city of a fictional person is as follows:\n\n```json\n{\n  \"name\": \"Alice\",\n  \"age\": 30,\n  \"city\": \"Paris\"\n}\n```",
+          "latency_s": 3.91,
+          "tokens_per_sec": 153.6,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "json_nested",
+          "validator": "json",
+          "strict_compliant": false,
+          "lenient_compliant": false,
+          "details": {
+            "required": [
+              "title",
+              "year",
+              "authors"
+            ],
+            "had_fence": true
+          },
+          "response": "To solve this problem, we need to process an input and return only a specific portion of it formatted as a JSON object with certain keys. The task is straightforward since we have explicit instructions about which keys to include.\n\n### Approach\n1. **Problem Analysis**: We need to extract three specific fields from the input data: \"title\", \"year\", and \"authors\". The \"authors\" field should be a list of strings.\n2. **Data Structure**: Since the output must be in JSON format, we'll create an object with keys \"title\", \"year\", and \"authors\".\n3. **Implementation Steps**:\n   - Load the input data into a dictionary using `json.load`.\n   - Extract the required fields from this dictionary.\n   - Format the result as a JSON object.\n\n### Solution Code\n```python\nimport json\n\n# Assuming the input is already loaded into a variable named 'data'\nresult = {\n    \"title\": data[\"title\"],\n    \"year\": data[\"year\"],\n    \"authors\": data.get(\"authors\", [])\n}\nprint(result)\n```\n\n### Explanation\n1. **Loading Input**: The `json.load` function converts the input (assumed to be JSON) into a Python dictionary.\n2. **Extracting Fields**:\n   - `\"title\"` is directly taken from the dictionary.\n   - `\"year\"` is similarly extracted.\n   - `\"authors\"`: If not present in the input, it defaults to an empty list using `data.get(\"authors\", [])`.\n3. **Formatting**: The result is formatted as a JSON object and printed.\n\nThis approach ensures that only the required keys are included in the output while handling cases where \"authors\" might be missing or absent.",
+          "latency_s": 7.08,
+          "tokens_per_sec": 162.5,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "markdown_doc",
+          "validator": "markdown",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "has_header": true,
+            "has_bold": true,
+            "has_bullet": true
+          },
+          "response": "### Steps of Photosynthesis\n\n**Photosynthesis Process**:  \nThe process by which plants produce oxygen and gain carbon dioxide from sunlight, water, and CO₂.\n\n1. **Blue Light Absorption**:  \n   - Chlorophyll, a pigment in plant cells, absorbs blue light from the sun.\n\n2. **Water Capture (Phloem Cells)**:  \n   - Water is captured by phloem cells in the underside of leaves, forming hydrogen peroxide.\n\n3. **Carbon Dioxide Conversion**:  \n   - Carbon dioxide reacts with ATP and NADPH to form glucose and releases oxygen.\n\n4. **Product Transport**:  \n   - Glucose and oxygen are transported back up the leaf via stomata.\n\nThis process ensures plants produce their own energy while reducing carbon dioxide in the environment.",
+          "latency_s": 5.35,
+          "tokens_per_sec": 158.0,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "code_only_fib",
+          "validator": "code_only",
+          "strict_compliant": false,
+          "lenient_compliant": false,
+          "details": {
+            "has_function": false,
+            "no_backticks": true
+          },
+          "response": "",
+          "latency_s": 14.7,
+          "tokens_per_sec": 165.7,
+          "reasoning_truncated": true
+        },
+        {
+          "name": "numbered_list_planets",
+          "validator": "numbered_list",
+          "strict_compliant": false,
+          "lenient_compliant": false,
+          "details": {
+            "numbered": 0,
+            "total_lines": 1,
+            "expected": 5
+          },
+          "response": "Mercury, Venus, Earth, Mars, Jupiter",
+          "latency_s": 7.38,
+          "tokens_per_sec": 165.4,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "csv_row",
+          "validator": "csv_line",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "lines": 1,
+            "expected_fields": 3
+          },
+          "response": "fruit, red, $0.99",
+          "latency_s": 8.86,
+          "tokens_per_sec": 167.2,
+          "reasoning_truncated": false
+        }
+      ]
+    },
+    "creative_generation": {
+      "task": "creative_generation",
+      "mean_constraint_pass_rate": 0.583,
+      "results": [
+        {
+          "type": "article",
+          "text": "**New Deep-Sewa Fish Discovered!**\n\nA groundbreaking discovery has emerged in the world of deep-sea biology, revealing a unique species named \"Deep-Sewa.\" This newfound fish, with its striking features, captivates researchers and enthusiasts alike. It was identified through advanced hydroacoustic techniques, allowing scientists to detect its peculiar characteristics.\n\n**Description:** Deep-Sewa stands out as an underwater creature with distinct scales that are rare in existing species. Its unique coloration adds to the wonder of this discovery, making it a fascinating subject for study.\n\n**Unique Features:** One standout trait is Deep-Sewa's ability to move through water more efficiently than many other deep-sea fish. This feature highlights its potential as a versatile aquatic creature, offering new insights into marine ecosystems.\n\n**Impact:** This discovery is significant for ocean conservation and biology. It introduces a novel habitat type suitable for various species, enriching our understanding of underwater life. While the immediate impact may be limited, such findings can pave the way for future explorations in marine environments.",
+          "word_count": 161,
+          "line_count": 5,
+          "constraints": [
+            "has headline",
+            "~200 words",
+            "journalistic tone"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 8.68,
+          "tokens_per_sec": 165.8,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "poem_unrhymed",
+          "text": "From the rooftop, looking outward,  \nThe city as a silent mirror, reflecting our thoughts.  \nEach building its own little dance in the night,  \nThe sounds of life, voices deep, moving.  \n\nWhere every step leads you astray,  \nWhere we find ourselves lost in the city's endless path.  \nThe night's silence, as vast as infinity,  \nInfinite patterns, infinite stories.  \n\nBut through this view, we see the beauty of it all,  \nThrough the rooftop, seeing such a grand city.  \nIt's a window into a world beyond our comprehension,  \nInfinities within, yet finite nature.",
+          "word_count": 90,
+          "line_count": 12,
+          "constraints": [
+            "12 lines",
+            "no rhyme",
+            "vivid imagery"
+          ],
+          "constraint_checks": {
+            "line_count_exact": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 7.08,
+          "tokens_per_sec": 162.5,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "short_story",
+          "text": "\"The last bus had already left,\" so after a long time away from home, five friends decide to go on another road trip instead of commuting. They agree to ride in a car together, bringing their own items along. As they drive towards a new destination, unexpected issues arise—bad weather and a lost cat. Despite these challenges, they find shelter at a local campsite where one friend stays. With the help of others, they successfully navigate through their journey.\"",
+          "word_count": 79,
+          "line_count": 1,
+          "constraints": [
+            "starts with given sentence",
+            "~150 words",
+            "complete arc"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": false,
+            "starts_with_required": true
+          },
+          "constraint_pass_rate": 0.5,
+          "latency_s": 8.63,
+          "tokens_per_sec": 163.9,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "acrostic",
+          "text": "O - The ocean begins its journey...  \nC - Creating currents carries us across land.  \nE - Every edge has stories waiting to be told.  \nA - As we explore deeper, new waves meet.  \nN - Never underestimate the power of nature's presence.",
+          "word_count": 43,
+          "line_count": 5,
+          "constraints": [
+            "5 lines",
+            "acrostic spells OCEAN"
+          ],
+          "constraint_checks": {
+            "line_count_exact": true,
+            "acrostic_ok": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 11.05,
+          "tokens_per_sec": 164.8,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "dialogue",
+          "text": "Person A:\nColon : Line 1\nI am considering selling my old family house because I don't want it anymore and there's a need for new opportunities elsewhere.\n\nLine 2\nPerson B:\nColon : Line 2\nBut I'm hesitant because I don't know how much this property is worth without being able to sell it. It seems like a good deal, but not sure yet.\n\nLine 3\nPerson A:\nColon : Line 3\nMaybe if we agree on some terms or conditions, selling could help us achieve what we need in the future.\n\nLine 4\nPerson B:\nColon : Line 4\nI'm okay with that idea. But I want to know more about how much it's worth and any potential costs involved.\n\nLine 5\nPerson A:\nColon : Line 5\nYes, selling could give us financial stability or move us towards other goals we've been waiting for.\n\nLine 6\nPerson B:\nColon : Line 6\nI need to discuss the condition of the house first. How much value does it hold? What costs would be involved in selling?\n\nLine 7\nPerson A:\nColon : Line 7\nThe house is in good shape and has a lot of sentimental value. I think we can sell it without too many issues.\n\nLine 8\nPerson B:\nColon : Line 8\nI'm not sure about the exact costs, but maybe if we agree on a price range or payment terms, selling could work.\n\nLine 9\nPerson A:\nColon : Line 9\nIt's good to know. I'll start by explaining my reasons and discuss any steps needed for the sale together.\n\nLine 10\nPerson B:\nColon : Line 10\nI'm happy we're considering it. We can make an agreement once we have more information about the house's condition and value.\n\nThis dialogue captures their thoughts and discussion around selling the family house, starting with Person A expressing their desire to sell and then moving into their hesitations and considerations.",
+          "word_count": 324,
+          "line_count": 40,
+          "constraints": [
+            "10 lines",
+            "name: prefix each line"
+          ],
+          "constraint_checks": {
+            "line_count_exact": false,
+            "all_lines_have_name_colon": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 7.0,
+          "tokens_per_sec": 162.4,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "six_word_story",
+          "text": "Sunrise Shadowed Glass Child Enters.",
+          "word_count": 5,
+          "line_count": 1,
+          "constraints": [
+            "exactly 6 words"
+          ],
+          "constraint_checks": {
+            "exact_word_count": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 7.86,
+          "tokens_per_sec": 163.2,
+          "human_score": null,
+          "judge_score": null
+        }
+      ]
+    },
+    "code_generation": {
+      "task": "code_generation",
+      "pass_at_1": 0.167,
+      "executed_pass_at_1": 0.0,
+      "results": [
+        {
+          "name": "py_process_csv",
+          "language": "python",
+          "code": "To solve this problem, we need to create a function called `process_csv` that reads a CSV file containing data with columns 'name', 'score', and 'grade'. The function will then compute two values: the average score of students and a list of names who received an 'A' grade. Finally, it will return these values in a dictionary.\n\n### Approach\n1. **Read the CSV File**: Use the `csv` module to read the CSV file. This allows us to parse the data into rows where each row contains three elements: name, score, and grade.\n2. **Calculate Average Score**: Sum all the scores from each student and divide by the number of students to get the average score.\n3. **Collect 'A' Grade Students**: Iterate through each student's data and collect names who have an 'A' grade.\n4. **Return Results**: Return a dictionary with two keys: 'average_score' as a float and 'a_students' as a list of names.\n\n### Solution Code\n```python\ndef process_csv(filename):\n    import csv\n    with open(filename) as csvfile:\n        reader = csv.reader(csvfile, delimiter=',')\n        data = list(reader)\n    \n    total_score = sum(int(row[1]) for row in data)\n    num_rows = len(data)\n    average_score = total_score / num_rows if num_rows > 0 else 0.0\n    \n    a_students = [row[0] for row in data if row[2].lower() == 'a']\n    \n    return {\n        'average_score': average_score,\n        'a_students': a_students\n    }\n```\n\n### Explanation\n1. **Reading CSV Data**: The function uses the `csv.reader` from the `csv` module to read each line of the CSV file into a list of rows.\n2. **Calculating Average Score**: It sums all scores and divides by the number of students to compute the average score, ensuring it handles cases with no data correctly.\n3. **Finding 'A' Grade Students**: Using a list comprehension, it filters out names where the grade is 'A'.\n4. **Returning Results**: The function returns a dictionary containing the computed average score and the list of names with an 'A' grade.\n\nThis approach efficiently processes the CSV data, ensuring accurate results for both average scores and students with an 'A'.",
+          "passed": false,
+          "exec_output": "  File \"C:\\Users\\PVABHI~1\\AppData\\Local\\Temp\\tmp9l7va_11.py\", line 6\n    3. **Collect 'A' Grade Students**: Iterate through each student's data and collect names who have an 'A' grade.\n                                                                                                           ^\nSyntaxError: unterminated string literal (detected at line 6)\n",
+          "latency_s": 14.44,
+          "tokens_per_sec": 165.4,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "py_is_palindrome",
+          "language": "python",
+          "code": "To solve this problem, we need to determine if a given string is a palindrome, ignoring case, spaces, and punctuation. A palindrome reads the same forwards and backwards. \n\n### Approach\nThe approach involves several steps:\n1. **Normalize Case and Punctuation**: Convert all characters in the string to lowercase and remove any non-alphanumeric characters except letters.\n2. **Check for Palindrome**: After normalizing the string, check if it reads the same forwards and backwards.\n\nHere's a detailed breakdown of each step:\n\n1. **Normalization**:\n   - Convert each character in the string to lowercase.\n   - Filter out all non-alphanumeric characters (i.e., remove spaces and punctuation).\n\n2. **Palindrome Check**:\n   - Compare the normalized string with its reverse to determine if it is a palindrome.\n\n### Solution Code\n```python\ndef is_palindrome(s):\n    s_processed = []\n    for c in s:\n        lower_c = c.lower()\n        if lower_c.isalnum():\n            s_processed.append(lower_c)\n    return ''.join(s_processed) == ''.join(s_processed)[::-1]\n```\n\n### Explanation\n- **Normalization**: The function processes each character of the input string by converting it to lowercase and checking if it is an alphanumeric character. Only these characters are kept in a new list `s_processed`.\n- **Palindrome Check**: After constructing the normalized string, it checks if this string is equal to its reverse using slicing (`[::-1]`). If they are equal, the function returns `True`, indicating the string is a palindrome; otherwise, it returns `False`.\n\nThis approach ensures that all non-alphanumeric characters and case differences are ignored, efficiently determining if the string is a palindrome.",
+          "passed": false,
+          "exec_output": "  File \"C:\\Users\\PVABHI~1\\AppData\\Local\\Temp\\tmp07g13cdf.py\", line 8\n    Here's a detailed breakdown of each step:\n        ^\nSyntaxError: unterminated string literal (detected at line 8)\n",
+          "latency_s": 20.2,
+          "tokens_per_sec": 162.4,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "py_fizzbuzz",
+          "language": "python",
+          "code": "To solve this problem, we need to create a function `fizzbuzz(n)` that generates a list of length `n`. Each element in this list corresponds to an index (1-indexed) from 1 to `n` and is determined based on specific divisibility rules.\n\n### Approach\nThe function should return a list where each element at position `i` (1-indexed) is:\n- 'FizzBuzz' if the number is divisible by both 3 and 5.\n- 'Fizz' if the number is divisible by 3 but not by 5.\n- 'Buzz' if the number is divisible by 5 but not by 3.\n- The number itself as a string if none of the above conditions are met.\n\nThe approach involves iterating through each index from 1 to `n`, checking for divisibility in a specific order:\n1. Check if the current index is divisible by both 3 and 5 (i.e., divisible by 15) first.\n2. If not, check if it's divisible by 3.\n3. If neither of the above conditions are met, check if it's divisible by 5.\n4. If none of these conditions are met, convert the number to a string and add it to the list.\n\n### Solution Code\n```python\ndef fizzbuzz(n):\n    result = []\n    for i in range(1, n + 1):\n        if i % 15 == 0:\n            result.append('FizzBuzz')\n        elif i % 3 == 0:\n            result.append('Fizz')\n        elif i % 5 == 0:\n            result.append('Buzz')\n        else:\n            result.append(str(i))\n    return result\n```\n\n### Explanation\n- The function initializes an empty list `result` to store the output.\n- It iterates through each number from 1 to `n` (inclusive).\n- For each number, it checks the following conditions in order:\n  - If divisible by both 3 and 5 (i.e., divisible by 15), appends 'FizzBuzz'.\n  - Else, if divisible by 3, appends 'Fizz'.\n  - Else, if divisible by 5, appends 'Buzz'.\n  - Otherwise, converts the number to a string and appends it.\n- Finally, returns the list `result`.\n\nThis approach ensures that each number is evaluated based on its divisibility in the specified order, ensuring correct results for all cases.",
+          "passed": false,
+          "exec_output": "  File \"C:\\Users\\PVABHI~1\\AppData\\Local\\Temp\\tmpu50t70_c.py\", line 12\n    2. If not, check if it's divisible by 3.\n                          ^\nSyntaxError: unterminated string literal (detected at line 12)\n",
+          "latency_s": 22.19,
+          "tokens_per_sec": 162.4,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "py_two_sum",
+          "language": "python",
+          "code": "",
+          "passed": false,
+          "exec_output": "Traceback (most recent call last):\n  File \"C:\\Users\\PVABHI~1\\AppData\\Local\\Temp\\tmpkqbtodnw.py\", line 4, in <module>\n    r=two_sum([2,7,11,15],9)\n      ^^^^^^^\nNameError: name 'two_sum' is not defined\n",
+          "latency_s": 28.05,
+          "tokens_per_sec": 159.4,
+          "reasoning_truncated": true
+        },
+        {
+          "name": "perl_error_counter",
+          "language": "perl",
+          "code": "To solve this problem, we need to write a Perl script that reads a given text file line by line. The script will count the total number of lines in the file and the number of lines that contain the word 'error' (case-insensitive). \n\n### Approach\n1. **Read Input File**: The first command-line argument provides the filename, which is read into memory.\n2. **Count Total Lines**: Each line from the file is read sequentially until EOF is reached, incrementing the total count for each line.\n3. **Check for 'error' in Lowercase**: For each line, convert it to lowercase and check if it contains the substring 'error'. This ensures case-insensitivity.\n4. **Output Results**: Print both counts as required.\n\n### Solution Code\n```php\n$filename = $arg[0];\n$f = fopen($filename, 'r');\ntotal_lines = 0;\nerror_count = 0;\n\nwhile ((f = f->read())) {\n    if ($f->is_empty()) { continue; }\n    total_lines++;\n    $lower_line = strtolower($f->getLine());\n    if (substr($lower_line, 5) == 'error') {\n        error_count++;\n    }\n}\n\nprint(total_lines, \" \", error_count);\n```\n\n### Explanation\n- **Reading Input**: The script reads the filename from standard input and opens it for reading.\n- **Loop Through Lines**: Using a while loop, each line is read until EOF. Each line is checked to see if it contains 'error' in any case by converting the line to lowercase.\n- **Counting Lines**: The total number of lines is incremented each time a non-empty line is processed.\n- **Case Insensitivity Check**: By converting each line to lowercase and checking for the substring 'error', we ensure that both 'Error' and 'error' are counted.\n\nThis approach efficiently processes each line, ensuring accurate counting while handling case insensitivity.",
+          "passed": true,
+          "exec_output": "static-fallback",
+          "latency_s": 20.95,
+          "tokens_per_sec": 160.3,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "csharp_unity_controller",
+          "language": "csharp",
+          "code": "Here's the C# script for a first-person controller with the specified features:\n\n``` csharp\nusing UnityEngine;\nusing UnityEngine.net;\n\npublic class PlayerController : MonoBehaviour {\n    public static Actor player = null;\n    \n    private bool wasdMovement = false;\n    private int jumpDelay = 0;\n    private bool mouseLook = false;\n    \n    // Initialize the player component\n    private void Start() {\n        player = FindObject回家(UnityEditor.CamAssetManager.find(\"Player\"));\n        \n        camera = new Camera( UnityEditor.WorldPosition, \n            OrbitControls.fromCameraPosition(position: new Vector3(0, 5, -5)), \n            UpVector.y,\n            LookAt( unityEditor.WorldPosition + new Vector3(1, 1, 1) ) );\n    }\n    \n    // WASD movement\n    private void WASDMovement( int key ) {\n        if (key == 59 || key == 61) { // WASD\n            wasdMovement = !wasdMovement;\n            player.position.y += wasdMovement * 0.3;\n        }\n        \n        if (player != null && wasdMovement) {\n            camera.lookAt( UnityEditor.WorldPosition + new Vector3(0, 2, -1) );\n        }\n    }\n    \n    // Mouse look control\n    private void mouseLookController() {\n        if (!mouseLook) {\n            player.lookAt(unityEditor.WorldPosition + new Vector3(1, 1, 1) );\n            UnityEditor.WorldPosition = new Vector3(0, 5, -5);\n            \n            button('Look').Wait(() => mouseLook = !mouseLook);\n        }\n    }\n    \n    // Jump functionality\n    void Jump() {\n        if (startMain && delay < 2000) { // Space bar pressed after a delay\n            jumpDelay += 100;\n            Player.Jump(0.5); // Jump with slight push\n        }\n        \n        startMain = false;\n    }\n    \n    private void StartMain() {\n        if ( UnityEditor.World Position != null ) {\n            startMain = true;\n        }\n    }\n}\n```\n\nThis script includes:\n- WASD movement for controlling the character's position\n- Mouse look functionality to adjust the camera angle based on mouse position\n- Jump functionality using spacebar press\n- Gravity applied naturally\n\nTo use this script in Unity:\n1. Add it as a static class under your asset folder.\n2. Enable and configure the game loop.\n3. Press W or S for WASD movement, move the mouse to adjust the look, press SPACE to jump, and observe gravity affecting movement.\n\nNote: Make sure you have the correct Unity Editor file open containing the necessary assets for player positioning and camera controls.",
+          "passed": false,
+          "exec_output": null,
+          "latency_s": 8.78,
+          "tokens_per_sec": 161.5,
+          "reasoning_truncated": false
+        }
+      ]
+    }
+  },
+  "headline": {
+    "context_retention": 0.89,
+    "summarization_claim_survival": {
+      "prose": 0.8,
+      "mathematical": 0.9,
+      "scientific": 1.0
+    },
+    "summarization_faithfulness_drop": -0.15,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 0.333,
+    "structured_lenient": 0.5,
+    "creative_constraints": 0.583,
+    "code_pass_at_1": 0.167
+  }
+}
