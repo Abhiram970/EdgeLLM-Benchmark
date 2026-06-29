@@ -1,0 +1,16 @@
+# EdgeLM 1.5B track -- minimal deps for the transformers-based runner.
+# Tested with recent versions; pin exact versions once your environment is set.
+torch>=2.1
+transformers>=4.45
+accelerate>=0.30
+huggingface_hub>=0.24
+sentencepiece          # tokenizer dependency for some models
+
+# --- Ollama benchmark track (pipeline.py) ---
+requests               # Ollama REST client
+psutil                 # RAM polling
+tqdm                   # progress bars
+rouge-score            # Task 2 summarization ROUGE-L scoring
+
+# --- optional, for scaling up the full benchmark run (much faster batched inference) ---
+# vllm>=0.6.0          # see CONTEXT.md "Scaling up" note; handles long reasoning outputs well
