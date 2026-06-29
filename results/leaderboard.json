@@ -1,0 +1,135 @@
+{
+  "hermes3-llama32-3b": {
+    "context_retention": 1.0,
+    "summarization_claim_survival": {
+      "prose": 1.0,
+      "mathematical": 1.0,
+      "scientific": 1.0
+    },
+    "summarization_faithfulness_drop": 0.0,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 1.0,
+    "structured_lenient": 1.0,
+    "creative_constraints": 0.583,
+    "code_pass_at_1": 0.5
+  },
+  "llama3.2:3b": {
+    "context_retention": 0.99,
+    "summarization_claim_survival": {
+      "prose": 1.0,
+      "mathematical": 1.0,
+      "scientific": 0.9
+    },
+    "summarization_faithfulness_drop": 0.05,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 0.833,
+    "structured_lenient": 1.0,
+    "creative_constraints": 0.667,
+    "code_pass_at_1": 0.833
+  },
+  "ministral-3:3b": {
+    "context_retention": 1.0,
+    "summarization_claim_survival": {
+      "prose": 1.0,
+      "mathematical": 1.0,
+      "scientific": 1.0
+    },
+    "summarization_faithfulness_drop": 0.0,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 0.667,
+    "structured_lenient": 0.833,
+    "creative_constraints": 0.667,
+    "code_pass_at_1": 0.833
+  },
+  "phi4-mini:latest": {
+    "context_retention": 0.84,
+    "summarization_claim_survival": {
+      "prose": 0.9,
+      "mathematical": 0.9,
+      "scientific": 1.0
+    },
+    "summarization_faithfulness_drop": -0.05,
+    "open_book_accuracy": 0.944,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 0.833,
+      "hard": 1.0
+    },
+    "structured_strict": 0.667,
+    "structured_lenient": 1.0,
+    "creative_constraints": 0.583,
+    "code_pass_at_1": 0.833
+  },
+  "qwen2.5-coder:3b": {
+    "context_retention": 0.99,
+    "summarization_claim_survival": {
+      "prose": 0.8,
+      "mathematical": 1.0,
+      "scientific": 0.9
+    },
+    "summarization_faithfulness_drop": -0.15,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 0.833,
+    "structured_lenient": 1.0,
+    "creative_constraints": 0.75,
+    "code_pass_at_1": 0.333
+  },
+  "smollm3-3b": {
+    "context_retention": 0.967,
+    "summarization_claim_survival": {
+      "prose": 0.9,
+      "mathematical": 0.9,
+      "scientific": 1.0
+    },
+    "summarization_faithfulness_drop": -0.05,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 0.0,
+    "structured_lenient": 0.0,
+    "creative_constraints": 0.0,
+    "code_pass_at_1": 0.333
+  },
+  "vibethinker-3b": {
+    "context_retention": 0.757,
+    "summarization_claim_survival": {
+      "prose": 1.0,
+      "mathematical": 1.0,
+      "scientific": 0.9
+    },
+    "summarization_faithfulness_drop": 0.05,
+    "open_book_accuracy": 0.944,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 0.833
+    },
+    "structured_strict": 1.0,
+    "structured_lenient": 1.0,
+    "creative_constraints": 0.667,
+    "code_pass_at_1": 0.667
+  }
+}
