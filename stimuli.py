@@ -289,14 +289,14 @@ OPEN_BOOK_ITEMS = [
             "are flighty and immature."
         ),
         "questions": [
-            {"difficulty": "easy", "q": "How many sisters are in the Bennet family?",
-             "gold": "Five.", "accept": ["five", "5"], "determinable": True},
+            {"difficulty": "easy", "q": "According to the passage, what two words describe the personalities of Lydia and Kitty?",
+             "gold": "Flighty and immature.", "accept": ["flighty", "immature"], "determinable": True},
             {"difficulty": "medium", "q": "Who is the heroine of the novel, and what is her nickname?",
              "gold": "Elizabeth Bennet, nicknamed “Lizzy.”", "accept": ["elizabeth", "lizzy"], "determinable": True},
             {"difficulty": "hard",
              "q": "Based on the passage, which trait does Elizabeth share with her father, and what does that imply about her view of society?",
              "gold": "She shares her father's distaste for conventional views about the importance of wealth and rank, implying she does not judge people by social status.",
-             "accept": ["wealth", "rank", "conventional", "society"], "determinable": True},
+             "accept": ["wealth and rank", "conventional views", "distaste for", "social status"], "determinable": True},
         ],
     },
     {
@@ -315,14 +315,14 @@ OPEN_BOOK_ITEMS = [
             "wealthy Chicagoan Tom Buchanan."
         ),
         "questions": [
-            {"difficulty": "easy", "q": "In what year was The Great Gatsby published?",
-             "gold": "1925.", "accept": ["1925"], "determinable": True},
+            {"difficulty": "easy", "q": "Where did Gatsby and Daisy originally meet in their youth?",
+             "gold": "Kentucky.", "accept": ["kentucky"], "determinable": True},
             {"difficulty": "medium", "q": "What does the green light at the end of Daisy's dock symbolize?",
              "gold": "Gatsby's unattainable dream and ambition.", "accept": ["unattainable", "dream", "ambition"], "determinable": True},
             {"difficulty": "hard",
              "q": "According to the passage, what is the difference between West Egg and East Egg, and which society ultimately triumphs?",
              "gold": "West Egg represents brash, materialistic 'new money' and East Egg refined, inherited 'old money'; the old-money society ultimately triumphs.",
-             "accept": ["old money", "old-money", "east egg"], "determinable": True},
+             "accept": ["old money", "old-money"], "determinable": True},
         ],
     },
     {
@@ -343,15 +343,15 @@ OPEN_BOOK_ITEMS = [
             "(18.6 miles)."
         ),
         "questions": [
-            {"difficulty": "easy", "q": "What is the name of the “surface” that hides the singularity at the centre of a black hole?",
-             "gold": "The event horizon.", "accept": ["event horizon"], "determinable": True},
+            {"difficulty": "easy", "q": "According to the passage, what is the Schwarzschild radius of a black hole with a mass 10 times that of the Sun?",
+             "gold": "30 km.", "accept": ["30 km", "30km", "30 kilometers", "30 kilometres"], "determinable": True},
             {"difficulty": "medium", "q": "According to the passage, why can not even light escape from inside the event horizon?",
              "gold": "Because inside the event horizon the escape velocity exceeds the speed of light.",
              "accept": ["escape velocity", "exceeds the speed of light", "faster than light", "greater than the speed of light"], "determinable": True},
             {"difficulty": "hard",
              "q": "Using the passage, what would happen to the Schwarzschild radius if the mass of the collapsing star were doubled, and why?",
              "gold": "It would roughly double, because the Schwarzschild radius is proportional to the mass of the collapsing star.",
-             "accept": ["double", "proportional", "twice", "increase"], "determinable": True},
+             "accept": ["would double", "also double", "roughly double", "proportional to the mass", "twice as"], "determinable": True},
         ],
     },
     {
@@ -371,14 +371,14 @@ OPEN_BOOK_ITEMS = [
             "advantageous mutations, causing them to increase in frequency over generations."
         ),
         "questions": [
-            {"difficulty": "easy", "q": "What are the raw material for evolution, according to the passage?",
-             "gold": "Mutations (the genetic variations they introduce).", "accept": ["mutation", "variation"], "determinable": True},
+            {"difficulty": "easy", "q": "According to the passage, through what four factors can differential reproduction occur?",
+             "gold": "Survival rates, fertility, mating success, or other life cycle aspects.", "accept": ["survival rates", "fertility", "mating success", "life cycle"], "determinable": True},
             {"difficulty": "medium", "q": "What happens to variations that enhance an organism's survival and reproduction?",
              "gold": "They are preserved and passed on to future generations.", "accept": ["preserved", "passed on", "passed down", "future generation"], "determinable": True},
             {"difficulty": "hard",
              "q": "Based on the passage, explain how a beneficial mutation becomes common in a population over time.",
              "gold": "A beneficial mutation improves survival and reproduction, so natural selection favors it, causing it to increase in frequency over generations.",
-             "accept": ["natural selection", "increase in frequency", "frequency", "over generations"], "determinable": True},
+             "accept": ["natural selection", "increase in frequency", "natural selection favors", "selection favors"], "determinable": True},
         ],
     },
     {
@@ -398,15 +398,15 @@ OPEN_BOOK_ITEMS = [
             "allies among the nonprivileged bourgeois and the peasants."
         ),
         "questions": [
-            {"difficulty": "easy", "q": "Why did the rulers of Europe seek to raise money by taxing the nobles and clergy?",
-             "gold": "Because of the heavy expenditure entailed by the wars of the 18th century.",
-             "accept": ["war", "wars", "expenditure", "expense"], "determinable": True},
+            {"difficulty": "easy", "q": "What role did the rulers claim to justify taxing the privileged classes?",
+             "gold": "Enlightened despots.",
+             "accept": ["enlightened despot", "enlightened despots"], "determinable": True},
             {"difficulty": "medium", "q": "Which two groups had usually been exempt from taxation before the rulers tried to tax them?",
              "gold": "The nobles and the clergy.", "accept": ["nobles and", "clergy"], "determinable": True},
             {"difficulty": "hard",
              "q": "According to the passage, how was the American Revolution connected to the same backlash occurring in Europe?",
              "gold": "The same aristocratic reaction against taxation appeared in North America, where the backlash contributed to the American Revolution, which began with a refusal to pay a tax imposed by the king of Great Britain.",
-             "accept": ["refusal to pay", "tax", "king of great britain", "backlash"], "determinable": True},
+             "accept": ["refusal to pay", "king of great britain", "refused to pay", "refusal to pay a tax"], "determinable": True},
         ],
     },
     {
@@ -427,14 +427,14 @@ OPEN_BOOK_ITEMS = [
             "Gutenberg reigned supreme for more than 300 years."
         ),
         "questions": [
-            {"difficulty": "easy", "q": "In what year did Gutenberg use his press to print an edition of the Bible?",
-             "gold": "1455.", "accept": ["1455"], "determinable": True},
+            {"difficulty": "easy", "q": "What mechanism did Gutenberg's press use to exert pressure on the paper?",
+             "gold": "A long handle turning a heavy wooden screw.", "accept": ["wooden screw", "long handle", "heavy screw", "handle to turn"], "determinable": True},
             {"difficulty": "medium", "q": "What ancient device was the medieval paper press modeled after?",
-             "gold": "The ancient wine-and-olive press of the Mediterranean area.", "accept": ["wine-and-olive", "wine and olive", "wine", "olive"], "determinable": True},
+             "gold": "The ancient wine-and-olive press of the Mediterranean area.", "accept": ["wine-and-olive", "wine and olive"], "determinable": True},
             {"difficulty": "hard",
              "q": "Based on the passage, what evidence shows that movable-type printing existed outside Europe before Gutenberg's Bible?",
              "gold": "Jikji, a book of Buddhist teachings, was printed from movable type in Korea in 1377—before Gutenberg's 1455 Bible.",
-             "accept": ["jikji", "korea", "1377"], "determinable": True},
+             "accept": ["jikji", "1377", "in korea", "korea in 1377"], "determinable": True},
         ],
     },
 ]
