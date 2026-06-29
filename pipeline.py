@@ -61,13 +61,20 @@ MODELS = [
     "deepseek-r1-1b5",
     "deepscaler-1b5",
     "nemotron-1b5",
+    "llama3.2:3b",
+    "qwen2.5-coder:3b",
+    "ministral-3:3b",
+    "phi4-mini:latest",
+    "vibethinker-3b",
+    "hermes3-llama32-3b",
+    "smollm3-3b",
 ]
 
 # Optional LLM judge for Task 5 (creative quality) and Task 2 (summarization).
 # Off by default; enable with --judge. Uses an Ollama model by default; point at a
 # stronger judge for paper-grade results (CONTEXT.md §5: small open judges are
 # unreliable for creative writing).
-JUDGE_MODEL = os.environ.get("EDGELM_JUDGE_MODEL", "qwen25-1b5")
+JUDGE_MODEL = os.environ.get("EDGELM_JUDGE_MODEL", "llama3.2:3b")
 
 # ── PER-MODEL DECODING SPEC (CONTEXT.md §4) ──────────────────────────────────
 DECODE = {
@@ -640,21 +647,41 @@ def run_model(model_name: str, smoke: bool = False, only_tasks=None, judge=False
             model_results["judge"] = {"error": str(e)}
 
     model_results["headline"] = _headline(model_results)
-    out_path = RESULTS_DIR / f"{model_name}.json"
+    safe_name = model_name.replace(":", "_")
+    out_path = RESULTS_DIR / f"{safe_name}.json"
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(model_results, f, indent=2, ensure_ascii=False)
     print(f"\n  Saved: {out_path}")
+    rebuild_leaderboard()
     return model_results
 
 
-def run_all(smoke=False, only_tasks=None, judge=False):
-    all_results = [run_model(m, smoke=smoke, only_tasks=only_tasks, judge=judge) for m in tqdm(MODELS, desc="All models")]
+def rebuild_leaderboard():
+    """Scan all per-model result files and regenerate all_results.json + leaderboard.json.
+    Called after every run_model() so adding models one-by-one stays consistent."""
+    skip = {"all_results.json", "leaderboard.json"}
+    all_results = []
+    for p in sorted(RESULTS_DIR.glob("*.json")):
+        if p.name in skip:
+            continue
+        try:
+            with open(p, encoding="utf-8") as f:
+                all_results.append(json.load(f))
+        except Exception:
+            pass
     with open(RESULTS_DIR / "all_results.json", "w", encoding="utf-8") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
-    # compact leaderboard
     board = {r["model"]: r.get("headline") for r in all_results if not r.get("skipped")}
     with open(RESULTS_DIR / "leaderboard.json", "w", encoding="utf-8") as f:
         json.dump(board, f, indent=2, ensure_ascii=False)
+    print(f"  Leaderboard updated ({len(all_results)} model(s))")
+    return board
+
+
+def run_all(smoke=False, only_tasks=None, judge=False):
+    for m in tqdm(MODELS, desc="All models"):
+        run_model(m, smoke=smoke, only_tasks=only_tasks, judge=judge)
+    board = rebuild_leaderboard()
     print(f"\n\nSaved {RESULTS_DIR/'all_results.json'} and leaderboard.json")
     print(json.dumps(board, indent=2, ensure_ascii=False))
 
