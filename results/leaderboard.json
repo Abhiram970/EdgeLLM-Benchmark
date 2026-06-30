@@ -1,0 +1,15 @@
+{
+  "gemma3-4b": {
+    "context_retention": 0.674,
+    "context_retention_stale_rate": 0.0,
+    "summarization_claim_survival": null,
+    "summarization_faithfulness_drop": null,
+    "summarization_mean_rouge_l": null,
+    "open_book_accuracy": null,
+    "open_book_by_tier": null,
+    "structured_strict": null,
+    "structured_lenient": null,
+    "creative_constraints": null,
+    "code_pass_at_1": null
+  }
+}
