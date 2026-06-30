@@ -36,6 +36,16 @@ MODELS = [
     "qwen35-4b",
 ]
 
+PERL_FALLBACK_PATHS = [
+    r"C:\Program Files\Git\usr\bin\perl.exe",   # Git for Windows (most common bundled source)
+    r"C:\Strawberry\perl\bin\perl.exe",          # Strawberry Perl default
+    r"C:\Perl64\bin\perl.exe",                   # ActivePerl 64-bit
+    r"C:\Perl\bin\perl.exe",                     # ActivePerl 32-bit
+    "/opt/homebrew/bin/perl",                    # Mac Homebrew
+    "/usr/local/bin/perl",                       # Mac/Linux manual install
+    "/usr/bin/perl",                             # Linux system Perl
+]
+
 RUBY_FALLBACK_PATHS = [
     r"C:\Ruby33-x64\bin\ruby.exe",
     r"C:\Ruby32-x64\bin\ruby.exe",
@@ -179,8 +189,14 @@ def check_perl():
 
     perl = shutil.which("perl")
     if not perl:
+        for path in PERL_FALLBACK_PATHS:
+            if os.path.isfile(path):
+                perl = path
+                break
+
+    if not perl:
         fail(
-            "perl not found in PATH -- all 3 Perl code tasks will be skipped",
+            "perl not found -- all 3 Perl code tasks will be skipped",
             fix="Windows: https://strawberryperl.com/   Mac: brew install perl   Linux: apt install perl",
         )
         return
@@ -191,6 +207,12 @@ def check_perl():
         ok(f"perl found at {perl}  ({version})")
     except Exception as e:
         warn(f"perl found at {perl} but version check failed: {e}")
+
+    if not shutil.which("perl") and perl:
+        warn(
+            f"perl found via fallback path ({perl}) but not in PATH -- "
+            "pipeline uses the same fallback so this will work, but adding Perl to PATH is cleaner",
+        )
 
     # quick sanity: run a one-liner
     try:

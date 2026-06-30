@@ -600,14 +600,31 @@ def _exec_python(code: str, test: str):
     return ("EDGELM_PASS" in out), out[-800:]
 
 
+_PERL_FALLBACKS = [
+    r"C:\Program Files\Git\usr\bin\perl.exe",
+    r"C:\Strawberry\perl\bin\perl.exe",
+    r"C:\Perl64\bin\perl.exe",
+    r"C:\Perl\bin\perl.exe",
+    "/opt/homebrew/bin/perl",
+    "/usr/local/bin/perl",
+    "/usr/bin/perl",
+]
+
+
 def _exec_perl(code: str, fixture: str, expect_substrings: list, ordered: bool = False):
-    if not shutil.which("perl"):
+    perl_path = shutil.which("perl")
+    if not perl_path:
+        for p in _PERL_FALLBACKS:
+            if os.path.isfile(p):
+                perl_path = p
+                break
+    if not perl_path:
         return None, "perl-not-installed"
     d = tempfile.mkdtemp()
     sp = os.path.join(d, "s.pl"); fp = os.path.join(d, "f.txt")
     open(sp, "w", encoding="utf-8").write(code)
     open(fp, "w", encoding="utf-8").write(fixture)
-    out = _run_subprocess(["perl", sp, fp])
+    out = _run_subprocess([perl_path, sp, fp])
     shutil.rmtree(d, ignore_errors=True)
     if ordered:
         indices = [out.find(s) for s in expect_substrings]
