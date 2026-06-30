@@ -57,23 +57,16 @@
     "code_pass_at_1": 0.167
   },
   "gemma3-4b": {
-    "context_retention": 1.0,
-    "summarization_claim_survival": {
-      "prose": 1.0,
-      "mathematical": 0.9,
-      "scientific": 1.0
-    },
-    "summarization_faithfulness_drop": 0.05,
-    "open_book_accuracy": 1.0,
-    "open_book_by_tier": {
-      "easy": 1.0,
-      "medium": 1.0,
-      "hard": 1.0
-    },
-    "structured_strict": 0.833,
-    "structured_lenient": 1.0,
-    "creative_constraints": 0.583,
-    "code_pass_at_1": 1.0
+    "context_retention": null,
+    "summarization_claim_survival": null,
+    "summarization_faithfulness_drop": null,
+    "summarization_mean_rouge_l": null,
+    "open_book_accuracy": null,
+    "open_book_by_tier": null,
+    "structured_strict": null,
+    "structured_lenient": null,
+    "creative_constraints": null,
+    "code_pass_at_1": 0.5
   },
   "glm-edge-4b": {
     "context_retention": 1.0,
@@ -209,23 +202,16 @@
     "code_pass_at_1": 0.333
   },
   "qwen25-1b5": {
-    "context_retention": 1.0,
-    "summarization_claim_survival": {
-      "prose": 0.9,
-      "mathematical": 0.9,
-      "scientific": 0.9
-    },
-    "summarization_faithfulness_drop": 0.0,
-    "open_book_accuracy": 0.944,
-    "open_book_by_tier": {
-      "easy": 1.0,
-      "medium": 1.0,
-      "hard": 0.833
-    },
-    "structured_strict": 0.667,
-    "structured_lenient": 0.833,
-    "creative_constraints": 0.75,
-    "code_pass_at_1": 0.833
+    "context_retention": null,
+    "summarization_claim_survival": null,
+    "summarization_faithfulness_drop": null,
+    "summarization_mean_rouge_l": null,
+    "open_book_accuracy": null,
+    "open_book_by_tier": null,
+    "structured_strict": null,
+    "structured_lenient": null,
+    "creative_constraints": null,
+    "code_pass_at_1": 0.333
   },
   "smollm3-3b": {
     "context_retention": 0.967,

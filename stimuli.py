@@ -615,27 +615,27 @@ CREATIVE_TASKS = [
     {"type": "article",
      "prompt": "Write a 200-word news article about a fictional discovery of a new species of deep-sea fish. Include a headline.",
      "constraints": ["has headline", "~200 words", "journalistic tone"],
-     "target_words": 200},
-    {"type": "poem_unrhymed",
-     "prompt": "Write a 12-line poem about the feeling of watching a city at night from a rooftop. Do not rhyme.",
-     "constraints": ["12 lines", "no rhyme", "vivid imagery"],
-     "target_lines": 12},
+     "target_words": 200, "max_tokens": 350},
+    {"type": "poem_question_word",
+     "prompt": "Write a 12-line poem about the feeling of watching a city at night from a rooftop. Every line must begin with a question word (Who, What, Where, When, Why, or How). Do not rhyme.",
+     "constraints": ["12 lines", "each line starts with question word"],
+     "question_word_lines": True, "max_tokens": 180},
     {"type": "short_story",
      "prompt": "Write a 150-word short story that begins with the sentence: 'The last bus had already left.' Include a clear beginning, middle, and end.",
      "constraints": ["starts with given sentence", "~150 words", "complete arc"],
-     "target_words": 150, "must_start": "the last bus had already left"},
+     "target_words": 150, "must_start": "the last bus had already left", "max_tokens": 280},
     {"type": "acrostic",
      "prompt": "Write an acrostic poem where the first letters of the lines spell OCEAN. Exactly 5 lines.",
      "constraints": ["5 lines", "acrostic spells OCEAN"],
-     "target_lines": 5, "acrostic": "OCEAN"},
+     "target_lines": 5, "acrostic": "OCEAN", "max_tokens": 100},
     {"type": "dialogue",
      "prompt": "Write a 10-line dialogue between two characters arguing about whether to sell an old family house. Each line must start with the speaker's name followed by a colon. Exactly 10 lines.",
      "constraints": ["10 lines", "name: prefix each line"],
-     "target_lines": 10, "line_prefix_colon": True},
+     "target_lines": 10, "line_prefix_colon": True, "max_tokens": 220},
     {"type": "six_word_story",
      "prompt": "Write a complete story in exactly six words. Return ONLY the six words.",
      "constraints": ["exactly 6 words"],
-     "exact_words": 6},
+     "exact_words": 6, "max_tokens": 40},
 ]
 
 
@@ -650,112 +650,106 @@ CREATIVE_TASKS = [
 
 CODE_TASKS = [
     {
-        "name": "py_process_csv",
-        "language": "python",
-        "prompt": (
-            "Write a Python function called `process_csv` that:\n"
-            "1. Takes a filename as input\n"
-            "2. Reads a CSV with columns 'name', 'score', 'grade'\n"
-            "3. Returns a dict with keys 'average_score' (float) and 'a_students' "
-            "(list of names with grade 'A')\n"
-            "Return ONLY the Python code, no explanation, no markdown."
-        ),
-        "entrypoint": "process_csv",
-        "test": (
-            "import csv as _csv, os as _os, tempfile as _tf\n"
-            "_rows=[{'name':'Ana','score':'90','grade':'A'},{'name':'Ben','score':'70','grade':'C'},"
-            "{'name':'Cleo','score':'95','grade':'A'}]\n"
-            "_fd,_p=_tf.mkstemp(suffix='.csv')\n"
-            "import os as _o\n"
-            "with _o.fdopen(_fd,'w',newline='') as _f:\n"
-            "    _w=_csv.DictWriter(_f,fieldnames=['name','score','grade']); _w.writeheader(); _w.writerows(_rows)\n"
-            "try:\n"
-            "    _r=process_csv(_p)\n"
-            "    assert abs(float(_r['average_score'])-(90+70+95)/3)<0.5, ('avg',_r)\n"
-            "    assert set(_r['a_students'])=={'Ana','Cleo'}, ('a',_r)\n"
-            "    print('EDGELM_PASS')\n"
-            "finally:\n"
-            "    _o.unlink(_p)\n"
-        ),
-    },
-    {
-        "name": "py_is_palindrome",
-        "language": "python",
-        "prompt": (
-            "Write a Python function `is_palindrome(s)` that returns True if the string s is a "
-            "palindrome, ignoring case, spaces, and punctuation, and False otherwise. "
-            "Return ONLY the Python code."
-        ),
-        "entrypoint": "is_palindrome",
-        "test": (
-            "assert is_palindrome('A man, a plan, a canal: Panama') is True\n"
-            "assert is_palindrome('race a car') is False\n"
-            "assert is_palindrome('') is True\n"
-            "assert is_palindrome('No lemon, no melon') is True\n"
-            "print('EDGELM_PASS')\n"
-        ),
-    },
-    {
-        "name": "py_fizzbuzz",
-        "language": "python",
-        "prompt": (
-            "Write a Python function `fizzbuzz(n)` that returns a list of length n where the i-th "
-            "element (1-indexed) is 'FizzBuzz' if i is divisible by 15, 'Fizz' if divisible by 3, "
-            "'Buzz' if divisible by 5, otherwise the number i as a string. Return ONLY the code."
-        ),
-        "entrypoint": "fizzbuzz",
-        "test": (
-            "r=fizzbuzz(15)\n"
-            "assert r[0]=='1' and r[2]=='Fizz' and r[4]=='Buzz' and r[14]=='FizzBuzz', r\n"
-            "assert len(r)==15, len(r)\n"
-            "print('EDGELM_PASS')\n"
-        ),
-    },
-    {
-        "name": "py_two_sum",
-        "language": "python",
-        "prompt": (
-            "Write a Python function `two_sum(nums, target)` that returns a list of two indices "
-            "[i, j] (i < j) such that nums[i] + nums[j] == target. Assume exactly one solution "
-            "exists. Return ONLY the code."
-        ),
-        "entrypoint": "two_sum",
-        "test": (
-            "r=two_sum([2,7,11,15],9)\n"
-            "assert sorted(r)==[0,1], r\n"
-            "r2=two_sum([3,2,4],6)\n"
-            "assert sorted(r2)==[1,2], r2\n"
-            "print('EDGELM_PASS')\n"
-        ),
-    },
-    {
-        "name": "perl_error_counter",
+        "name": "perl_word_count",
         "language": "perl",
         "prompt": (
             "Write a Perl script that takes a filename as its first command-line argument "
-            "($ARGV[0]), reads that text file line by line, counts the total number of lines, counts "
-            "the number of lines containing the word 'error' (case-insensitive), and prints both "
-            "counts (each count as a number). Return ONLY the Perl code, no explanation."
-        ),
-        # static check (Perl runtime may be absent on the box); also executed if `perl` exists
-        "static": lambda code: (("while" in code.lower() or "foreach" in code.lower())
-                                and "print" in code.lower()
-                                and ("error" in code.lower())),
-        "exec_perl": {
-            # fixture lines + expected stdout substrings when run as: perl script.pl fixture.txt
-            "fixture": "all good\nERROR here\nnothing\nminor error happened\nok\n",
-            "expect_substrings": ["5", "2"],  # 5 total lines, 2 with 'error'
-        },
-    },
-    {
-        "name": "csharp_unity_controller",
-        "language": "csharp",
-        "prompt": (
-            "Write a Unity C# MonoBehaviour script for a first-person player controller. Include: "
-            "WASD movement, mouse look, jump with spacebar, and gravity. Return ONLY the C# code, "
+            "($ARGV[0]), reads the text file, counts the frequency of each whitespace-separated "
+            "word (case-insensitive), and prints the top 3 most frequent words in descending order "
+            "of frequency, one per line, in the format 'word: count'. Return ONLY the Perl code, "
             "no explanation."
         ),
-        "static": lambda code: ("MonoBehaviour" in code and "Update" in code
-                                and ("Input.GetAxis" in code or "Input.GetKey" in code)),
+        "exec_perl": {
+            "fixture": "the the the the cat cat cat sat sat dog mat\n",
+            "expect_substrings": ["the: 4", "cat: 3", "sat: 2"],
+            "ordered": True,
+        },
+        "static": lambda code: ("%" in code and ("sort" in code.lower()) and "print" in code.lower()),
+        "max_tokens": 320,
+    },
+    {
+        "name": "perl_csv_filter",
+        "language": "perl",
+        "prompt": (
+            "Write a Perl script that takes a filename as its first command-line argument "
+            "($ARGV[0]). The file contains comma-separated rows of 'name,age,city'. Print only the "
+            "rows where age (the second field) is greater than 30, in their original format, one "
+            "per line. Do not print a header. Return ONLY the Perl code, no explanation."
+        ),
+        "exec_perl": {
+            "fixture": "Alice,28,Boston\nBob,42,Chicago\nCarl,35,Denver\nDana,19,Erie\n",
+            "expect_substrings": ["Bob,42,Chicago", "Carl,35,Denver"],
+        },
+        "static": lambda code: ("split" in code.lower() and ">" in code and "print" in code.lower()),
+        "max_tokens": 320,
+    },
+    {
+        "name": "perl_regex_extract",
+        "language": "perl",
+        "prompt": (
+            "Write a Perl script that takes a filename as its first command-line argument "
+            "($ARGV[0]), reads the text file, and extracts every email address found in the text "
+            "using a regular expression. Print each extracted email address on its own line, in "
+            "the order found. Return ONLY the Perl code, no explanation."
+        ),
+        "exec_perl": {
+            "fixture": "Contact alice@example.com or bob.smith@test.org for details. Not an email: foo@bar\nAlso try carl_d@company.co.uk.\n",
+            "expect_substrings": ["alice@example.com", "bob.smith@test.org", "carl_d@company.co.uk"],
+        },
+        "static": lambda code: ("=~" in code and "@" in code and "print" in code.lower()),
+        "max_tokens": 320,
+    },
+    {
+        "name": "ruby_array_dedupe_sort",
+        "language": "ruby",
+        "prompt": (
+            "Write a Ruby script that takes a filename as its first command-line argument "
+            "(ARGV[0]). The file contains a single line of comma-separated integers, possibly with "
+            "duplicates. Read the file, remove duplicates, sort the numbers in descending order, "
+            "and print them as a single comma-separated line with no spaces. Return ONLY the Ruby "
+            "code, no explanation."
+        ),
+        "exec_ruby": {
+            "fixture": "4,2,7,4,1,7,9,2\n",
+            "expect_substrings": ["9,7,4,2,1"],
+        },
+        "static": lambda code: ("uniq" in code.lower() and "sort" in code.lower()),
+        "max_tokens": 280,
+    },
+    {
+        "name": "ruby_hash_group",
+        "language": "ruby",
+        "prompt": (
+            "Write a Ruby script that takes a filename as its first command-line argument "
+            "(ARGV[0]). The file contains one word per line. Group the words by their first letter "
+            "(case-insensitive, lowercase the letter for grouping) into a hash, then print each "
+            "group as 'letter: word1,word2,...' one line per letter, sorted alphabetically by "
+            "letter. Words within each group should keep their original order from the file. "
+            "Return ONLY the Ruby code, no explanation."
+        ),
+        "exec_ruby": {
+            "fixture": "apple\nbanana\navocado\nblueberry\ncherry\n",
+            "expect_substrings": ["a: apple,avocado", "b: banana,blueberry", "c: cherry"],
+        },
+        "static": lambda code: ("each" in code.lower() and ("hash" in code.lower() or "{}" in code)),
+        "max_tokens": 320,
+    },
+    {
+        "name": "ruby_class_stack",
+        "language": "ruby",
+        "prompt": (
+            "Write a Ruby script that defines a Stack class with methods push(item), pop (returns "
+            "and removes the top item), and peek (returns the top item without removing it). Then, "
+            "outside the class, create a Stack instance, push the numbers 1, 2, and 3 in that order, "
+            "call peek and print its result, call pop and print its result, then call peek again and "
+            "print its result. Each printed value should be on its own line. Return ONLY the Ruby "
+            "code, no explanation."
+        ),
+        "exec_ruby": {
+            "fixture": "",
+            "expect_substrings": ["3", "3", "2"],
+        },
+        "static": lambda code: ("class Stack" in code and "def push" in code and "def pop" in code),
+        "max_tokens": 350,
     },
 ]

@@ -401,13 +401,13 @@ def task_structured_output(model: str, smoke: bool = False) -> dict:
 def _v_json(text, required):
     strict_text = text.strip()
     fenced = re.fullmatch(r"```(?:json)?\s*(\{.*\})\s*```", strict_text, flags=re.S)
-    candidate = fenced.group(1) if fenced else strict_text
     strict = False
-    try:
-        obj = json.loads(candidate)
-        strict = isinstance(obj, dict) and all(k in obj for k in required)
-    except Exception:
-        strict = False
+    if not fenced:
+        try:
+            obj = json.loads(strict_text)
+            strict = isinstance(obj, dict) and all(k in obj for k in required)
+        except Exception:
+            strict = False
     lenient = False
     m = re.search(r"\{.*\}", text, flags=re.S)
     if m:
@@ -423,8 +423,11 @@ def _v_markdown(text):
     has_header = any(l.lstrip().startswith("#") for l in text.split("\n"))
     has_bold = "**" in text or "__" in text
     has_bullet = any(l.strip().startswith(("-", "*", "+")) for l in text.split("\n"))
-    ok = has_header and has_bold and has_bullet
-    return ok, ok, {"has_header": has_header, "has_bold": has_bold, "has_bullet": has_bullet}
+    lenient = has_header and has_bold and has_bullet
+    lines = [l for l in text.split("\n") if l.strip()]
+    non_md_lines = [l for l in lines if not (l.lstrip().startswith(("#", "-", "*", "+")) or "**" in l or "__" in l)]
+    strict = lenient and len(non_md_lines) <= 2
+    return strict, lenient, {"has_header": has_header, "has_bold": has_bold, "has_bullet": has_bullet, "non_md_lines": len(non_md_lines)}
 
 
 def _v_code_only(text):
@@ -457,10 +460,10 @@ VALIDATORS = {
 # ── TASK 5: CREATIVE GENERATION ──────────────────────────────────────────────
 
 def task_creative_generation(model: str, smoke: bool = False) -> dict:
-    max_tokens = 96 if smoke else 512
     items = CREATIVE_TASKS[:3] if smoke else CREATIVE_TASKS
     results = []
     for item in items:
+        max_tokens = min(item["max_tokens"], 150) if smoke else item["max_tokens"]
         resp = ollama_generate(model, item["prompt"], max_tokens=max_tokens)
         text = resp.get("text", "").strip()
         words = len(text.split())
@@ -479,6 +482,13 @@ def task_creative_generation(model: str, smoke: bool = False) -> dict:
             checks["acrostic_ok"] = initials.startswith(item["acrostic"])
         if item.get("line_prefix_colon"):
             checks["all_lines_have_name_colon"] = all(":" in l.split(" ")[0] or re.match(r"^\w+\s*:", l) for l in lines) and len(lines) > 0
+        if item.get("question_word_lines"):
+            _qwords = {"who", "what", "where", "when", "why", "how"}
+            checks["line_count_exact"] = len(lines) == 12
+            checks["all_lines_start_question_word"] = (
+                len(lines) > 0
+                and all(l.split()[0].lower() in _qwords for l in lines)
+            )
         results.append({"type": item["type"], "text": text, "word_count": words,
                         "line_count": len(lines), "constraints": item["constraints"],
                         "constraint_checks": checks,
@@ -495,10 +505,10 @@ def task_creative_generation(model: str, smoke: bool = False) -> dict:
 
 def _strip_code_fence(text: str) -> str:
     t = text.strip()
-    m = re.fullmatch(r"```[a-zA-Z0-9#+]*\s*\n?(.*?)\n?```", t, flags=re.S)
+    m = re.search(r"```[a-zA-Z0-9#+]*\s*\n?(.*?)\n?```", t, flags=re.S)
     if m:
         t = m.group(1).strip()
-    for lang in ("python", "csharp", "perl", "cs", "c#"):
+    for lang in ("python", "ruby", "perl", "rb", "pl"):
         if t.lower().startswith(lang):
             t = t[len(lang):].lstrip(":\n ").strip()
             break
@@ -529,7 +539,7 @@ def _exec_python(code: str, test: str):
     return ("EDGELM_PASS" in out), out[-800:]
 
 
-def _exec_perl(code: str, fixture: str, expect_substrings: list):
+def _exec_perl(code: str, fixture: str, expect_substrings: list, ordered: bool = False):
     if not shutil.which("perl"):
         return None, "perl-not-installed"
     d = tempfile.mkdtemp()
@@ -538,34 +548,61 @@ def _exec_perl(code: str, fixture: str, expect_substrings: list):
     open(fp, "w", encoding="utf-8").write(fixture)
     out = _run_subprocess(["perl", sp, fp])
     shutil.rmtree(d, ignore_errors=True)
+    if ordered:
+        indices = [out.find(s) for s in expect_substrings]
+        passed = all(i >= 0 for i in indices) and indices == sorted(indices)
+    else:
+        passed = all(s in out for s in expect_substrings)
+    return passed, out[-400:]
+
+
+def _exec_ruby(code: str, fixture: str, expect_substrings: list):
+    ruby_path = shutil.which("ruby")
+    if not ruby_path:
+        fallback = r"C:\Ruby33-x64\bin\ruby.exe"
+        if os.path.exists(fallback):
+            ruby_path = fallback
+    if not ruby_path:
+        return None, "ruby-not-installed"
+    d = tempfile.mkdtemp()
+    sp = os.path.join(d, "s.rb"); fp = os.path.join(d, "f.txt")
+    open(sp, "w", encoding="utf-8").write(code)
+    open(fp, "w", encoding="utf-8").write(fixture)
+    out = _run_subprocess([ruby_path, sp, fp])
+    shutil.rmtree(d, ignore_errors=True)
     return all(s in out for s in expect_substrings), out[-400:]
 
 
 def task_code_generation(model: str, smoke: bool = False) -> dict:
     items = CODE_TASKS[:3] if smoke else CODE_TASKS
-    max_tokens = 128 if smoke else 512
     results = []
     for task in items:
+        max_tokens = min(task["max_tokens"], 150) if smoke else task["max_tokens"]
         resp = ollama_generate(model, task["prompt"], max_tokens=max_tokens)
         code = _strip_code_fence(resp.get("text", ""))
         passed, exec_output = None, None
-        if task["language"] == "python" and "test" in task:
-            passed, exec_output = _exec_python(code, task["test"])
-        elif task["language"] == "perl":
+        if task["language"] == "perl":
             if "exec_perl" in task:
-                passed, exec_output = _exec_perl(code, task["exec_perl"]["fixture"],
-                                                 task["exec_perl"]["expect_substrings"])
-            if passed is None and "static" in task:  # perl absent -> static fallback
+                passed, exec_output = _exec_perl(
+                    code, task["exec_perl"]["fixture"],
+                    task["exec_perl"]["expect_substrings"],
+                    ordered=task["exec_perl"].get("ordered", False),
+                )
+            if passed is None and "static" in task:
                 passed = bool(task["static"](code)); exec_output = "static-fallback"
-        elif "static" in task:
-            passed = bool(task["static"](code))
+        elif task["language"] == "ruby":
+            if "exec_ruby" in task:
+                passed, exec_output = _exec_ruby(code, task["exec_ruby"]["fixture"],
+                                                 task["exec_ruby"]["expect_substrings"])
+            if passed is None and "static" in task:
+                passed = bool(task["static"](code)); exec_output = "static-fallback"
         results.append({"name": task["name"], "language": task["language"], "code": code,
                         "passed": passed, "exec_output": exec_output,
                         "latency_s": round(resp.get("latency_s", 0), 2),
                         "tokens_per_sec": round(resp.get("tokens_per_sec", 0), 1),
                         "reasoning_truncated": resp.get("reasoning_truncated", False)})
     scored = [r for r in results if r["passed"] is not None]
-    exec_only = [r for r in results if r["exec_output"] not in (None, "static-fallback", "perl-not-installed")]
+    exec_only = [r for r in results if r["exec_output"] not in (None, "static-fallback", "perl-not-installed", "ruby-not-installed")]
     return {"task": "code_generation",
             "pass_at_1": round(sum(1 for r in scored if r["passed"]) / len(scored), 3) if scored else 0.0,
             "executed_pass_at_1": round(sum(1 for r in exec_only if r["passed"]) / len(exec_only), 3) if exec_only else None,

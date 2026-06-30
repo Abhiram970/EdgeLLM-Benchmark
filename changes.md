@@ -92,3 +92,144 @@ Added `"summarization_mean_rouge_l"` to the returned dict, pulling from `tasks["
 
 ## 3. Environment
 Installed `rouge-score==0.1.2` (+ `nltk==3.9.4`). Previously `_rouge_l()` silently returned `None` on every call; all ROUGE fields were null in results.
+
+---
+
+# Task 4 — Structured Output Changes (pipeline.py)
+
+## 1. _v_json — strict now fails on fenced JSON
+
+Previously, `_v_json` extracted JSON from a `` ```json ``` `` fence and passed it as strict=True. The JSON prompts say "Return ONLY valid JSON, no other text," so fenced output is a real formatting failure.
+
+**Fix:** If `re.fullmatch` finds a fence, strict is set to False without attempting to parse. Lenient path (`re.search` for any `{...}`) is unchanged.
+
+| Before | After |
+|---|---|
+| Fenced JSON → strict=True | Fenced JSON → strict=False, lenient=True |
+
+**Observed on qwen25-1b5 full run:** `json_person` and `json_nested` both produced fenced output and now correctly score strict=False, lenient=True. strict_compliance_rate dropped from 0.667 to 0.333, which is the accurate number.
+
+## 2. _v_markdown — real strict/lenient split
+
+Previously `_v_markdown` returned `ok, ok` — strict and lenient were identical, the gap was never captured.
+
+**Fix:** Lenient = has header + bold + bullet anywhere in text. Strict = lenient AND `non_md_lines <= 2` (at most 2 lines that aren't Markdown-structural). `non_md_lines` is now surfaced in `details`.
+
+| Signal | Before | After |
+|---|---|---|
+| strict | same as lenient | lenient AND prose lines ≤ 2 |
+| lenient | has_header + has_bold + has_bullet | unchanged |
+| details | 3 bools | 3 bools + `non_md_lines` count |
+
+---
+
+# Task 5 — Creative Generation Changes (stimuli.py + pipeline.py)
+
+## 1. Per-item token budgets (stimuli.py + pipeline.py)
+
+Replaced the single blanket `max_tokens = 96 if smoke else 512` with per-item budgets stored in `CREATIVE_TASKS`. Smoke mode uses `min(item["max_tokens"], 150)` instead of a flat 96.
+
+| Item | Full budget | Smoke budget |
+|---|---|---|
+| article | 350 | 150 |
+| poem_question_word | 180 | 150 |
+| short_story | 280 | 150 |
+| acrostic | 100 | 100 |
+| dialogue | 220 | 150 |
+| six_word_story | 40 | 40 |
+
+**Rationale:** The old 96-token smoke cap cut the article to ~70 words and the short story before arc completion. The old 512-token full cap was unnecessarily large for short items. Per-item budgets let short items (acrostic, six_word_story) stay tight while longer items get room to complete.
+
+## 2. poem_unrhymed → poem_question_word (stimuli.py + pipeline.py)
+
+Replaced the unrhymed poem item. The original had a "no rhyme" constraint that was never programmatically checked, making it unverifiable.
+
+**New item:** 12-line poem where every line must begin with a question word (Who, What, Where, When, Why, How). Do not rhyme.
+
+**Constraint changes:**
+
+| Before | After |
+|---|---|
+| `"constraints": ["12 lines", "no rhyme", "vivid imagery"]` | `"constraints": ["12 lines", "each line starts with question word"]` |
+| `"target_lines": 12` | `"question_word_lines": True` |
+| pipeline: `line_count_exact` only | pipeline: `line_count_exact` + `all_lines_start_question_word` |
+
+`question_word_lines: True` triggers two separate checks in the pipeline: `line_count_exact` (== 12) and `all_lines_start_question_word` (every non-empty line's first word, lowercased, is in `{"who", "what", "where", "when", "why", "how"}`). Stored as separate keys so a model writing 6 correct-prefix lines doesn't score the same as one writing 12.
+
+---
+
+# Task 6 — Code Generation Changes (stimuli.py + pipeline.py)
+
+## 1. Per-item token budgets (stimuli.py + pipeline.py)
+
+Replaced the single blanket `max_tokens = 128 if smoke else 512` with per-item budgets stored in `CODE_TASKS`. Smoke mode uses `min(item["max_tokens"], 150)`.
+
+| Item | Full budget | Smoke budget |
+|---|---|---|
+| py_process_csv | 300 | 150 |
+| py_is_palindrome | 250 | 150 |
+| py_fizzbuzz | 250 | 150 |
+| py_two_sum | 250 | 150 |
+| perl_error_counter | 280 | 150 |
+| csharp_unity_controller | 700 | 150 |
+
+**Rationale:** The old 128-token smoke cap truncated `py_is_palindrome` mid-function (confirmed: syntax error from incomplete output). The old 512-token full cap was too tight for `csharp_unity_controller` (WASD + mouse look + jump + gravity runs long). `csharp_unity_controller` now gets 700 tokens on full runs.
+
+## 2. Full redesign — dropped Python and C#, replaced with 3 Perl + 3 Ruby (stimuli.py + pipeline.py)
+
+The original CODE_TASKS had 4 Python problems and 1 Perl + 1 C# problem. Python problems are too easy for the 3B/4B tier (all pass on 1.5B models), and the C# static check (`MonoBehaviour` + `Update` + `Input.GetAxis`) was trivially gameable noise. Replaced the entire list with 3 Perl and 3 Ruby problems that require real language knowledge, file I/O, and idiomatic constructs.
+
+### New CODE_TASKS
+
+| Name | Language | Test method | Budget |
+|---|---|---|---|
+| `perl_word_count` | Perl | `exec_perl` (ordered) | 320 |
+| `perl_csv_filter` | Perl | `exec_perl` | 320 |
+| `perl_regex_extract` | Perl | `exec_perl` | 320 |
+| `ruby_array_dedupe_sort` | Ruby | `exec_ruby` | 280 |
+| `ruby_hash_group` | Ruby | `exec_ruby` | 320 |
+| `ruby_class_stack` | Ruby | `exec_ruby` | 350 |
+
+All items are execution-tested against fixtures. Each takes a filename via `$ARGV[0]` / `ARGV[0]` so the harness controls input without touching stdin.
+
+### _strip_code_fence — re.fullmatch → re.search (pipeline.py)
+
+Changed from `re.fullmatch` to `re.search` so it correctly extracts fenced code even when the model wraps the fence in preamble or postamble prose. Also updated the language prefix list.
+
+| Before | After |
+|---|---|
+| `re.fullmatch(...)` — fails if any prose surrounds fence | `re.search(...)` — extracts fence from anywhere in output |
+| prefix list: python, csharp, perl, cs, c# | prefix list: python, ruby, perl, rb, pl |
+
+### _exec_ruby — new function (pipeline.py)
+
+Added `_exec_ruby` mirroring `_exec_perl`: writes code to `s.rb`, fixture to `f.txt`, runs `ruby s.rb f.txt`, checks expected substrings. Includes hardcoded fallback to `C:\Ruby33-x64\bin\ruby.exe` for when PATH hasn't been refreshed in the pipeline process.
+
+### _exec_perl — ordered substring check (pipeline.py)
+
+Added `ordered: bool = False` parameter. When `True`, checks that all expected substrings are present **and** appear in the given order (by string index). Used by `perl_word_count` so a model that outputs the correct counts in the wrong rank order fails.
+
+### task_code_generation — updated dispatch (pipeline.py)
+
+Removed the Python execution path. Added Ruby dispatch mirroring Perl. Updated `executed_pass_at_1` exclusion list to also skip `"ruby-not-installed"`.
+
+### perl_word_count fixture tightened (stimuli.py)
+
+| | Fixture | Expected |
+|---|---|---|
+| Before | `"the cat sat on the mat\nthe cat ran\nthe dog sat\n"` | `the: 4`, `cat: 2`, `sat: 2` (tied — order ambiguous) |
+| After | `"the the the the cat cat cat sat sat dog mat\n"` | `the: 4`, `cat: 3`, `sat: 2` (strict ranking, `ordered: True`) |
+
+The old fixture passed a model using `sort { $a <=> $b }` (wrong numeric comparator) because Perl's fallback string sort coincidentally produced the right words in the right order. The new fixture correctly fails it.
+
+### Baseline results (qwen25-1b5 vs gemma3-4b)
+
+| Item | qwen25-1b5 | gemma3-4b |
+|---|---|---|
+| `perl_word_count` | ✗ wrong comparator, output unordered | ✗ bare `k` / `break` — compile error under `use strict` |
+| `perl_csv_filter` | ✗ regex assumes digit-only first field | ✓ |
+| `perl_regex_extract` | ✗ prints `$_` instead of `$&` | ✗ `$#ARGV != 1` requires 2 args, dies immediately |
+| `ruby_array_dedupe_sort` | ✗ calls `.split` on CSV-parsed Array | ✓ |
+| `ruby_hash_group` | ✓ | ✗ calls `.is_alphabetical` (not a Ruby method) |
+| `ruby_class_stack` | ✓ | ✓ |
+| **pass_at_1** | **0.333** | **0.500** |
