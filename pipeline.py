@@ -57,29 +57,44 @@ RESULTS_DIR.mkdir(exist_ok=True)
 # Any model without a GGUF / not loaded in Ollama is auto-skipped, so you can add
 # more here as you download them.
 MODELS = [
+    # --- 1.5B track (downloaded GGUFs) ---
     "qwen25-1b5",
     "deepseek-r1-1b5",
     "deepscaler-1b5",
     "nemotron-1b5",
-    "llama3.2:3b",
-    "qwen2.5-coder:3b",
-    "ministral-3:3b",
-    "phi4-mini:latest",
-    "vibethinker-3b",
-    "hermes3-llama32-3b",
-    "smollm3-3b",
-    # 4B track
-    "gemma3-4b",
-    "glm-edge-4b",
-    "crow-4b",
-    "qwen35-4b",
+    # --- other tracks: uncomment once the GGUF is downloaded / model is in Ollama ---
+    # "llama3.2:3b",
+    # "qwen2.5-coder:3b",
+    # "ministral-3:3b",
+    # "phi4-mini:latest",
+    # "vibethinker-3b",
+    # "hermes3-llama32-3b",
+    # "smollm3-3b",
+    # "gemma3-4b",
+    # "glm-edge-4b",
+    # "crow-4b",
+    # "qwen35-4b",
 ]
 
 # Optional LLM judge for Task 5 (creative quality) and Task 2 (summarization).
-# Off by default; enable with --judge. Uses an Ollama model by default; point at a
-# stronger judge for paper-grade results (CONTEXT.md §5: small open judges are
-# unreliable for creative writing).
-JUDGE_MODEL = os.environ.get("EDGELM_JUDGE_MODEL", "llama3.2:3b")
+# Off by default; enable with --judge. Two backends (CONTEXT.md §5 warns small
+# open judges are unreliable for creative writing, so a stronger judge is
+# preferred):
+#   * "ollama" (default) -- a local Ollama model named by EDGELM_JUDGE_MODEL.
+#   * "lava"             -- Claude (e.g. Sonnet) via the Lava.so forward proxy
+#                           (https://lava.so). Used when EDGELM_JUDGE_BACKEND=lava
+#                           OR when LAVA_API_KEY is set. Requires LAVA_API_KEY in
+#                           the environment; the key is NEVER hardcoded.
+JUDGE_MODEL = os.environ.get("EDGELM_JUDGE_MODEL", "qwen25-1b5")
+
+# Lava judge config. Lava is a transparent proxy: POST to /forward?u=<provider_url>
+# with the provider's native body and your secret key as the Bearer token.
+LAVA_API_KEY = os.environ.get("LAVA_API_KEY", "")
+LAVA_FORWARD_URL = "https://api.lava.so/v1/forward"
+LAVA_ANTHROPIC_MESSAGES = "https://api.anthropic.com/v1/messages"
+LAVA_JUDGE_MODEL = os.environ.get("EDGELM_LAVA_JUDGE_MODEL", "claude-sonnet-4-6")
+# Default to lava automatically if a key is present, unless explicitly overridden.
+JUDGE_BACKEND = os.environ.get("EDGELM_JUDGE_BACKEND", "lava" if LAVA_API_KEY else "ollama")
 
 # ── PER-MODEL DECODING SPEC (CONTEXT.md §4) ──────────────────────────────────
 DECODE = {
@@ -689,18 +704,61 @@ def task_code_generation(model: str, smoke: bool = False) -> dict:
 
 # ── OPTIONAL LLM-JUDGE PASS (Task 5 quality + Task 2 faithfulness) ────────────
 
-def judge_pass(model_results: dict, judge_model: str = JUDGE_MODEL) -> dict:
-    """Calibrated-ish judge pass run AFTER the benchmark. Off by default (--judge).
-    For creative writing CONTEXT.md §5 warns small open judges are unreliable --
-    treat these as scaffolding; point EDGELM_JUDGE_MODEL at a stronger judge."""
+def lava_judge_call(prompt: str, max_tokens: int = 16, timeout: int = 60) -> str:
+    """Call Claude (default Sonnet) through the Lava.so forward proxy. Returns the
+    assistant text, or "" on failure. Reads LAVA_API_KEY from the environment --
+    the key is never hardcoded. Lava forwards the body unchanged to Anthropic's
+    /v1/messages, so the body below is Anthropic's native Messages format."""
+    if not LAVA_API_KEY:
+        return ""
+    try:
+        r = requests.post(
+            LAVA_FORWARD_URL,
+            params={"u": LAVA_ANTHROPIC_MESSAGES},
+            headers={
+                "Authorization": f"Bearer {LAVA_API_KEY}",
+                "Content-Type": "application/json",
+                "anthropic-version": "2023-06-01",
+            },
+            json={
+                "model": LAVA_JUDGE_MODEL,
+                "max_tokens": max_tokens,
+                "messages": [{"role": "user", "content": prompt}],
+            },
+            timeout=timeout,
+        )
+        r.raise_for_status()
+        data = r.json()
+        parts = data.get("content", [])
+        return "".join(p.get("text", "") for p in parts if p.get("type") == "text").strip()
+    except Exception as e:
+        print(f"  [judge] Lava call failed: {e}")
+        return ""
+
+
+def judge_pass(model_results: dict, judge_model: str = JUDGE_MODEL,
+               backend: str = JUDGE_BACKEND) -> dict:
+    """Judge pass run AFTER the benchmark. Off by default (--judge). Scores Task 5
+    creative quality and Task 2 summarization faithfulness on a 1-5 scale.
+
+    backend="lava"  -> Claude (LAVA_JUDGE_MODEL) via Lava.so proxy (paper-grade).
+    backend="ollama"-> a local Ollama model (EDGELM_JUDGE_MODEL); small open judges
+                       are unreliable for creative writing (CONTEXT.md §5)."""
+    use_lava = backend == "lava" and bool(LAVA_API_KEY)
+    judge_name = LAVA_JUDGE_MODEL if use_lava else judge_model
+
     def score_1to5(instruction, content):
         prompt = (instruction + "\n\nRespond with ONLY a single integer from 1 to 5.\n\n"
                   "TEXT:\n" + content[:2000] + "\n\nScore (1-5):")
-        resp = ollama_generate(judge_model, prompt, max_tokens=8)
-        m = re.search(r"[1-5]", resp.get("text", ""))
+        if use_lava:
+            text = lava_judge_call(prompt, max_tokens=8)
+        else:
+            text = ollama_generate(judge_model, prompt, max_tokens=8).get("text", "")
+        m = re.search(r"[1-5]", text)
         return int(m.group(0)) if m else None
 
-    out = {"judge_model": judge_model, "creative": [], "summarization": []}
+    out = {"judge_model": judge_name, "judge_backend": "lava" if use_lava else "ollama",
+           "creative": [], "summarization": []}
     cg = model_results.get("tasks", {}).get("creative_generation", {})
     for r in cg.get("results", []):
         s = score_1to5("Rate the overall quality (creativity, coherence, fluency) of this piece.", r.get("text", ""))
@@ -837,13 +895,17 @@ def rebuild_leaderboard():
     skip = {"all_results.json", "leaderboard.json"}
     all_results = []
     for p in sorted(RESULTS_DIR.glob("*.json")):
-        if p.name in skip or "_partial_" in p.name:
+        if p.name in skip or "_partial_" in p.name or p.name.startswith("all_results"):
             continue
         try:
             with open(p, encoding="utf-8") as f:
-                all_results.append(json.load(f))
+                data = json.load(f)
         except Exception:
-            pass
+            continue
+        # only keep per-model result objects (dict with a "model" key); skip any
+        # stray aggregate/list-shaped files so one bad file can't crash the run
+        if isinstance(data, dict) and "model" in data:
+            all_results.append(data)
     with open(RESULTS_DIR / "all_results.json", "w", encoding="utf-8") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
     board = {r["model"]: r.get("headline") for r in all_results if not r.get("skipped")}
