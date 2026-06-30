@@ -90,7 +90,8 @@ DECODE = {
     # roster models for future downloads:
     "vibethinker-3b":  {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0},
     "crow-4b":         {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0},
-    "qwen35-4b":       {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 14.0},
+    "qwen35-4b":       {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0,
+                        "task_max_factors": {"creative_generation": 14.0}},
 }
 
 
@@ -110,21 +111,32 @@ def split_reasoning(text: str):
     # qwen3 plain-prose reasoning: no tags, starts with "Thinking Process:"
     if text.lstrip().startswith("Thinking Process:"):
         import re
+        # Creative writing: final answer markers like *Final Article: or *Revised Draft:
         m = list(re.finditer(r'\n\s*\*(?:Final [A-Za-z ]+|Revised (?:Draft|Text)|Trimmed)[:\*]', text))
         if m:
             candidate = text[m[-1].end():].strip()
             if len(candidate) > 20:
                 return text[:m[-1].start()].strip(), candidate, False
+        # Code generation: last complete code fence block
+        fence_blocks = list(re.finditer(r'```[^\n]*\n.*?```', text, flags=re.S))
+        if fence_blocks:
+            last_block = fence_blocks[-1]
+            candidate = text[last_block.start():].strip()
+            if len(candidate) > 10:
+                return text[:last_block.start()].strip(), candidate, False
         return text.strip(), "", True
     return "", text.strip(), False
 
 
 # ── OLLAMA HELPERS ───────────────────────────────────────────────────────────
 
-def _options(model: str, max_tokens: int) -> dict:
+def _options(model: str, max_tokens: int, task: str = "") -> dict:
     spec = decode_spec(model)
+    factor = spec["max_factor"]
+    if task:
+        factor = spec.get("task_max_factors", {}).get(task, factor)
     opt = {
-        "num_predict": int(max_tokens * spec["max_factor"]),
+        "num_predict": int(max_tokens * factor),
         "temperature": spec["temperature"],
         "num_ctx": 32768,
     }
@@ -134,9 +146,9 @@ def _options(model: str, max_tokens: int) -> dict:
 
 
 def ollama_generate(model: str, prompt: str, system: str = "", max_tokens: int = 512,
-                    timeout: int = 600) -> dict:
+                    timeout: int = 600, task: str = "") -> dict:
     spec = decode_spec(model)
-    options = _options(model, max_tokens)
+    options = _options(model, max_tokens, task=task)
     payload = {"model": model, "prompt": prompt, "stream": False, "options": options}
     if system:
         payload["system"] = system
@@ -160,9 +172,10 @@ def ollama_generate(model: str, prompt: str, system: str = "", max_tokens: int =
     }
 
 
-def ollama_chat(model: str, messages: list, max_tokens: int = 512, timeout: int = 600) -> dict:
+def ollama_chat(model: str, messages: list, max_tokens: int = 512, timeout: int = 600,
+                task: str = "") -> dict:
     spec = decode_spec(model)
-    options = _options(model, max_tokens)
+    options = _options(model, max_tokens, task=task)
     payload = {"model": model, "messages": messages, "stream": False, "options": options}
     t0 = time.perf_counter()
     try:
@@ -327,7 +340,7 @@ def _run_retention_script(model: str, script_obj: dict, max_tokens: int) -> dict
 
     for i, turn in enumerate(script_obj["turns"]):
         messages.append({"role": "user", "content": turn["content"]})
-        resp = ollama_chat(model, messages, max_tokens=max_tokens)
+        resp = ollama_chat(model, messages, max_tokens=max_tokens, task="context_retention")
         response_text = resp.get("text", "")
         messages.append({"role": "assistant", "content": response_text})
         turn_log.append({
@@ -388,7 +401,7 @@ def task_summarization(model: str, smoke: bool = False) -> dict:
     for content in items:
         prompt = ("Summarize the following text in 3-5 sentences. Preserve the key facts.\n\n"
                   + content["text"])
-        resp = ollama_generate(model, prompt, max_tokens=max_tokens)
+        resp = ollama_generate(model, prompt, max_tokens=max_tokens, task="summarization")
         summary = resp.get("text", "")
         survived = [claim_survived(summary, c) for c in content["key_claims"]]
         results.append({
@@ -427,7 +440,7 @@ def task_open_book_qa(model: str, smoke: bool = False) -> dict:
             prompt = ("Read the following passage and answer the question using ONLY information "
                       "from the passage. Answer concisely.\n\nPassage:\n"
                       f"{item['passage']}\n\nQuestion: {qa['q']}\n\nAnswer:")
-            resp = ollama_generate(model, prompt, max_tokens=max_tokens)
+            resp = ollama_generate(model, prompt, max_tokens=max_tokens, task="open_book_qa")
             predicted = resp.get("text", "").strip()
             qrs.append({"difficulty": qa["difficulty"], "question": qa["q"], "gold": qa["gold"],
                         "predicted": predicted, "correct": answer_match(predicted, qa["accept"]),
@@ -454,7 +467,7 @@ def task_structured_output(model: str, smoke: bool = False) -> dict:
     items = STRUCTURED_TASKS[:3] if smoke else STRUCTURED_TASKS
     results = []
     for st in items:
-        resp = ollama_generate(model, st["prompt"], max_tokens=max_tokens)
+        resp = ollama_generate(model, st["prompt"], max_tokens=max_tokens, task="structured_output")
         text = resp.get("text", "").strip()
         strict, lenient, details = VALIDATORS[st["validator"]](text, **st["args"])
         results.append({"name": st["name"], "validator": st["validator"],
@@ -535,7 +548,7 @@ def task_creative_generation(model: str, smoke: bool = False) -> dict:
     results = []
     for item in items:
         max_tokens = min(item["max_tokens"], 150) if smoke else item["max_tokens"]
-        resp = ollama_generate(model, item["prompt"], max_tokens=max_tokens)
+        resp = ollama_generate(model, item["prompt"], max_tokens=max_tokens, task="creative_generation")
         text = resp.get("text", "").strip()
         words = len(text.split())
         lines = [l for l in text.split("\n") if l.strip()]
@@ -666,7 +679,7 @@ def task_code_generation(model: str, smoke: bool = False) -> dict:
     results = []
     for task in items:
         max_tokens = min(task["max_tokens"], 150) if smoke else task["max_tokens"]
-        resp = ollama_generate(model, task["prompt"], max_tokens=max_tokens)
+        resp = ollama_generate(model, task["prompt"], max_tokens=max_tokens, task="code_generation")
         code = _strip_code_fence(resp.get("text", ""))
         passed, exec_output = None, None
         if task["language"] == "perl":

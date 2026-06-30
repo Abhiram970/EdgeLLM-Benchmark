@@ -1,0 +1,543 @@
+{
+  "model": "qwen35-4b",
+  "timestamp": "2026-06-30T15:55:23.852170",
+  "decode_spec": {
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "think": true,
+    "max_factor": 14.0
+  },
+  "smoke": false,
+  "tasks": {
+    "summarization": {
+      "task": "summarization",
+      "claim_survival_by_domain": {
+        "prose": 0.9,
+        "mathematical": 0.8,
+        "scientific": 0.9
+      },
+      "faithfulness_drop_prose_minus_technical": 0.05,
+      "mean_rouge_l": 0.434,
+      "results": [
+        {
+          "id": "sum_prose_frenchrev",
+          "domain": "prose",
+          "source": "https://www.britannica.com/event/French-Revolution",
+          "summary": "The French Revolution had general causes common to other late-18th-century Western revolutions but became uniquely violent and significant due to particular factors. Social changes empowered wealthy commoners seeking political power while peasants demanded rights to land ownership despite many remaining poor or landless. Furthermore, improved living standards since 1730 reduced mortality rates and caused Europe's population to double between 1715 and 1800. This demographic pressure was particularly acute in France, which was the most populous European country with 26 million inhabitants by 1789.",
+          "rouge": {
+            "rouge1": 0.5714,
+            "rouge2": 0.2778,
+            "rougeL": 0.4835
+          },
+          "claims_survived": 4,
+          "claims_total": 5,
+          "claim_survival_rate": 0.8,
+          "latency_s": 110.41,
+          "tokens_per_sec": 29.9,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_prose_industrial",
+          "domain": "prose",
+          "source": "https://www.britannica.com/event/Industrial-Revolution",
+          "summary": "The Industrial Revolution transformed economies from agriculture and handicrafts into large-scale industry through mechanized manufacturing, significantly increasing productivity and overall wealth. While this growth enlarged the middle class, it replaced domestic production with factories that subjected many workers, including women and children, to dangerous conditions and subsistence wages. These harsh working conditions eventually sparked the trade union movement in the mid-19th century. Historians divide the era into two consecutive phases: a first period from the mid-18th century mostly confined to Britain until 1830, followed by a second phase lasting from the mid-19th century to the early 20th that spread across Europe, North America, and Japan.",
+          "rouge": {
+            "rouge1": 0.6763,
+            "rouge2": 0.3122,
+            "rougeL": 0.4541
+          },
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 97.61,
+          "tokens_per_sec": 29.8,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_math_calculus",
+          "domain": "mathematical",
+          "source": "https://www.britannica.com/science/calculus-mathematics",
+          "summary": "Newton and Leibniz discovered that calculating derivatives is the inverse of finding areas under curves, a principle known as the fundamental theorem of calculus. To find an area defined by a function like y = x², one must identify another function whose derivative equals the original curve at any given interval. While Newton established this mathematical relationship, Leibniz introduced notation for integration using an elongated S to represent summation and dx for infinitesimal increments. Ultimately, integrating a function is equivalent to solving a differential equation by finding its general antiderivative plus an arbitrary constant.",
+          "rouge": {
+            "rouge1": 0.4773,
+            "rouge2": 0.2529,
+            "rougeL": 0.3409
+          },
+          "claims_survived": 4,
+          "claims_total": 5,
+          "claim_survival_rate": 0.8,
+          "latency_s": 45.28,
+          "tokens_per_sec": 29.8,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_math_pythagorean",
+          "domain": "mathematical",
+          "source": "https://www.britannica.com/science/Pythagorean-theorem",
+          "summary": "The Pythagorean theorem states that in a right triangle, the sum of the squares on the legs equals the square on the hypotenuse ($a^2 + b^2 = c^2$). Although traditionally attributed to the Greek mathematician Pythagoras, historical evidence indicates the concept predates him significantly. Ancient Babylonian tablets from 1900–1600 BCE demonstrate early knowledge through accurate calculations of the square root of 2 and integer triples like 3-4-5, while Indian texts such as the Baudhayana Sulba-sutra also mention it between 800 and 400 bce. Despite these earlier records, Pythagoras remains credited with the theorem due to later formalization in Euclid's Elements.",
+          "rouge": {
+            "rouge1": 0.6218,
+            "rouge2": 0.356,
+            "rougeL": 0.5285
+          },
+          "claims_survived": 4,
+          "claims_total": 5,
+          "claim_survival_rate": 0.8,
+          "latency_s": 128.83,
+          "tokens_per_sec": 29.4,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_sci_tectonics",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/plate-tectonics",
+          "summary": "Formulated in the 1960s, the theory of plate tectonics describes Earth's rigid lithosphere moving over a plastic asthenosphere at rates between 5 and 10 cm per year. These plates are broken into various sizes that interact along their boundaries through convergence, divergence, or slipping past one another. Such movements drive most seismic and volcanic activity while causing mountains to rise and oceans to form depending on whether plates converge or diverge. Consequently, continents drift passively with these moving plates over millions of years, leading to significant changes in Earth's geography.",
+          "rouge": {
+            "rouge1": 0.5028,
+            "rouge2": 0.2147,
+            "rougeL": 0.3464
+          },
+          "claims_survived": 4,
+          "claims_total": 5,
+          "claim_survival_rate": 0.8,
+          "latency_s": 45.18,
+          "tokens_per_sec": 29.8,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_sci_dna",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/DNA",
+          "summary": "Each strand of a DNA molecule is composed of nucleotides consisting of deoxyribose sugar, phosphate groups, and nitrogenous bases linked by covalent bonds to form a backbone. Two strands are held together by specific hydrogen bonding between base pairs, specifically adenine with thymine and cytosine with guanine. In 1953, Watson, Crick, Franklin, and Wilkins determined that DNA forms a double-helix structure with two antiparallel strands wound around each other. This discovery provided significant insights into the mechanisms of hereditary control and DNA replication.",
+          "rouge": {
+            "rouge1": 0.6272,
+            "rouge2": 0.2036,
+            "rougeL": 0.4497
+          },
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 36.32,
+          "tokens_per_sec": 29.7,
+          "reasoning_truncated": false
+        }
+      ],
+      "elapsed_s": 465.5
+    },
+    "open_book_qa": {
+      "task": "open_book_qa",
+      "overall_accuracy": 0.944,
+      "accuracy_by_tier": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.833
+      },
+      "results": [
+        {
+          "id": "qa_lit_pride",
+          "domain": "literary",
+          "source": "https://www.britannica.com/topic/Pride-and-Prejudice",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "According to the passage, what two words describe the personalities of Lydia and Kitty?",
+              "gold": "Flighty and immature.",
+              "predicted": "Flighty and immature",
+              "correct": true,
+              "latency_s": 16.55,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "Who is the heroine of the novel, and what is her nickname?",
+              "gold": "Elizabeth Bennet, nicknamed “Lizzy.”",
+              "predicted": "The heroine is Elizabeth, and her nickname is \"Lizzy.\"",
+              "correct": true,
+              "latency_s": 22.5,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Based on the passage, which trait does Elizabeth share with her father, and what does that imply about her view of society?",
+              "gold": "She shares her father's distaste for conventional views about the importance of wealth and rank, implying she does not judge people by social status.",
+              "predicted": "Elizabeth shares her father's distaste for society's conventional views regarding the importance of wealth and rank, implying she similarly rejects these societal values.",
+              "correct": true,
+              "latency_s": 68.11,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_lit_gatsby",
+          "domain": "literary",
+          "source": "https://www.britannica.com/topic/The-Great-Gatsby",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "Where did Gatsby and Daisy originally meet in their youth?",
+              "gold": "Kentucky.",
+              "predicted": "Kentucky",
+              "correct": true,
+              "latency_s": 54.43,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "What does the green light at the end of Daisy's dock symbolize?",
+              "gold": "Gatsby's unattainable dream and ambition.",
+              "predicted": "Gatsby’s unattainable dream and ambition.",
+              "correct": true,
+              "latency_s": 15.58,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "According to the passage, what is the difference between West Egg and East Egg, and which society ultimately triumphs?",
+              "gold": "West Egg represents brash, materialistic 'new money' and East Egg refined, inherited 'old money'; the old-money society ultimately triumphs.",
+              "predicted": "West Egg represents \"new money\" with brashness and materialism, whereas East Egg represents \"old money\" with refinement and inherited wealth. The \"old money\" society ultimately triumphs.",
+              "correct": true,
+              "latency_s": 26.47,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_sci_blackhole",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/black-hole",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "According to the passage, what is the Schwarzschild radius of a black hole with a mass 10 times that of the Sun?",
+              "gold": "30 km.",
+              "predicted": "30 km (18.6 miles)",
+              "correct": true,
+              "latency_s": 13.84,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "According to the passage, why can not even light escape from inside the event horizon?",
+              "gold": "Because inside the event horizon the escape velocity exceeds the speed of light.",
+              "predicted": "Inside the event horizon, the escape velocity exceeds",
+              "correct": true,
+              "latency_s": 76.92,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Using the passage, what would happen to the Schwarzschild radius if the mass of the collapsing star were doubled, and why?",
+              "gold": "It would roughly double, because the Schwarzschild radius is proportional to the mass of the collapsing star.",
+              "predicted": "The Schwarzschild radius would double because its size is proportional to the mass of the collapsing star.",
+              "correct": true,
+              "latency_s": 68.6,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_sci_evolution",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/evolution-scientific-theory",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "According to the passage, through what four factors can differential reproduction occur?",
+              "gold": "Survival rates, fertility, mating success, or other life cycle aspects.",
+              "predicted": "Survival rates, fertility, mating success, and other life cycle aspects.",
+              "correct": true,
+              "latency_s": 51.15,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "What happens to variations that enhance an organism's survival and reproduction?",
+              "gold": "They are preserved and passed on to future generations.",
+              "predicted": "They are preserved and passed on to future generations.",
+              "correct": true,
+              "latency_s": 18.09,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Based on the passage, explain how a beneficial mutation becomes common in a population over time.",
+              "gold": "A beneficial mutation improves survival and reproduction, so natural selection favors it, causing it to increase in frequency over generations.",
+              "predicted": "Beneficial mutations improve an organism's ability to survive and reproduce. Consequently, natural selection favors these advantageous mutations, causing their frequency to increase over generations.",
+              "correct": true,
+              "latency_s": 27.45,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_hist_frenchrev",
+          "domain": "historical",
+          "source": "https://www.britannica.com/event/French-Revolution",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "What role did the rulers claim to justify taxing the privileged classes?",
+              "gold": "Enlightened despots.",
+              "predicted": "They adopted the role of \"enlightened despots.\"",
+              "correct": true,
+              "latency_s": 20.17,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "Which two groups had usually been exempt from taxation before the rulers tried to tax them?",
+              "gold": "The nobles and the clergy.",
+              "predicted": "nobles and clergy",
+              "correct": true,
+              "latency_s": 12.32,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "According to the passage, how was the American Revolution connected to the same backlash occurring in Europe?",
+              "gold": "The same aristocratic reaction against taxation appeared in North America, where the backlash contributed to the American Revolution, which began with a refusal to pay a tax imposed by the king of Great Britain.",
+              "predicted": "In North America, this backlash contributed to the American Revolution.",
+              "correct": false,
+              "latency_s": 31.78,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 0.667
+        },
+        {
+          "id": "qa_hist_printing",
+          "domain": "historical",
+          "source": "https://www.britannica.com/topic/printing-press",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "What mechanism did Gutenberg's press use to exert pressure on the paper?",
+              "gold": "A long handle turning a heavy wooden screw.",
+              "predicted": "A long handle used to turn a heavy wooden screw.",
+              "correct": true,
+              "latency_s": 19.71,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "What ancient device was the medieval paper press modeled after?",
+              "gold": "The ancient wine-and-olive press of the Mediterranean area.",
+              "predicted": "The ancient wine-and-olive press.",
+              "correct": true,
+              "latency_s": 15.21,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Based on the passage, what evidence shows that movable-type printing existed outside Europe before Gutenberg's Bible?",
+              "gold": "Jikji, a book of Buddhist teachings, was printed from movable type in Korea in 1377—before Gutenberg's 1455 Bible.",
+              "predicted": "Jikji, a book of the teachings of Buddhist priests, was printed by hand from movable type in Korea in 1377.",
+              "correct": true,
+              "latency_s": 28.07,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        }
+      ],
+      "elapsed_s": 586.9
+    },
+    "structured_output": {
+      "task": "structured_output",
+      "strict_compliance_rate": 1.0,
+      "lenient_compliance_rate": 1.0,
+      "results": [
+        {
+          "name": "json_person",
+          "validator": "json",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "required": [
+              "name",
+              "age",
+              "city"
+            ],
+            "had_fence": false
+          },
+          "response": "{\n  \"name\": \"Alice Johnson\",\n  \"age\": 30,\n  \"city\": \"New York\"\n}",
+          "latency_s": 15.17,
+          "tokens_per_sec": 29.8,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "json_nested",
+          "validator": "json",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "required": [
+              "title",
+              "year",
+              "authors"
+            ],
+            "had_fence": false
+          },
+          "response": "{\n  \"title\": \"The Great Gatsby\",\n  \"year\": 1925,\n  \"authors\": [\"F. Scott Fitzgerald\"]\n}",
+          "latency_s": 81.67,
+          "tokens_per_sec": 29.4,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "markdown_doc",
+          "validator": "markdown",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "has_header": true,
+            "has_bold": true,
+            "has_bullet": true,
+            "non_md_lines": 0
+          },
+          "response": "## The Process of Photosynthesis\n\nPlants create their own food using sunlight, water, and carbon dioxide. During this process, green plants absorb light energy to convert gases into chemical energy stored in sugar molecules. A key component involved is the pigment known as **chlorophyll**, which gives plants their green color.\n\n*   **Inputs:** Carbon dioxide from the air and water from the soil.\n*   **Energy Source:** Sunlight absorbed by leaves.\n*   **Outputs:** Glucose (sugar) for energy and oxygen released into the atmosphere.",
+          "latency_s": 29.84,
+          "tokens_per_sec": 29.8,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "code_only_fib",
+          "validator": "code_only",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "has_function": true,
+            "no_backticks": true
+          },
+          "response": "def fibonacci(n):\n    if n <= 0:\n        return 0\n    elif n == 1:\n        return 1\n    \n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b",
+          "latency_s": 39.69,
+          "tokens_per_sec": 29.6,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "numbered_list_planets",
+          "validator": "numbered_list",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "numbered": 5,
+            "total_lines": 5,
+            "expected": 5
+          },
+          "response": "1. Mercury\n2. Venus\n3. Earth\n4. Mars\n5. Jupiter",
+          "latency_s": 14.26,
+          "tokens_per_sec": 29.9,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "csv_row",
+          "validator": "csv_line",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "lines": 1,
+            "expected_fields": 3
+          },
+          "response": "Apple,Red,1.99",
+          "latency_s": 29.0,
+          "tokens_per_sec": 29.5,
+          "reasoning_truncated": false
+        }
+      ],
+      "elapsed_s": 209.6
+    },
+    "code_generation": {
+      "task": "code_generation",
+      "pass_at_1": 0.333,
+      "executed_pass_at_1": 0.333,
+      "results": [
+        {
+          "name": "perl_word_count",
+          "language": "perl",
+          "code": "",
+          "passed": false,
+          "exec_output": "",
+          "latency_s": 154.3,
+          "tokens_per_sec": 29.1,
+          "reasoning_truncated": true
+        },
+        {
+          "name": "perl_csv_filter",
+          "language": "perl",
+          "code": "#!/usr/bin/perl\nuse strict;\nuse warnings;\n\nmy $filename = $ARGV[0];\ndie \"Usage: $0 <file>\\n\" unless defined $filename;\n\nopen(my $fh, '<', $filename) or die \"Cannot open file: $!\";\n\nwhile (my $line = <$fh>) {\n    chomp $line;\n    my @fields = split /,/, $line;\n    \n    # Ensure we have at least 2 fields and age is numeric > 30\n    if (@fields >= 2 && ($fields[1] + 0) > 30) {\n        print \"$line\\n\";\n    }\n}\n\nclose($fh);",
+          "passed": true,
+          "exec_output": "Bob,42,Chicago\nCarl,35,Denver\n",
+          "latency_s": 117.83,
+          "tokens_per_sec": 28.9,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "perl_regex_extract",
+          "language": "perl",
+          "code": "",
+          "passed": false,
+          "exec_output": "",
+          "latency_s": 155.48,
+          "tokens_per_sec": 28.9,
+          "reasoning_truncated": true
+        },
+        {
+          "name": "ruby_array_dedupe_sort",
+          "language": "ruby",
+          "code": "",
+          "passed": false,
+          "exec_output": "",
+          "latency_s": 135.8,
+          "tokens_per_sec": 29.0,
+          "reasoning_truncated": true
+        },
+        {
+          "name": "ruby_hash_group",
+          "language": "ruby",
+          "code": "",
+          "passed": false,
+          "exec_output": "",
+          "latency_s": 155.05,
+          "tokens_per_sec": 29.0,
+          "reasoning_truncated": true
+        },
+        {
+          "name": "ruby_class_stack",
+          "language": "ruby",
+          "code": "class Stack\n  def initialize\n    @items = []\n  end\n\n  def push(item)\n    @items << item\n  end\n\n  def pop\n    return nil if @items.empty?\n    @items.pop\n  end\n\n  def peek\n    return nil if @items.empty?\n    @items.last\n  end\nend\n\nstack = Stack.new\nstack.push(1)\nstack.push(2)\nstack.push(3)\n\nputs stack.peek\nputs stack.pop\nputs stack.peek",
+          "passed": true,
+          "exec_output": "3\n3\n2\n",
+          "latency_s": 126.08,
+          "tokens_per_sec": 29.0,
+          "reasoning_truncated": false
+        }
+      ],
+      "elapsed_s": 845.2
+    }
+  },
+  "total_elapsed_s": 2107.2,
+  "headline": {
+    "context_retention": null,
+    "context_retention_stale_rate": null,
+    "summarization_claim_survival": {
+      "prose": 0.9,
+      "mathematical": 0.8,
+      "scientific": 0.9
+    },
+    "summarization_faithfulness_drop": 0.05,
+    "summarization_mean_rouge_l": 0.434,
+    "open_book_accuracy": 0.944,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 0.833
+    },
+    "structured_strict": 1.0,
+    "structured_lenient": 1.0,
+    "creative_constraints": null,
+    "code_pass_at_1": 0.333
+  }
+}

@@ -20,6 +20,48 @@
     "creative_constraints": 0.417,
     "code_pass_at_1": 0.667
   },
+  "deepscaler-1b5": {
+    "context_retention": 0.411,
+    "context_retention_stale_rate": 0.0,
+    "summarization_claim_survival": {
+      "prose": 0.8,
+      "mathematical": 0.8,
+      "scientific": 0.9
+    },
+    "summarization_faithfulness_drop": -0.05,
+    "summarization_mean_rouge_l": 0.402,
+    "open_book_accuracy": 0.833,
+    "open_book_by_tier": {
+      "easy": 0.833,
+      "medium": 1.0,
+      "hard": 0.667
+    },
+    "structured_strict": 0.333,
+    "structured_lenient": 0.833,
+    "creative_constraints": 0.417,
+    "code_pass_at_1": 0.0
+  },
+  "deepseek-r1-1b5": {
+    "context_retention": 0.243,
+    "context_retention_stale_rate": 0.029,
+    "summarization_claim_survival": {
+      "prose": 0.8,
+      "mathematical": 0.9,
+      "scientific": 0.8
+    },
+    "summarization_faithfulness_drop": -0.05,
+    "summarization_mean_rouge_l": 0.422,
+    "open_book_accuracy": 0.722,
+    "open_book_by_tier": {
+      "easy": 0.833,
+      "medium": 0.833,
+      "hard": 0.5
+    },
+    "structured_strict": 0.333,
+    "structured_lenient": 0.833,
+    "creative_constraints": 0.167,
+    "code_pass_at_1": 0.167
+  },
   "gemma3-4b": {
     "context_retention": 0.675,
     "context_retention_stale_rate": 0.0,
@@ -62,6 +104,48 @@
     "creative_constraints": 0.917,
     "code_pass_at_1": 0.5
   },
+  "llama32-1b": {
+    "context_retention": 0.421,
+    "context_retention_stale_rate": 0.029,
+    "summarization_claim_survival": {
+      "prose": 1.0,
+      "mathematical": 0.9,
+      "scientific": 0.7
+    },
+    "summarization_faithfulness_drop": 0.2,
+    "summarization_mean_rouge_l": 0.351,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 0.5,
+    "structured_lenient": 1.0,
+    "creative_constraints": 0.833,
+    "code_pass_at_1": 0.333
+  },
+  "nemotron-1b5": {
+    "context_retention": 0.143,
+    "context_retention_stale_rate": 0.057,
+    "summarization_claim_survival": {
+      "prose": 0.6,
+      "mathematical": 0.7,
+      "scientific": 0.5
+    },
+    "summarization_faithfulness_drop": 0.0,
+    "summarization_mean_rouge_l": 0.21,
+    "open_book_accuracy": 0.278,
+    "open_book_by_tier": {
+      "easy": 0.333,
+      "medium": 0.167,
+      "hard": 0.333
+    },
+    "structured_strict": 0.0,
+    "structured_lenient": 0.167,
+    "creative_constraints": 0.0,
+    "code_pass_at_1": 0.0
+  },
   "phi4-mini": {
     "context_retention": 0.538,
     "context_retention_stale_rate": 0.0,
@@ -83,24 +167,45 @@
     "creative_constraints": 0.417,
     "code_pass_at_1": 0.5
   },
+  "qwen25-1b5": {
+    "context_retention": 0.604,
+    "context_retention_stale_rate": 0.0,
+    "summarization_claim_survival": {
+      "prose": 0.9,
+      "mathematical": 0.8,
+      "scientific": 0.8
+    },
+    "summarization_faithfulness_drop": 0.1,
+    "summarization_mean_rouge_l": 0.412,
+    "open_book_accuracy": 0.944,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 0.833
+    },
+    "structured_strict": 0.333,
+    "structured_lenient": 0.833,
+    "creative_constraints": 0.833,
+    "code_pass_at_1": 0.167
+  },
   "qwen35-4b": {
     "context_retention": 0.799,
     "context_retention_stale_rate": 0.0,
     "summarization_claim_survival": {
-      "prose": 1.0,
-      "mathematical": 0.9,
+      "prose": 0.9,
+      "mathematical": 0.8,
       "scientific": 0.9
     },
-    "summarization_faithfulness_drop": 0.1,
-    "summarization_mean_rouge_l": 0.201,
-    "open_book_accuracy": 1.0,
+    "summarization_faithfulness_drop": 0.05,
+    "summarization_mean_rouge_l": 0.434,
+    "open_book_accuracy": 0.944,
     "open_book_by_tier": {
       "easy": 1.0,
       "medium": 1.0,
-      "hard": 1.0
+      "hard": 0.833
     },
-    "structured_strict": 0.833,
-    "structured_lenient": 0.833,
+    "structured_strict": 1.0,
+    "structured_lenient": 1.0,
     "creative_constraints": 0.333,
     "code_pass_at_1": 0.667
   }

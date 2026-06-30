@@ -695,125 +695,125 @@
     "summarization": {
       "task": "summarization",
       "claim_survival_by_domain": {
-        "prose": 1.0,
-        "mathematical": 0.9,
+        "prose": 0.9,
+        "mathematical": 0.8,
         "scientific": 0.9
       },
-      "faithfulness_drop_prose_minus_technical": 0.1,
-      "mean_rouge_l": 0.201,
+      "faithfulness_drop_prose_minus_technical": 0.05,
+      "mean_rouge_l": 0.434,
       "results": [
         {
           "id": "sum_prose_frenchrev",
           "domain": "prose",
           "source": "https://www.britannica.com/event/French-Revolution",
-          "summary": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Task: Summarize the provided text.\n    *   Length Constraint: 3-5 sentences.\n    *   Content Requirement: Preserve key facts.\n\n2.  **Analyze the Source Text:**\n    *   *Sentence 1:* The French Revolution had general causes common to all Western revolutions at the end of the 18th century and particular causes explaining its extreme violence and significance.\n    *   *Sentence 2:* General cause #1: Social structure (feudal decline, rise of bourgeoisie wanting power).\n    *   *Sentence 3:* Some peasants improved living standards/education but wanted to get rid of feudalism for land rights; half remained poor/landless.\n    *   *Sentence 4:* Population growth due to lower mortality rates since ~1730 (doubled between 1715-1800).\n    *   *Sentence 5:* France was the most populated country in Europe with 26 million inhabitants, making the problem acute.\n\n3.  **Identify Key Facts:**\n    *   French Revolution had general and particular causes (violence/significance).\n    *   General cause: Social structure changes (feudal decline, bourgeoisie rise, peasant aspirations/struggles).\n    *   Demographic factor: Population explosion in Europe due to lower mortality rates.\n    *   Specific context for France: High population density (26 million) made the social pressure acute.\n\n4.  **Drafting the Summary:**\n\n    *   *Attempt 1:* The French Revolution shared general causes with other Western revolutions at the end of the 18th century, though it was uniquely violent and significant due to specific factors. General causes included a declining feudal regime and an aspiring bourgeoisie seeking political power, while peasants sought land rights despite remaining poor or landless. Additionally, mortality rates dropped since 1730, causing Europe's population to double between 1715 and 1800. For France, which was the most populated European country with 26 million people in 1789, these demographic pressures were particularly acute.\n\n    *   *Critique 1:* This is 4 sentences. It covers general/partial causes, social structure (feudal/bourgeois/peasants), and demographics (mortality/population/France). It looks good. Let's check sentence count again.\n        1. The French Revolution...\n        2. General causes included...\n        3. Additionally, mortality rates...\n        4. For France...\n    *   *Count:* 4 sentences. Fits the 3-5 range.\n\n    *   *Attempt 2 (Condensing for flow):* The French Revolution was driven by general Western causes regarding social structure and specific particular factors that made it exceptionally violent. Key social elements included a declining feudal regime, an aspiring bourgeoisie seeking power, and peasants striving for land rights despite poverty. Demographically, lower mortality rates from the mid-18th century caused Europe's population to double between 1715 and 1800. This demographic pressure was most acute in France, which held a population of 26 million inhabitants by 1789.\n\n    *   *Critique 2:* Also 4 sentences. Covers all key points clearly. \"Western causes regarding social structure\" might be slightly vague compared to \"declining feudal regime,\" but it works. Let's try to make sure the specific numbers (26 million, 1715-1800) are preserved as requested (\"Preserve the key facts\").\n\n    *   *Attempt 3 (Refining for clarity and coverage):*\n        The French Revolution was characterized by general Western causes common to late 18th-century revolutions alongside particular factors that made it uniquely violent. These social changes included a declining feudal regime, an aspiring bourgeoisie seeking political power, and peasants demanding land rights despite widespread poverty. Demographically, mortality rates dropped since 1730, leading to Europe's population doubling between 1715 and 1800. In France specifically, this population boom was acute given that the country had already reached 26 million inhabitants by 1789.\n\n    *   *Check:*\n        Sentence 1: General/Particular causes + violence.\n        Sentence 2: Social structure (feudal, bourgeoisie, peasants).\n        Sentence 3: Demographics (mortality drop, population doubling dates).\n        Sentence 4: France specific stats (26 million, 1789).\n    *   Total sentences: 4.\n    *   Key facts preserved? Yes (West revolutions, violence, social structure details, demographic growth dates/stats, French population stat).\n\n5.  **Final Polish:** The draft looks solid. I will present Attempt 3 with minor tweaks for smoothness.\n\n    *Revised Draft:*\n    The French Revolution shared general causes with other Western revolutions of the late 18th century but was distinguished by particular factors that made it uniquely violent and significant. Socially, this included a declining feudal regime, an aspiring bourgeoisie seeking power, and peasants striving for land rights despite remaining poverty. Demographically, lower mortality rates since 1730 caused Europe's population to double between 1715 and 1800. For France, which was the most populated country with 26 million inhabitants in 1789, these social and demographic pressures were particularly acute.\n\n    *Sentence Count:* 4 sentences.\n    *Facts:* Revolution context, violence/significance, feudal/bourgeois/peasant dynamics, mortality/population stats (dates included), France population specific stat.\n\n6.  **Final Verification:** Does it meet the 3-5 sentence constraint? Yes (4). Does it preserve key facts? Yes. Is it a summary? Yes.\n\n    Wait, I can combine sentences to make it tighter if needed, but 4 is within range. Let's ensure the \"general causes\" part is clear.\n    Sentence 1: The French Revolution had general causes common to other Western revolutions of the late 18th century as well as particular factors that made it uniquely violent. (Good)\n    Sentence 2: Socially, a declining feudal regime coexisted with an aspiring bourgeoisie seeking power and peasants striving for land rights despite widespread poverty. (Good)\n    Sentence 3: Demographically, lower mortality rates since 1730 caused Europe's population to double between 1715 and 1800. (Good)\n    Sentence 4: In France specifically, this pressure was acute given that the country held a population of 26 million inhabitants by 1789. (Good)\n\n    Actually, looking at Sentence 3 and 4, I can combine them to make it 3 sentences if I want, but 4 is safer for clarity. Let's stick with 4. Or maybe merge the social structure part.\n    \"The French Revolution shared general causes with other Western revolutions of the late 18th century but was distinguished by particular factors that made it uniquely violent and significant.\" (1)\n    \"Socially, this included a declining feudal regime, an aspiring bourgeoisie seeking power, and peasants striving for land rights despite remaining poverty.\" (2)\n    \"Demographically, lower mortality rates since 1730 caused Europe's population to double between 1715 and 1800, creating acute pressure in France which had a population of 26 million inhabitants by 1789.\" (3) -> This makes it 3 sentences.\n    Let's check if that merges the facts well enough. \"creating acute pressure in France\" links the demographic fact to the specific country fact.\n    However, the prompt says \"Preserve the key facts\". The text explicitly separates the general causes, social structure, demographics, and the specific French population stat.\n    If I combine 3 and 4, I might lose the nuance of \"France was the most populated country.\"\n    Let's keep it at 4 sentences to be safe on detail preservation within the limit.\n\n    Wait, re-reading the prompt: \"Summarize... in 3-5 sentences.\"\n    My draft has 4 sentences. That is valid.\n\n    Let's refine the wording for maximum clarity.\n    \"The French Revolution shared general causes with other Western revolutions of the late 18th century but was distinguished by particular factors that made it uniquely violent and significant.\"\n    \"Socially, this included a declining feudal regime, an aspiring bourgeoisie seeking power, and peasants striving for land rights despite remaining poverty.\"\n    \"Demographically, lower mortality rates since 1730 caused Europe's population to double between 1715 and 1800.\"\n    \"In France specifically, this pressure was acute given that the country held a population of 26 million inhabitants by 1789.\"\n\n    Actually, I can combine the last two for better flow while keeping sentence count under 5.\n    \"The French Revolution shared general causes with other Western revolutions of the late 18th century but was distinguished by particular factors that made it uniquely violent and significant.\" (1)\n    \"Socially, this included a declining feudal regime, an aspiring bourgeoisie seeking power, and peasants striving for land rights despite remaining poverty.\" (2)\n    \"Demographically, lower mortality rates since 1730 caused Europe's population to double between 1715 and 1800, creating acute pressure in France which had a population of 26 million inhabitants by 1789.\" (3)\n\n    This is 3 sentences. It covers all facts. Let's try to make it slightly more detailed to ensure nothing crucial is lost regarding the \"general causes\" vs \"particular causes\".\n    The first sentence mentions general causes but says \"distinguished by particular factors.\"\n    Sentence 1: The French Revolution had general causes common to Western revolutions at the end of the 18th century, alongside particular factors that made it uniquely violent.\n    Sentence 2: Socially, a declining feudal regime existed where an aspiring bourgeoisie sought power and peasants struggled for land rights despite poverty.\n    Sentence 3: Additionally, lower mortality rates since 1730 caused Europe's population to double between 1715 and 1800, creating acute pressure in France which had 26 million inhabitants by 1789.\n\n    This is 3 sentences. It works perfectly within the limit. I will ensure the flow is smooth.\n    Wait, \"Socially\" might be too abrupt. Let's combine the social and demographic into two distinct blocks to make sure I don't run too short or lose clarity.\n    Actually, 4 sentences allows for better separation of the complex ideas (General causes, Social structure, Demographics, France specific).\n    Let's go with the 4-sentence version for maximum precision on facts.\n\n    Final check of the text:\n    1. The French Revolution shared general Western causes but was uniquely violent and significant due to particular factors.\n    2. General social causes included a declining feudal regime, an aspiring bourgeoisie seeking power, and peasants striving for land rights despite poverty.\n    3. Demographically, lower mortality rates since 1730 caused Europe's population to double between 1715 and 1800.\n    4. In France specifically, this demographic pressure was acute given that the country held a population of 26 million inhabitants by 1789.\n\n    This looks solid. I will write it out clearly.\n\n    Wait, I can combine 3 and 4 to make it exactly 3 sentences if needed, but 4 is within range. Let's stick to 4 for better readability of the distinct facts (Demographics vs Specific Country Stats).\n    Actually, looking at Sentence 2: \"General social causes included...\" The text says \"The first of the general causes was the social structure...\". So I should reflect that it's a *general* cause.\n    Revised Plan:\n    1. The French Revolution shared general Western causes but was uniquely violent and significant due to particular factors.\n    2. General causes included a declining feudal regime, an aspiring bourgeoisie seeking power, and peasants striving for land rights despite poverty.\n    3. Demographically, lower mortality rates since 1730 caused Europe's population to double between 1715 and 1800.\n    4. In France specifically, this demographic pressure was acute given that the country held a population of 26 million inhabitants by 1789.\n\n    Wait, I can merge 2 and 3? No, they are distinct paragraphs in my head.\n    Let's try to condense into 3 sentences to be concise.\n    \"The French Revolution shared general Western causes but was uniquely violent due to particular factors regarding social structure and demographics.\" (Too vague)\n    \"The French Revolution shared general Western causes but was uniquely violent due to particular factors regarding",
+          "summary": "The French Revolution had general causes common to other late-18th-century Western revolutions but became uniquely violent and significant due to particular factors. Social changes empowered wealthy commoners seeking political power while peasants demanded rights to land ownership despite many remaining poor or landless. Furthermore, improved living standards since 1730 reduced mortality rates and caused Europe's population to double between 1715 and 1800. This demographic pressure was particularly acute in France, which was the most populous European country with 26 million inhabitants by 1789.",
           "rouge": {
-            "rouge1": 0.0829,
-            "rouge2": 0.0383,
-            "rougeL": 0.0627
+            "rouge1": 0.5714,
+            "rouge2": 0.2778,
+            "rougeL": 0.4835
           },
-          "claims_survived": 5,
+          "claims_survived": 4,
           "claims_total": 5,
-          "claim_survival_rate": 1.0,
-          "latency_s": 111.94,
-          "tokens_per_sec": 25.3,
+          "claim_survival_rate": 0.8,
+          "latency_s": 110.41,
+          "tokens_per_sec": 29.9,
           "reasoning_truncated": false
         },
         {
           "id": "sum_prose_industrial",
           "domain": "prose",
           "source": "https://www.britannica.com/event/Industrial-Revolution",
-          "summary": "The Industrial Revolution transformed economies from agriculture and handicrafts to large-scale industry, increasing overall wealth and enlarging the middle class through mechanized manufacturing and new sectors like automobiles. However, replacing domestic production with factory systems subjected many workers, including women and children, to dangerous conditions and subsistence wages, which eventually spurred the mid-19th century trade union movement. Historians conventionally divide this era into two consecutive parts: the First Industrial Revolution from the mid-18th century to 1830 in Britain, followed by the Second Industrial Revolution spanning from the mid-19th century to the early 20th century across Europe, North America, and Japan.",
+          "summary": "The Industrial Revolution transformed economies from agriculture and handicrafts into large-scale industry through mechanized manufacturing, significantly increasing productivity and overall wealth. While this growth enlarged the middle class, it replaced domestic production with factories that subjected many workers, including women and children, to dangerous conditions and subsistence wages. These harsh working conditions eventually sparked the trade union movement in the mid-19th century. Historians divide the era into two consecutive phases: a first period from the mid-18th century mostly confined to Britain until 1830, followed by a second phase lasting from the mid-19th century to the early 20th that spread across Europe, North America, and Japan.",
           "rouge": {
-            "rouge1": 0.6832,
-            "rouge2": 0.37,
-            "rougeL": 0.4851
+            "rouge1": 0.6763,
+            "rouge2": 0.3122,
+            "rougeL": 0.4541
           },
           "claims_survived": 5,
           "claims_total": 5,
           "claim_survival_rate": 1.0,
-          "latency_s": 60.44,
-          "tokens_per_sec": 25.6,
+          "latency_s": 97.61,
+          "tokens_per_sec": 29.8,
           "reasoning_truncated": false
         },
         {
           "id": "sum_math_calculus",
           "domain": "mathematical",
           "source": "https://www.britannica.com/science/calculus-mathematics",
-          "summary": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Task: Summarize the provided text.\n    *   Length Constraint: 3-5 sentences.\n    *   Content Requirement: Preserve key facts.\n\n2.  **Analyze the Source Text:**\n    *   *Key Fact 1:* Newton and Leibniz discovered that finding derivatives is the inverse of finding areas under curves (Fundamental Theorem of Calculus).\n    *   *Key Fact 2:* If F(t) represents area from 0 to t, then F'(t) = f(t).\n    *   *Key Fact 3:* Finding area involves finding a function whose derivative equals the original curve (e.g., x^2 -> x^3/3 + C).\n    *   *Key Fact 4:* This process is called integration/indefinite integral, symbolized by ∫ (elongated S for sum) and dx.\n    *   *Key Fact 5:* Leibniz introduced the notation based on summation of infinitesimal rectangles.\n    *   *Key Fact 6:* Integrating f(x) is equivalent to solving a differential equation F'(t) = f(t).\n\n3.  **Drafting - Attempt 1 (Focus on coverage):**\n    Newton and Leibniz discovered that finding the derivative of a function is essentially the inverse operation of calculating the area under a curve, known as the fundamental theorem of calculus. This means to find the area under a specific curve, one can locate a function whose derivative matches the original equation over an interval. The process of identifying this function is called integration or indefinite integral, represented by the symbol ∫ which stands for sum and dx indicating infinitesimal increments. Leibniz introduced this notation based on his view that integration involves summing infinitely thin rectangles to find area. Ultimately, integrating a function f(x) is equivalent to solving the differential equation where F'(t) equals f(t).\n\n4.  **Reviewing Attempt 1:**\n    *   Sentence count: 5 sentences. (Within range 3-5).\n    *   Key facts preserved? Yes (Newton/Leibniz, inverse relationship/Fundamental Theorem, derivative = area function, integration symbol meaning, solving differential equation).\n    *   Flow: Good.\n\n5.  **Refining for Conciseness and Impact (Attempt 2):**\n    Newton and Leibniz established that finding derivatives is the precise inverse of determining areas under curves, a principle known as the fundamental theorem of calculus. Specifically, if a function F(t) represents the accumulated area from zero to t, its derivative equals the original curve's value at any point within that interval. Consequently, calculating the area under a curve involves solving for an indefinite integral by finding a function whose derivative matches the given equation. Leibniz introduced notation like ∫ and dx based on his conceptualization of integration as summing infinitesimal rectangular areas. Ultimately, this mathematical discovery links integration directly to solving differential equations where F′(t) = f(t).\n\n6.  **Reviewing Attempt 2:**\n    *   Sentence count: 5 sentences. (Within range).\n    *   Key facts preserved? Yes.\n    *   Can I tighten it to 3-4 sentences for better flow?\n\n7.  **Refining for Conciseness (Attempt 3):**\n    Newton and Leibniz discovered that finding the derivative of a function is the inverse of calculating areas under curves, establishing the fundamental theorem of calculus. This relationship allows one to find the area of a curve by identifying an indefinite integral—a function F(t) whose derivative equals the original rate f(t). While Leibniz introduced notation like ∫ and dx based on summing infinitesimal rectangles, this process is mathematically equivalent to solving differential equations where the derivative matches the integrand. Thus, integration serves as the method for reversing differentiation to determine accumulated quantities over an interval.\n\n8.  **Final Check:**\n    *   Sentence count: 4 sentences. (Perfect).\n    *   Key facts: Newton/Leibniz discovery, Fundamental Theorem, Derivative = Area function, Integration notation meaning, Equivalence to solving differential equations.\n\n9.  **Final Polish:** Let's ensure the \"key facts\" are clearly preserved without losing nuance about Leibniz's specific contribution if possible, but the summary focuses on the core mathematical relationship.\n    *   Sentence 1: Core discovery (Newton/Leibniz).\n    *   Sentence 2: Relationship between derivative and area/integral.\n    *   Sentence 3: Notation origin (Leibniz) and meaning.\n    *   Sentence 4: Equivalence to differential equations.\n\n    Let's combine the notation and definition slightly for better flow if needed, but 4 is fine. Actually, I can merge the \"notation\" and \"equivalence\" parts or keep them distinct.\n\n    *Revised Draft:*\n    Newton and Leibniz discovered that finding the derivative of a function is the inverse operation of calculating areas under curves, establishing the fundamental theorem of calculus. This means determining an area requires identifying an indefinite integral—a function whose derivative equals the original curve's value over an interval. Leibniz introduced specific notation for this process, viewing integration as the summation of infinitesimal rectangles to find accumulated quantities. Ultimately, integrating a function is mathematically equivalent to solving the differential equation where F′(t) = f(t).\n\n    *Count:* 4 sentences.\n    *Facts:* Newton/Leibniz discovery, inverse relationship (Fundamental Theorem), indefinite integral definition, Leibniz notation origin, equivalence to diff eq.\n\n    Looks good. I will use a version similar to this.\n\n10. **Final Selection:**\n    Newton and Leibniz discovered that finding the derivative of a function is the precise inverse of calculating areas under curves, establishing what is now known as the fundamental theorem of calculus. Specifically, determining an area requires identifying an indefinite integral—a function whose derivative equals the original curve's value at any point within an interval. While Leibniz introduced notation like ∫ and dx based on his view that integration involves summing infinitesimal rectangles, this process is mathematically equivalent to solving differential equations where F′(t) = f(t).\n\n    Wait, counting sentences:\n    1. Newton... calculus.\n    2. Specifically... interval.\n    3. While Leibniz... f(t).\n    Total: 3 sentences. This is within the 3-5 range. I can add one more about the notation meaning or the constant C to be safer on \"key facts\".\n\n    *Revised Draft (4 sentences):*\n    Newton and Leibniz discovered that finding the derivative of a function is the precise inverse of calculating areas under curves, establishing what is now known as the fundamental theorem of calculus. Specifically, determining an area requires identifying an indefinite integral—a function whose derivative equals the original curve's value at any point within an interval. The initial symbol ∫ stands for sum, and dx indicates an infinitesimal increment, reflecting Leibniz’s view that integration involves summing infinitely thin rectangles to find total area. Ultimately, integrating a function f(x) is equivalent to solving the differential equation where F′(t) = f(t).\n\n    Check constraints:\n    - 3-5 sentences? Yes (4 sentences).\n    - Preserve key facts? Yes (Newton/Leibniz, Fundamental Theorem, Derivative/Area inverse relationship, Notation meaning/dx/Symbol origin, Differential equation equivalence).\n\n    Let's go with this one. It covers all bases clearly.\n\n    Wait, I need to make sure the \"indefinite integral\" part includes the constant C if possible? The text says \"where C is an arbitrary constant.\" My draft omits \"C\". Is it a key fact? Maybe not strictly essential for a general summary, but good to include precision.\n    Let's adjust Sentence 2 or 3 to include the constant concept briefly.\n\n    *Revised Draft (4 sentences with constant):*\n    Newton and Leibniz discovered that finding the derivative of a function is the precise inverse of calculating areas under curves, establishing what is now known as the fundamental theorem of calculus. Specifically, determining an area requires identifying an indefinite integral—a function F whose derivative equals the original curve's value at any point within an interval plus an arbitrary constant C. The initial symbol ∫ stands for sum, and dx indicates an infinitesimal increment, reflecting Leibniz’s view that integration involves summing infinitely thin rectangles to find total area. Ultimately, integrating a function f(x) is equivalent to solving the differential equation where F′(t) = f(t).\n\n    Actually, \"plus an arbitrary constant C\" might break flow slightly. Let's try:\n    Newton and Leibniz discovered that finding the derivative of a function is the precise inverse of calculating areas under curves, establishing what is now known as the fundamental theorem of calculus. Specifically, this allows one to find the area by solving for a general solution F(t) where the derivative equals the original curve over an interval. The notation introduced by Leibniz includes ∫ and dx, representing the summation of infinitesimal increments into infinitely thin rectangles. Ultimately, integrating f(x) is equivalent to finding the function F(t) such that its derivative F′(t) = f(t).\n\n    This captures the C implicitly in \"general solution\".\n    Let's check the constraint again: 3-5 sentences.\n    Sentence 1: Newton/Leibniz discovery + Fundamental Theorem.\n    Sentence 2: Method (F'(t)=f(t)).\n    Sentence 3: Leibniz notation origin.\n    Sentence 4: Equivalence to diff eq.\n\n    This is solid. I will refine it slightly for better readability.\n\n    *Final Polish:*\n    Newton and Leibniz discovered that finding the derivative of a function is the precise inverse of calculating areas under curves, establishing what is now known as the fundamental theorem of calculus. Specifically, determining an area requires identifying an indefinite integral—a general function F(t) whose derivative equals the original curve's value over the interval. The notation introduced by Leibniz includes ∫ and dx, representing the summation of infinitesimal increments into infinitely thin rectangles to find total area. Ultimately, integrating f(x) is equivalent to solving a differential equation where F′(t) = f(t).\n\n    Wait, I should check if \"Newton discovered... Leibniz introduced...\" needs to be distinct in the summary text regarding notation vs discovery. The text says \"The other great discovery of Newton and Leibniz was...\" then later \"Leibniz introduced this [symbol] because he thought...\".\n    Okay, my draft handles that well enough by grouping them in sentence 1.\n\n    One more check on facts:\n    - Derivative is inverse of area finding? Yes (Sentence 1).\n    - Fundamental Theorem name? Yes (Sentence 1).\n    - F'(t) = f(t)? Yes (Sentence 2 & 4).\n    - Indefinite integral/Notation? Yes (Sentence 3).\n    - dx/Symbol meaning? Yes (Sentence 3).\n\n    Looks complete.\n\n    Wait, I can combine Sentence 2 and 4 to make it tighter if needed, but 4 sentences is within the limit. Let's stick with 4 for clarity.\n    Actually, looking at Sentence 2: \"Specifically, determining an area requires identifying an indefinite integral—a general function F(t) whose derivative equals the original curve's value over the interval.\" This covers the key math relationship well.\n\n    Final check on sentence count:\n    1. Newton and Leibniz... calculus.\n    2. Specifically... interval.\n    3. The notation... area.\n    4. Ultimately... f(t).\n    Total: 4 sentences. Perfect.\n\n    Wait, I need to make sure I don't lose the \"constant C\" fact if it's considered key. The prompt says \"Preserve the key facts.\" Is \"arbitrary constant\" a key fact? It's part of the definition of indefinite integral in the text (\"x3/3 + C\"). Without it, is the summary inaccurate?\n    If I add it: \"...a general function F(t) ... plus an arbitrary constant C.\"\n    Let's try to fit that in.\n\n    *Revised Sentence 2:* \"Specifically, determining an area requires identifying an indefinite integral—a general function F(t) whose derivative equals the original curve's value over the interval plus an arbitrary constant C.\" -> Grammatically awkward.\n    Better: \"...identifying an indefinite integral, which is a function F(t) where F′(t) = f(t), resulting in a solution that includes an arbitrary constant C.\"\n\n    Let's try to integrate it into Sentence 4 or make it part of the definition.\n    Actually, the prompt text says \"This is called the (indefinite) integral... and it is written as ∫x2dx\". The constant C is mentioned in the context of the most general such function. It might be less critical than the core inverse relationship for a 3-5 sentence summary,",
+          "summary": "Newton and Leibniz discovered that calculating derivatives is the inverse of finding areas under curves, a principle known as the fundamental theorem of calculus. To find an area defined by a function like y = x², one must identify another function whose derivative equals the original curve at any given interval. While Newton established this mathematical relationship, Leibniz introduced notation for integration using an elongated S to represent summation and dx for infinitesimal increments. Ultimately, integrating a function is equivalent to solving a differential equation by finding its general antiderivative plus an arbitrary constant.",
           "rouge": {
-            "rouge1": 0.0772,
-            "rouge2": 0.0484,
-            "rougeL": 0.0648
+            "rouge1": 0.4773,
+            "rouge2": 0.2529,
+            "rougeL": 0.3409
           },
-          "claims_survived": 5,
+          "claims_survived": 4,
           "claims_total": 5,
-          "claim_survival_rate": 1.0,
-          "latency_s": 110.75,
-          "tokens_per_sec": 25.5,
+          "claim_survival_rate": 0.8,
+          "latency_s": 45.28,
+          "tokens_per_sec": 29.8,
           "reasoning_truncated": false
         },
         {
           "id": "sum_math_pythagorean",
           "domain": "mathematical",
           "source": "https://www.britannica.com/science/Pythagorean-theorem",
-          "summary": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Task: Summarize the provided text.\n    *   Constraint 1: Length must be between 3-5 sentences.\n    *   Constraint 2: Preserve key facts (accuracy, important details).\n    *   Input Text: A paragraph about the Pythagorean theorem, its historical origins (Babylonian, Indian), association with Pythagoras/Euclid, and claims of introduction to him.\n\n2.  **Analyze the Source Text for Key Facts:**\n    *   Fact 1: Definition/Formula ($a^2 + b^2 = c^2$).\n    *   Fact 2: Associated with Greek philosopher Pythagoras (c. 570–500/490 BCE), but actually older.\n    *   Fact 3: Evidence of earlier knowledge: Babylonian tablets (~1900–1600 BCE) include accurate $\\sqrt{2}$ calculation and Pythagorean triples (e.g., 3, 4, 5).\n    *   Fact 4: Mentioned in Indian text (Baudhayana Sulba-sutra, 800–400 BCE).\n    *   Fact 5: Credited to Pythagoras; Proposition 47 of Euclid's Elements.\n    *   Fact 6: Attributed introduction by Thales and Anaximander (according to Iamblichus).\n\n3.  **Drafting the Summary (Iterative Process):**\n\n    *   *Attempt 1:* The Pythagorean theorem states that in a right triangle, the sum of the squares on the legs equals the square on the hypotenuse ($a^2 + b^2 = c^2$). Although attributed to Greek mathematician Pythagoras, evidence suggests it predates him. Babylonian tablets from 1900–1600 BCE show knowledge of the theorem with accurate calculations and triples like 3-4-5. It was also mentioned in the Indian Baudhayana Sulba-sutra written between 800 and 400 BCE. Euclid included it as proposition number 47, though historians note he might have learned from Thales or Anaximander.\n    *   *Critique 1:* This is 5 sentences. It covers the definition, the attribution controversy (Babylonian/Indian evidence), Euclid's mention, and the biographical detail. Let's check sentence count again.\n        1. The Pythagorean theorem states...\n        2. Although attributed to Greek mathematician Pythagoras...\n        3. Babylonian tablets from...\n        4. It was also mentioned in the Indian...\n        5. Euclid included it... though historians note...\n    *   *Refinement:* The last sentence is a bit clunky mixing Euclid and Iamblichus. Let's try to combine some facts for better flow while staying within the limit.\n\n    *   *Attempt 2:* Known as $a^2 + b^2 = c^2$, the Pythagorean theorem describes the relationship between the sides of a right triangle. Although long associated with Greek philosopher Pythagoras, evidence suggests knowledge of this principle existed much earlier in ancient Babylon and India. Archaeological tablets from roughly 1900–1600 BCE demonstrate accurate calculations involving $\\sqrt{2}$ and specific integer triples like (3, 4, 5), while the Indian Baudhayana Sulba-sutra also references it between 800 and 400 BCE. Despite these earlier origins, Euclid later included the theorem as proposition number 47 in his Elements. According to historian Iamblichus, Pythagoras was introduced to mathematics by Thales of Miletus rather than discovering it himself.\n    *   *Critique 2:* This is 5 sentences. It preserves all key facts: definition, attribution vs. origin (Babylon/India), specific dates/evidence, Euclid, and Iamblichus/Thales connection.\n\n4.  **Final Review against Constraints:**\n    *   3-5 sentences? Yes (5 sentences).\n    *   Preserve key facts? Yes (Definition, Pythagoras association vs. older origin/Babylon/India evidence with dates/examples, Euclid reference, Thales/Iamblichus context).\n    *   Flow? It flows logically from definition -> attribution controversy -> specific historical evidence -> later formalization -> biographical note.\n\n5.  **Polishing for Conciseness (Optional but good):**\n    Can I condense to ensure it feels tight?\n    Sentence 1: Definition/Association.\n    Sentence 2: Babylonian/Iranian proof of earlier knowledge.\n    Sentence 3: Indian text & Euclid.\n    Sentence 4: Thales connection.\n\n    *Revised Attempt:* Known as $a^2 + b^2 = c^2$, the Pythagorean theorem is famously attributed to Greek philosopher Pythagoras, though it predates him significantly. Evidence from Babylonian tablets circa 1900–1600 BCE and the Indian Baudhayana Sulba-sutra (800–400 BCE) indicates earlier knowledge of right triangle calculations and integer triples. Later formalized as proposition number 47 in Euclid’s Elements, the theorem remains a cornerstone of geometry despite its ancient origins beyond Pythagoras’ time. According to Syrian historian Iamblichus, Pythagoras himself was introduced to mathematics by Thales of Miletus and his pupil Anaximander.\n    *Count:* 4 sentences. Covers all facts well.\n\n6.  **Final Selection:** The revised attempt looks solid. It balances the specific dates with the narrative flow. I will use a version similar to this one. Let's double check sentence counts on the Revised Attempt.\n    1. Known as... him significantly. (S1)\n    2. Evidence from... triples. (S2) -> Actually, splitting Babylon and Indian might make it two sentences or one long one. \"Evidence from [Babylon] and [Indian]...\" makes it one sentence.\n    3. Later formalized... origins beyond Pythagoras’ time. (S3)\n    4. According to... Anaximander. (S4)\n\n    Wait, I need to make sure \"Euclid\" is mentioned alongside the dates if possible for completeness regarding \"key facts\". The text says Euclid's Elements is proposition number 47. It also mentions the Indian sutra and Babylonian tablets.\n    Let's try to keep it at exactly 3-5 sentences.\n\n    *Draft:* Known as $a^2 + b^2 = c^2$, the Pythagorean theorem describes a right triangle where the sum of squares on the legs equals the square on the hypotenuse, though it is far older than its association with Greek philosopher Pythagoras suggests. Archaeological tablets from Babylon circa 1900–1600 BCE and the Indian Baudhayana Sulba-sutra (800–400 BCE) provide evidence of early knowledge regarding accurate calculations and integer triples. The theorem was later formalized as proposition number 47 in Euclid’s Elements, yet it predates Pythagoras significantly. According to historian Iamblichus, the mathematician was actually introduced to mathematics by Thales of Miletus rather than being its sole discoverer.\n\n    *Sentence Count:*\n    1. Known as... suggests.\n    2. Archaeological tablets... triples.\n    3. The theorem... significantly. (Wait, I combined Euclid into sentence 3).\n    4. According to... discoverer.\n    This is 4 sentences. Good.\n\n    Let's check facts again:\n    - Formula/Definition? Yes ($a^2 + b^2 = c^2$, right triangle).\n    - Pythagoras association vs older origin? Yes (\"far older\").\n    - Babylon evidence (1900-1600 BCE)? Yes.\n    - Indian text (Baudhayana, 800-400 BCE)? Yes.\n    - Euclid Elements Prop 47? Yes.\n    - Iamblichus/Thales/Anaximander intro? Yes.\n\n    Looks complete.\n\n    One minor adjustment to ensure the flow is smooth regarding the \"older\" claim. The text says it's credited to Pythagoras but is older.\n    Let's refine Sentence 1 and 3 slightly for better cohesion.\n\n    *Final Polish:*\n    Known as $a^2 + b^2 = c^2$, the Pythagorean theorem describes a right triangle where the sum of squares on the legs equals the square on the hypotenuse, though it is far older than its association with Greek philosopher Pythagoras suggests. Archaeological tablets from Babylon circa 1900–1600 BCE and the Indian Baudhayana Sulba-sutra (800–400 BCE) provide evidence of early knowledge regarding accurate calculations and integer triples. The theorem was later formalized as proposition number 47 in Euclid’s Elements, yet it predates Pythagoras significantly. According to historian Iamblichus, the mathematician was actually introduced to mathematics by Thales of Miletus rather than being its sole discoverer.\n\n    Wait, \"predates Pythagoras significantly\" is redundant if I already said it's older in sentence 1. Let's merge Euclid into sentence 2 or keep it separate but tighter.\n    Actually, the prompt asks for 3-5 sentences. The current draft is 4 sentences. It works.\n\n    Wait, I missed Anaximander in the final polish text (I said Thales... rather than sole discoverer). The original text says \"Thales of Miletus and his pupil Anaximander\". I should include both names for key fact preservation.\n    \n    *Correction:* According to Syrian historian Iamblichus, Pythagoras was introduced to mathematics by Thales of Miletus and his pupil Anaximander.\n\n    Let's re-assemble carefully.\n\n    1. Known as $a^2 + b^2 = c^2$, the Pythagorean theorem describes a right triangle where the sum of squares on the legs equals the square on the hypotenuse, though it is far older than its association with Greek philosopher Pythagoras suggests.\n    2. Archaeological tablets from Babylon circa 1900–1600 BCE and the Indian Baudhayana Sulba-sutra (800–400 BCE) provide evidence of early knowledge regarding accurate calculations and integer triples.\n    3. The theorem was later formalized as proposition number 47 in Euclid’s Elements, yet it predates Pythagoras significantly. -> This is redundant with sentence 1. Let's combine the \"older\" claim into the specific evidence sentences to save space for Anaximander if needed, or just keep it general.\n    Actually, I can combine Sentence 2 and 3? Or make Sentence 3 about Euclid only.\n    \n    *Plan:*\n    S1: Definition + Pythagoras association vs reality (older).\n    S2: Babylonian evidence (dates, sqrt(2), triples).\n    S3: Indian evidence + Euclid reference.\n    S4: Iamblichus/Thales/Anaximander.\n\n    *Draft:* Known as $a^2 + b^2 = c^2$, the Pythagorean theorem describes a right triangle where the sum of squares on the legs equals the square on the hypotenuse, though it is far older than its association with Greek philosopher Pythagoras suggests. Archaeological tablets from Babylon circa 1900–1600 BCE demonstrate early knowledge through accurate calculations and lists of integer triples like (3, 4, 5). The theorem was also mentioned in the Indian Baudhayana Sulba-sutra (800–400 BCE) and formalized as proposition number 47 in Euclid’s Elements. According to Syrian historian Iamblichus, Pythagoras was introduced to mathematics by Thales of Miletus and his pupil Anaximander.\n\n    *Sentence Count:*\n    1. Known... suggests. (1)\n    2. Archaeological... triples. (2)\n    3. The theorem... Elements. (3)\n    4. According... Anaximander. (4)\n    \n    This is exactly 4 sentences. It preserves all key facts including dates, formulas, names, and the biographical note.\n\n    Wait, I should check if \"lists of special integers known as Pythagorean triples\" is a key fact to preserve specifically or just the example. The text says \"lists... (e.g., 3, 4, and 5)\". Preserving the example helps clarify. My draft includes (3, 4,",
+          "summary": "The Pythagorean theorem states that in a right triangle, the sum of the squares on the legs equals the square on the hypotenuse ($a^2 + b^2 = c^2$). Although traditionally attributed to the Greek mathematician Pythagoras, historical evidence indicates the concept predates him significantly. Ancient Babylonian tablets from 1900–1600 BCE demonstrate early knowledge through accurate calculations of the square root of 2 and integer triples like 3-4-5, while Indian texts such as the Baudhayana Sulba-sutra also mention it between 800 and 400 bce. Despite these earlier records, Pythagoras remains credited with the theorem due to later formalization in Euclid's Elements.",
           "rouge": {
-            "rouge1": 0.0999,
-            "rouge2": 0.0615,
-            "rougeL": 0.0819
+            "rouge1": 0.6218,
+            "rouge2": 0.356,
+            "rougeL": 0.5285
           },
           "claims_survived": 4,
           "claims_total": 5,
           "claim_survival_rate": 0.8,
-          "latency_s": 110.77,
-          "tokens_per_sec": 25.5,
+          "latency_s": 128.83,
+          "tokens_per_sec": 29.4,
           "reasoning_truncated": false
         },
         {
           "id": "sum_sci_tectonics",
           "domain": "scientific",
           "source": "https://www.britannica.com/science/plate-tectonics",
-          "summary": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Task: Summarize the provided text.\n    *   Constraint 1: Length must be between 3-5 sentences.\n    *   Constraint 2: Preserve key facts (accuracy is crucial).\n\n2.  **Analyze the Source Text:**\n    *   Fact 1: Theory formulated in the 1960s.\n    *   Fact 2: Structure involves lithosphere (rigid outer layer, ~100 km thick) over asthenosphere (plastic/moldable).\n    *   Fact 3: Lithosphere is divided into plates (7 large, 6-7 medium, several small).\n    *   Fact 4: Plates move relative to each other at 5-10 cm/year.\n    *   Fact 5: Interactions occur along boundaries (converge, diverge, slip) causing seismic/volcanic activity.\n    *   Fact 6: Converging plates form mountains; diverging plates open oceans/cause fractures.\n    *   Fact 7: Continents drift passively with the plates over millions of years, changing geography.\n\n3.  **Drafting the Summary (Iterative Process):**\n\n    *   *Attempt 1:* The theory of plate tectonics was developed in the 1960s and explains that Earth's rigid lithosphere floats on a plastic asthenosphere. This outer layer is divided into various plates, including seven large continental- and ocean-sized ones, which move relative to each other at rates of 5 to 10 cm per year. Interactions between these plates along their boundaries drive most seismic and volcanic activity while shaping features like mountains and oceans through convergence or divergence. Additionally, continents drift passively within the plates over millions of years, leading to significant changes in Earth's geography.\n\n    *   *Critique 1:*\n        *   Sentence count: 4 sentences. (Passes 3-5 constraint).\n        *   Key facts: Formulated date? Yes. Lithosphere/Asthenosphere structure? Yes. Plate count/movement speed? Yes. Boundaries/Activity/Mountains/Oceans? Yes. Continent drift? Yes.\n\n    *   *Attempt 2 (Refining for flow and conciseness):*\n        Formulated in the 1960s, the theory of plate tectonics describes Earth's rigid lithosphere as being composed of multiple plates that move over a plastic asthenosphere at rates of 5 to 10 cm per year. These plates interact along their boundaries through convergence, divergence, or sliding past one another, driving most seismic and volcanic activity while creating mountains or forming new oceans. Furthermore, continents are embedded within these plates and drift passively with them, causing significant geographical changes over millions of years.\n\n    *   *Critique 2:*\n        *   Sentence count: 3 sentences. (Passes constraint).\n        *   Key facts: Date? Yes. Lithosphere/Asthenosphere relationship? Yes. Speed? Yes. Boundary interactions/Effects? Yes. Continent drift? Yes.\n        *   Wait, I missed the specific breakdown of plates (large vs medium/small) in this draft, but it might be too detailed for a summary. The prompt says \"Preserve key facts.\" Is the plate count key? Probably less so than the movement and effects. However, Attempt 1 included the structure better. Let's try to balance specificity with flow.\n        *   Actually, looking at Attempt 2, it flows well but misses the specific formation date context slightly (it says \"Formulated in...\"). It covers most ground.\n\n    *   *Attempt 3 (Ensuring all major points are covered without being too dense):*\n        Formulated in the 1960s, the theory of plate tectonics posits that Earth's rigid lithosphere is divided into multiple plates that float and move over a plastic asthenosphere. These plates travel at rates of 5 to 10 cm per year, interacting along their boundaries where they converge, diverge, or slip past one another to generate seismic activity and shape geological features like mountains and oceans. Additionally, continents drift passively within these moving plates, resulting in significant changes to Earth's geography over millions of years.\n\n    *   *Critique 3:*\n        *   Sentence count: 3 sentences. (Passes constraint).\n        *   Key facts: Date? Yes. Lithosphere/Asthenosphere? Yes. Speed? Yes. Interactions/Convergence/Divergence/Volcanic activity? Yes. Continent drift? Yes.\n        *   Does it need the specific plate count breakdown? \"Divided into multiple plates\" is vague but accurate enough for a summary if space is tight. However, the prompt asks to preserve key facts. The text explicitly lists 7 large, etc. Maybe I should include that detail or focus on the movement aspect which is more critical.\n        *   Let's try to fit more specific details into 3-5 sentences.\n\n    *   *Attempt 4 (Expanding to meet sentence count and detail):*\n        The concept of plate tectonics was formulated in the 1960s, proposing that Earth has a rigid lithosphere about 100 km thick resting on a plastic asthenosphere. This outer layer is broken into large continental and ocean-sized plates that move relative to one another at rates of 5 to 10 cm per year. Interactions along plate boundaries drive most seismic and volcanic activity, causing mountains to rise during convergence or new oceans to form as plates diverge. Finally, continents are embedded in these moving plates, drifting passively over millions of years to significantly alter Earth's geography.\n\n    *   *Critique 4:*\n        *   Sentence count: 4 sentences. (Passes constraint).\n        *   Key facts check:\n            *   Formulated 1960s? Yes.\n            *   Lithosphere thickness/structure? Yes (100 km, plastic asthenosphere).\n            *   Plate types/movement speed? Yes (large/ocean-sized plates, 5-10 cm/year).\n            *   Boundary interactions/effects? Yes (seismic/volcanic, mountains rise/converge, oceans diverge).\n            *   Continent drift? Yes.\n\n4.  **Final Polish:** Attempt 4 looks solid. It hits all the main points clearly and fits the sentence constraint perfectly.\n\n5.  **Final Check against constraints:**\n    *   3-5 sentences? Yes (4 sentences).\n    *   Preserve key facts? Yes.\n    *   Summarize text? Yes.\n\n6.  **Construct Final Output.** (Matches Attempt 4 closely).\n\n    *Wait, let me double check the plate count detail.* The text says \"seven very large... six or seven medium-sized... several small ones.\" Is that a key fact worth keeping in a summary of this length? Usually, summaries generalize unless specific numbers are crucial. Given the sentence limit, generalizing to \"multiple plates\" is better than listing them all, but mentioning \"large continental and ocean-sized plates\" captures the essence without getting bogged down in counts. I will stick with Attempt 4's approach as it balances detail and brevity well.\n\n    *Revised Sentence 2:* \"This outer layer consists of large continental- and ocean-sized plates that move relative to one another at rates of 5 to 10 cm per year.\" -> This is specific enough without listing the exact counts which might clutter the summary too much, but the original text emphasizes the count. Let's see if I can fit it in.\n    \"This outer layer is broken into large continental and ocean-sized plates that move relative to one another at rates of 5 to 10 cm per year.\" (Still good).\n\n    Let's refine Attempt 4 slightly for better flow.\n\n    *Final Draft:*\n    The concept of plate tectonics was formulated in the 1960s, proposing that Earth has a rigid lithosphere about 100 km thick resting on a plastic asthenosphere. This outer layer is broken into large continental- and ocean-sized plates that move relative to one another at rates of 5 to 10 cm per year. Interactions along plate boundaries drive most seismic and volcanic activity, causing mountains to rise during convergence or new oceans to form as plates diverge. Finally, continents are embedded in these moving plates, drifting passively over millions of years to significantly alter Earth's geography.\n\n    *Count:* 4 sentences.\n    *Facts:* 1960s date, Lithosphere/Asthenosphere structure, Plate movement speed, Boundary interactions (mountains/oceans/seismic), Continent drift.\n    *Missing:* The specific breakdown of plate sizes (large vs medium vs small). Is that a key fact? It's part of the description of \"broken up into\". I will generalize it to avoid losing too much space on minor details if the core mechanism is more important, but I should try to capture the essence. Actually, looking at Attempt 4 again, it captures the *types* (large continental/ocean). That seems sufficient for a summary.\n\n    Let's check if I can add the plate count nuance into sentence 2 without bloating it too much? \"broken up into large, medium, and small plates that move...\" No, that gets wordy.\n    Okay, I will stick with Attempt 4. It is accurate to the core message.\n\n    Wait, I should check if \"100 km\" is a key fact. Yes, it's in the text explicitly describing thickness. I kept that.\n    Check \"seismic and volcanic activity\". Kept that.\n    Check \"converge, diverge, slip\". I mentioned convergence/divergence. Slipping (transform) was implied by boundaries but not explicit. The text says \"interact along their boundaries... converge, diverge, or slip past one another.\" My draft mentions convergence/divergence. To be safe on key facts, maybe include the boundary types more broadly.\n    \"Interactions along plate boundaries drive most seismic and volcanic activity through converging, diverging, or slipping plates...\"\n\n    Let's adjust Sentence 3 to include \"slip\".\n    Revised Sentence 3: Interactions along plate boundaries drive most seismic and volcanic activity through converging, diverging, or slipping past one another.\n\n    Okay, let's finalize.\n\n    *Draft:*\n    The concept of plate tectonics was formulated in the 1960s, proposing that Earth has a rigid lithosphere about 100 km thick resting on a plastic asthenosphere. This outer layer is broken into large continental- and ocean-sized plates that move relative to one another at rates of 5 to 10 cm per year. Interactions along plate boundaries drive most seismic and volcanic activity through converging, diverging, or slipping past one another, causing mountains to rise during convergence or new oceans to form as plates diverge. Finally, continents are embedded in these moving plates, drifting passively over millions of years to significantly alter Earth's geography.\n\n    *Sentence count:* 4.\n    *Facts:* All major points covered including the slip interaction which was omitted in previous draft but is now included.\n\n    Wait, looking at Sentence 3: \"causing mountains to rise during convergence or new oceans to form as plates diverge.\" This repeats \"converging/diverging\" slightly from the first part of the sentence. I can tighten it.\n    \"Interactions along plate boundaries drive most seismic and volcanic activity through converging, diverging, or slipping past one another, shaping mountains and oceans.\"\n\n    Let's try to keep the specific effects (mountains/oceans) as they are key consequences mentioned in the text.\n\n    *Final Polish:*\n    The concept of plate tectonics was formulated in the 1960s, proposing that Earth has a rigid lithosphere about 100 km thick resting on a plastic asthenosphere. This outer layer is broken into large continental- and ocean-sized plates that move relative to one another at rates of 5 to 10 cm per year. Interactions along plate boundaries drive most seismic and volcanic activity through converging, diverging, or slipping past one another, causing mountains to rise during convergence or new oceans to form as plates diverge. Finally, continents are embedded in these moving plates, drifting passively over millions of years to significantly alter Earth's geography.\n\n    This is 4 sentences. It covers the date, structure (lithosphere/asthenosphere), plate count types/movement speed, boundary interactions and effects, and continent drift. It meets all criteria.\n\n    Wait, I can condense sentence 3 slightly to make it flow better if needed, but 4 sentences is within the 3-5 range.\n    Actually, Sentence 2 says \"large continental- and ocean-sized plates\". The text mentions small ones too (\"several small ones\"). Maybe saying \"various sized plates\" is more accurate? Or just stick to what was written. The prompt asks to preserve key facts. Listing",
+          "summary": "Formulated in the 1960s, the theory of plate tectonics describes Earth's rigid lithosphere moving over a plastic asthenosphere at rates between 5 and 10 cm per year. These plates are broken into various sizes that interact along their boundaries through convergence, divergence, or slipping past one another. Such movements drive most seismic and volcanic activity while causing mountains to rise and oceans to form depending on whether plates converge or diverge. Consequently, continents drift passively with these moving plates over millions of years, leading to significant changes in Earth's geography.",
           "rouge": {
-            "rouge1": 0.073,
-            "rouge2": 0.036,
-            "rougeL": 0.0561
+            "rouge1": 0.5028,
+            "rouge2": 0.2147,
+            "rougeL": 0.3464
           },
           "claims_survived": 4,
           "claims_total": 5,
           "claim_survival_rate": 0.8,
-          "latency_s": 111.52,
-          "tokens_per_sec": 25.3,
+          "latency_s": 45.18,
+          "tokens_per_sec": 29.8,
           "reasoning_truncated": false
         },
         {
           "id": "sum_sci_dna",
           "domain": "scientific",
           "source": "https://www.britannica.com/science/DNA",
-          "summary": "DNA strands consist of chains of nucleotides containing deoxyribose sugar, phosphate groups, and nitrogenous bases linked by covalent bonds into a backbone. These strands are held together by specific hydrogen bonds between base pairs—adenine with thymine and cytosine with guanine—to form the double-helix structure discovered in 1953 by James Watson and Francis Crick. This discovery, aided by Rosalind Franklin and Maurice Wilkins, revealed that two antiparallel strands wind around each other. Consequently, this breakthrough led to significant advances in understanding DNA replication and hereditary control of cellular activities.",
+          "summary": "Each strand of a DNA molecule is composed of nucleotides consisting of deoxyribose sugar, phosphate groups, and nitrogenous bases linked by covalent bonds to form a backbone. Two strands are held together by specific hydrogen bonding between base pairs, specifically adenine with thymine and cytosine with guanine. In 1953, Watson, Crick, Franklin, and Wilkins determined that DNA forms a double-helix structure with two antiparallel strands wound around each other. This discovery provided significant insights into the mechanisms of hereditary control and DNA replication.",
           "rouge": {
-            "rouge1": 0.6136,
-            "rouge2": 0.2184,
-            "rougeL": 0.4545
+            "rouge1": 0.6272,
+            "rouge2": 0.2036,
+            "rougeL": 0.4497
           },
           "claims_survived": 5,
           "claims_total": 5,
           "claim_survival_rate": 1.0,
-          "latency_s": 73.53,
-          "tokens_per_sec": 25.8,
+          "latency_s": 36.32,
+          "tokens_per_sec": 29.7,
           "reasoning_truncated": false
         }
       ],
-      "elapsed_s": 580.2
+      "elapsed_s": 465.5
     },
     "open_book_qa": {
       "task": "open_book_qa",
-      "overall_accuracy": 1.0,
+      "overall_accuracy": 0.944,
       "accuracy_by_tier": {
         "easy": 1.0,
         "medium": 1.0,
-        "hard": 1.0
+        "hard": 0.833
       },
       "results": [
         {
@@ -827,25 +827,25 @@
               "gold": "Flighty and immature.",
               "predicted": "Flighty and immature",
               "correct": true,
-              "latency_s": 14.23,
+              "latency_s": 16.55,
               "reasoning_truncated": false
             },
             {
               "difficulty": "medium",
               "question": "Who is the heroine of the novel, and what is her nickname?",
               "gold": "Elizabeth Bennet, nicknamed “Lizzy.”",
-              "predicted": "Elizabeth is the heroine of the novel, and her nickname is Lizzy.",
+              "predicted": "The heroine is Elizabeth, and her nickname is \"Lizzy.\"",
               "correct": true,
-              "latency_s": 24.78,
+              "latency_s": 22.5,
               "reasoning_truncated": false
             },
             {
               "difficulty": "hard",
               "question": "Based on the passage, which trait does Elizabeth share with her father, and what does that imply about her view of society?",
               "gold": "She shares her father's distaste for conventional views about the importance of wealth and rank, implying she does not judge people by social status.",
-              "predicted": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Source material: A short passage about the novel \"Pride and Prejudice\".\n    *   Task: Answer a specific question based *only* on the passage.\n    *   Constraint: Answer concisely.\n    *   Question: Based on the passage, which trait does Elizabeth share with her father, and what does that imply about her view of society?\n\n2.  **Analyze the Passage:**\n    *   \"Pride and Prejudice is set in rural England...\" (Context)\n    *   \"...centers on the Bennet family...\"\n    *   \"The eldest, Jane, is sweet-tempered and modest.\"\n    *   \"Elizabeth, or “Lizzy,” the heroine of the novel, is intelligent and high-spirited.\"\n    *   \"**She shares her father’s distaste for the conventional views of society as to the importance of wealth and rank.**\" (Key sentence)\n\n3.  **Extract Information:**\n    *   Trait shared with father: Distaste for the conventional views of society regarding the importance of wealth and rank.\n    *   Implication about her view of society: She shares this distaste, implying she holds a similar negative opinion towards the traditional societal emphasis on money and status (or simply that she disagrees with these conventional views). The text explicitly states she \"shares\" the trait, so the implication is that she also dislikes/objects to those views.\n\n4.  **Draft Answer:**\n    *   Trait: Distaste for conventional views of society regarding wealth and rank.\n    *   Implication: She holds a similar dislike for these views (or implies she values them less).\n    *   Draft: Elizabeth shares her father's distaste for the conventional views of society as to the importance of wealth and rank, implying that she also disagrees with or dislikes traditional societal values regarding money and status.\n\n5.  **Refine for Conciseness:**\n    *   The question asks \"which trait\" and \"what does that imply\".\n    *   Trait: Distaste for conventional views on the importance of wealth and rank.\n    *   Implication: It implies she shares this distaste/disagreement with them.\n    *   Concise Draft: Elizabeth shares her father's distaste for the conventional views regarding the importance of wealth and rank, implying that she also disagrees with societal values centered on money and status.\n\n6.  **Final Check against Constraints:**\n    *   Based *only* on passage? Yes (text says \"She shares her father’s distaste...\").\n    *   Concisely? Yes.\n\n7.  **Final Polish:** Elizabeth shares a distaste for conventional views of society regarding the importance of wealth and rank, implying that she holds similar objections to traditional social values concerning money and status. (Wait, simpler is better).\n    *   \"Elizabeth shares her father's distaste for the conventional views of society as to the importance of wealth and rank.\" This covers the trait part directly from the text. The implication is that she shares this view.\n    *   Let's combine: Elizabeth shares her father's distaste for conventional views regarding the importance of wealth and rank, implying she holds a similar negative opinion towards societal values focused on money and status.\n\n    Actually, looking at the sentence structure: \"She shares her father’s distaste...\". This implies she has the same view.\n    Let's make it even tighter.\n    \"Elizabeth shares her father's distaste for conventional views of society regarding wealth and rank, implying that she also holds this negative opinion on traditional societal values.\"\n\n    Wait, I can just paraphrase the implication part slightly more naturally. The text says she shares his *distaste*. So the implication is that she dislikes these conventional views too.\n    \n    Final Answer Formulation: Elizabeth shares her father's distaste for conventional views of society regarding wealth and rank, implying she also disagrees with societal values centered on money and status.\n\n    Let's check if I can be even more concise while keeping accuracy.\n    \"Elizabeth shares her father's distaste for the importance of wealth and rank in society, implying she holds similar objections to traditional social conventions.\"\n\n    Okay, let's stick close to the text to ensure accuracy.\n    Trait: Distaste for conventional views on wealth and rank.\n    Implication: She holds this same view (distaste).\n\n    Final Selection: Elizabeth shares her father's distaste for conventional views of society as to the importance of wealth and rank, implying she also disagrees with traditional societal values regarding money and status.\n\n    Wait, \"implies\" might be a bit interpretive based on \"shares\". But the question asks what it implies about her view. If she shares his distaste, it implies *her* view is one of distaste as well.\n    \n    Revised: Elizabeth shares her father's distaste for conventional views regarding wealth and rank, implying that she also holds a negative opinion towards such societal values.\n\n    Let's go with the most direct reading.\n    Trait: Distaste for conventional views on wealth and rank.\n    Implication: She holds similar objections to these views.\n\n    Final Answer: Elizabeth shares her father's distaste for conventional views of society regarding the importance of wealth and rank, implying that she also dislikes traditional societal values centered on money and status.\n\n    Actually, looking at the instruction \"Answer concisely.\"\n    \"Elizabeth shares her father's distaste for conventional views on wealth and rank, implying she holds a similar negative opinion towards societal values regarding money and status.\" -> 2 sentences? Or one sentence? One is better.\n\n    \"Elizabeth shares her father's distaste for conventional views of society as to the importance of wealth and rank, implying that she also disagrees with traditional societal values concerning money and status.\"\n\n    Let's try to match the text exactly where possible.\n    Text: \"She shares her father’s distaste for the conventional views of society as to the importance of wealth and rank.\"\n    \n    Answer: Elizabeth shares her",
+              "predicted": "Elizabeth shares her father's distaste for society's conventional views regarding the importance of wealth and rank, implying she similarly rejects these societal values.",
               "correct": true,
-              "latency_s": 49.79,
+              "latency_s": 68.11,
               "reasoning_truncated": false
             }
           ],
@@ -862,25 +862,25 @@
               "gold": "Kentucky.",
               "predicted": "Kentucky",
               "correct": true,
-              "latency_s": 23.92,
+              "latency_s": 54.43,
               "reasoning_truncated": false
             },
             {
               "difficulty": "medium",
               "question": "What does the green light at the end of Daisy's dock symbolize?",
               "gold": "Gatsby's unattainable dream and ambition.",
-              "predicted": "Gatsby's unattainable dream and ambition",
+              "predicted": "Gatsby’s unattainable dream and ambition.",
               "correct": true,
-              "latency_s": 18.53,
+              "latency_s": 15.58,
               "reasoning_truncated": false
             },
             {
               "difficulty": "hard",
               "question": "According to the passage, what is the difference between West Egg and East Egg, and which society ultimately triumphs?",
               "gold": "West Egg represents brash, materialistic 'new money' and East Egg refined, inherited 'old money'; the old-money society ultimately triumphs.",
-              "predicted": "West Egg represents “new money” with brashness and materialism, whereas East Egg represents “old money” with refinement and inherited wealth. The “old money” society ultimately triumphs.",
+              "predicted": "West Egg represents \"new money\" with brashness and materialism, whereas East Egg represents \"old money\" with refinement and inherited wealth. The \"old money\" society ultimately triumphs.",
               "correct": true,
-              "latency_s": 32.5,
+              "latency_s": 26.47,
               "reasoning_truncated": false
             }
           ],
@@ -897,16 +897,16 @@
               "gold": "30 km.",
               "predicted": "30 km (18.6 miles)",
               "correct": true,
-              "latency_s": 22.53,
+              "latency_s": 13.84,
               "reasoning_truncated": false
             },
             {
               "difficulty": "medium",
               "question": "According to the passage, why can not even light escape from inside the event horizon?",
               "gold": "Because inside the event horizon the escape velocity exceeds the speed of light.",
-              "predicted": "Inside the event horizon, the escape velocity exceeds the speed of light.",
+              "predicted": "Inside the event horizon, the escape velocity exceeds",
               "correct": true,
-              "latency_s": 25.3,
+              "latency_s": 76.92,
               "reasoning_truncated": false
             },
             {
@@ -915,7 +915,7 @@
               "gold": "It would roughly double, because the Schwarzschild radius is proportional to the mass of the collapsing star.",
               "predicted": "The Schwarzschild radius would double because its size is proportional to the mass of the collapsing star.",
               "correct": true,
-              "latency_s": 46.24,
+              "latency_s": 68.6,
               "reasoning_truncated": false
             }
           ],
@@ -932,7 +932,7 @@
               "gold": "Survival rates, fertility, mating success, or other life cycle aspects.",
               "predicted": "Survival rates, fertility, mating success, and other life cycle aspects.",
               "correct": true,
-              "latency_s": 29.4,
+              "latency_s": 51.15,
               "reasoning_truncated": false
             },
             {
@@ -941,16 +941,16 @@
               "gold": "They are preserved and passed on to future generations.",
               "predicted": "They are preserved and passed on to future generations.",
               "correct": true,
-              "latency_s": 14.56,
+              "latency_s": 18.09,
               "reasoning_truncated": false
             },
             {
               "difficulty": "hard",
               "question": "Based on the passage, explain how a beneficial mutation becomes common in a population over time.",
               "gold": "A beneficial mutation improves survival and reproduction, so natural selection favors it, causing it to increase in frequency over generations.",
-              "predicted": "Beneficial mutations improve an organism's ability to survive and reproduce. Natural selection then favors these advantageous mutations, causing them to be preserved and passed on through selective reproduction, which increases their",
+              "predicted": "Beneficial mutations improve an organism's ability to survive and reproduce. Consequently, natural selection favors these advantageous mutations, causing their frequency to increase over generations.",
               "correct": true,
-              "latency_s": 51.01,
+              "latency_s": 27.45,
               "reasoning_truncated": false
             }
           ],
@@ -967,29 +967,29 @@
               "gold": "Enlightened despots.",
               "predicted": "They adopted the role of \"enlightened despots.\"",
               "correct": true,
-              "latency_s": 43.37,
+              "latency_s": 20.17,
               "reasoning_truncated": false
             },
             {
               "difficulty": "medium",
               "question": "Which two groups had usually been exempt from taxation before the rulers tried to tax them?",
               "gold": "The nobles and the clergy.",
-              "predicted": "The nobles and clergy",
+              "predicted": "nobles and clergy",
               "correct": true,
-              "latency_s": 19.93,
+              "latency_s": 12.32,
               "reasoning_truncated": false
             },
             {
               "difficulty": "hard",
               "question": "According to the passage, how was the American Revolution connected to the same backlash occurring in Europe?",
               "gold": "The same aristocratic reaction against taxation appeared in North America, where the backlash contributed to the American Revolution, which began with a refusal to pay a tax imposed by the king of Great Britain.",
-              "predicted": "In North America, this backlash contributed to the American Revolution, which began with the refusal to pay a tax imposed by the king of Great Britain.",
-              "correct": true,
-              "latency_s": 28.01,
+              "predicted": "In North America, this backlash contributed to the American Revolution.",
+              "correct": false,
+              "latency_s": 31.78,
               "reasoning_truncated": false
             }
           ],
-          "accuracy": 1.0
+          "accuracy": 0.667
         },
         {
           "id": "qa_hist_printing",
@@ -1000,9 +1000,9 @@
               "difficulty": "easy",
               "question": "What mechanism did Gutenberg's press use to exert pressure on the paper?",
               "gold": "A long handle turning a heavy wooden screw.",
-              "predicted": "A long handle was used to turn a heavy wooden screw.",
+              "predicted": "A long handle used to turn a heavy wooden screw.",
               "correct": true,
-              "latency_s": 26.46,
+              "latency_s": 19.71,
               "reasoning_truncated": false
             },
             {
@@ -1011,28 +1011,28 @@
               "gold": "The ancient wine-and-olive press of the Mediterranean area.",
               "predicted": "The ancient wine-and-olive press.",
               "correct": true,
-              "latency_s": 20.88,
+              "latency_s": 15.21,
               "reasoning_truncated": false
             },
             {
               "difficulty": "hard",
               "question": "Based on the passage, what evidence shows that movable-type printing existed outside Europe before Gutenberg's Bible?",
               "gold": "Jikji, a book of Buddhist teachings, was printed from movable type in Korea in 1377—before Gutenberg's 1455 Bible.",
-              "predicted": "The passage states that Jikji, a book of the teachings of Buddhist priests, was printed by hand from movable type in Korea in 1377.",
+              "predicted": "Jikji, a book of the teachings of Buddhist priests, was printed by hand from movable type in Korea in 1377.",
               "correct": true,
-              "latency_s": 43.55,
+              "latency_s": 28.07,
               "reasoning_truncated": false
             }
           ],
           "accuracy": 1.0
         }
       ],
-      "elapsed_s": 535.0
+      "elapsed_s": 586.9
     },
     "structured_output": {
       "task": "structured_output",
-      "strict_compliance_rate": 0.833,
-      "lenient_compliance_rate": 0.833,
+      "strict_compliance_rate": 1.0,
+      "lenient_compliance_rate": 1.0,
       "results": [
         {
           "name": "json_person",
@@ -1048,26 +1048,26 @@
             "had_fence": false
           },
           "response": "{\n  \"name\": \"Alice Johnson\",\n  \"age\": 30,\n  \"city\": \"New York\"\n}",
-          "latency_s": 37.47,
-          "tokens_per_sec": 25.6,
+          "latency_s": 15.17,
+          "tokens_per_sec": 29.8,
           "reasoning_truncated": false
         },
         {
           "name": "json_nested",
           "validator": "json",
-          "strict_compliant": false,
-          "lenient_compliant": false,
+          "strict_compliant": true,
+          "lenient_compliant": true,
           "details": {
             "required": [
               "title",
               "year",
               "authors"
             ],
-            "had_fence": true
+            "had_fence": false
           },
-          "response": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: None (implicit context, likely a request for a specific piece of information but no query provided yet). Wait, looking at the prompt again: \"Return ONLY a JSON object with keys \"title\", \"year\", and \"authors\", where \"authors\" is a list of strings. No other text.\"\n    *   Problem: There is no question or topic provided to answer. I cannot generate specific metadata (title, year, authors) without knowing what entity the user is referring to.\n    *   Constraint: \"Return ONLY a JSON object... No other text.\"\n\n2.  **Determine the appropriate response:**\n    *   Since there's no query, I need to acknowledge that I can't fulfill the request as stated (no content provided), but I must adhere to the formatting constraint (\"ONLY a JSON object\").\n    *   However, usually, in these scenarios, if the user asks for metadata without providing the source material, it might be a test of my ability to follow constraints or a mistake.\n    *   If I return an error message inside JSON, it might violate the spirit of \"title\", \"year\", \"authors\".\n    *   If I return empty/null values?\n    *   Actually, looking at typical interactions: Often users expect me to know something specific (like a famous paper) or they forgot to include the context. But as an AI, I don't have external context unless provided.\n    *   Wait, maybe this is a system instruction test? Or perhaps the user expects me to pick a random work? No, that's hallucination.\n    *   Best approach: Since I cannot know what they want without input, I should return a JSON object indicating an error or missing information, but strictly following the schema requested. However, the prompt says \"Return ONLY a JSON object with keys...\". If I add an `error` key, it might violate \"with keys 'title', 'year', and 'authors'\".\n    *   Let's consider if this is a trick question where I need to output a placeholder or nulls.\n    *   Actually, the most helpful response while adhering strictly to constraints (if I must) is to return a JSON object that represents \"unknown\" or \"missing input\", but since I can't ask clarifying questions without breaking the \"ONLY JSON\" rule...\n    *   Wait, if I just output empty strings? `{\"title\": \"\", \"year\": \"\", \"authors\": []}`. This adheres to the schema.\n    *   But maybe there's a hidden context? No.\n    *   Okay, I will assume this is a test of formatting compliance. I will return a valid JSON object with the requested keys, but since there is no data to provide, I'll use placeholders or nulls. However, \"authors\" must be a list of strings (empty list `[]` works). Title and Year can be empty strings.\n    *   Actually, usually when users prompt like this without context, they might have made a mistake. But as an AI, I should not output text explaining the mistake if told to return ONLY JSON.\n    *   Decision: Return a JSON object with the required keys, values indicating \"no data provided\" or empty/unknown, ensuring valid JSON syntax.\n\n    *Self-Correction:* If I provide `null` for title and year, is that allowed? The prompt says \"keys 'title', 'year'\". It doesn't restrict value types explicitly beyond \"authors\" being a list of strings. So `\"title\": null`, `\"year\": null`, `\"authors\": []` is valid JSON.\n    *   However, to be safe and strictly follow the instruction's implied intent (a record), I'll use empty strings for text fields.\n\n    *Wait, one more consideration:* Is there a specific famous paper this prompt implies? Sometimes prompts like \"Return ONLY a JSON object...\" are followed by an implicit context in a chain, but here it's standalone.\n    *   If I must generate content, I can't guess.\n    *   Okay, I will output the structure with empty/default values to show compliance without hallucinating specific data that might be wrong.\n\n    *Wait, re-reading:* \"Return ONLY a JSON object...\".\n    *   If I output `{\"title\": \"\", \"year\": \"\", \"authors\": []}`, it satisfies the schema constraints (keys exist, authors is list of strings).\n    *   Let's do that. It avoids violating the negative constraint (\"No other text\").\n\n3.  **Drafting the JSON:**\n    ```json\n    {\n      \"title\": \"\",\n      \"year\": \"\",\n      \"authors\": []\n    }\n    ```\n\n4.  **Final Check:**\n    *   Keys: title, year, authors? Yes.\n    *   Authors type: List of strings? Yes (empty list is valid).\n    *   Only JSON object? Yes.\n    *   No other text? Yes.\n\n    *Wait, actually:* If I output an empty response or an error message explaining the lack of input, it violates \"No other text\". But if I output `{\"title\": \"...\", ...}` with fake data, it's hallucination.\n    *   The safest and most compliant path is to indicate missing info within the JSON structure itself using empty values.\n\n    *Alternative:* Maybe I should acknowledge that no input was provided? But \"No other text\" usually means no markdown explanations outside the JSON block.\n    *   Let's stick with valid placeholders.\n\n    *(Self-Correction)*: Wait, if I just output `null` for everything, is it better? No, keys must exist.\n    Okay, I'll use empty strings and an empty list.\n\n    *(Wait, one more thought)*: Is there a chance the user expects me to know about *this specific prompt* as a known entity? No.\n    Is there a chance this is a test case where I should return a specific famous paper? Unlikely without instruction.\n    Okay, placeholder values it is.\n\n    *(Wait, actually)*: If I am an AI assistant, and the user gives me a constraint but no content, the most logical JSON response reflecting that state is to show empty fields.\n\n    Let's refine the \"authors\" field. It must be a list of strings. `[]` fits perfectly.\n    Title/Year: Strings. `\"\"` fits perfectly.\n\n    Final decision: Output valid JSON with empty values.\n\n    *(Wait, hold on)*: Often in these specific constraint tests, if there is no input data, the model might just output a standard \"error\" structure or similar. But since I must strictly follow keys...\n    Actually, maybe I should check if there's any implicit context I'm missing. No.\n    Okay, proceeding with empty values.\n\n    *(Wait, reconsideration)*: If I simply say `{\"title\": \"Unknown\", \"year\": null, \"authors\": []}`? Better to use empty strings for consistency with schema expectation of \"strings\".\n    Wait, \"year\" is often a string in bibliographic data (e.g., \"2023\"). So \"\" works.\n\n    Let's produce the JSON.\n\n    *(Wait, final check)*: Is there any risk that returning empty values looks like an error? Yes, but it's safer than breaking constraints with text explanation.\n    However, if I look at similar tasks, usually users expect me to answer a question *about* something. Since there is no question, I cannot answer.\n    But the instruction \"Return ONLY...\" overrides my ability to ask for clarification.\n    So I must return JSON.\n\n    Okay, I will generate the JSON with empty/default values.\n\n    Wait, I should check if I can add an `error` key? The prompt says \"with keys 'title', 'year', and 'authors'\". It implies *only* these keys or at least including them. Adding others might violate strict interpretation. I will stick to exactly those three keys.\n\n    Okay, ready.\n\n    Wait, I need to make sure I don't add markdown code blocks like ```json ... ```. Just the raw JSON text? \"Return ONLY a JSON object\". Usually means raw text or within a block if it's standard chat behavior. But \"No other text\" suggests no markdown fences either if interpreted strictly. However, standard practice for \"JSON object\" requests often allows markdown fencing. But to be safest with \"NO OTHER TEXT\", I should output raw JSON without markdown ticks.\n    Actually, looking at previous instructions in this environment, usually markdown blocks are preferred for readability unless specified \"raw text\". But \"No other text\" usually targets conversational filler. I will output the JSON block but ensure no explanatory text exists outside it. Wait, if I put ```json ... ```, is that \"other text\"? Technically yes.\n    Safest bet: Raw JSON string without markdown fences.\n\n    Wait, checking system instructions... I am an AI. Usually, code blocks are expected for JSON to be parsed correctly by users/tools. But the prompt says \"Return ONLY a JSON object\". I will output just the raw JSON text to be strictly compliant.\n\n    Actually, looking at how models behave: Most put it in a block. If I don't use a block, it might look like code.\n    Let's try to follow the instruction literally: No markdown, just the object string.\n\n    Wait, re-reading \"Return ONLY a JSON object...\".\n    Okay, I will output the raw JSON.\n\n    Wait, one last check on keys: \"title\", \"year\", \"authors\".",
-          "latency_s": 81.57,
-          "tokens_per_sec": 25.3,
+          "response": "{\n  \"title\": \"The Great Gatsby\",\n  \"year\": 1925,\n  \"authors\": [\"F. Scott Fitzgerald\"]\n}",
+          "latency_s": 81.67,
+          "tokens_per_sec": 29.4,
           "reasoning_truncated": false
         },
         {
@@ -1079,11 +1079,11 @@
             "has_header": true,
             "has_bold": true,
             "has_bullet": true,
-            "non_md_lines": 2
+            "non_md_lines": 0
           },
-          "response": "## How Plants Create Food\n\nPhotosynthesis is the biological process by which green plants, algae, and some bacteria convert light energy into chemical energy. This vital reaction allows organisms to produce their own food using sunlight, water, and carbon dioxide. The pigment **chlorophyll** within plant cells plays a crucial role in absorbing solar energy to drive this transformation.\n\nKey components of the process include:\n\n*   Absorption of **sunlight** by chlorophyll\n*   Uptake of water from roots\n*   Intake of carbon dioxide from the atmosphere\n\nThrough this mechanism, plants produce glucose for growth and release oxygen into the air as a beneficial byproduct.",
-          "latency_s": 34.25,
-          "tokens_per_sec": 25.6,
+          "response": "## The Process of Photosynthesis\n\nPlants create their own food using sunlight, water, and carbon dioxide. During this process, green plants absorb light energy to convert gases into chemical energy stored in sugar molecules. A key component involved is the pigment known as **chlorophyll**, which gives plants their green color.\n\n*   **Inputs:** Carbon dioxide from the air and water from the soil.\n*   **Energy Source:** Sunlight absorbed by leaves.\n*   **Outputs:** Glucose (sugar) for energy and oxygen released into the atmosphere.",
+          "latency_s": 29.84,
+          "tokens_per_sec": 29.8,
           "reasoning_truncated": false
         },
         {
@@ -1095,9 +1095,9 @@
             "has_function": true,
             "no_backticks": true
           },
-          "response": "def fibonacci(n):\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a",
-          "latency_s": 67.61,
-          "tokens_per_sec": 25.5,
+          "response": "def fibonacci(n):\n    if n <= 0:\n        return 0\n    elif n == 1:\n        return 1\n    \n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b",
+          "latency_s": 39.69,
+          "tokens_per_sec": 29.6,
           "reasoning_truncated": false
         },
         {
@@ -1111,8 +1111,8 @@
             "expected": 5
           },
           "response": "1. Mercury\n2. Venus\n3. Earth\n4. Mars\n5. Jupiter",
-          "latency_s": 18.65,
-          "tokens_per_sec": 25.7,
+          "latency_s": 14.26,
+          "tokens_per_sec": 29.9,
           "reasoning_truncated": false
         },
         {
@@ -1125,12 +1125,12 @@
             "expected_fields": 3
           },
           "response": "Apple,Red,1.99",
-          "latency_s": 22.32,
-          "tokens_per_sec": 25.7,
+          "latency_s": 29.0,
+          "tokens_per_sec": 29.5,
           "reasoning_truncated": false
         }
       ],
-      "elapsed_s": 261.9
+      "elapsed_s": 209.6
     },
     "creative_generation": {
       "task": "creative_generation",
@@ -1326,20 +1326,20 @@
     "context_retention": 0.799,
     "context_retention_stale_rate": 0.0,
     "summarization_claim_survival": {
-      "prose": 1.0,
-      "mathematical": 0.9,
+      "prose": 0.9,
+      "mathematical": 0.8,
       "scientific": 0.9
     },
-    "summarization_faithfulness_drop": 0.1,
-    "summarization_mean_rouge_l": 0.201,
-    "open_book_accuracy": 1.0,
+    "summarization_faithfulness_drop": 0.05,
+    "summarization_mean_rouge_l": 0.434,
+    "open_book_accuracy": 0.944,
     "open_book_by_tier": {
       "easy": 1.0,
       "medium": 1.0,
-      "hard": 1.0
+      "hard": 0.833
     },
-    "structured_strict": 0.833,
-    "structured_lenient": 0.833,
+    "structured_strict": 1.0,
+    "structured_lenient": 1.0,
     "creative_constraints": 0.333,
     "code_pass_at_1": 0.667
   }
