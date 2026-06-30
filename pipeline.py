@@ -61,14 +61,15 @@ MODELS = [
     "deepseek-r1-1b5",
     "deepscaler-1b5",
     "nemotron-1b5",
+    # 3b
     "llama3.2:3b",
     "qwen2.5-coder:3b",
     "ministral-3:3b",
-    "phi4-mini:latest",
     "vibethinker-3b",
     "hermes3-llama32-3b",
     "smollm3-3b",
     # 4B track
+    "phi4-mini:latest",
     "gemma3-4b",
     "glm-edge-4b",
     "crow-4b",
