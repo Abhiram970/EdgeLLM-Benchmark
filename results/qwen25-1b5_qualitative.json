@@ -1,0 +1,57 @@
+{
+  "model": "qwen25-1b5",
+  "judge_model": "claude-sonnet-4-6",
+  "timestamp": "2026-06-30T21:35:17.102646Z",
+  "task2_faithfulness": {
+    "sum_prose_frenchrev": {
+      "score": 9,
+      "rationale": "The summary preserves virtually all key facts from the source passage with only minor omissions, such as the specific detail that 'many of whom owned land' regarding the peasants who attained improved living standards, but no hallucinations or distortions are present."
+    },
+    "sum_prose_industrial": {
+      "score": 8,
+      "rationale": "The summary accurately captures most key facts but slightly misrepresents the first point by saying 'mass production of goods at low wages' rather than emphasizing the replacement of the domestic system with the factory system and the tedious/dangerous working conditions, and omits that Britain was also part of the second Industrial Revolution alongside continental Europe, North America, and Japan."
+    },
+    "sum_math_calculus": {
+      "score": 6,
+      "rationale": "The summary captures most key facts but contains a notable error: it calls the indefinite integral a 'definite integral,' which directly contradicts the source passage that explicitly calls it an '(indefinite) integral,' and it also omits the clarification that the integral symbol ∫ is an elongated S standing for 'sum.'"
+    },
+    "sum_math_pythagorean": {
+      "score": 7,
+      "rationale": "The summary accurately captures the theorem's definition and ancient origins, but incorrectly states the Indian texts date to 1900–1600 BCE (that range applies to Babylonian tablets; the Baudhayana Sulba-sutra was written between 800–400 BCE), and the explanation for why credit went to Pythagoras ('due to his influence') is an unsupported inference not present in the source."
+    },
+    "sum_sci_tectonics": {
+      "score": 8,
+      "rationale": "The summary accurately captures most key facts including plate sizes, movement rates, and geological consequences, but omits the ~100 km thickness of the lithosphere, the description of the asthenosphere as plastic/partially molten, and the nuance that earthquakes and volcanoes can also occur in plate interiors rather than only at boundaries."
+    },
+    "sum_sci_dna": {
+      "score": 9,
+      "rationale": "The summary accurately preserves nearly all key facts from the source, with only minor omissions (the contribution of Rosalind Franklin and Maurice Wilkins, and the term 'antiparallel') and trivial wording changes that do not distort the meaning."
+    }
+  },
+  "task5_quality": {
+    "article": {
+      "score": 5,
+      "rationale": "The article is coherent and readable but relies heavily on generic phrasing ('incredible discovery,' 'revolutionize our understanding'), lacks specific vivid details about the creature itself, and ends with a boilerplate environmental appeal that feels tacked on rather than organically integrated into the narrative."
+    },
+    "poem_question_word": {
+      "score": 3,
+      "rationale": "The piece is only six lines (half the required length), relies on generic, predictable imagery and phrasing ('heart so full of wonder,' 'capture this moment'), and lacks a distinctive voice or any concrete sensory detail that would make the rooftop scene feel vivid or original."
+    },
+    "short_story": {
+      "score": 3,
+      "rationale": "The piece suffers from incoherent logic (Emily's dialogue makes no sense, the children subplot feels disconnected and unresolved), a generic and flat voice, and a meandering non-arc that substitutes vague philosophical musing for an actual ending."
+    },
+    "acrostic": {
+      "score": 5,
+      "rationale": "The poem hits familiar nature imagery without surprising turns or a distinctive voice, and the eagle line feels disconnected from the oceanic theme, making the piece competent but generic."
+    },
+    "dialogue": {
+      "score": 5,
+      "rationale": "The dialogue is coherent and covers the basic conflict, but it feels generic and formulaic, with flat character voices, repetitive phrasing around 'moving forward' and 'memories,' and Sarah's line 8 ('And it will be for you too, but not now') is oddly incoherent, undermining the overall execution."
+    },
+    "six_word_story": {
+      "score": 4,
+      "rationale": "A grammatically correct and visually coherent image, but it reads as a generic, unremarkable observation with no narrative tension, emotional resonance, or distinctive voice to elevate it beyond a simple descriptive sentence."
+    }
+  }
+}

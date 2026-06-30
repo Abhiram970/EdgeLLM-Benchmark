@@ -20,7 +20,8 @@ MODELS = [
     ("mradermacher/OpenReasoning-Nemotron-1.5B-GGUF",            "nemotron-1b5"),           # DONE
     # ("Crownelius/Crow-4B-Opus-4.6-Distill-Heretic_Qwen3.5",      "crow-4b"),               # DONE
     # Grok distill - dropping, no Q4 available and only 100 training examples
-    ("bartowski/agentica-org_DeepScaleR-1.5B-Preview-GGUF", "deepscaler-1b5")
+    ("bartowski/agentica-org_DeepScaleR-1.5B-Preview-GGUF", "deepscaler-1b5"),
+    ("bartowski/Llama-3.2-1B-Instruct-GGUF",                 "llama32-1b"),            # DONE
 ]
 
 def find_q4km_file(repo_id):
