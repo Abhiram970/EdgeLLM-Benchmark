@@ -304,6 +304,47 @@ Removed the Python execution path. Added Ruby dispatch mirroring Perl. Updated `
 
 The old fixture passed a model using `sort { $a <=> $b }` (wrong numeric comparator) because Perl's fallback string sort coincidentally produced the right words in the right order. The new fixture correctly fails it.
 
+---
+
+# Pipeline — Ollama num_ctx fix (pipeline.py)
+
+## _options() — num_ctx explicitly set
+
+Ollama defaults to `num_ctx=2048` for all models regardless of their trained context window. For multi-turn retention scripts (14 turns, each response up to 500 tokens), this caused silent context truncation at later turns. Symptom: degenerate one- or two-word responses at synthesis probe (turn 13), e.g. `"Okay,"` for ret_astronomer on gemma3-4b.
+
+**Fix:** Added `"num_ctx": 32768` to the options dict returned by `_options()`. This applies to every Ollama call in the pipeline (`ollama_chat` and `ollama_generate`).
+
+| Before | After |
+|---|---|
+| No `num_ctx` set → Ollama default 2048 | `num_ctx: 32768` |
+| ret_astronomer synthesis: `"Okay,"` | Full response, score 0.5 |
+| gemma3-4b Task 1 overall: 0.596 | 0.674 |
+
+32768 is sufficient for the longest retention script with room to spare. No model in the roster requires the full context window (up to 128K for gemma3-4b) for this benchmark.
+
+---
+
+# Task 1 — gemma3-4b baseline (post-redesign + num_ctx fix)
+
+Run date: 2026-06-30. Full run, 5 scripts, num_ctx=32768, max_tokens=500.
+
+| Metric | Value |
+|---|---|
+| overall score | 0.674 |
+| stale_contamination_rate | 0.0 |
+
+| Script | mid | synthesis | syn_stale | weighted |
+|---|---|---|---|---|
+| ret_hydrologist | 0.875 | 1.000 | 0 | 0.962 |
+| ret_chef | 0.714 | 0.571 | 0 | 0.614 |
+| ret_astronomer | 0.333 | 0.500 | 0 | 0.450 |
+| ret_archivist | 0.429 | 0.571 | 0 | 0.528 |
+| ret_engineer | 0.714 | 0.857 | 0 | 0.814 |
+
+Notable: ret_astronomer mid probe stale_count=1 is a false positive — scorer flags AR-3398 as stale at turn 8, but the grant update (→AR-3405) doesn't occur until turn 11. The mid probe fires before that update, so the model's AR-3398 response is actually correct at that point. This is a known structural issue with using the final facts dict for mid-probe scoring when some facts haven't been updated yet.
+
+---
+
 ### Baseline results (qwen25-1b5 vs gemma3-4b)
 
 | Item | qwen25-1b5 | gemma3-4b |
