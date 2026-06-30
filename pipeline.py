@@ -815,6 +815,12 @@ def run_model(model_name: str, smoke: bool = False, only_tasks=None, judge=False
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(model_results, f, indent=2, ensure_ascii=False)
         print(f"\n  [smoke] Saved: {out_path}  (leaderboard not updated)")
+    elif only_tasks:
+        ts = datetime.now().strftime("%H%M%S%d%m%Y")
+        out_path = RESULTS_DIR / f"{safe_name}_partial_{ts}.json"
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(model_results, f, indent=2, ensure_ascii=False)
+        print(f"\n  [partial] Saved: {out_path}  (leaderboard not updated)")
     else:
         out_path = RESULTS_DIR / f"{safe_name}.json"
         with open(out_path, "w", encoding="utf-8") as f:
@@ -831,7 +837,7 @@ def rebuild_leaderboard():
     skip = {"all_results.json", "leaderboard.json"}
     all_results = []
     for p in sorted(RESULTS_DIR.glob("*.json")):
-        if p.name in skip:
+        if p.name in skip or "_partial_" in p.name:
             continue
         try:
             with open(p, encoding="utf-8") as f:
