@@ -2481,7 +2481,7 @@
       },
       "creative_generation": {
         "task": "creative_generation",
-        "mean_constraint_pass_rate": 0.583,
+        "mean_constraint_pass_rate": 0.5,
         "results": [
           {
             "type": "article",
@@ -2497,8 +2497,8 @@
               "word_count_within_30pct": true
             },
             "constraint_pass_rate": 1.0,
-            "latency_s": 13.53,
-            "tokens_per_sec": 20.6,
+            "latency_s": 9.84,
+            "tokens_per_sec": 39.2,
             "human_score": null,
             "judge_score": null
           },
@@ -2516,8 +2516,8 @@
               "all_lines_start_question_word": false
             },
             "constraint_pass_rate": 0.0,
-            "latency_s": 7.17,
-            "tokens_per_sec": 22.2,
+            "latency_s": 4.18,
+            "tokens_per_sec": 40.1,
             "human_score": null,
             "judge_score": null
           },
@@ -2536,8 +2536,8 @@
               "starts_with_required": true
             },
             "constraint_pass_rate": 1.0,
-            "latency_s": 9.57,
-            "tokens_per_sec": 22.3,
+            "latency_s": 5.54,
+            "tokens_per_sec": 39.7,
             "human_score": null,
             "judge_score": null
           },
@@ -2555,27 +2555,27 @@
               "acrostic_ok": false
             },
             "constraint_pass_rate": 0.0,
-            "latency_s": 3.6,
-            "tokens_per_sec": 24.2,
+            "latency_s": 2.3,
+            "tokens_per_sec": 41.2,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "dialogue",
-            "text": "Here’s a 10-line dialogue fulfilling your request:\n\nLiam: : Honestly, Mom, we need to seriously consider selling this place. It’s bleeding us dry.\nMom: : Sell it? Liam, this house is our family history! You can't just put a price on that.\nLiam: : But the upkeep alone is crippling – the roof, the wiring…it’s a constant drain.\nMom: : We could fix things up, modernize a little. Memories are worth more than a new roof, you know.\nLiam: : Memories don't pay the bills, Mom! We have responsibilities now, and this house isn’t helping.\nMom: : It represents generations of our family, Liam! Your grandfather built this with his own two hands!\nLiam: : Grandpa would want us to be secure, not struggling to maintain a crumbling monument.\nMom: : Don't you dare reduce his legacy to just \"struggling\"! There’s sentimental value here.\nLiam: : Sentimental value doesn",
-            "word_count": 149,
-            "line_count": 10,
+            "text": "Here’s a 10-line dialogue fulfilling your request:\n\nLiam: : Honestly, Mom, we need to seriously consider selling this place. It’s bleeding us dry.\nMom: : Sell it? Liam, this house is our family history! You can't just put a price on that.\nLiam: : But the upkeep alone is crippling – the roof, the wiring…it’s a constant drain.\nMom: : We could fix things up, modernize a little. Memories are worth more than a new roof, you know.\nLiam: : Memories don't pay the bills, Mom! We have responsibilities now, and this house isn’t helping.\nMom: : It represents generations of our family, Liam! Your grandfather built this with his own two hands!\nLiam: : Grandpa would want us to be secure, not struggling to maintain a crumbling monument.\nMom: : Don't you dare reduce his legacy to just \"struggling\"! There’s sentimental value here.\nLiam: : Sentimental value doesn’t cover the property taxes, and frankly, it’s time for a fresh start.\nMom: : I still say no, Liam. This house stays in our family.",
+            "word_count": 174,
+            "line_count": 11,
             "constraints": [
               "10 lines",
               "name: prefix each line"
             ],
             "constraint_checks": {
-              "line_count_exact": true,
+              "line_count_exact": false,
               "all_lines_have_name_colon": false
             },
-            "constraint_pass_rate": 0.5,
-            "latency_s": 10.46,
-            "tokens_per_sec": 22.2,
+            "constraint_pass_rate": 0.0,
+            "latency_s": 7.0,
+            "tokens_per_sec": 39.6,
             "human_score": null,
             "judge_score": null
           },
@@ -2591,13 +2591,13 @@
               "exact_word_count": true
             },
             "constraint_pass_rate": 1.0,
-            "latency_s": 0.86,
-            "tokens_per_sec": 28.3,
+            "latency_s": 0.74,
+            "tokens_per_sec": 50.0,
             "human_score": null,
             "judge_score": null
           }
         ],
-        "elapsed_s": 45.2
+        "elapsed_s": 29.6
       },
       "code_generation": {
         "task": "code_generation",
@@ -2687,7 +2687,7 @@
       },
       "structured_strict": 0.333,
       "structured_lenient": 1.0,
-      "creative_constraints": 0.583,
+      "creative_constraints": 0.5,
       "code_pass_at_1": 0.5
     }
   },
@@ -3827,13 +3827,13 @@
       },
       "creative_generation": {
         "task": "creative_generation",
-        "mean_constraint_pass_rate": 0.833,
+        "mean_constraint_pass_rate": 0.917,
         "results": [
           {
             "type": "article",
-            "text": "**Deep Sea Divers Uncover Mysterious New Species: The 'Abyssal Glimmer'**\n\nIn an extraordinary expedition to the Mariana Trench, marine biologists have announced the discovery of a previously unknown species of deep-sea fish, aptly named the \"Abyssal Glimmer.\" This remarkable find was made during a dive conducted by a team from the National Oceanic and Atmospheric Administration (NOAA) in collaboration with the Monterey Bay Aquarium Research Institute (MBARI).\n\nThe Abyssal Glimmer is described as a small, bioluminescent fish that inhabits the dark depths of the ocean floor. Its unique adaptation to its environment includes a shimmering blue-green glow that serves both as camouflage and as a means of communication with other members of its species.\n\nThe discovery was made at a depth of 8,000 meters (approximately 26,247 feet), where sunlight does not penetrate. The fish's bioluminescence is believed to be an evolutionary adaptation that allows it to navigate and find food in the complete darkness of its habitat.\n\nThe Abyssal Glimmer has a distinct body structure with elongated fins and a streamlined body, which enables it to move swiftly through the water. Scientists are currently studying this new species to better understand its role within the deep-sea ecosystem and how it survives in such extreme conditions.\n\nThis groundbreaking discovery not only expands our knowledge of marine biodiversity but also highlights the importance of continued exploration and research in the deep sea, where many mysteries still await discovery.",
-            "word_count": 236,
-            "line_count": 6,
+            "text": "**Deep Sea Divers Uncover Mysterious New Species: The 'Abyssal Glimmer'**\n\nIn an extraordinary expedition to the Mariana Trench, marine biologists have announced the discovery of a previously unknown species of deep-sea fish, aptly named the \"Abyssal Glimmer.\" This remarkable find was made during a dive conducted by a team from the National Oceanic and Atmospheric Administration (NOAA) in collaboration with the Monterey Bay Aquarium Research Institute (MBARI).\n\nThe Abyssal Glimmer is described as a small, bioluminescent fish that inhabits the dark depths of the ocean floor. Its unique adaptation to its environment includes a shimmering blue-green glow that serves both as camouflage and as a means of communication with other members of its species.\n\nThe discovery was made using MBARI's remotely operated vehicle (ROV), which captured high-definition footage of the fish swimming gracefully among the abyssal plains. The Abyssal Glimmer is believed to be one of many new species that still await discovery in the world's deepest waters.\n\nThis groundbreaking research not only expands our understanding of marine biodiversity but also highlights the importance of protecting these fragile ecosystems. As climate change and human activity threaten oceanic environments, discoveries like these underscore the need for continued conservation efforts to preserve the beauty and diversity of life beneath the waves.",
+            "word_count": 209,
+            "line_count": 5,
             "constraints": [
               "has headline",
               "~200 words",
@@ -3843,14 +3843,14 @@
               "word_count_within_30pct": true
             },
             "constraint_pass_rate": 1.0,
-            "latency_s": 11.61,
-            "tokens_per_sec": 30.3,
+            "latency_s": 10.31,
+            "tokens_per_sec": 35.8,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "poem_question_word",
-            "text": "Who gazes upon the neon lights in the distance?\nWhat stories do these skyscrapers tell at night?\nWhere does the day end and the night begins?\nWhen stars appear, how long will they stay?\nWhy do we yearn for the city's glow?\nHow does it feel to be so high above?",
+            "text": "Who gazes upon the neon lights in the distance?\nWhat stories do these skyscrapers tell at night?\nWhere does the day end and the night begins?\nWhen stars appear, how long will they stay?\nWhy do we yearn for the city's embrace?\nHow does it feel to be so high above?",
             "word_count": 51,
             "line_count": 6,
             "constraints": [
@@ -3862,16 +3862,16 @@
               "all_lines_start_question_word": true
             },
             "constraint_pass_rate": 0.5,
-            "latency_s": 2.54,
-            "tokens_per_sec": 29.3,
+            "latency_s": 2.16,
+            "tokens_per_sec": 35.6,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "short_story",
-            "text": "The last bus had already left. Sarah hurried down the dimly lit alley, her heart pounding in her chest. She needed to find her friend, Alex, who lived across town. The rain poured down, making the streets slippery. \n\nSarah's phone buzzed with a message from Alex: \"Meet me at the old library at 8 PM.\" Relief washed over her as she arrived just in time. They shared stories of their day and laughed until the wee hours. As the clock struck midnight, Sarah realized it was too late to catch the bus home. \n\nAlex offered her a ride, but Sarah declined, determined to walk. She knew the streets better than anyone, and she trusted her ability to navigate them safely. With determination in her step, she made it back to her apartment just as the first light of dawn began to break through the clouds.",
-            "word_count": 145,
-            "line_count": 3,
+            "text": "The last bus had already left. Sarah hurried down the dimly lit alley, her heart pounding in her chest. She needed to find her friend, Alex, who lived across town. The rain poured down, making the streets slippery. \n\nSarah's phone buzzed with a message from Alex: \"Meet me at the corner of Maple and Oak. Now!\" Sarah sprinted towards the address, dodging puddles and avoiding pedestrians. She arrived just in time to see Alex standing there, soaked and shivering.\n\n\"You're late,\" Alex said, wiping rain from her eyes. \"I was waiting for ages.\" \n\nSarah smiled and wrapped her coat around Alex. \"Let's go home,\" she suggested. They huddled together on the bus, laughing and sharing stories until it pulled into their neighborhood.",
+            "word_count": 122,
+            "line_count": 4,
             "constraints": [
               "starts with given sentence",
               "~150 words",
@@ -3882,15 +3882,15 @@
               "starts_with_required": true
             },
             "constraint_pass_rate": 1.0,
-            "latency_s": 6.4,
-            "tokens_per_sec": 30.6,
+            "latency_s": 5.3,
+            "tokens_per_sec": 36.7,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "acrostic",
-            "text": "Ocean's depths are vast and blue,\nCrystal clear, a world so new.\nEndless waves in rhythmic dance,\nArenas of life, both great and small.\nNature's masterpiece, a timeless call.",
-            "word_count": 29,
+            "text": "Ocean's depths, a world untold,\nCreatures swim in colors bold.\nEndless waves, a dance so grand,\nAbyssal life, a mystery vast.\nNature's wonder, blue and vast.",
+            "word_count": 26,
             "line_count": 5,
             "constraints": [
               "5 lines",
@@ -3901,33 +3901,33 @@
               "acrostic_ok": true
             },
             "constraint_pass_rate": 1.0,
-            "latency_s": 1.85,
-            "tokens_per_sec": 31.8,
+            "latency_s": 1.45,
+            "tokens_per_sec": 38.7,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "dialogue",
-            "text": "**Alex:** We should definitely sell the old family house. It's time for new beginnings.\n\n**Jamie:** But it's our heritage! Selling it feels like giving up on our roots.\n\n**Alex:** Times change, Jamie. We need to adapt and move forward.\n\n**Jamie:** Adapting doesn't mean forgetting where we came from. This place holds so much meaning.\n\n**Alex:** Meaning is in the memories, not the physical structure. Let's make new ones elsewhere.\n\n**Jamie:** But what about our family's history? It's tied to this house.\n\n**Alex:** History lives on through us, not just in one place. We can preserve it in our hearts and actions.\n\n**Jamie:** I don't want to lose that connection. This was where my grandparents lived.\n\n**Alex:** Grandparents' legacy is alive in us now. Let's build our own stories in new spaces.\n\n**Jamie:** But what about the house? It's part of who we are.\n\n**Alex:** It may be a physical part, but it's not everything",
-            "word_count": 154,
-            "line_count": 11,
+            "text": "**Alex:** We should definitely sell the old family house. It's time for new beginnings.\n\n**Jamie:** But it's our heritage! Selling it feels like giving up on our roots.\n\n**Alex:** Times change, Jamie. We need to adapt and move forward.\n\n**Jamie:** Adapting means keeping what's important, not throwing it away!\n\n**Alex:** This house holds memories, but so do new opportunities.\n\n**Jamie:** Opportunities don't come with the weight of nostalgia.\n\n**Alex:** Nostalgia can be beautiful, but it's time for growth.\n\n**Jamie:** Growth doesn't mean forgetting where we came from.\n\n**Alex:** We can always visit. The house doesn't have to define us.\n\n**Jamie:** But it does for me. I can't just let go of that feeling.",
+            "word_count": 113,
+            "line_count": 10,
             "constraints": [
               "10 lines",
               "name: prefix each line"
             ],
             "constraint_checks": {
-              "line_count_exact": false,
+              "line_count_exact": true,
               "all_lines_have_name_colon": true
             },
-            "constraint_pass_rate": 0.5,
-            "latency_s": 7.43,
-            "tokens_per_sec": 30.6,
+            "constraint_pass_rate": 1.0,
+            "latency_s": 4.98,
+            "tokens_per_sec": 36.6,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "six_word_story",
-            "text": "A lion roars, a gazelle flees.",
+            "text": "A lion roars, then runs away.",
             "word_count": 6,
             "line_count": 1,
             "constraints": [
@@ -3937,13 +3937,13 @@
               "exact_word_count": true
             },
             "constraint_pass_rate": 1.0,
-            "latency_s": 0.54,
-            "tokens_per_sec": 40.2,
+            "latency_s": 0.46,
+            "tokens_per_sec": 49.1,
             "human_score": null,
             "judge_score": null
           }
         ],
-        "elapsed_s": 30.4
+        "elapsed_s": 24.7
       },
       "code_generation": {
         "task": "code_generation",
@@ -4033,7 +4033,7 @@
       },
       "structured_strict": 0.333,
       "structured_lenient": 1.0,
-      "creative_constraints": 0.833,
+      "creative_constraints": 0.917,
       "code_pass_at_1": 0.5
     }
   },
@@ -5173,12 +5173,12 @@
       },
       "creative_generation": {
         "task": "creative_generation",
-        "mean_constraint_pass_rate": 0.5,
+        "mean_constraint_pass_rate": 0.417,
         "results": [
           {
             "type": "article",
-            "text": "**Deep-Sea Discovery: New Species 'Glowing Lanternfish' Illuminates Ocean Depths**\n\nScientists have made an astonishing breakthrough in marine biology with the identification and description of a previously unknown species, dubbed \"Lanternfish,\" discovered at depths exceeding 2,000 meters beneath Earth's oceans.\n\nThe discovery was announced by Dr. Emily Waters from the International Marine Biology Institute during her recent expedition to explore uncharted territories off the coastlines of New Zealand's South Island in March this year. The Lanternfish exhibits a unique bioluminescent trait that allows it not only for communication but also as an effective predator, illuminating its surroundings with eerie blue-green light.\n\nThe species was first spotted by Dr. Waters' team using advanced submersible technology capable of enduring extreme pressures and darkness found in the deep sea's abyssal plains where sunlight cannot penetrate. The Lanternfish measures approximately 30 centimeters long (12 inches) but is easily recognizable due to its glowing dorsal fin, which resembles a lantern.\n\nBiologists are fascinated by this new species' ability for bioluminescence as it provides insights into evolutionary adaptations that enable survival in the perpetual darkness of deep-sea environments. The Lanternfish's light-producing organs contain luciferin and an enzyme called luciferase – similar to those found within fireflies, which react with oxygen molecules during a chemical reaction producing luminescent compounds.\n\nThe discovery also raises questions about potential ecological impacts on its habitat due to human activities such as deep-sea mining. The Lanternfish's role in the food chain remains largely unknown; however, it is believed that this species may serve an essential function for maintaining balance within these ecosystems by controlling populations of smaller organisms and serving as prey.\n\nThe International Marine Biology Institute plans",
-            "word_count": 275,
+            "text": "**Deep-Sea Discovery: New Species 'Lumina Glimmerfish' Illuminates Ocean Depths**\n\nScientists have made an astonishing breakthrough in marine biology with the identification and documentation of a previously unknown species, dubbed \"Lumina Glimmerfish,\" discovered at depths exceeding 3,000 meters beneath Earth's oceans.\n\nThe Lumina Glimmerfish was first spotted by researchers aboard the research vessel 'Ocean Explorer' during routine deep-sea expeditions. This bioluminescent fish exhibits an extraordinary ability to emit a radiant glow that illuminates its surroundings in shades of blue and green light—a phenomenon believed to be used for both communication with other Lumina Glimmerfish individuals as well as attracting prey.\n\nThe discovery was made by Dr. Emily Waters, marine ecologist at the Global Marine Institute (GMI), who led an international team on a groundbreaking expedition aimed at exploring uncharted territories of our planet's oceans. The species' unique luminescence is attributed to specialized cells called photophores located along its body and tail fin.\n\nThe Lumina Glimmerfish measures approximately 15 centimeters in length, with translucent skin that allows light from within the fish itself or surrounding water sources to pass through it effortlessly—a rare trait among deep-sea creatures. This adaptation not only aids their survival but also contributes significantly to our understanding of bioluminescent organisms and how they interact with each other.\n\nDr. Waters expressed excitement over this discovery, stating that \"the Lumina Glimmerfish is a testament to the unexplored biodiversity hidden in Earth's oceans.\" She emphasized its potential impact on scientific knowledge about deep-sea ecosystems: “This new species could help us understand more complex food webs and ecological relationships at extreme depths.”\n\nThe team collected samples for further study",
+            "word_count": 267,
             "line_count": 7,
             "constraints": [
               "has headline",
@@ -5189,16 +5189,16 @@
               "word_count_within_30pct": false
             },
             "constraint_pass_rate": 0.0,
-            "latency_s": 11.6,
-            "tokens_per_sec": 31.5,
+            "latency_s": 20.45,
+            "tokens_per_sec": 38.1,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "poem_question_word",
-            "text": "Who can hear the whispers in this urban expanse?  \nWhat secrets do these towering lights conceal beneath their glow so bright and vast?  \nWhere does silence find its place amidst such endless motion below us all night long?  \nWhen did dreams first take flight from minds to skies, casting shadows on our view here tonight?\n\nWhy are we drawn together like moths in this electric hive of life’s fervent pulse?\nHow do the stars above witness tales untold beneath their watchful gaze so grand and bright?\n\nWho am I amidst these endless waves that crash against my rooftop's edge?  \nWhat stories lie hidden within each flickering beam, waiting to be discovered anew tonight?  \nWhere can one find solace in this symphony of lights when every corner seems a stage for dreams?\nWhen does the city breathe its deepest sighs as night wraps it all so tight and deep?\n\nWhy do we seek answers",
-            "word_count": 153,
-            "line_count": 11,
+            "text": "Who can hear the whispers in this urban expanse?  \nWhat secrets do these towering lights conceal beneath their glow so bright and vast?  \nWhere does one find solace amidst such endless motion below us all at night’s embrace?\n\nWhen stars dare to peek through a sky ablaze with neon's gleam, what stories unfold above our heads tonight?\nWhy are we drawn here on this rooftop high where dreams collide in silent reverie beneath the city lights’ glow?  \nHow does one capture moments fleeting as shadows dance upon concrete and steel under moon’s tender gaze?\n\nWho am I to question why night cloaks cities with such enigmatic allure, painting them silvered hues of mystery?\nWhat echoes linger from footsteps past that wander through this labyrinthine maze below us all at rest tonight?\nWhere do dreams take flight in the stillness when city lights flicker like fireflies’ gentle glow?  \nWhen does one",
+            "word_count": 150,
+            "line_count": 10,
             "constraints": [
               "12 lines",
               "each line starts with question word"
@@ -5208,16 +5208,16 @@
               "all_lines_start_question_word": true
             },
             "constraint_pass_rate": 0.5,
-            "latency_s": 6.08,
-            "tokens_per_sec": 32.1,
+            "latency_s": 5.02,
+            "tokens_per_sec": 39.9,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "short_story",
-            "text": "\"The last bus had already left.\" Emily stood at her doorstep in despair; she missed it by mere seconds as dusk settled over Maple Street.\n\nDetermined not to let this defeat define her day, she decided on an impromptu adventure instead of the planned quiet evening reading session she'd been looking forward to for weeks. She grabbed a jacket and headed towards Willow Park – where children played under twinkling lights that promised warmth even in winter's chill.\n\n\nIn the middle of Maple Street stood Willowside Café; its warm glow beckoned her inside, promising refuge from both cold winds and loneliness she felt creeping up on herself.\n\nInside was an unexpected haven. The café buzzed with life – laughter mingled with coffee aromas as patrons shared stories over cups brimming like tiny oceans.\n\n\nA young man at the counter caught sight of Emily's forlorn expression; he offered a smile that reached his eyes, inviting her to sit down and share in their camaraderie.\n\nAs she recounted tales from work - misadventures involving misplaced files – laughter erupted around them. The café staff joined too: an elderly woman with stories as rich tapestries weaving through time.\n\n\nHours slipped by unnoticed until the sun dipped below horizon's edge; Emily realized it was not just a missed bus but also her chance to connect, share and laugh away loneliness.\n\nAs she left Willow Park that night under twilight’s embrace – heart lighter",
-            "word_count": 239,
-            "line_count": 8,
+            "text": "\"The last bus had already left.\" Emily stood at her doorstep in despair; she missed it by mere seconds as dusk settled over Maple Street.\n\nDetermined not to let this defeat win, she sprinted down Elm Avenue until the library's lights flickered on—a beacon of hope amidst growing darkness. Inside, bookshelves loomed like silent sentinels guarding knowledge and escape from reality.\n\n\nIn a quiet corner sat Mr. Thompson; his eyes twinkling with mischief as he noticed her distress.\n\n\"Need to borrow something?\" He asked without looking up until she nodded vigorously—his favorite part of the day was helping others find solace in stories, even if it meant bending rules for them once or twice.\n\n\nHours passed like minutes under Mr. Thompson's patient guidance; Emily discovered worlds beyond hers within pages that whispered secrets and dreams.\n\nAs midnight approached with a gentle chime from an unseen clock tower outside, she realized her heart had filled up on adventures she'd never imagined possible—filled to the brim by stories untold in books.\n\n\nWith gratitude brimming over his lips like morning dew upon grass blades after rain, Mr. Thompson handed back Emily's borrowed treasures.\n\n\"Remember,\" he said with a wink as if sharing an ancient secret between old friends, \"Every ending is just another beginning.\"\n\n\nOutside under starlit skies that seemed to applaud her newfound courage and curiosity for the night ahead promised endless",
+            "word_count": 230,
+            "line_count": 9,
             "constraints": [
               "starts with given sentence",
               "~150 words",
@@ -5228,15 +5228,15 @@
               "starts_with_required": true
             },
             "constraint_pass_rate": 0.5,
-            "latency_s": 9.62,
-            "tokens_per_sec": 30.7,
+            "latency_s": 7.75,
+            "tokens_per_sec": 38.6,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "acrostic",
-            "text": "Oceans whisper tales untold, beneath waves so deep,\nCurrents dance in a timeless waltz.\nEndless blue that stretches far and wide,\nA world unknown to those who sleep.\n\nNurturing life with every tide's sweep.",
-            "word_count": 34,
+            "text": "Oceans whisper tales untold, beneath waves so deep,\nCurrents carry secrets they keep.\nEndless blue stretches far and wide,\nA world alive with life inside.\nNature's beauty in every tide.",
+            "word_count": 30,
             "line_count": 5,
             "constraints": [
               "5 lines",
@@ -5247,33 +5247,33 @@
               "acrostic_ok": true
             },
             "constraint_pass_rate": 1.0,
-            "latency_s": 2.09,
-            "tokens_per_sec": 31.9,
+            "latency_s": 1.53,
+            "tokens_per_sec": 40.0,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "dialogue",
-            "text": "Alex: We should consider selling this old family home; it's time we upgraded our lifestyle.\n\nJordan: But it holds so much sentimental value! Selling would mean letting go of memories tied to every corner!\n\nAlex: I understand, but think about all the financial benefits and opportunities for us now versus later years when things might be harder on your own.\n\nJordan: True, money is important. Yet can we really put a price tag just anywhere else holds?\n\nAlex: We could donate it instead; that way we'd still honor our family's history while helping others in need!\n\nJordan: That sounds noble but selling would give us the capital to invest for future security and comfort without regrets.\n\nAlex: What if you can't find someone who appreciates its sentimental value as much we do? Selling might be a better option then?\n\nJordan: I suppose, yet part of me fears that once it's gone forever; it will haunt our dreams like an unfinished story. \n\nAlex: Perhaps there's another way to preserve the memories without selling—like creating digital archives or stories about this place.\n\nJordan: Maybe you're right... but my heart still",
-            "word_count": 188,
-            "line_count": 10,
+            "text": "Alex: We should consider selling this ancient relic of our family's history.\nJordan: Selling it? It's not just property; it's heritage!\nAlex: But think of all we could do financially, Jordan! The market is ripe for such properties now.\nJordan: Financial gain shouldn't come at the cost of losing a piece of who we've been as families. \nAlex: I understand your sentiment but remember that this house has accumulated so much debt over time; selling it would be wise economically!\nJordan: But what about memories? What stories are we leaving behind if we're not here to tell them?\nAlex: Memories can always live on through photos and records, Jordan.\nJordan: True. Yet there's something irreplaceable in the physical space where generations have lived together...\nAlex: Perhaps it's time for a new chapter; this house has served us well but isn't growing our family any longer!\nJordan: Maybe you're right about growth... But what if we find another way to honor its legacy without selling it?\nAlex: We could rent out parts of it, keep the spirit alive while still benefiting financially.\nJordan: That might just work. Let's explore that option further before making a final decision on this matter!",
+            "word_count": 199,
+            "line_count": 12,
             "constraints": [
               "10 lines",
               "name: prefix each line"
             ],
             "constraint_checks": {
-              "line_count_exact": true,
+              "line_count_exact": false,
               "all_lines_have_name_colon": true
             },
-            "constraint_pass_rate": 1.0,
-            "latency_s": 7.56,
-            "tokens_per_sec": 31.0,
+            "constraint_pass_rate": 0.5,
+            "latency_s": 6.49,
+            "tokens_per_sec": 39.6,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "six_word_story",
-            "text": "\"Lost dog reunites with owner.\"",
+            "text": "\"Lost dog reunites with family.\"",
             "word_count": 5,
             "line_count": 1,
             "constraints": [
@@ -5283,13 +5283,13 @@
               "exact_word_count": false
             },
             "constraint_pass_rate": 0.0,
-            "latency_s": 0.7,
-            "tokens_per_sec": 40.4,
+            "latency_s": 0.71,
+            "tokens_per_sec": 45.0,
             "human_score": null,
             "judge_score": null
           }
         ],
-        "elapsed_s": 37.7
+        "elapsed_s": 42.0
       },
       "code_generation": {
         "task": "code_generation",
@@ -5379,7 +5379,7 @@
       },
       "structured_strict": 0.167,
       "structured_lenient": 1.0,
-      "creative_constraints": 0.5,
+      "creative_constraints": 0.417,
       "code_pass_at_1": 0.5
     }
   },
@@ -6519,32 +6519,32 @@
       },
       "creative_generation": {
         "task": "creative_generation",
-        "mean_constraint_pass_rate": 0.0,
+        "mean_constraint_pass_rate": 0.333,
         "results": [
           {
             "type": "article",
-            "text": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   **Topic:** Fictional discovery of a new species of deep-sea fish.\n    *   **Format:** News article.\n    *   **Length:** Approximately 200 words.\n    *   **Requirement:** Include a headline.\n\n2.  **Determine Key Elements of the Article:**\n    *   Headline (catchy, informative).\n    *   Lead paragraph (Who, What, Where, When, Why).\n    *   Body paragraphs (Details about the fish, scientific name, significance, quotes from scientists).\n    *   Closing (Future research or broader implications).\n\n3.  **Drafting - Step 1: Headline:**\n    *   Needs to sound journalistic and exciting.\n    *   Idea: \"Ancient Guardian Found\" or \"New Species Unveiled.\"\n    *   Selection: Scientists Unearth Bioluminescent Deep-Sea Giant Named 'Lumina Abyssalis'.\n\n4.  **Drafting - Step 2: Content:**\n    *   Location: Mariana Trench or similar (let's say the Challenger Deep).\n    *   Date: Recent discovery (e.g., October 2023).\n    *   Scientists: Dr. Aris Thorne, etc.\n    *   Description: Glowing, unique features.\n    *   Significance: Evolutionary insight.\n\n5.  **Drafting - Step 3: Writing & Editing for Word Count:**\n    *   *Draft:*\n        **Headline:** Scientists Unearth Bioluminescent Deep-Sea Giant Named 'Lumina Abyssalis'\n        **Body:** In a stunning breakthrough deep-sea expedition, researchers have identified a previously unknown species of fish lurking in the Challenger Deep. Dubbed the \"Lumina Abyssalis,\" this bioluminescent creature glows with an eerie violet hue in total darkness.\n\n        Dr. Elena Vance, lead oceanographer on the *Voyager* submersible team, described the find as \"a living relic from Earth's ancient past.\" The specimen was captured after a 48-hour dive into the trench floor. Unlike other deep-sea scavengers, the Lumina Abyssalis possesses translucent skin and six distinct glowing organs used for communication rather than hunting.\n\n        \"It changes how we view evolution in the hadal zone,\" Vance said during a press conference yesterday. The species is estimated to be 100 million years old based on genetic markers. This discovery challenges existing theories about isolation in extreme environments, suggesting that life has thrived independently for millennia.\n\n        Conservationists are cautious yet optimistic. With the creature's habitat located in an unexplored sector of the Pacific, immediate protection measures have been proposed to prevent commercial exploitation. The Lumina Abyssalis is now being preserved in cryogenic storage at the National Oceanic Institute until further study can be conducted on its ecological role.\n\n        This discovery marks a pivotal moment for marine biology, promising new insights into adaptation and survival under crushing pressure.\n\n    *   *Word Count Check:* Let's count.\n        Headline: 10 words.\n        Body: ~205 words? Let me check more carefully.\n        \"In a stunning breakthrough deep-sea expedition...\" to \"...understanding under crushing pressure.\"\n        Looks good. I might need to trim or expand slightly to hit exactly around 200.\n\n    *   *Refining:* The draft looks solid but maybe a bit short. Let's add a bit more detail on the appearance or impact.\n\n6.  **Final Polish (aiming for ~200 words):**\n    *   Make sure the tone is serious news report style.\n    *   Ensure flow and clarity.\n\n    *(Self-Correction during drafting)*: I need to make sure it's close to 200, not under. Let me expand on the significance of the bioluminescence.\n\n    *Revised Draft:*\n    **Headline:** Scientists Unearth Bioluminescent Deep-Sea Giant Named 'Lumina Abyssalis'\n\n    In a stunning breakthrough during a deep-sea expedition, researchers have identified a previously unknown species lurking in the Challenger Deep. Dubbed the \"Lumina Abyssalis,\" this bioluminescent creature glows with an eerie violet hue in total darkness.\n\n    Dr. Elena Vance, lead oceanographer on the *Voyager* submersible team, described the find as \"a living relic from Earth's ancient past.\" The specimen was captured after a 48-hour dive into the trench floor. Unlike other deep-sea scavengers, the Lumina Abyssalis possesses translucent skin and six distinct glowing organs used for communication rather than hunting.\n\n    \"It changes how we view evolution in the hadal zone,\" Vance said during a press conference yesterday. The species is estimated to be 100 million years old based on genetic markers. This discovery challenges existing theories about isolation in extreme environments, suggesting that life has thrived independently for millennia without human interference.\n\n    Conservationists are cautious yet optimistic regarding protection measures. With the creature's habitat located in an unexplored sector of the Pacific, immediate safeguards have been proposed to prevent commercial exploitation. The Lumina Abyssalis is now being preserved in cryogenic storage at the National Oceanic Institute until further study can be conducted on its ecological role.\n\n    This discovery marks a pivotal moment for marine biology, promising new insights into adaptation and survival under crushing pressure and darkness. It represents humanity's first confirmed contact with this specific lineage, opening a new chapter in our understanding of the ocean floor.\n\n    *(Word Count Check)*:\n    Headline: 10 words.\n    Body text: ~235 words.\n    I need to trim slightly to get closer to 200.\n\n    *Trimming:*\n    Remove \"without human interference.\" (3 words) -> 232.\n    Remove \"and darkness\" and \"It represents humanity's first confirmed contact...\" sentences might be too long. Let's simplify the ending.\n\n    *Final Plan:*\n    Headline: Scientists Unearth Bioluminescent Deep-Sea Giant Named 'Lumina Abyssalis' (10)\n    Text: ~200 words.\n\n    *Revised Text:*\n    **Headline:** Scientists Unearth Bioluminescent Deep-Sea Giant Named 'Lumina Abyssalis'\n\n    In a stunning breakthrough during a deep-sea expedition, researchers have identified a previously unknown species lurking in the Challenger Deep. Dubbed the \"Lumina Abyssalis,\" this bioluminescent creature glows with an eerie violet hue in total darkness.\n\n    Dr. Elena Vance, lead oceanographer on the *Voyager* submersible team, described the find as \"a living relic from Earth's ancient past.\" The specimen was captured after a 48-hour dive into the trench floor. Unlike other deep-sea scavengers, the Lumina Abyssalis possesses translucent skin and six distinct glowing organs used for communication rather than hunting.\n\n    \"It changes how we view evolution in the hadal zone,\" Vance said during a press conference yesterday. The species is estimated to be 100 million years old based on genetic markers. This discovery challenges existing theories about isolation in extreme environments, suggesting that life has thrived independently for millennia.\n\n    Conservationists are cautious yet optimistic regarding protection measures. With the creature's habitat located in an unexplored sector of the Pacific, immediate safeguards have been proposed to prevent commercial exploitation. The Lumina Abyssalis is now being preserved in cryogenic storage at the National Oceanic Institute until further study can be conducted on its ecological role.\n\n    This discovery marks a pivotal moment for marine biology, promising new insights into adaptation and survival under crushing pressure. It opens a new chapter in our understanding of the ocean floor.\n\n    (Word Count Check: 208 words including headline). Perfect.\n\n7.  **Final Review:** Does it meet all constraints?\n    *   Fictional discovery? Yes (Lumina Abyssalis).\n    *   News article format? Yes.\n    *   Headline included? Yes.\n    *   Word count approx 200? Yes (around 210 with headline).\n\n    Let's adjust slightly to be safer on the 200 limit. I will remove \"It opens a new chapter in our understanding of the ocean floor.\" and replace with something shorter or just ensure it lands near 200. Actually, 208 is close enough for \"about 200\". I'll stick with this version but trim the last sentence to be precise.\n\n    *Trimmed Last Sentence:* \"This discovery marks a pivotal moment for marine biology, promising new insights into adaptation under crushing pressure.\" (14 words instead of 26). Total reduction: ~12 words. New total: ~196 words + 10 headline = 206. That works.\n\n    Wait, I need to count again precisely.\n    Headline: Scientists Unearth Bioluminescent Deep-Sea Giant Named 'Lumina Abyssalis' (10)\n    Text:\n    In a stunning breakthrough during a deep-sea expedition, researchers have identified a previously unknown species lurking in the Challenger Deep. Dubbed the \"Lumina Abyssalis,\" this bioluminescent creature glows with an eerie violet hue in total darkness. \n    Dr. Elena Vance, lead oceanographer on the Voyager submersible team, described the find as \"a living relic from Earth's ancient past.\" The specimen was captured after a 48-hour dive into the trench floor. Unlike other deep-sea scavengers, the Lumina Abyssalis possesses translucent skin and six distinct glowing organs used for communication rather than hunting. \n    \"It changes how we view evolution in the hadal zone,\" Vance said during a press conference yesterday. The species is estimated to be 100 million years old based on genetic markers. This discovery challenges existing theories about isolation in extreme environments, suggesting that life has thrived independently for millennia. \n    Conservationists are cautious yet optimistic regarding protection measures. With the creature's habitat located in an unexplored sector of the Pacific, immediate safeguards have been proposed to prevent commercial exploitation. The Lumina Abyssalis is now being preserved in cryogenic storage at the National Oceanic Institute until further study can be conducted on its ecological role. \n    This discovery marks a pivotal moment for marine biology, promising new insights into adaptation under crushing pressure. (15)\n\n    Total Text: 49 + 58 + 63 + 72 + 15 = 257 words? Wait, my manual counting is off. Let's recount carefully.\n    P1: In(1) a(2) stunning(3) breakthrough(4) during(5) a(6) deep-sea(7) expedition,(8) researchers(9) have(10) identified(11) a(12) previously(13) unknown(14) species(15) lurking(16) in(17) the(18) Challenger(19) Deep.(20) Dubed(21) the(22) \"Lumina(23) Abyssalis,\"(24) this(25) bioluminescent(26) creature(27) glows(28) with(29) an(30) eerie(31) violet(32) hue(33) in(34) total(35) darkness.(36) [36]\n    P2: Dr.(37) Elena(38) Vance,(39) lead(40) oceanographer(41) on(42) the(43) Voyager(44) submersible(45) team,(46) described(47) the(48) find(49) as(50) \"a(51) living(52) relic(53) from(54) Earth's(55) ancient(56) past.\"(57) The(58) specimen(59) was(60) captured(61) after(62) a(63) 48-hour(64) dive(65) into(66) the(67) trench(68) floor.(69) Unlike(70) other(71) deep-sea(72) scavengers,(73) the(74) Lumina(75) Abyssalis(76) possesses(77) translucent(78) skin(79) and(80) six(81) distinct(82) glowing(83) organs(84) used(85) for(86) communication(87) rather(88) than(89) hunting.(90) [54] -> Total 90.\n    P3: \"It(91) changes(92) how(93) we(94) view(95) evolution(96) in(97) the(9",
-            "word_count": 1528,
-            "line_count": 83,
+            "text": "**Scientists Unveil 'Abyssal Glimmer' in Mariana Trench**\n\nResearchers aboard the deep-sea vessel *Oceanic Horizon* recently discovered a previously unknown species of fish during an expedition into the Pacific Ocean's deep trench system. Dubbed *Luminaria abyssalis*, the creature measures just three inches but boasts striking, pulsating blue bioluminescence that illuminates its surroundings in total darkness. Unlike related barbeloids found at shallower depths, this specimen thrives under immense pressure and exhibits a unique metabolic rate capable of sustaining energy without oxygen reserves for days. The fish appears to navigate by sensing magnetic fields rather than light, an adaptation crucial for survival in the pitch-black abyss. Dr. Elena Rostova, lead marine biologist on the mission, noted the discovery challenges current understanding of deep-sea evolution. \"The light patterns suggest a symbiotic relationship with bacteria that haven't been seen before,\" she explained.\n\nThe find adds to the growing list of biodiversity secrets hidden beneath the ocean's surface and prompts immediate calls for international protection under new marine conservation laws. Further analysis is required to ensure no harm comes from the discovery, as this ecosystem remains largely unexplored by human activity. This discovery highlights the vast mysteries remaining in global waters. Scientists hope to catalog its genetic code in the coming months.",
+            "word_count": 206,
+            "line_count": 3,
             "constraints": [
               "has headline",
               "~200 words",
               "journalistic tone"
             ],
             "constraint_checks": {
-              "word_count_within_30pct": false
+              "word_count_within_30pct": true
             },
-            "constraint_pass_rate": 0.0,
-            "latency_s": 110.84,
-            "tokens_per_sec": 25.4,
+            "constraint_pass_rate": 1.0,
+            "latency_s": 131.61,
+            "tokens_per_sec": 30.0,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "poem_question_word",
-            "text": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Topic: Feeling of watching a city at night from a rooftop.\n    *   Length: Exactly 12 lines.\n    *   Constraint 1: Every line must begin with a question word (Who, What, Where, When, Why, How).\n    *   Constraint 2: Do not rhyme.\n\n2.  **Drafting - Line by Line:**\n\n    *   *Line 1:* Who watches the skyline fade into gray? (Starts with \"Who\") -> Wait, I need to focus on the feeling of watching *from* a rooftop.\n    *   *Line 1:* What lights flicker in the distance below? (Starts with \"What\")\n    *   *Line 2:* Where does silence finally settle in its place? (Starts with \"Where\")\n    *   *Line 3:* Why do shadows stretch across the brickwork? (Starts with \"Why\")\n    *   *Line 4:* How does the wind whisper secrets to the air? (Starts with \"How\")\n    *   *Line 5:* Who is awake beneath the heavy blanket? (Starts with \"Who\")\n    *   *Line 6:* When did I decide this view mattered most? (Starts with \"When\")\n    *   *Line 7:* What secrets are hidden in the glowing windows? (Starts with \"What\")\n    *   *Line 8:* Where do dreams drift when the moon pulls them away? (Starts with \"Where\") -> A bit long. Let's adjust.\n    *   Line 5: Who sleeps beneath the heavy concrete floor?\n    *   Line 6: When did the city decide to turn its face?\n    *   Line 7: Why does the silence feel so loud tonight?\n    *   Line 8: How far do these lights reach into the sky?\n\n    Let's try to make it more cohesive and strictly follow the constraint.\n\n    *Line 1:* What lights flicker in the distance below? (Starts with \"What\")\n    *Line 2:* Where does the sound of traffic fade away? (Starts with \"Where\")\n    *Line 3:* Who is awake beneath the heavy blanket? (Starts with \"Who\")\n    *Line 4:* Why do shadows stretch across the brickwork here? (Starts with \"Why\") -> \"here\" makes it weird. Let's remove \"here\".\n    *   Line 4: Why does the silence feel so loud tonight?\n    *Line 5:* How high this view reaches above the ground? (Starts with \"How\")\n    *Line 6:* When did I step onto this metal edge? (Starts with \"When\")\n    *Line 7:* What secrets are hidden in the glowing windows? (Starts with \"What\") -> Repetitive \"What\" from Line 1. Let's vary it.\n    *   Line 7: Who is awake beneath the heavy concrete floor? (Wait, used Who).\n    *   Line 7: Why do the stars seem lost among the smog?\n    *Line 8:* Where does the wind come to rest before the dawn? (Starts with \"Where\") -> Repetitive \"Where\" from Line 2. Let's vary.\n    *   Line 8: How far these lights reach into the dark sky?\n\n    Okay, let's list the question words available: Who, What, Where, When, Why, How. I should try to use a variety.\n\n    Draft 2:\n    1. What lights flicker in the distance below? (What)\n    2. Where does the sound of traffic fade away? (Where)\n    3. Who is awake beneath the heavy blanket? (Who)\n    4. Why do shadows stretch across the brickwork here? (Why) -> \"here\" feels clunky. Let's try: Why does silence feel so loud tonight?\n    5. How high this view reaches above the ground? (How)\n    6. When did I step onto this metal edge? (When)\n    7. What secrets are hidden in the glowing windows? (What - repeat allowed? Yes, but variety is better). Let's use \"Why\" again or \"Who\". Or just stick to the constraint. The prompt says \"Every line must begin with a question word\", it doesn't say they must be unique. But variety makes it better.\n    8. Where do dreams drift when the moon pulls them away? (Where - repeat). Let's try: How does the wind whisper secrets to the air? (How - repeat).\n    Let's use different words where possible.\n\n    Let's refine for flow and imagery.\n\n    1. What lights flicker in the distance below? (What)\n    2. Where does the city breathe its evening breath? (Where) -> \"breath\" rhyme with nothing, but okay.\n    3. Who is awake beneath the heavy blanket? (Who)\n    4. Why do shadows stretch across the brickwork here? (Why) -> Remove \"here\". Why do shadows cling to the cold steel walls?\n    5. How high this view reaches above the ground? (How)\n    6. When did I step onto this metal edge? (When)\n    7. What secrets are hidden in the glowing windows? (What - repeat). Let's use \"Why\". Why do they shine so bright against the dark?\n    8. Where does the wind come to rest before the dawn? (Where - repeat). Let's use \"How\". How far do these lights reach into the sky?\n\n    Okay, I need to make sure there are exactly 12 lines. I have drafted about 8 so far.\n\n    Draft 3:\n    1. What lights flicker in the distance below? (What)\n    2. Where does the city breathe its evening breath? (Where) -> \"breath\" is weak. Where does the silence finally settle here?\n    3. Who is awake beneath the heavy blanket? (Who)\n    4. Why do shadows cling to the cold steel walls? (Why)\n    5. How high this view reaches above the ground? (How)\n    6. When did I step onto this metal edge? (When)\n    7. What secrets are hidden in the glowing windows? (What) -> Let's change to Why again or How. How does the wind whisper secrets to the air? (How)\n    8. Where do dreams drift when the moon pulls",
-            "word_count": 872,
-            "line_count": 63,
+            "text": "",
+            "word_count": 0,
+            "line_count": 0,
             "constraints": [
               "12 lines",
               "each line starts with question word"
@@ -6554,16 +6554,16 @@
               "all_lines_start_question_word": false
             },
             "constraint_pass_rate": 0.0,
-            "latency_s": 57.36,
-            "tokens_per_sec": 25.5,
+            "latency_s": 84.99,
+            "tokens_per_sec": 29.9,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "short_story",
-            "text": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   **Topic:** Write a short story.\n    *   **Length:** Approximately 150 words (strict constraint).\n    *   **Opening Sentence:** \"The last bus had already left.\"\n    *   **Structure:** Clear beginning, middle, and end.\n\n2.  **Brainstorming/Concept:**\n    *   *Idea:* A missed connection leading to a realization or a small adventure.\n    *   *Setting:* Rainy night, station, waiting for something else (or nothing).\n    *   *Character:* Someone alone, perhaps feeling stuck but finding hope.\n    *   *Plot:* Bus leaves -> Character waits/decides -> Something happens -> Conclusion.\n\n3.  **Drafting - Attempt 1:**\n    The last bus had already left. Elias stood under the flickering neon sign of the terminal, rain soaking his trench coat. He checked his watch; it was midnight. His train ticket said he should have caught the evening express. Panic flared in his chest. He looked around for anyone else. No one remained but a tired janitor sweeping the floor. Elias sighed and turned toward the exit. The rain was cold, but he had nowhere to go. He walked back to the house. His car engine wouldn't start after a drive through the storm. He sat in the dark living room. The phone rang. It was his sister. She said she'd be there at dawn for breakfast. Elias smiled. Dawn brought hope and coffee. He put on his boots and waited.\n\n    *Critique 1:* A bit generic. Word count check: ~130 words. Need to expand slightly or tighten to hit ~150 exactly? Usually \"150-word\" means around that mark, not exact. Let's aim for closer to 140-160.\n\n4.  **Drafting - Attempt 2 (Focusing on structure):**\n    The last bus had already left. Elias stood under the flickering neon sign of the terminal, rain soaking his trench coat. He checked his watch; it was past midnight. His train ticket meant he should have caught the evening express. Panic flared in his chest as he looked around for anyone else. No one remained but a tired janitor sweeping the floor slowly. Elias sighed and turned toward the exit. The rain was cold, but he had nowhere to go. He walked back to the house, clutching his bag tight. His car engine wouldn't start after a drive through the storm earlier. He sat in the dark living room, listening to thunder rumble outside. Suddenly, the phone rang. It was his sister. She said she'd be there at dawn for breakfast. Elias smiled. Dawn brought hope and coffee. He put on his boots and waited for the morning light to break.\n\n    *Word Count Check:* 158 words (including title? No). Let's count:\n    The(1) last(2) bus(3) had(4) already(5) left.(6) Elias(7) stood(8) under(9) the(10) flickering(11) neon(12) sign(13) of(14) the(15) terminal,(16) rain(17) soaking(18) his(19) trench(20) coat.(21) He(22) checked(23) his(24) watch;(25) it(26) was(27) past(28) midnight.(29) His(30) train(31) ticket(32) meant(33) he(34) should(35) have(36) caught(37) the(38) evening(39) express.(40) Panic(41) flared(42) in(43) his(44) chest(45) as(46) he(47) looked(48) around(49) for(50) anyone(51) else.(52) No(53) one(54) remained(55) but(56) a(57) tired(58) janitor(59) sweeping(60) the(61) floor(62) slowly.(63) Elias(64) sighed(65) and(66) turned(67) toward(68) the(69) exit.(70) The(71) rain(72) was(73) cold,(74) but(75) he(76) had(77) nowhere(78) to(79) go.(80) He(81) walked(82) back(83) to(84) the(85) house,(86) clutching(87) his(88) bag(89) tight.(90) His(91) car(92) engine(93) wouldn't(94) start(95) after(96) a(97) drive(98) through(99) the(100) storm(101) earlier.(102) He(103) sat(104) in(105) the(106) dark(107) living(108) room,(109) listening(110) to(111) thunder(112) rumble(113) outside.(114) Suddenly,(115) the(116) phone(117) rang.(118) It(119) was(120) his(121) sister.(122) She(123) said(124) she'd(125) be(126) there(127) at(128) dawn(129) for(130) breakfast.(131) Elias(132) smiled.(133) Dawn(134) brought(135) hope(136) and(137) coffee.(138) He(139) put(140) on(141) his(142) boots(143) and(144) waited(145) for(146) the(147) morning(148) light(149) to(150) break.(151).\n\n    That's 151 words including \"she'd\" counts as one word usually, but let's check standard tokenization. To be safe, I should aim for exactly or close to 150. Let's refine slightly to ensure flow and accuracy.\n\n    *Revision:*\n    The last bus had already left. Elias stood under the flickering neon sign of the terminal, rain soaking his trench coat. He checked his watch; it was past midnight. His train ticket meant he should have caught the evening express. Panic flared in his chest as he looked around for anyone else. No one remained but a tired janitor sweeping the floor slowly. Elias sighed and turned toward the exit. The rain was cold, but he had nowhere to go. He walked back to the house, clutching his bag tight. His car engine wouldn't start after a drive through the storm earlier. He sat in the dark living room, listening to thunder rumble outside. Suddenly, the phone rang. It was his sister. She said she'd be there at dawn for breakfast. Elias smiled. Dawn brought hope and coffee. He put on his boots and waited for the morning light to break.\n\n    Actually, let's recount carefully.\n    1 The 2 last 3 bus 4 had 5 already 6 left. 7 Elias 8 stood 9 under 10 the 11 flickering 12 neon 13 sign 14 of 15 the 16 terminal, 17 rain 18 soaking 19 his 20 trench 21 coat. 22 He 23 checked 24 his 25 watch; 26 it 27 was 28 past 29 midnight. 30 His 31 train 32 ticket 33 meant 34 he 35 should 36 have 37 caught 38 the 39 evening 40 express. 41 Panic 42 flared 43 in 44 his 45 chest 46 as 47 he 48 looked 49 around 50 for 51 anyone 52 else. 53 No 54 one 55 remained 56 but 57 a 58 tired 59 janitor 60 sweeping 61 the 62 floor 63 slowly. 64 Elias 65 sighed 66 and 67 turned 68 toward 69 the 70 exit. 71 The 72 rain 73 was 74 cold, 75 but 76 he 77 had 78 nowhere 79 to 80 go. 81 He 82 walked 83 back 84 to 85 the 86 house, 87 clutching 88 his 89 bag 90 tight. 91 His 92 car 93 engine 94 wouldn't 95 start 96 after 97 a 98 drive 99 through 100 the 101 storm 102 earlier. 103 He 104 sat 105 in 106 the 107 dark 108 living 109 room, 110 listening 111 to 112 thunder 113 rumble 114 outside. 115 Suddenly, 116 the 117 phone 118 rang. 119 It 120 was 121 his 122 sister. 123 She 124 said 125 she'd 126 be 127 there 128",
-            "word_count": 1019,
-            "line_count": 23,
+            "text": "",
+            "word_count": 0,
+            "line_count": 0,
             "constraints": [
               "starts with given sentence",
               "~150 words",
@@ -6574,16 +6574,16 @@
               "starts_with_required": false
             },
             "constraint_pass_rate": 0.0,
-            "latency_s": 89.19,
-            "tokens_per_sec": 25.3,
+            "latency_s": 134.9,
+            "tokens_per_sec": 29.2,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "acrostic",
-            "text": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Topic/Theme: Unspecified (implied by \"OCEAN\" acronym).\n    *   Format: Acrostic poem.\n    *   Constraint 1: The first letters of each line must spell \"OCEAN\".\n    *   Constraint 2: Exactly 5 lines.\n\n2.  **Drafting - Line 1 (O):**\n    *   Ideas: Ocean, Over, Out, Open, Oar, Orbit, Ocean waves.\n    *   Draft: Over the water deep and blue?\n    *   Draft: Open up to the vast expanse?\n    *   Selection: Over the waves that roll so high?\n\n3.  **Drafting - Line 2 (C):**\n    *   Ideas: Currents, Caves, Coast, Calm, Cold, Creatures.\n    *   Draft: Currents swirl beneath our feet.\n    *   Draft: Crashing sound of the tide beats.\n    *   Selection: Currents pull where they have been sent? (Wait, needs to rhyme or flow). Let's try focusing on imagery.\n    *   Draft: Creatures swim in the salty sea.\n\n4.  **Drafting - Line 3 (E):**\n    *   Ideas: Endless, Everywhere, Ebb and Flow, Edge, Echo, Emerald.\n    *   Draft: Endless depths hide many things?\n    *   Draft: Every wave tells a story.\n    *   Selection: Every moment feels so serene? Or \"Endless horizons stretch out far.\" Let's go with: Endless skies meet the surface.\n\n5.  **Drafting - Line 4 (A):**\n    *   Ideas: Air, Aurora, Abyss, Anchor, Ancient, Angles.\n    *   Draft: Anchors hold us in place.\n    *   Draft: Ancient rocks lie at the bottom?\n    *   Selection: Ancient reefs grow slowly there.\n\n6.  **Drafting - Line 5 (N):**\n    *   Ideas: Now, Never, Night, Nature, Nebula, Nudge.\n    *   Draft: Never forget to breathe deep air.\n    *   Draft: Night falls over the dark blue expanse.\n    *   Selection: Night brings the moon above us.\n\n7.  **Review and Refine:**\n    Let's assemble and check constraints:\n    O - Over the waves that roll so high? (Wait, need to fit O-C-E-A-N)\n    C - Currents pull where they have been sent? (A bit clunky).\n    E - Every moment feels so serene. (Okay).\n    A - Ancient reefs grow slowly there. (Okay).\n    N - Night brings the moon above us. (Okay).\n\n    Let's try to make it more cohesive and poetic.\n\n    *Line 1 (O):* Over the waves where tides collide?\n    *Line 2 (C):* Currents flow from shore to deep?\n    *Line 3 (E):* Every drop is clear and cold?\n    *Line 4 (A):* Abyss hides secrets of the past.\n    *Line 5 (N):* Nature's power is truly vast.\n\n    Let's try again for better flow.\n\n    O - Ocean winds blow salt in air\n    C - Currents pull with gentle care\n    E - Every wave meets sky and sea\n    A - Angels watch the distant shore\n    N - Night falls on a world below\n\n    Check:\n    1. **O**cean winds blow salt in air (Starts with O)\n    2. **C**urrents pull with",
-            "word_count": 431,
-            "line_count": 54,
+            "text": "",
+            "word_count": 0,
+            "line_count": 0,
             "constraints": [
               "5 lines",
               "acrostic spells OCEAN"
@@ -6593,35 +6593,35 @@
               "acrostic_ok": false
             },
             "constraint_pass_rate": 0.0,
-            "latency_s": 31.87,
-            "tokens_per_sec": 25.6,
+            "latency_s": 47.4,
+            "tokens_per_sec": 30.0,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "dialogue",
-            "text": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Topic: Arguing about selling an old family house.\n    *   Format: Dialogue between two characters.\n    *   Constraint 1: Each line must start with \"Speaker Name: \".\n    *   Constraint 2: Exactly 10 lines total.\n\n2.  **Determine Characters:**\n    *   Let's call them Alex (pro-sell) and Sam (anti-sell). Or maybe Mom/Dad, or siblings. Siblings feels more natural for this conflict. Let's go with Elias and Clara.\n\n3.  **Drafting the Lines (aiming for 10 lines):**\n    *   Line 1: Elias wants to sell.\n    *   Line 2: Clara disagrees/holds sentimental value.\n    *   Line 3: Elias mentions financial need/maintenance costs.\n    *   Line 4: Clara mentions memories/history.\n    *   Line 5: Elias counters with market value.\n    *   Line 6: Clara worries about losing the roots.\n    *   Line 7: Elias suggests a compromise or deadline.\n    *   Line 8: Clara insists on waiting.\n    *   Line 9: Elias pushes for action.\n    *   Line 10: Clara closes or leaves it open-ended (but needs to be part of the argument).\n\n4.  **Refining for Constraints:**\n    *   Check line count strictly.\n    *   Check formatting (Name: text).\n    *   Ensure dialogue flows naturally.\n\n5.  **Drafting Content:**\n\n    1. Elias: We can't afford to keep up with the roof repairs anymore.\n    2. Clara: But this house holds memories we can't put a price on.\n    3. Elias: Memories don't pay the mortgage, and the bank is calling.\n    4. Clara: You're forgetting that selling means losing our history forever.\n    5. Elias: Holding onto debt isn't saving us, it's drowning us out.\n    6. Clara: We can downsize to a smaller place without leaving the roots here.\n    7. Elias: There is no way we can fix this foundation in time for winter.\n    8. Clara: Then maybe we sell just the land and keep the attic? No, that's silly. Let's say: Maybe we wait until spring.\n    *Correction:* Need to ensure it sounds like an argument about selling vs keeping.\n    *Revised Line 6:* I know you're right about money, but where will my childhood dreams go?\n    *Revised Line 7:* You can't move a lifetime of memories into a new apartment easily.\n    *Revised Line 8:* We need to act now before the market changes again.\n    *Revised Line 9:* If we keep it, at least one thing stays safe in this storm.\n    *Revised Line 10:* Come on, let's list it and see if someone else loves it here.\n\n6.  **Reviewing against constraints:**\n    *   Start with Speaker Name: ? Yes.\n    *   Exactly 10 lines? Let's count the draft above.\n    *   Topic met? Yes (selling old house).\n\n7.  **Final Polish:**\n\n    Elias: We can't afford to keep up with the roof repairs anymore.\n    Clara: But this house holds memories we can't put a price on.\n    Elias: Memories don't pay the mortgage, and the bank is calling.\n    Clara: You're forgetting that selling means losing our history forever.\n    Elias: Holding onto debt isn't saving us, it's drowning us out.\n    Clara: I know you're right about money, but where will my childhood dreams go?\n    Elias: You can't move a lifetime of memories into a new apartment easily.\n    Clara: Then maybe we wait until spring to fix the foundation properly.\n    Elias: We need to act now before the market changes again.\n    Clara: Come on, let's list it and see if someone else loves it here.\n\n    *Wait, I miscounted or mixed up lines.* Let's write them clearly numbered to ensure 10 distinct lines.\n\n    1. Elias: We can't afford to keep up with the roof repairs anymore.\n    2. Clara: But this house holds memories we can't put a price on.\n    3. Elias: Memories don't pay the mortgage, and the bank is calling.\n    4. Clara: You're forgetting that selling means losing our history forever.\n    5. Elias: Holding onto debt isn't saving us, it's drowning us out.\n    6. Clara: I know you're right about money, but where will my childhood dreams go?\n    7. Elias: You can't move a lifetime of memories into a new apartment easily.\n    8. Clara: Then maybe we wait until spring to fix the foundation properly.\n    9. Elias: We need to act now before the market changes again.\n    10. Clara: Come on, let's list it and see if someone else loves it here.\n\n    *Wait, line 8 is a bit weak.* Let's make sure the argument flows better towards a decision or stalemate.\n    Line 8 should be Clara arguing against selling further. Or Elias pressing harder.\n    Let's try to make line 10 the final point of contention.\n\n    Revised Plan:\n    1. Elias: We have to sell this house before winter takes it down.\n    2. Clara: Why do you want to move away from where we built our lives?\n    3. Elias: It's just too dangerous to stay here without a roof over us.\n    4. Clara: You're selling memories for safety, but is that worth the cost?\n    5. Elias: Safety means keeping money in the bank and not losing your home.\n    6. Clara: But you can't sell a house filled with our family's history.\n    7. Elias: We have to find a solution before the bank forecloses on us.\n    8. Clara: I won't leave unless we sell it in one year at most.\n    9. Elias: One year is too long, and the price will drop significantly by then.\n    10. Clara: Then you wait for me to find a new place before we move out.\n\n    *Wait, counting again.*\n    1. Elias: We have to sell this house before winter takes it down.\n    2. Clara: Why do you want to move away from where we built our lives?\n    3. Elias: It's just too dangerous to stay here without a roof over us.\n    4. Clara: You're selling memories for safety, but is that worth the cost?\n    5. Elias: Safety means keeping money in the bank and not losing your home.\n    6. Clara: But you can't sell a house filled with our family's history.\n    7. Elias: We have to find a solution before the bank forecloses on us.\n    8. Clara: I won't leave unless we sell it in one year at most.\n    9. Elias: One year is too long, and the price will drop significantly by then.\n    10. Clara: Then you wait for me to find a new place before we move out.\n\n    This looks like 10 lines. Each starts with Name:. Topic is selling house.\n\n    Wait, Line 5 \"Safety means keeping money in the bank and not losing your home.\" A bit clunky grammar-wise but acceptable.\n    Let's check line count again.\n    1, 2, 3, 4, 5, 6, 7, 8, 9, 10. Perfect.\n\n    Wait, I need to make sure the output is *just* the dialogue lines, not numbered list, otherwise it might be interpreted as extra text? The prompt says \"Write a 10-line dialogue...",
-            "word_count": 1094,
-            "line_count": 94,
+            "text": "Elias: The mortgage is eating into our savings every single month.\nSarah: But this house holds the memories of our entire childhood.\nElias: Memories don't pay for new roof repairs or plumbing leaks.\nSarah: You can't just demolish a family history with a hammer and trowel.\nElias: I'm suggesting we sell to stop the bleeding before it's too late.\nSarah: Then who will remember us when the new owners walk through these doors?\nElias: We can't afford to live in a house that doesn't fit our budget anymore.\nSarah: You don't have to sell it if you're willing to wait out the storm.\nElias: Waiting costs us years, and we are already drowning in debt.\nSarah: I'm not asking for a mortgage waiver, I'm asking for some time.",
+            "word_count": 128,
+            "line_count": 10,
             "constraints": [
               "10 lines",
               "name: prefix each line"
             ],
             "constraint_checks": {
-              "line_count_exact": false,
-              "all_lines_have_name_colon": false
+              "line_count_exact": true,
+              "all_lines_have_name_colon": true
             },
-            "constraint_pass_rate": 0.0,
-            "latency_s": 69.2,
-            "tokens_per_sec": 25.7,
+            "constraint_pass_rate": 1.0,
+            "latency_s": 91.62,
+            "tokens_per_sec": 29.6,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "six_word_story",
-            "text": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Task: Write a complete story.\n    *   Constraint: Exactly six words.\n    *   Format: Return ONLY the six words (no extra text, no explanations).\n\n2.  **Determine the Content:**\n    *   Needs to be a narrative arc (beginning, middle, end) within a very tight constraint.\n    *   Potential themes: Love, loss, discovery, action.\n    *   Example ideas:\n        *   \"I lost my way.\" (5 words - too short)\n        *   \"She looked back.\" (3 words - too short)\n        *   \"The dog barked loudly.\" (4 words - too short)\n        *   \"He opened the door.\" (4 words - too short)\n        *   \"They waited forever.\" (3 words - too short)\n        *   \"Love conquered time.\" (3 words - too short)\n\n    *   Let's try to construct a mini-narrative:\n        *   \"Birds flew south away.\" (4 words)\n        *   \"She saw the light.\" (5 words)\n        *   \"He said goodbye forever.\" (4 words)\n        *   \"Light shone in hope.\" (4 words)\n        *   \"One day came soon.\" (4 words)\n\n    *   Let's aim for 6 words:\n        *   \"The end was near.\" (5",
-            "word_count": 169,
-            "line_count": 23,
+            "text": "",
+            "word_count": 0,
+            "line_count": 0,
             "constraints": [
               "exactly 6 words"
             ],
@@ -6629,13 +6629,13 @@
               "exact_word_count": false
             },
             "constraint_pass_rate": 0.0,
-            "latency_s": 13.2,
-            "tokens_per_sec": 25.7,
+            "latency_s": 19.46,
+            "tokens_per_sec": 29.9,
             "human_score": null,
             "judge_score": null
           }
         ],
-        "elapsed_s": 371.7
+        "elapsed_s": 510.0
       },
       "code_generation": {
         "task": "code_generation",
@@ -6725,7 +6725,7 @@
       },
       "structured_strict": 0.833,
       "structured_lenient": 0.833,
-      "creative_constraints": 0.0,
+      "creative_constraints": 0.333,
       "code_pass_at_1": 0.667
     }
   }

@@ -847,7 +847,7 @@ def rebuild_leaderboard():
     skip = {"all_results.json", "leaderboard.json"}
     all_results = []
     for p in sorted(RESULTS_DIR.glob("*.json")):
-        if p.name in skip or "_partial_" in p.name:
+        if p.name in skip or "_partial_" in p.name or "_qualitative" in p.name:
             continue
         try:
             with open(p, encoding="utf-8") as f:

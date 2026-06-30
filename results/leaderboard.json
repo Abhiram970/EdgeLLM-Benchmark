@@ -38,7 +38,7 @@
     },
     "structured_strict": 0.333,
     "structured_lenient": 1.0,
-    "creative_constraints": 0.583,
+    "creative_constraints": 0.5,
     "code_pass_at_1": 0.5
   },
   "glm-edge-4b": {
@@ -59,7 +59,7 @@
     },
     "structured_strict": 0.333,
     "structured_lenient": 1.0,
-    "creative_constraints": 0.833,
+    "creative_constraints": 0.917,
     "code_pass_at_1": 0.5
   },
   "phi4-mini": {
@@ -80,7 +80,7 @@
     },
     "structured_strict": 0.167,
     "structured_lenient": 1.0,
-    "creative_constraints": 0.5,
+    "creative_constraints": 0.417,
     "code_pass_at_1": 0.5
   },
   "qwen35-4b": {
@@ -101,7 +101,7 @@
     },
     "structured_strict": 0.833,
     "structured_lenient": 0.833,
-    "creative_constraints": 0.0,
+    "creative_constraints": 0.333,
     "code_pass_at_1": 0.667
   }
 }

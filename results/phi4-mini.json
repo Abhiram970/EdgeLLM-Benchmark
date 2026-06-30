@@ -1134,12 +1134,12 @@
     },
     "creative_generation": {
       "task": "creative_generation",
-      "mean_constraint_pass_rate": 0.5,
+      "mean_constraint_pass_rate": 0.417,
       "results": [
         {
           "type": "article",
-          "text": "**Deep-Sea Discovery: New Species 'Glowing Lanternfish' Illuminates Ocean Depths**\n\nScientists have made an astonishing breakthrough in marine biology with the identification and description of a previously unknown species, dubbed \"Lanternfish,\" discovered at depths exceeding 2,000 meters beneath Earth's oceans.\n\nThe discovery was announced by Dr. Emily Waters from the International Marine Biology Institute during her recent expedition to explore uncharted territories off the coastlines of New Zealand's South Island in March this year. The Lanternfish exhibits a unique bioluminescent trait that allows it not only for communication but also as an effective predator, illuminating its surroundings with eerie blue-green light.\n\nThe species was first spotted by Dr. Waters' team using advanced submersible technology capable of enduring extreme pressures and darkness found in the deep sea's abyssal plains where sunlight cannot penetrate. The Lanternfish measures approximately 30 centimeters long (12 inches) but is easily recognizable due to its glowing dorsal fin, which resembles a lantern.\n\nBiologists are fascinated by this new species' ability for bioluminescence as it provides insights into evolutionary adaptations that enable survival in the perpetual darkness of deep-sea environments. The Lanternfish's light-producing organs contain luciferin and an enzyme called luciferase – similar to those found within fireflies, which react with oxygen molecules during a chemical reaction producing luminescent compounds.\n\nThe discovery also raises questions about potential ecological impacts on its habitat due to human activities such as deep-sea mining. The Lanternfish's role in the food chain remains largely unknown; however, it is believed that this species may serve an essential function for maintaining balance within these ecosystems by controlling populations of smaller organisms and serving as prey.\n\nThe International Marine Biology Institute plans",
-          "word_count": 275,
+          "text": "**Deep-Sea Discovery: New Species 'Lumina Glimmerfish' Illuminates Ocean Depths**\n\nScientists have made an astonishing breakthrough in marine biology with the identification and documentation of a previously unknown species, dubbed \"Lumina Glimmerfish,\" discovered at depths exceeding 3,000 meters beneath Earth's oceans.\n\nThe Lumina Glimmerfish was first spotted by researchers aboard the research vessel 'Ocean Explorer' during routine deep-sea expeditions. This bioluminescent fish exhibits an extraordinary ability to emit a radiant glow that illuminates its surroundings in shades of blue and green light—a phenomenon believed to be used for both communication with other Lumina Glimmerfish individuals as well as attracting prey.\n\nThe discovery was made by Dr. Emily Waters, marine ecologist at the Global Marine Institute (GMI), who led an international team on a groundbreaking expedition aimed at exploring uncharted territories of our planet's oceans. The species' unique luminescence is attributed to specialized cells called photophores located along its body and tail fin.\n\nThe Lumina Glimmerfish measures approximately 15 centimeters in length, with translucent skin that allows light from within the fish itself or surrounding water sources to pass through it effortlessly—a rare trait among deep-sea creatures. This adaptation not only aids their survival but also contributes significantly to our understanding of bioluminescent organisms and how they interact with each other.\n\nDr. Waters expressed excitement over this discovery, stating that \"the Lumina Glimmerfish is a testament to the unexplored biodiversity hidden in Earth's oceans.\" She emphasized its potential impact on scientific knowledge about deep-sea ecosystems: “This new species could help us understand more complex food webs and ecological relationships at extreme depths.”\n\nThe team collected samples for further study",
+          "word_count": 267,
           "line_count": 7,
           "constraints": [
             "has headline",
@@ -1150,16 +1150,16 @@
             "word_count_within_30pct": false
           },
           "constraint_pass_rate": 0.0,
-          "latency_s": 11.6,
-          "tokens_per_sec": 31.5,
+          "latency_s": 20.45,
+          "tokens_per_sec": 38.1,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "poem_question_word",
-          "text": "Who can hear the whispers in this urban expanse?  \nWhat secrets do these towering lights conceal beneath their glow so bright and vast?  \nWhere does silence find its place amidst such endless motion below us all night long?  \nWhen did dreams first take flight from minds to skies, casting shadows on our view here tonight?\n\nWhy are we drawn together like moths in this electric hive of life’s fervent pulse?\nHow do the stars above witness tales untold beneath their watchful gaze so grand and bright?\n\nWho am I amidst these endless waves that crash against my rooftop's edge?  \nWhat stories lie hidden within each flickering beam, waiting to be discovered anew tonight?  \nWhere can one find solace in this symphony of lights when every corner seems a stage for dreams?\nWhen does the city breathe its deepest sighs as night wraps it all so tight and deep?\n\nWhy do we seek answers",
-          "word_count": 153,
-          "line_count": 11,
+          "text": "Who can hear the whispers in this urban expanse?  \nWhat secrets do these towering lights conceal beneath their glow so bright and vast?  \nWhere does one find solace amidst such endless motion below us all at night’s embrace?\n\nWhen stars dare to peek through a sky ablaze with neon's gleam, what stories unfold above our heads tonight?\nWhy are we drawn here on this rooftop high where dreams collide in silent reverie beneath the city lights’ glow?  \nHow does one capture moments fleeting as shadows dance upon concrete and steel under moon’s tender gaze?\n\nWho am I to question why night cloaks cities with such enigmatic allure, painting them silvered hues of mystery?\nWhat echoes linger from footsteps past that wander through this labyrinthine maze below us all at rest tonight?\nWhere do dreams take flight in the stillness when city lights flicker like fireflies’ gentle glow?  \nWhen does one",
+          "word_count": 150,
+          "line_count": 10,
           "constraints": [
             "12 lines",
             "each line starts with question word"
@@ -1169,16 +1169,16 @@
             "all_lines_start_question_word": true
           },
           "constraint_pass_rate": 0.5,
-          "latency_s": 6.08,
-          "tokens_per_sec": 32.1,
+          "latency_s": 5.02,
+          "tokens_per_sec": 39.9,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "short_story",
-          "text": "\"The last bus had already left.\" Emily stood at her doorstep in despair; she missed it by mere seconds as dusk settled over Maple Street.\n\nDetermined not to let this defeat define her day, she decided on an impromptu adventure instead of the planned quiet evening reading session she'd been looking forward to for weeks. She grabbed a jacket and headed towards Willow Park – where children played under twinkling lights that promised warmth even in winter's chill.\n\n\nIn the middle of Maple Street stood Willowside Café; its warm glow beckoned her inside, promising refuge from both cold winds and loneliness she felt creeping up on herself.\n\nInside was an unexpected haven. The café buzzed with life – laughter mingled with coffee aromas as patrons shared stories over cups brimming like tiny oceans.\n\n\nA young man at the counter caught sight of Emily's forlorn expression; he offered a smile that reached his eyes, inviting her to sit down and share in their camaraderie.\n\nAs she recounted tales from work - misadventures involving misplaced files – laughter erupted around them. The café staff joined too: an elderly woman with stories as rich tapestries weaving through time.\n\n\nHours slipped by unnoticed until the sun dipped below horizon's edge; Emily realized it was not just a missed bus but also her chance to connect, share and laugh away loneliness.\n\nAs she left Willow Park that night under twilight’s embrace – heart lighter",
-          "word_count": 239,
-          "line_count": 8,
+          "text": "\"The last bus had already left.\" Emily stood at her doorstep in despair; she missed it by mere seconds as dusk settled over Maple Street.\n\nDetermined not to let this defeat win, she sprinted down Elm Avenue until the library's lights flickered on—a beacon of hope amidst growing darkness. Inside, bookshelves loomed like silent sentinels guarding knowledge and escape from reality.\n\n\nIn a quiet corner sat Mr. Thompson; his eyes twinkling with mischief as he noticed her distress.\n\n\"Need to borrow something?\" He asked without looking up until she nodded vigorously—his favorite part of the day was helping others find solace in stories, even if it meant bending rules for them once or twice.\n\n\nHours passed like minutes under Mr. Thompson's patient guidance; Emily discovered worlds beyond hers within pages that whispered secrets and dreams.\n\nAs midnight approached with a gentle chime from an unseen clock tower outside, she realized her heart had filled up on adventures she'd never imagined possible—filled to the brim by stories untold in books.\n\n\nWith gratitude brimming over his lips like morning dew upon grass blades after rain, Mr. Thompson handed back Emily's borrowed treasures.\n\n\"Remember,\" he said with a wink as if sharing an ancient secret between old friends, \"Every ending is just another beginning.\"\n\n\nOutside under starlit skies that seemed to applaud her newfound courage and curiosity for the night ahead promised endless",
+          "word_count": 230,
+          "line_count": 9,
           "constraints": [
             "starts with given sentence",
             "~150 words",
@@ -1189,15 +1189,15 @@
             "starts_with_required": true
           },
           "constraint_pass_rate": 0.5,
-          "latency_s": 9.62,
-          "tokens_per_sec": 30.7,
+          "latency_s": 7.75,
+          "tokens_per_sec": 38.6,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "acrostic",
-          "text": "Oceans whisper tales untold, beneath waves so deep,\nCurrents dance in a timeless waltz.\nEndless blue that stretches far and wide,\nA world unknown to those who sleep.\n\nNurturing life with every tide's sweep.",
-          "word_count": 34,
+          "text": "Oceans whisper tales untold, beneath waves so deep,\nCurrents carry secrets they keep.\nEndless blue stretches far and wide,\nA world alive with life inside.\nNature's beauty in every tide.",
+          "word_count": 30,
           "line_count": 5,
           "constraints": [
             "5 lines",
@@ -1208,33 +1208,33 @@
             "acrostic_ok": true
           },
           "constraint_pass_rate": 1.0,
-          "latency_s": 2.09,
-          "tokens_per_sec": 31.9,
+          "latency_s": 1.53,
+          "tokens_per_sec": 40.0,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "dialogue",
-          "text": "Alex: We should consider selling this old family home; it's time we upgraded our lifestyle.\n\nJordan: But it holds so much sentimental value! Selling would mean letting go of memories tied to every corner!\n\nAlex: I understand, but think about all the financial benefits and opportunities for us now versus later years when things might be harder on your own.\n\nJordan: True, money is important. Yet can we really put a price tag just anywhere else holds?\n\nAlex: We could donate it instead; that way we'd still honor our family's history while helping others in need!\n\nJordan: That sounds noble but selling would give us the capital to invest for future security and comfort without regrets.\n\nAlex: What if you can't find someone who appreciates its sentimental value as much we do? Selling might be a better option then?\n\nJordan: I suppose, yet part of me fears that once it's gone forever; it will haunt our dreams like an unfinished story. \n\nAlex: Perhaps there's another way to preserve the memories without selling—like creating digital archives or stories about this place.\n\nJordan: Maybe you're right... but my heart still",
-          "word_count": 188,
-          "line_count": 10,
+          "text": "Alex: We should consider selling this ancient relic of our family's history.\nJordan: Selling it? It's not just property; it's heritage!\nAlex: But think of all we could do financially, Jordan! The market is ripe for such properties now.\nJordan: Financial gain shouldn't come at the cost of losing a piece of who we've been as families. \nAlex: I understand your sentiment but remember that this house has accumulated so much debt over time; selling it would be wise economically!\nJordan: But what about memories? What stories are we leaving behind if we're not here to tell them?\nAlex: Memories can always live on through photos and records, Jordan.\nJordan: True. Yet there's something irreplaceable in the physical space where generations have lived together...\nAlex: Perhaps it's time for a new chapter; this house has served us well but isn't growing our family any longer!\nJordan: Maybe you're right about growth... But what if we find another way to honor its legacy without selling it?\nAlex: We could rent out parts of it, keep the spirit alive while still benefiting financially.\nJordan: That might just work. Let's explore that option further before making a final decision on this matter!",
+          "word_count": 199,
+          "line_count": 12,
           "constraints": [
             "10 lines",
             "name: prefix each line"
           ],
           "constraint_checks": {
-            "line_count_exact": true,
+            "line_count_exact": false,
             "all_lines_have_name_colon": true
           },
-          "constraint_pass_rate": 1.0,
-          "latency_s": 7.56,
-          "tokens_per_sec": 31.0,
+          "constraint_pass_rate": 0.5,
+          "latency_s": 6.49,
+          "tokens_per_sec": 39.6,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "six_word_story",
-          "text": "\"Lost dog reunites with owner.\"",
+          "text": "\"Lost dog reunites with family.\"",
           "word_count": 5,
           "line_count": 1,
           "constraints": [
@@ -1244,13 +1244,13 @@
             "exact_word_count": false
           },
           "constraint_pass_rate": 0.0,
-          "latency_s": 0.7,
-          "tokens_per_sec": 40.4,
+          "latency_s": 0.71,
+          "tokens_per_sec": 45.0,
           "human_score": null,
           "judge_score": null
         }
       ],
-      "elapsed_s": 37.7
+      "elapsed_s": 42.0
     },
     "code_generation": {
       "task": "code_generation",
@@ -1340,7 +1340,7 @@
     },
     "structured_strict": 0.167,
     "structured_lenient": 1.0,
-    "creative_constraints": 0.5,
+    "creative_constraints": 0.417,
     "code_pass_at_1": 0.5
   }
 }

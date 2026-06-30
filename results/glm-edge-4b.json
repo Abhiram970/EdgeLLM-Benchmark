@@ -1134,13 +1134,13 @@
     },
     "creative_generation": {
       "task": "creative_generation",
-      "mean_constraint_pass_rate": 0.833,
+      "mean_constraint_pass_rate": 0.917,
       "results": [
         {
           "type": "article",
-          "text": "**Deep Sea Divers Uncover Mysterious New Species: The 'Abyssal Glimmer'**\n\nIn an extraordinary expedition to the Mariana Trench, marine biologists have announced the discovery of a previously unknown species of deep-sea fish, aptly named the \"Abyssal Glimmer.\" This remarkable find was made during a dive conducted by a team from the National Oceanic and Atmospheric Administration (NOAA) in collaboration with the Monterey Bay Aquarium Research Institute (MBARI).\n\nThe Abyssal Glimmer is described as a small, bioluminescent fish that inhabits the dark depths of the ocean floor. Its unique adaptation to its environment includes a shimmering blue-green glow that serves both as camouflage and as a means of communication with other members of its species.\n\nThe discovery was made at a depth of 8,000 meters (approximately 26,247 feet), where sunlight does not penetrate. The fish's bioluminescence is believed to be an evolutionary adaptation that allows it to navigate and find food in the complete darkness of its habitat.\n\nThe Abyssal Glimmer has a distinct body structure with elongated fins and a streamlined body, which enables it to move swiftly through the water. Scientists are currently studying this new species to better understand its role within the deep-sea ecosystem and how it survives in such extreme conditions.\n\nThis groundbreaking discovery not only expands our knowledge of marine biodiversity but also highlights the importance of continued exploration and research in the deep sea, where many mysteries still await discovery.",
-          "word_count": 236,
-          "line_count": 6,
+          "text": "**Deep Sea Divers Uncover Mysterious New Species: The 'Abyssal Glimmer'**\n\nIn an extraordinary expedition to the Mariana Trench, marine biologists have announced the discovery of a previously unknown species of deep-sea fish, aptly named the \"Abyssal Glimmer.\" This remarkable find was made during a dive conducted by a team from the National Oceanic and Atmospheric Administration (NOAA) in collaboration with the Monterey Bay Aquarium Research Institute (MBARI).\n\nThe Abyssal Glimmer is described as a small, bioluminescent fish that inhabits the dark depths of the ocean floor. Its unique adaptation to its environment includes a shimmering blue-green glow that serves both as camouflage and as a means of communication with other members of its species.\n\nThe discovery was made using MBARI's remotely operated vehicle (ROV), which captured high-definition footage of the fish swimming gracefully among the abyssal plains. The Abyssal Glimmer is believed to be one of many new species that still await discovery in the world's deepest waters.\n\nThis groundbreaking research not only expands our understanding of marine biodiversity but also highlights the importance of protecting these fragile ecosystems. As climate change and human activity threaten oceanic environments, discoveries like these underscore the need for continued conservation efforts to preserve the beauty and diversity of life beneath the waves.",
+          "word_count": 209,
+          "line_count": 5,
           "constraints": [
             "has headline",
             "~200 words",
@@ -1150,14 +1150,14 @@
             "word_count_within_30pct": true
           },
           "constraint_pass_rate": 1.0,
-          "latency_s": 11.61,
-          "tokens_per_sec": 30.3,
+          "latency_s": 10.31,
+          "tokens_per_sec": 35.8,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "poem_question_word",
-          "text": "Who gazes upon the neon lights in the distance?\nWhat stories do these skyscrapers tell at night?\nWhere does the day end and the night begins?\nWhen stars appear, how long will they stay?\nWhy do we yearn for the city's glow?\nHow does it feel to be so high above?",
+          "text": "Who gazes upon the neon lights in the distance?\nWhat stories do these skyscrapers tell at night?\nWhere does the day end and the night begins?\nWhen stars appear, how long will they stay?\nWhy do we yearn for the city's embrace?\nHow does it feel to be so high above?",
           "word_count": 51,
           "line_count": 6,
           "constraints": [
@@ -1169,16 +1169,16 @@
             "all_lines_start_question_word": true
           },
           "constraint_pass_rate": 0.5,
-          "latency_s": 2.54,
-          "tokens_per_sec": 29.3,
+          "latency_s": 2.16,
+          "tokens_per_sec": 35.6,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "short_story",
-          "text": "The last bus had already left. Sarah hurried down the dimly lit alley, her heart pounding in her chest. She needed to find her friend, Alex, who lived across town. The rain poured down, making the streets slippery. \n\nSarah's phone buzzed with a message from Alex: \"Meet me at the old library at 8 PM.\" Relief washed over her as she arrived just in time. They shared stories of their day and laughed until the wee hours. As the clock struck midnight, Sarah realized it was too late to catch the bus home. \n\nAlex offered her a ride, but Sarah declined, determined to walk. She knew the streets better than anyone, and she trusted her ability to navigate them safely. With determination in her step, she made it back to her apartment just as the first light of dawn began to break through the clouds.",
-          "word_count": 145,
-          "line_count": 3,
+          "text": "The last bus had already left. Sarah hurried down the dimly lit alley, her heart pounding in her chest. She needed to find her friend, Alex, who lived across town. The rain poured down, making the streets slippery. \n\nSarah's phone buzzed with a message from Alex: \"Meet me at the corner of Maple and Oak. Now!\" Sarah sprinted towards the address, dodging puddles and avoiding pedestrians. She arrived just in time to see Alex standing there, soaked and shivering.\n\n\"You're late,\" Alex said, wiping rain from her eyes. \"I was waiting for ages.\" \n\nSarah smiled and wrapped her coat around Alex. \"Let's go home,\" she suggested. They huddled together on the bus, laughing and sharing stories until it pulled into their neighborhood.",
+          "word_count": 122,
+          "line_count": 4,
           "constraints": [
             "starts with given sentence",
             "~150 words",
@@ -1189,15 +1189,15 @@
             "starts_with_required": true
           },
           "constraint_pass_rate": 1.0,
-          "latency_s": 6.4,
-          "tokens_per_sec": 30.6,
+          "latency_s": 5.3,
+          "tokens_per_sec": 36.7,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "acrostic",
-          "text": "Ocean's depths are vast and blue,\nCrystal clear, a world so new.\nEndless waves in rhythmic dance,\nArenas of life, both great and small.\nNature's masterpiece, a timeless call.",
-          "word_count": 29,
+          "text": "Ocean's depths, a world untold,\nCreatures swim in colors bold.\nEndless waves, a dance so grand,\nAbyssal life, a mystery vast.\nNature's wonder, blue and vast.",
+          "word_count": 26,
           "line_count": 5,
           "constraints": [
             "5 lines",
@@ -1208,33 +1208,33 @@
             "acrostic_ok": true
           },
           "constraint_pass_rate": 1.0,
-          "latency_s": 1.85,
-          "tokens_per_sec": 31.8,
+          "latency_s": 1.45,
+          "tokens_per_sec": 38.7,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "dialogue",
-          "text": "**Alex:** We should definitely sell the old family house. It's time for new beginnings.\n\n**Jamie:** But it's our heritage! Selling it feels like giving up on our roots.\n\n**Alex:** Times change, Jamie. We need to adapt and move forward.\n\n**Jamie:** Adapting doesn't mean forgetting where we came from. This place holds so much meaning.\n\n**Alex:** Meaning is in the memories, not the physical structure. Let's make new ones elsewhere.\n\n**Jamie:** But what about our family's history? It's tied to this house.\n\n**Alex:** History lives on through us, not just in one place. We can preserve it in our hearts and actions.\n\n**Jamie:** I don't want to lose that connection. This was where my grandparents lived.\n\n**Alex:** Grandparents' legacy is alive in us now. Let's build our own stories in new spaces.\n\n**Jamie:** But what about the house? It's part of who we are.\n\n**Alex:** It may be a physical part, but it's not everything",
-          "word_count": 154,
-          "line_count": 11,
+          "text": "**Alex:** We should definitely sell the old family house. It's time for new beginnings.\n\n**Jamie:** But it's our heritage! Selling it feels like giving up on our roots.\n\n**Alex:** Times change, Jamie. We need to adapt and move forward.\n\n**Jamie:** Adapting means keeping what's important, not throwing it away!\n\n**Alex:** This house holds memories, but so do new opportunities.\n\n**Jamie:** Opportunities don't come with the weight of nostalgia.\n\n**Alex:** Nostalgia can be beautiful, but it's time for growth.\n\n**Jamie:** Growth doesn't mean forgetting where we came from.\n\n**Alex:** We can always visit. The house doesn't have to define us.\n\n**Jamie:** But it does for me. I can't just let go of that feeling.",
+          "word_count": 113,
+          "line_count": 10,
           "constraints": [
             "10 lines",
             "name: prefix each line"
           ],
           "constraint_checks": {
-            "line_count_exact": false,
+            "line_count_exact": true,
             "all_lines_have_name_colon": true
           },
-          "constraint_pass_rate": 0.5,
-          "latency_s": 7.43,
-          "tokens_per_sec": 30.6,
+          "constraint_pass_rate": 1.0,
+          "latency_s": 4.98,
+          "tokens_per_sec": 36.6,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "six_word_story",
-          "text": "A lion roars, a gazelle flees.",
+          "text": "A lion roars, then runs away.",
           "word_count": 6,
           "line_count": 1,
           "constraints": [
@@ -1244,13 +1244,13 @@
             "exact_word_count": true
           },
           "constraint_pass_rate": 1.0,
-          "latency_s": 0.54,
-          "tokens_per_sec": 40.2,
+          "latency_s": 0.46,
+          "tokens_per_sec": 49.1,
           "human_score": null,
           "judge_score": null
         }
       ],
-      "elapsed_s": 30.4
+      "elapsed_s": 24.7
     },
     "code_generation": {
       "task": "code_generation",
@@ -1340,7 +1340,7 @@
     },
     "structured_strict": 0.333,
     "structured_lenient": 1.0,
-    "creative_constraints": 0.833,
+    "creative_constraints": 0.917,
     "code_pass_at_1": 0.5
   }
 }

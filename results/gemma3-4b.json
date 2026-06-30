@@ -1134,7 +1134,7 @@
     },
     "creative_generation": {
       "task": "creative_generation",
-      "mean_constraint_pass_rate": 0.583,
+      "mean_constraint_pass_rate": 0.5,
       "results": [
         {
           "type": "article",
@@ -1150,8 +1150,8 @@
             "word_count_within_30pct": true
           },
           "constraint_pass_rate": 1.0,
-          "latency_s": 13.53,
-          "tokens_per_sec": 20.6,
+          "latency_s": 9.84,
+          "tokens_per_sec": 39.2,
           "human_score": null,
           "judge_score": null
         },
@@ -1169,8 +1169,8 @@
             "all_lines_start_question_word": false
           },
           "constraint_pass_rate": 0.0,
-          "latency_s": 7.17,
-          "tokens_per_sec": 22.2,
+          "latency_s": 4.18,
+          "tokens_per_sec": 40.1,
           "human_score": null,
           "judge_score": null
         },
@@ -1189,8 +1189,8 @@
             "starts_with_required": true
           },
           "constraint_pass_rate": 1.0,
-          "latency_s": 9.57,
-          "tokens_per_sec": 22.3,
+          "latency_s": 5.54,
+          "tokens_per_sec": 39.7,
           "human_score": null,
           "judge_score": null
         },
@@ -1208,27 +1208,27 @@
             "acrostic_ok": false
           },
           "constraint_pass_rate": 0.0,
-          "latency_s": 3.6,
-          "tokens_per_sec": 24.2,
+          "latency_s": 2.3,
+          "tokens_per_sec": 41.2,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "dialogue",
-          "text": "Here’s a 10-line dialogue fulfilling your request:\n\nLiam: : Honestly, Mom, we need to seriously consider selling this place. It’s bleeding us dry.\nMom: : Sell it? Liam, this house is our family history! You can't just put a price on that.\nLiam: : But the upkeep alone is crippling – the roof, the wiring…it’s a constant drain.\nMom: : We could fix things up, modernize a little. Memories are worth more than a new roof, you know.\nLiam: : Memories don't pay the bills, Mom! We have responsibilities now, and this house isn’t helping.\nMom: : It represents generations of our family, Liam! Your grandfather built this with his own two hands!\nLiam: : Grandpa would want us to be secure, not struggling to maintain a crumbling monument.\nMom: : Don't you dare reduce his legacy to just \"struggling\"! There’s sentimental value here.\nLiam: : Sentimental value doesn",
-          "word_count": 149,
-          "line_count": 10,
+          "text": "Here’s a 10-line dialogue fulfilling your request:\n\nLiam: : Honestly, Mom, we need to seriously consider selling this place. It’s bleeding us dry.\nMom: : Sell it? Liam, this house is our family history! You can't just put a price on that.\nLiam: : But the upkeep alone is crippling – the roof, the wiring…it’s a constant drain.\nMom: : We could fix things up, modernize a little. Memories are worth more than a new roof, you know.\nLiam: : Memories don't pay the bills, Mom! We have responsibilities now, and this house isn’t helping.\nMom: : It represents generations of our family, Liam! Your grandfather built this with his own two hands!\nLiam: : Grandpa would want us to be secure, not struggling to maintain a crumbling monument.\nMom: : Don't you dare reduce his legacy to just \"struggling\"! There’s sentimental value here.\nLiam: : Sentimental value doesn’t cover the property taxes, and frankly, it’s time for a fresh start.\nMom: : I still say no, Liam. This house stays in our family.",
+          "word_count": 174,
+          "line_count": 11,
           "constraints": [
             "10 lines",
             "name: prefix each line"
           ],
           "constraint_checks": {
-            "line_count_exact": true,
+            "line_count_exact": false,
             "all_lines_have_name_colon": false
           },
-          "constraint_pass_rate": 0.5,
-          "latency_s": 10.46,
-          "tokens_per_sec": 22.2,
+          "constraint_pass_rate": 0.0,
+          "latency_s": 7.0,
+          "tokens_per_sec": 39.6,
           "human_score": null,
           "judge_score": null
         },
@@ -1244,13 +1244,13 @@
             "exact_word_count": true
           },
           "constraint_pass_rate": 1.0,
-          "latency_s": 0.86,
-          "tokens_per_sec": 28.3,
+          "latency_s": 0.74,
+          "tokens_per_sec": 50.0,
           "human_score": null,
           "judge_score": null
         }
       ],
-      "elapsed_s": 45.2
+      "elapsed_s": 29.6
     },
     "code_generation": {
       "task": "code_generation",
@@ -1340,7 +1340,7 @@
     },
     "structured_strict": 0.333,
     "structured_lenient": 1.0,
-    "creative_constraints": 0.583,
+    "creative_constraints": 0.5,
     "code_pass_at_1": 0.5
   }
 }
