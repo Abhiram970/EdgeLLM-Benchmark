@@ -90,7 +90,7 @@ DECODE = {
     # roster models for future downloads:
     "vibethinker-3b":  {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0},
     "crow-4b":         {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0},
-    "qwen35-4b":       {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0},
+    "qwen35-4b":       {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 14.0},
 }
 
 
@@ -100,12 +100,22 @@ def decode_spec(model: str) -> dict:
 
 def split_reasoning(text: str):
     """Return (reasoning, answer, truncated). truncated=True if <think> opened but
-    never closed (model hit the token cap mid-thought; CONTEXT.md §4)."""
+    never closed (model hit the token cap mid-thought; CONTEXT.md §4).
+    Also handles qwen3-style plain-prose thinking (starts with 'Thinking Process:')."""
     if "</think>" in text:
         think, _, answer = text.partition("</think>")
         return think.replace("<think>", "").strip(), answer.strip(), False
     if "<think>" in text:
         return text.replace("<think>", "").strip(), "", True
+    # qwen3 plain-prose reasoning: no tags, starts with "Thinking Process:"
+    if text.lstrip().startswith("Thinking Process:"):
+        import re
+        m = list(re.finditer(r'\n\s*\*(?:Final [A-Za-z ]+|Revised (?:Draft|Text)|Trimmed)[:\*]', text))
+        if m:
+            candidate = text[m[-1].end():].strip()
+            if len(candidate) > 20:
+                return text[:m[-1].start()].strip(), candidate, False
+        return text.strip(), "", True
     return "", text.strip(), False
 
 

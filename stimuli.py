@@ -662,7 +662,7 @@ CREATIVE_TASKS = [
     {"type": "dialogue",
      "prompt": "Write a 10-line dialogue between two characters arguing about whether to sell an old family house. Each line must start with the speaker's name followed by a colon. Exactly 10 lines.",
      "constraints": ["10 lines", "name: prefix each line"],
-     "target_lines": 10, "line_prefix_colon": True, "max_tokens": 220},
+     "target_lines": 10, "line_prefix_colon": True, "max_tokens": 350},
     {"type": "six_word_story",
      "prompt": "Write a complete story in exactly six words. Return ONLY the six words.",
      "constraints": ["exactly 6 words"],

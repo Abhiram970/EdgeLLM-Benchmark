@@ -1,0 +1,57 @@
+{
+  "model": "gemma3-4b",
+  "judge_model": "claude-sonnet-4-6",
+  "timestamp": "2026-06-30T18:19:17.302000Z",
+  "task2_faithfulness": {
+    "sum_prose_frenchrev": {
+      "score": 7,
+      "rationale": "The summary captures most key facts accurately but omits important details such as the distinction between prosperous and poor/landless peasants (roughly half remained poor), the role of reduced mortality rates from about 1730 in driving population growth, and slightly misattributes population doubling as a direct cause of peasant unrest rather than a broader demographic pressure."
+    },
+    "sum_prose_industrial": {
+      "score": 9,
+      "rationale": "The summary accurately captures all major points from the source passage including wealth distribution, middle class growth, the shift from domestic to factory systems, harsh working conditions for women and children, the rise of trade unions, and the two phases of the Industrial Revolution with correct dates and geographic scope, with only minor omission of details like specific new industries (automobiles) and the transformation to mechanized manufacturing."
+    },
+    "sum_math_calculus": {
+      "score": 9,
+      "rationale": "The summary accurately captures all key facts including the fundamental theorem of calculus, the inverse relationship between differentiation and integration, the notation and meaning of the integral symbol, Leibniz's conceptualization of integration as summing infinitely thin rectangles, and the concrete example of integrating x² to get x³/3 + C, with only minor omissions such as the elongated S standing for 'sum' and the specific mention of dx as an infinitely small increment."
+    },
+    "sum_math_pythagorean": {
+      "score": 7,
+      "rationale": "The summary accurately captures the theorem's formula, Babylonian origins, and Indian/Pythagorean connections, but incorrectly attributes the theorem's credit to Pythagoras being due to its inclusion in Euclid's Elements — the source does not make this causal link, and the actual reason given is simply that 'the theorem came to be credited to Pythagoras' without citing Euclid's Elements as the reason."
+    },
+    "sum_sci_tectonics": {
+      "score": 8,
+      "rationale": ""
+    },
+    "sum_sci_dna": {
+      "score": 7,
+      "rationale": "The summary captures most key facts accurately but contains a minor inaccuracy: it states the double helix is 'held by covalent bonds and hydrogen bonds,' conflating the two bond types—covalent bonds form the phosphate-sugar backbone while hydrogen bonds hold the two strands together, a distinction the source passage makes clearly; additionally, the summary omits the specific detail that the two strands run in antiparallel directions."
+    }
+  },
+  "task5_quality": {
+    "article": {
+      "score": 8,
+      "rationale": "The piece is well-crafted with convincing journalistic voice, specific and plausible scientific details (depth measurements, Latin nomenclature, researcher quotes), and a coherent narrative arc, though it stays within fairly conventional science-journalism conventions without offering any particularly surprising or distinctive creative flourishes."
+    },
+    "poem_question_word": {
+      "score": 7,
+      "rationale": "The poem captures the rooftop night-watching experience with some genuinely evocative images (velvet dark, shimmering mosaics, rising steam) and maintains a contemplative voice throughout, though several lines feel somewhat generic or padded to fit the constraint rather than driven by authentic poetic impulse."
+    },
+    "short_story": {
+      "score": 7,
+      "rationale": "The story has a warm, nostalgic voice and a satisfying emotional arc, but the resolution—a stranger appearing with the grandmother's favorite pie—feels conveniently magical without enough grounding, and the closing line leans toward a generic epiphany rather than something more distinctively earned."
+    },
+    "acrostic": {
+      "score": 6,
+      "rationale": "The poem is competent and coherent with pleasant imagery, but relies on predictable ocean clichés (coral reefs, azure depths, secrets) and a sing-song rhyme scheme that feels generic rather than distinctive or evocative."
+    },
+    "dialogue": {
+      "score": 3,
+      "rationale": "The dialogue is cut off mid-sentence in the final line, leaving it incomplete and abrupt, which significantly undermines the piece's coherence; beyond that structural failure, the arguments themselves are generic and predictable, relying on clichéd sentimentality-vs-practicality tropes without any distinctive voice or creative depth, and the double colons (\"Liam: :\") suggest careless formatting throughout."
+    },
+    "six_word_story": {
+      "score": 7,
+      "rationale": "A compact, emotionally resonant arc with satisfying cause-and-effect logic, though the phrasing leans on familiar tropes and the comma-heavy rhythm feels slightly formulaic."
+    }
+  }
+}
