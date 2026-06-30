@@ -64,7 +64,7 @@ MODELS = [
     "llama3.2:3b",
     "qwen2.5-coder:3b",
     "ministral-3:3b",
-    "phi4-mini:latest",
+    "phi4-mini",
     "vibethinker-3b",
     "hermes3-llama32-3b",
     "smollm3-3b",
