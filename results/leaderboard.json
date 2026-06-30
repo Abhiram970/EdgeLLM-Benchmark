@@ -202,7 +202,8 @@
     "code_pass_at_1": 0.333
   },
   "qwen25-1b5": {
-    "context_retention": null,
+    "context_retention": 0.346,
+    "context_retention_stale_rate": 0.029,
     "summarization_claim_survival": null,
     "summarization_faithfulness_drop": null,
     "summarization_mean_rouge_l": null,
@@ -211,7 +212,7 @@
     "structured_strict": null,
     "structured_lenient": null,
     "creative_constraints": null,
-    "code_pass_at_1": 0.333
+    "code_pass_at_1": null
   },
   "smollm3-3b": {
     "context_retention": 0.967,

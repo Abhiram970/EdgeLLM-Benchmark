@@ -43,7 +43,7 @@ from datetime import datetime
 from tqdm import tqdm
 
 from stimuli import (
-    SUMMARIZATION_PASSAGES, OPEN_BOOK_ITEMS, CONTEXT_RETENTION_SCRIPTS,
+    SUMMARIZATION_PASSAGES, OPEN_BOOK_ITEMS, RETENTION_SCRIPTS,
     STRUCTURED_TASKS, CREATIVE_TASKS, CODE_TASKS,
 )
 
@@ -264,48 +264,105 @@ def _mean(xs):
 
 # ── TASK 1: CONTEXT RETENTION UNDER LOAD ─────────────────────────────────────
 
+def _fact_check(response_text: str, fact_variants: list) -> bool:
+    """Same matching style as answer_match — normalized substring/token check."""
+    if not fact_variants:
+        return False
+    norm = _norm(response_text)
+    tokens = set(norm.split())
+    for v in fact_variants:
+        v_low = v.lower().strip()
+        if " " in v_low or "-" in v_low:
+            if v_low in response_text.lower():
+                return True
+        elif len(v_low) <= 3 or v_low.replace(",", "").isdigit():
+            if v_low in tokens:
+                return True
+        else:
+            if v_low in norm:
+                return True
+    return False
+
+
+def _score_probe(response_text: str, facts: dict, fact_ids: list) -> dict:
+    """Score a single probe response against a set of facts.
+    Returns per-fact hit/miss/stale_contamination plus aggregate score."""
+    results = {}
+    for fid in fact_ids:
+        fact = facts[fid]
+        current_hit = _fact_check(response_text, fact["current"])
+        stale_hit = _fact_check(response_text, fact.get("stale", []))
+        if current_hit:
+            status = "correct"
+        elif stale_hit:
+            status = "stale_contamination"
+        else:
+            status = "missing"
+        results[fid] = status
+    correct = sum(1 for s in results.values() if s == "correct")
+    stale = sum(1 for s in results.values() if s == "stale_contamination")
+    score = round(correct / len(fact_ids), 3) if fact_ids else 0.0
+    return {"per_fact": results, "score": score, "stale_count": stale, "total_facts": len(fact_ids)}
+
+
 def _run_retention_script(model: str, script_obj: dict, max_tokens: int) -> dict:
-    messages, turn_log, probe_scores = [], [], []
-    for step in script_obj["script"]:
-        if step["type"] in ("plant", "distractor"):
-            messages.append({"role": "user", "content": step["content"]})
-            resp = ollama_chat(model, messages, max_tokens=max_tokens)
-            messages.append({"role": "assistant", "content": resp.get("raw", "")})
-            turn_log.append({"type": step["type"], "user": step["content"][:80],
-                             "prompt_tokens": resp.get("prompt_eval_count", 0),
-                             "gen_tokens": resp.get("eval_count", 0),
-                             "reasoning_truncated": resp.get("reasoning_truncated", False)})
-        elif step["type"] == "probe":
-            messages.append({"role": "user", "content": step["ask"]})
-            resp = ollama_chat(model, messages, max_tokens=max_tokens)
-            answer = resp.get("text", "")
-            messages.append({"role": "assistant", "content": resp.get("raw", "")})
-            hits = {label: answer_match(answer, accept) for label, accept in step["expect"]}
-            depth = len(turn_log)
-            score = sum(hits.values()) / len(hits)
-            probe_scores.append((depth, score))
-            turn_log.append({"type": "probe", "user": step["ask"][:80], "response": answer,
-                             "turn_depth": depth, "fact_hits": hits, "probe_score": round(score, 3),
-                             "prompt_tokens": resp.get("prompt_eval_count", 0),
-                             "gen_tokens": resp.get("eval_count", 0),
-                             "reasoning_truncated": resp.get("reasoning_truncated", False)})
-    horizon = max([d for d, s in probe_scores if s == 1.0], default=0)
-    return {"id": script_obj["id"],
-            "score": round(_mean([s for _, s in probe_scores]) or 0.0, 3),
-            "probe_scores": [round(s, 3) for _, s in probe_scores],
-            "coherence_horizon_turns": horizon, "turns": turn_log}
+    messages = []
+    turn_log = []
+    mid_probe_result = None
+    synthesis_probe_result = None
+
+    for i, turn in enumerate(script_obj["turns"]):
+        messages.append({"role": "user", "content": turn["content"]})
+        resp = ollama_chat(model, messages, max_tokens=max_tokens)
+        response_text = resp.get("text", "")
+        messages.append({"role": "assistant", "content": response_text})
+        turn_log.append({
+            "turn": i, "user": turn["content"], "response": response_text,
+            "latency_s": round(resp.get("latency_s", 0), 2),
+            "is_probe": turn.get("is_probe"),
+        })
+
+        if turn.get("is_probe") == "mid":
+            mid_probe_result = _score_probe(response_text, script_obj["facts"],
+                                            script_obj["facts_by_mid_probe"])
+        elif turn.get("is_probe") == "synthesis":
+            all_fact_ids = list(script_obj["facts"].keys())
+            synthesis_probe_result = _score_probe(response_text, script_obj["facts"], all_fact_ids)
+
+    weighted_score = round(
+        0.3 * (mid_probe_result["score"] if mid_probe_result else 0)
+        + 0.7 * (synthesis_probe_result["score"] if synthesis_probe_result else 0), 3)
+
+    return {
+        "id": script_obj["id"],
+        "character": script_obj["character"],
+        "mid_probe": mid_probe_result,
+        "synthesis_probe": synthesis_probe_result,
+        "weighted_score": weighted_score,
+        "turns": turn_log,
+    }
 
 
 def task_context_retention(model: str, smoke: bool = False) -> dict:
-    max_tokens = 64 if smoke else 512
-    scripts = CONTEXT_RETENTION_SCRIPTS[:2] if smoke else CONTEXT_RETENTION_SCRIPTS
+    max_tokens = 80 if smoke else 500
+    scripts = RETENTION_SCRIPTS[:2] if smoke else RETENTION_SCRIPTS
     mem_before = get_memory_usage()
-    per = [_run_retention_script(model, s, max_tokens) for s in scripts]
+    results = [_run_retention_script(model, s, max_tokens) for s in scripts]
     mem_after = get_memory_usage()
-    return {"task": "context_retention",
-            "score": _mean([p["score"] for p in per]),
-            "mean_coherence_horizon": _mean([p["coherence_horizon_turns"] for p in per]),
-            "scripts": per, "mem_before": mem_before, "mem_after": mem_after}
+
+    overall_score = _mean([r["weighted_score"] for r in results])
+    total_stale = sum(r["synthesis_probe"]["stale_count"] for r in results if r["synthesis_probe"])
+    total_facts_checked = sum(r["synthesis_probe"]["total_facts"] for r in results if r["synthesis_probe"])
+    stale_contamination_rate = round(total_stale / total_facts_checked, 3) if total_facts_checked else 0.0
+
+    return {
+        "task": "context_retention",
+        "score": overall_score,
+        "stale_contamination_rate": stale_contamination_rate,
+        "scripts": results,
+        "mem_before": mem_before,
+        "mem_after": mem_after,
+    }
 
 
 # ── TASK 2: CROSS-DOMAIN SUMMARIZATION ───────────────────────────────────────
@@ -652,6 +709,7 @@ def _headline(model_results: dict) -> dict:
     t = model_results.get("tasks", {})
     return {
         "context_retention": t.get("context_retention", {}).get("score"),
+        "context_retention_stale_rate": t.get("context_retention", {}).get("stale_contamination_rate"),
         "summarization_claim_survival": t.get("summarization", {}).get("claim_survival_by_domain"),
         "summarization_faithfulness_drop": t.get("summarization", {}).get("faithfulness_drop_prose_minus_technical"),
         "summarization_mean_rouge_l": t.get("summarization", {}).get("mean_rouge_l"),

@@ -1,3 +1,85 @@
+# Task 1 — Context Retention Redesign (stimuli.py + pipeline.py)
+
+## 1. Scripts fully replaced — stimuli.py
+
+Replaced all 5 `CONTEXT_RETENTION_SCRIPTS` (old format: plant/distractor/probe steps, static facts, single final probe) with `RETENTION_SCRIPTS` (new format: realistic multi-turn conversations, structured current/stale fact tables, two scored checkpoints).
+
+### Key structural changes
+
+| Before | After |
+|---|---|
+| `CONTEXT_RETENTION_SCRIPTS` | `RETENTION_SCRIPTS` |
+| `script: [{type, content/ask/expect}]` | `turns: [{role, content, is_probe?}]` |
+| Facts as flat string dict | Facts as `{current: [...], stale: [...]}` per key |
+| Single final probe per script | Two probes: `"mid"` (turn ~8) and `"synthesis"` (final turn) |
+| Distractor prose inserts | Domain-relevant questions the model actually answers |
+| No update tracking | Mid-conversation fact updates (e.g. pet age, grant code) that supersede earlier values |
+
+### New scripts
+
+| Script | Character | Facts | Updated facts |
+|---|---|---|---|
+| `ret_hydrologist` | Helena Vintner | name, job, city, pet (name/kind/age), project codename, funding code | pet_age 4→5, funding_code HL-4482→HL-4490 |
+| `ret_chef` | Dario Pellegrini | name, job, city, signature dish, opened year, book title, deadline | book_title Embers→Coals, deadline October→August |
+| `ret_astronomer` | Saanvi Rao | name, job, city, telescope, target, grant code | target Kepler-442→TOI-700, grant_code AR-3398→AR-3405 |
+| `ret_archivist` | Otto Lindqvist | name, job, city, collection name, oldest doc year, deadline, budget code | deadline winter→spring, budget_code MC-2291→MC-2305 |
+| `ret_engineer` | Freya Sandberg | name, job, city, bridge name, bridge length, deadline, contract code | deadline December→October, contract_code BR-5571→BR-5588 |
+
+Each script is 14 turns: ~6 domain-question distractors, 1 plant turn, 2-3 update turns, plus the 2 probe turns. Mid probe fires at turn ~8; synthesis probe is always the final turn.
+
+Probe text uses neutral "Give me a quick status update on what we've covered about..." phrasing (no "remember"/"memory" wording, which triggered AI-refusal responses on some models).
+
+## 2. Pipeline — new scoring functions (pipeline.py)
+
+### _fact_check — new helper
+Mirrors `answer_match` logic (normalized substring/token check) but takes `(response_text, fact_variants)` for use with the new fact structure. Single words >3 chars: substring match on normalized text; hyphenated phrases or multi-word phrases: raw substring on lowercased text; short/numeric tokens: whole-token match.
+
+### _score_probe — new helper
+Scores a probe response against a list of fact IDs. Per-fact status: `"correct"` (current variant hit), `"stale_contamination"` (stale variant hit, current missed), or `"missing"` (neither). Returns `{per_fact, score, stale_count, total_facts}`.
+
+### _run_retention_script — replaced
+Old: iterated `script` steps by type, tracked `probe_scores`, computed coherence horizon.
+New: iterates `turns`, sends every turn through `ollama_chat`, calls `_score_probe` when `is_probe` is set. Assistant messages use `resp.get("text", "")` (stripped, not raw) so reasoning traces don't accumulate in context.
+
+### task_context_retention — replaced
+| | Before | After |
+|---|---|---|
+| max_tokens smoke | 64 | 80 |
+| max_tokens full | 512 | 500 |
+| score | mean probe score across all scripts | weighted mean: 0.3 × mid + 0.7 × synthesis per script, then mean |
+| headline metrics | `score`, `mean_coherence_horizon` | `score`, `stale_contamination_rate` |
+
+`stale_contamination_rate` = total stale fact hits at synthesis / total synthesis facts checked, across all scripts. Computed from synthesis probes only (mid-probe stale is uninformative for facts not yet updated at that point).
+
+Smoke mode runs first 2 scripts only.
+
+## 3. _headline() — stale_contamination_rate surfaced (pipeline.py)
+
+Added `"context_retention_stale_rate"` to the headline dict alongside the existing `"context_retention"` score. Both are now leaderboard columns.
+
+## 4. Coherence horizon removed
+
+The old `coherence_horizon` metric (max depth of any probe scoring 1.0) is gone. It was directionally wrong — a model that passes probe 1, fails probe 2, then recovers probe 3 got an artificially high horizon. The two-checkpoint mid/synthesis structure replaces it with a more informative signal.
+
+## 5. Baseline results — qwen25-1b5
+
+| Metric | Value |
+|---|---|
+| overall score | 0.346 |
+| stale_contamination_rate | 0.029 |
+
+| Script | mid | synthesis | syn_stale | weighted |
+|---|---|---|---|---|
+| ret_hydrologist | 0.625 | 0.750 | 1 | 0.712 |
+| ret_chef | 0.200 | 0.286 | 0 | 0.200 |
+| ret_astronomer | 0.333 | 0.333 | 0 | 0.333 |
+| ret_archivist | 0.143 | 0.286 | 0 | 0.243 |
+| ret_engineer | 0.143 | 0.286 | 0 | 0.243 |
+
+Notable: `pet_age` stale contamination on ret_hydrologist — model retains "4-year-old" after being told Rusty turned 5. ret_chef mid probe triggers AI-refusal ("I don't have information about your restaurant") on qwen25-1b5 despite neutral probe phrasing; synthesis partially recovers.
+
+---
+
 # Task 3 — Open-Book QA Changes (stimuli.py)
 
 ## 1. Easy questions replaced — all 6 passages

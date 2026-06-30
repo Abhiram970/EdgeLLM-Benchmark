@@ -441,136 +441,167 @@ OPEN_BOOK_ITEMS = [
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# TASK 1 -- CONTEXT RETENTION UNDER LOAD  (5 scripts, increasing turn depth)
-# Each script plants tracked facts, interleaves human-authored (verbatim
-# Britannica) distractor prose, and probes recall at growing depth. Probes score
-# by exact-match recall. The pipeline logs token/context counts to separate
-# window overflow from coherence collapse (CONTEXT.md §1).
-#
-# Step types: {"type":"plant","content":...}, {"type":"distractor","content":...},
-# {"type":"probe","ask":...,"expect":[(label,[accept...]), ...]}.
+# TASK 1 -- CONTEXT RETENTION UNDER LOAD  (5 scripts)
+# Each script is a realistic multi-turn conversation where the user plants
+# personal/professional facts, interleaved with domain questions. Mid-conversation
+# updates supersede earlier values (stale facts). Two scored checkpoints:
+#   "mid"       -- partial recall probe, fired mid-conversation
+#   "synthesis" -- full recap + delta probe, end of conversation
+# Facts: {current: [...accepts], stale: [...stale_accepts]} so the pipeline can
+# detect correct recall vs stale-value contamination separately.
+# stale_contamination_rate (synthesis only) is a headline metric.
 # ─────────────────────────────────────────────────────────────────────────────
 
-CONTEXT_RETENTION_SCRIPTS = [
+RETENTION_SCRIPTS = [
     {
         "id": "ret_hydrologist",
-        "facts": {"name": "Mara Okonkwo", "job": "hydrologist", "city": "Lisbon",
-                  "pet": "Pim", "pet_kind": "tortoise", "pet_age": "12", "project_code": "DELTA-7"},
-        "script": [
-            {"type": "plant", "content": "My name is Mara Okonkwo and I work as a hydrologist in Lisbon."},
-            {"type": "probe", "ask": "Just to confirm: what is my name and what is my job?",
-             "expect": [("name", ["mara", "okonkwo"]), ("job", ["hydrolog"])]},
-            {"type": "distractor", "content": (
-                "Tell me if this is interesting: \"The concept of plate tectonics was formulated in "
-                "the 1960s. Earth has a rigid outer layer, the lithosphere, about 100 km thick, "
-                "overlying a plastic layer called the asthenosphere. The plates move at 5 to 10 cm "
-                "per year.\"")},
-            {"type": "plant", "content": "I have a tortoise named Pim who is 12 years old."},
-            {"type": "probe", "ask": "Quick check: what is my name, my job, and the name of my pet?",
-             "expect": [("name", ["mara", "okonkwo"]), ("job", ["hydrolog"]), ("pet", ["pim"])]},
-            {"type": "distractor", "content": (
-                "Another snippet: \"The singularity constitutes the centre of a black hole and is "
-                "hidden by the event horizon. Inside it the escape velocity exceeds the speed of "
-                "light, so not even light can escape.\" Thoughts?")},
-            {"type": "plant", "content": "Also, I live in Lisbon and my current project is code-named DELTA-7."},
-            {"type": "distractor", "content": (
-                "One more: \"The French Revolution had general causes common to all the revolutions "
-                "of the West at the end of the 18th century. The feudal regime had been in steady "
-                "decline since the Middle Ages.\" Dense, right?")},
-            {"type": "probe", "ask": (
-                "Ignoring everything about tectonics, black holes, and the French Revolution: what "
-                "is my name, my job, my city, my pet's name and species and age, and my project "
-                "code name?"),
-             "expect": [("name", ["mara", "okonkwo"]), ("job", ["hydrolog"]), ("city", ["lisbon"]),
-                        ("pet", ["pim"]), ("pet_kind", ["tortoise"]), ("pet_age", ["12", "twelve"]),
-                        ("project_code", ["delta-7", "delta 7", "delta7"])]},
+        "character": "Helena Vintner",
+        "turns": [
+            {"role": "user", "content": "My name is Helena Vintner, I work as a hydrologist based in Lisbon. I have a dog named Rusty, he's a 4-year-old border collie."},
+            {"role": "user", "content": "Can you explain how desalination plants work, specifically reverse osmosis?"},
+            {"role": "user", "content": "What causes algal blooms in freshwater lakes during summer?"},
+            {"role": "user", "content": "By the way, the project I'm working on is codenamed Aquifer-7, and it's funded by a grant numbered HL-4482."},
+            {"role": "user", "content": "What's the difference between a watershed and a drainage basin?"},
+            {"role": "user", "content": "Actually, Rusty just had his birthday, he's 5 now."},
+            {"role": "user", "content": "How do dams affect downstream sediment transport?"},
+            {"role": "user", "content": "What's the role of groundwater recharge in drought resilience?"},
+            {"role": "user", "content": "Give me a quick status update on what we've covered about me and my work so far.", "is_probe": "mid"},
+            {"role": "user", "content": "How does soil permeability affect runoff during heavy rainfall?"},
+            {"role": "user", "content": "What's the difference between point-source and non-point-source water pollution?"},
+            {"role": "user", "content": "Actually, the project funding code changed - it's now HL-4490, the grant got renumbered after a budget review."},
+            {"role": "user", "content": "How do wetlands act as natural water filtration systems?"},
+            {"role": "user", "content": "Give me a complete status update on everything we've discussed. Also tell me what's changed since we started.", "is_probe": "synthesis"},
         ],
+        "facts": {
+            "name": {"current": ["helena", "vintner"], "stale": []},
+            "job": {"current": ["hydrologist"], "stale": []},
+            "city": {"current": ["lisbon"], "stale": []},
+            "pet_name": {"current": ["rusty"], "stale": []},
+            "pet_kind": {"current": ["border collie"], "stale": []},
+            "pet_age": {"current": ["5", "five"], "stale": ["4", "four"]},
+            "project_codename": {"current": ["aquifer-7", "aquifer 7"], "stale": []},
+            "funding_code": {"current": ["hl-4490"], "stale": ["hl-4482"]},
+        },
+        "facts_by_mid_probe": ["name", "job", "city", "pet_name", "pet_kind", "pet_age", "project_codename", "funding_code"],
     },
     {
         "id": "ret_chef",
-        "facts": {"name": "Tomas Reyes", "job": "pastry chef", "city": "Montreal",
-                  "signature": "lavender macaron", "opens_year": "2027"},
-        "script": [
-            {"type": "plant", "content": "Hi, I'm Tomas Reyes, a pastry chef based in Montreal."},
-            {"type": "probe", "ask": "What's my name and my profession?",
-             "expect": [("name", ["tomas", "reyes"]), ("job", ["pastry", "chef"])]},
-            {"type": "distractor", "content": (
-                "Random fact I read: \"Probabilities are numbers between 0 and 1, with 0 meaning "
-                "impossible and 1 meaning certain. A probability of 0.5 means an event is equally "
-                "likely to occur or not occur.\"")},
-            {"type": "plant", "content": "My signature dessert is a lavender macaron, and I plan to open my own shop in 2027."},
-            {"type": "distractor", "content": (
-                "And this: \"The Pythagorean theorem states that in a right triangle the square of "
-                "the hypotenuse equals the sum of the squares of the other two sides, a2 + b2 = "
-                "c2.\"")},
-            {"type": "probe", "ask": "Remind me: what is my name, my city, my signature dessert, and the year I plan to open my shop?",
-             "expect": [("name", ["tomas", "reyes"]), ("city", ["montreal"]),
-                        ("signature", ["lavender", "macaron"]), ("opens_year", ["2027"])]},
+        "character": "Dario Pellegrini",
+        "turns": [
+            {"role": "user", "content": "I'm Dario Pellegrini, I'm a chef in Austin. My signature dish is a saffron risotto, and I opened my restaurant in 2019."},
+            {"role": "user", "content": "What's the smoke point difference between olive oil and avocado oil?"},
+            {"role": "user", "content": "How does sous vide cooking preserve texture compared to traditional methods?"},
+            {"role": "user", "content": "I'm also working on a cookbook, working title 'Embers,' and my publisher gave me a deadline of October."},
+            {"role": "user", "content": "What's the science behind Maillard reaction browning?"},
+            {"role": "user", "content": "Actually, my publisher just moved the deadline up to August."},
+            {"role": "user", "content": "Why do some cheeses melt smoothly while others get oily and separate?"},
+            {"role": "user", "content": "What's the difference between braising and stewing?"},
+            {"role": "user", "content": "What do you know about my restaurant and my book project?", "is_probe": "mid"},
+            {"role": "user", "content": "How does fermentation develop umami flavor in ingredients like miso?"},
+            {"role": "user", "content": "What's the purpose of resting meat after cooking?"},
+            {"role": "user", "content": "Actually, the book title changed too - my publisher wants to call it 'Coals' instead of 'Embers.'"},
+            {"role": "user", "content": "What's the difference between a reduction sauce and an emulsion?"},
+            {"role": "user", "content": "Give me a complete status update on everything we've discussed. Also tell me what's changed since we started.", "is_probe": "synthesis"},
         ],
+        "facts": {
+            "name": {"current": ["dario", "pellegrini"], "stale": []},
+            "job": {"current": ["chef"], "stale": []},
+            "city": {"current": ["austin"], "stale": []},
+            "signature_dish": {"current": ["saffron risotto"], "stale": []},
+            "opened_year": {"current": ["2019"], "stale": []},
+            "book_title": {"current": ["coals"], "stale": ["embers"]},
+            "deadline": {"current": ["august"], "stale": ["october"]},
+        },
+        "facts_by_mid_probe": ["name", "job", "city", "signature_dish", "opened_year", "book_title", "deadline"],
     },
     {
         "id": "ret_astronomer",
-        "facts": {"name": "Yuki Tanaka", "job": "astronomer", "instrument": "radio telescope",
-                  "target": "Andromeda", "grant_id": "NX-119"},
-        "script": [
-            {"type": "plant", "content": "I'm Yuki Tanaka, an astronomer. I mostly use a radio telescope."},
-            {"type": "distractor", "content": (
-                "Quick aside: \"DNA is made of nucleotides. A nucleotide has a sugar-phosphate "
-                "backbone and one of four bases: adenine, guanine, cytosine, and thymine. Adenine "
-                "bonds only with thymine.\"")},
-            {"type": "plant", "content": "My main observation target is the Andromeda galaxy, funded under grant NX-119."},
-            {"type": "distractor", "content": (
-                "Also interesting: \"The Industrial Revolution transformed economies based on "
-                "agriculture and handicrafts into economies based on large-scale industry and the "
-                "factory system.\"")},
-            {"type": "probe", "ask": "Recall for me: my name, my job, the instrument I use, my observation target, and my grant ID.",
-             "expect": [("name", ["yuki", "tanaka"]), ("job", ["astronomer"]),
-                        ("instrument", ["radio telescope", "radio"]), ("target", ["andromeda"]),
-                        ("grant_id", ["nx-119", "nx 119", "nx119"])]},
+        "character": "Saanvi Rao",
+        "turns": [
+            {"role": "user", "content": "My name is Saanvi Rao, I'm an astronomer in Manila. I use a telescope called the Meridian-9 to observe exoplanet transits."},
+            {"role": "user", "content": "How do astronomers detect exoplanets using the transit method versus radial velocity?"},
+            {"role": "user", "content": "What causes the redshift of distant galaxies?"},
+            {"role": "user", "content": "My current target is a star system called Kepler-442, and my research is funded under grant AR-3398."},
+            {"role": "user", "content": "What's the difference between a red giant and a red supergiant?"},
+            {"role": "user", "content": "Actually, I've shifted focus - my new primary target is TOI-700 instead."},
+            {"role": "user", "content": "How does adaptive optics correct for atmospheric distortion in ground telescopes?"},
+            {"role": "user", "content": "What's the significance of the habitable zone in exoplanet research?"},
+            {"role": "user", "content": "Give me a quick status update on what we've covered about my research.", "is_probe": "mid"},
+            {"role": "user", "content": "How do astronomers distinguish a planet from a brown dwarf?"},
+            {"role": "user", "content": "What role does spectroscopy play in studying exoplanet atmospheres?"},
+            {"role": "user", "content": "Actually, my grant number changed after renewal - it's now AR-3405."},
+            {"role": "user", "content": "How does gravitational microlensing help detect distant planets?"},
+            {"role": "user", "content": "Give me a complete status update on everything we've discussed. Also tell me what's changed since we started.", "is_probe": "synthesis"},
         ],
+        "facts": {
+            "name": {"current": ["saanvi", "rao"], "stale": []},
+            "job": {"current": ["astronomer"], "stale": []},
+            "city": {"current": ["manila"], "stale": []},
+            "telescope": {"current": ["meridian-9", "meridian 9"], "stale": []},
+            "target": {"current": ["toi-700", "toi 700"], "stale": ["kepler-442", "kepler 442"]},
+            "grant_code": {"current": ["ar-3405"], "stale": ["ar-3398"]},
+        },
+        "facts_by_mid_probe": ["name", "job", "city", "telescope", "target", "grant_code"],
     },
     {
         "id": "ret_archivist",
-        "facts": {"name": "Priya Nair", "job": "archivist", "city": "Edinburgh",
-                  "collection": "maritime maps", "oldest_year": "1602"},
-        "script": [
-            {"type": "plant", "content": "My name is Priya Nair and I'm an archivist in Edinburgh."},
-            {"type": "probe", "ask": "Confirm my name and where I work.",
-             "expect": [("name", ["priya", "nair"]), ("city", ["edinburgh"])]},
-            {"type": "distractor", "content": (
-                "Found this: \"The printing press first became mechanized in Europe. The earliest "
-                "mention appears in a lawsuit in Strasbourg in 1439, revealing a press built for "
-                "Johannes Gutenberg.\"")},
-            {"type": "plant", "content": "I curate a collection of maritime maps; the oldest one dates to 1602."},
-            {"type": "distractor", "content": (
-                "And: \"Natural selection is the process by which organisms adapt to their "
-                "environment through the selective reproduction of advantageous genetic traits.\"")},
-            {"type": "probe", "ask": "What is my name, my job, my city, the collection I curate, and the year of the oldest item?",
-             "expect": [("name", ["priya", "nair"]), ("job", ["archivist"]), ("city", ["edinburgh"]),
-                        ("collection", ["maritime", "maps"]), ("oldest_year", ["1602"])]},
+        "character": "Otto Lindqvist",
+        "turns": [
+            {"role": "user", "content": "I'm Otto Lindqvist, an archivist in Krakow. I manage the Meridian Collection, and our oldest document dates back to 1487."},
+            {"role": "user", "content": "How do archivists determine the age of historical paper documents?"},
+            {"role": "user", "content": "What's the difference between conservation and restoration in archival work?"},
+            {"role": "user", "content": "We're digitizing the collection this year, and the project has a budget code of MC-2291."},
+            {"role": "user", "content": "How does humidity control protect archival materials from degradation?"},
+            {"role": "user", "content": "Actually, the digitization deadline got pushed back, it's now next spring instead of this winter."},
+            {"role": "user", "content": "What's the significance of watermarks in dating old manuscripts?"},
+            {"role": "user", "content": "How do archives handle deacidification of aging paper?"},
+            {"role": "user", "content": "Give me a quick status update on what we've covered about the collection and our project.", "is_probe": "mid"},
+            {"role": "user", "content": "What's the difference between acid-free and buffered storage materials?"},
+            {"role": "user", "content": "How do archivists catalog fragile or partially damaged documents?"},
+            {"role": "user", "content": "Actually, the budget code changed too - it's now MC-2305 after the funding was reallocated."},
+            {"role": "user", "content": "What role do climate-controlled storage rooms play in long-term preservation?"},
+            {"role": "user", "content": "Give me a complete status update on everything we've discussed. Also tell me what's changed since we started.", "is_probe": "synthesis"},
         ],
+        "facts": {
+            "name": {"current": ["otto", "lindqvist"], "stale": []},
+            "job": {"current": ["archivist"], "stale": []},
+            "city": {"current": ["krakow"], "stale": []},
+            "collection_name": {"current": ["meridian collection"], "stale": []},
+            "oldest_doc_year": {"current": ["1487"], "stale": []},
+            "deadline": {"current": ["spring"], "stale": ["winter"]},
+            "budget_code": {"current": ["mc-2305"], "stale": ["mc-2291"]},
+        },
+        "facts_by_mid_probe": ["name", "job", "city", "collection_name", "oldest_doc_year", "deadline", "budget_code"],
     },
     {
         "id": "ret_engineer",
-        "facts": {"name": "Dario Conti", "job": "civil engineer", "city": "Oslo",
-                  "structure": "suspension bridge", "span_m": "1400", "deadline": "March"},
-        "script": [
-            {"type": "plant", "content": "I'm Dario Conti, a civil engineer working in Oslo."},
-            {"type": "distractor", "content": (
-                "Read this earlier: \"The Roman Empire was founded in 27 BCE and in 395 AD split "
-                "into Western and Eastern empires. The Western Roman Empire fell in 476.\"")},
-            {"type": "plant", "content": "I'm designing a suspension bridge with a 1400-meter main span, due in March."},
-            {"type": "distractor", "content": (
-                "Also: \"A prime number greater than 1 can be expressed as a product of primes in a "
-                "unique way; this is the fundamental theorem of arithmetic.\"")},
-            {"type": "distractor", "content": (
-                "And one more: \"Photosynthesis is the process by which green plants transform light "
-                "energy into chemical energy, releasing oxygen as a by-product.\"")},
-            {"type": "probe", "ask": "Tell me back: my name, my profession, my city, what I'm designing, its main span in meters, and the deadline month.",
-             "expect": [("name", ["dario", "conti"]), ("job", ["civil engineer", "engineer"]),
-                        ("city", ["oslo"]), ("structure", ["suspension bridge", "bridge"]),
-                        ("span_m", ["1400", "1,400"]), ("deadline", ["march"])]},
+        "character": "Freya Sandberg",
+        "turns": [
+            {"role": "user", "content": "My name is Freya Sandberg, I'm an engineer in Toronto. I'm working on a bridge called the Calder Span, it's 340 meters long."},
+            {"role": "user", "content": "What's the difference between a suspension bridge and a cable-stayed bridge structurally?"},
+            {"role": "user", "content": "How do engineers calculate load tolerance for steel trusses?"},
+            {"role": "user", "content": "The project deadline is set for December, and it's funded under contract code BR-5571."},
+            {"role": "user", "content": "What causes resonance failure in bridges, like the Tacoma Narrows collapse?"},
+            {"role": "user", "content": "Actually, the deadline moved up - it's now due in October instead."},
+            {"role": "user", "content": "How does corrosion-resistant rebar improve bridge longevity?"},
+            {"role": "user", "content": "What's the role of expansion joints in bridge design?"},
+            {"role": "user", "content": "Give me a quick status update on what we've covered about my project.", "is_probe": "mid"},
+            {"role": "user", "content": "How do engineers test bridges for fatigue over repeated load cycles?"},
+            {"role": "user", "content": "What's the difference between static and dynamic load analysis?"},
+            {"role": "user", "content": "Actually, the contract code changed - it's now BR-5588 after a renegotiation."},
+            {"role": "user", "content": "How does wind shear affect tall bridge towers during construction?"},
+            {"role": "user", "content": "Give me a complete status update on everything we've discussed. Also tell me what's changed since we started.", "is_probe": "synthesis"},
         ],
+        "facts": {
+            "name": {"current": ["freya", "sandberg"], "stale": []},
+            "job": {"current": ["engineer"], "stale": []},
+            "city": {"current": ["toronto"], "stale": []},
+            "bridge_name": {"current": ["calder span"], "stale": []},
+            "bridge_length": {"current": ["340"], "stale": []},
+            "deadline": {"current": ["october"], "stale": ["december"]},
+            "contract_code": {"current": ["br-5588"], "stale": ["br-5571"]},
+        },
+        "facts_by_mid_probe": ["name", "job", "city", "bridge_name", "bridge_length", "deadline", "contract_code"],
     },
 ]
 
