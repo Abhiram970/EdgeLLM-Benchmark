@@ -113,7 +113,11 @@ def split_reasoning(text: str):
 
 def _options(model: str, max_tokens: int) -> dict:
     spec = decode_spec(model)
-    opt = {"num_predict": int(max_tokens * spec["max_factor"]), "temperature": spec["temperature"]}
+    opt = {
+        "num_predict": int(max_tokens * spec["max_factor"]),
+        "temperature": spec["temperature"],
+        "num_ctx": 32768,
+    }
     if spec["temperature"] > 0:
         opt["top_p"] = spec["top_p"]
     return opt
