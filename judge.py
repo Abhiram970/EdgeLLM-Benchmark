@@ -224,7 +224,7 @@ def judge_model(model_name: str):
 
 def main():
     ap = argparse.ArgumentParser(description="EdgeLM qualitative judge (Tasks 2 + 5)")
-    ap.add_argument("model", nargs="?", help="model id (e.g. gemma3-4b)")
+    ap.add_argument("model", nargs="?", help="model id or comma-separated list (e.g. gemma3-4b,qwen25-1b5)")
     ap.add_argument("--all", action="store_true", help="judge all result files in results/")
     args = ap.parse_args()
 
@@ -241,7 +241,9 @@ def main():
         for m in models:
             judge_model(m)
     elif args.model:
-        judge_model(args.model)
+        models = [m.strip() for m in args.model.split(",") if m.strip()]
+        for m in models:
+            judge_model(m)
     else:
         ap.print_help()
         sys.exit(1)

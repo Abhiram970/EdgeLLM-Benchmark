@@ -1,0 +1,57 @@
+{
+  "model": "llama3.2_3b",
+  "judge_model": "claude-sonnet-4-6",
+  "timestamp": "2026-07-01T02:41:28.709195Z",
+  "task2_faithfulness": {
+    "sum_prose_frenchrev": {
+      "score": 9,
+      "rationale": "The summary accurately preserves all key facts from the source passage including the bourgeoisie's rise, peasant land rights, the persistence of poor/landless peasants, population growth driven by reduced mortality rates, and France's population of 26 million in 1789, with only a minor omission of the population doubling between 1715 and 1800 and the specific mention that the French Revolution was the most violent and universally significant."
+    },
+    "sum_prose_industrial": {
+      "score": 9,
+      "rationale": "The summary accurately captures all key facts from the source passage including wealth distribution, worker exploitation, the shift from domestic to factory production, the trade union movement, economic transformation, new industries, and the two phases of the Industrial Revolution with correct dates and regions, with only a minor structural reorganization that combines the trade union point with the domestic-to-factory shift rather than keeping them in the original order."
+    },
+    "sum_math_calculus": {
+      "score": 8,
+      "rationale": "The summary accurately captures the core concepts including the fundamental theorem of calculus, the relationship between derivatives and areas, and the integral notation, but omits the specific example of integrating x² to get x³/3 + C, the explanation of the elongated S symbol standing for 'sum,' and Leibniz's conceptualization of integration as summing infinitely many thin rectangles."
+    },
+    "sum_math_pythagorean": {
+      "score": 7,
+      "rationale": "The summary accurately captures the core facts about the theorem's history and earlier civilizations, but the final sentence introduces a slight hallucination by claiming Pythagoras is credited 'due to his influence on Greek mathematics,' which is not stated in the source, and it omits the detail about Iamblichus and Pythagoras being introduced to mathematics by Thales of Miletus."
+    },
+    "sum_sci_tectonics": {
+      "score": 7,
+      "rationale": ""
+    },
+    "sum_sci_dna": {
+      "score": 9,
+      "rationale": "The summary accurately preserves all key facts from the source passage including nucleotide composition, phosphodiester backbone formation, specific base-pairing rules, and the 1953 double-helix discovery, with only a minor omission of the detail that Watson and Crick were 'aided by' Franklin and Wilkins (the summary implies more equal contribution) and the final point about advances in understanding DNA replication and hereditary control."
+    }
+  },
+  "task5_quality": {
+    "article": {
+      "score": 6,
+      "rationale": "The piece is competently written with coherent structure and plausible scientific details, but relies on generic deep-sea tropes (bioluminescence, Mariana Trench, Latin naming) without any distinctive voice, surprising angle, or imaginative detail that would elevate it beyond a formulaic news article template."
+    },
+    "poem_question_word": {
+      "score": 5,
+      "rationale": "The poem covers expected rooftop-at-night imagery but relies heavily on generic, abstract observations ('magic,' 'grandeur,' 'stories') without offering specific or surprising details that would elevate it beyond a competent but unremarkable exercise."
+    },
+    "short_story": {
+      "score": 5,
+      "rationale": "The story has a clear arc and competent prose, but relies heavily on generic imagery (gentle rain, weight lifting off shoulders) and tells rather than shows Emily's emotional transformation, resulting in a predictable and unremarkable piece."
+    },
+    "acrostic": {
+      "score": 4,
+      "rationale": "The poem is mechanically constructed with generic, predictable imagery (waves touching shore, aquatic life, nature's beauty) and the bullet-point formatting with dashes feels prosaic rather than poetic, resulting in a piece that reads like a checklist rather than a cohesive, evocative work."
+    },
+    "dialogue": {
+      "score": 5,
+      "rationale": "The dialogue is coherent and covers the expected emotional vs. practical tension, but it feels generic and formulaic, with flat character voices, repetitive argument structure, and no memorable or distinctive moments that elevate it beyond a basic example of the premise."
+    },
+    "six_word_story": {
+      "score": 6,
+      "rationale": "A coherent and pleasant micro-narrative with a clear arc, but the premise (lonely astronaut finds love in space) is a familiar, well-worn concept that lacks surprise or distinctive voice."
+    }
+  }
+}

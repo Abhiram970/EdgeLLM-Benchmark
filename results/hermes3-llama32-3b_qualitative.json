@@ -1,0 +1,57 @@
+{
+  "model": "hermes3-llama32-3b",
+  "judge_model": "claude-sonnet-4-6",
+  "timestamp": "2026-07-01T02:44:21.624871Z",
+  "task2_faithfulness": {
+    "sum_prose_frenchrev": {
+      "score": 10,
+      "rationale": "The summary is an exact verbatim reproduction of the source passage, preserving every fact, detail, and nuance without any omissions, alterations, or hallucinations."
+    },
+    "sum_prose_industrial": {
+      "score": 8,
+      "rationale": "The summary accurately captures most key facts but contains a minor omission (men are not mentioned alongside women and children as affected workers) and slightly simplifies the first Industrial Revolution's end date (says 'early 19th century' instead of 'about 1830'), while also omitting that Britain was included in the second Industrial Revolution's geographic scope."
+    },
+    "sum_math_calculus": {
+      "score": 9,
+      "rationale": "The summary accurately preserves all key facts from the source, including the fundamental theorem of calculus, the specific example of x² and its integral x³/3 + C, Leibniz's notation, and the equivalence of integration with solving differential equations, with only a minor omission of the explanation that ∫ stands for 'sum' and the detail about infinitely many infinitesimally thin rectangles."
+    },
+    "sum_math_pythagorean": {
+      "score": 8,
+      "rationale": "The summary accurately captures the core facts about the theorem's definition, Babylonian origins, and Indian reference, but omits the specific algebraic notation (a² + b² = c²), the precise example of Pythagorean triples (3, 4, 5), the accurate calculation of √2, the connection to Euclid's Elements, and the mention of Thales and Anaximander introducing Pythagoras to mathematics."
+    },
+    "sum_sci_tectonics": {
+      "score": 7,
+      "rationale": "The summary accurately captures most key facts but contains a notable inaccuracy: it implies both the lithosphere and asthenosphere are 'rigid layers,' when the source clearly distinguishes the lithosphere as rigid and the asthenosphere as plastic/partially molten, and it also omits the detail that the lithosphere is approximately 100 km thick."
+    },
+    "sum_sci_dna": {
+      "score": 9,
+      "rationale": "The summary accurately preserves nearly all key facts from the source, including nucleotide composition, phosphodiester bonds, hydrogen bonding with specific base pairing, the 1953 Watson-Crick discovery, and the double-helix structure, with only a minor omission of Rosalind Franklin and Maurice Wilkins's contributions and the term 'antiparallel.'"
+    }
+  },
+  "task5_quality": {
+    "article": {
+      "score": 5,
+      "rationale": "The piece is competent and coherent with accurate journalistic structure, but relies heavily on generic phrasing ('unprecedented,' 'groundbreaking,' 'enigmatic creatures') and offers little specificity or vivid detail that would make the fictional discovery feel distinctive or memorable."
+    },
+    "poem_question_word": {
+      "score": 3,
+      "rationale": "The piece is significantly incomplete at only 7 lines, and what exists relies on generic, clichéd observations ('secrets the night holds,' 'city's vibe,' 'dreams hidden in the light') without any specific imagery, distinctive voice, or emotional depth to make the rooftop experience feel vivid or personal."
+    },
+    "short_story": {
+      "score": 5,
+      "rationale": "The story has a clear arc and flows competently, but relies on generic imagery, clichéd phrasing ('even in the darkest of times, there was always hope'), and a flat, predictable resolution that lacks any distinctive voice or creative surprise."
+    },
+    "acrostic": {
+      "score": 4,
+      "rationale": "The poem is only four lines (missing the N line entirely), and what's present relies on generic, clichéd ocean imagery ('secrets untold,' 'ancient tales') with a sing-song rhyme scheme that feels mechanical rather than evocative."
+    },
+    "dialogue": {
+      "score": 5,
+      "rationale": "The dialogue is coherent and covers the central conflict adequately, but it feels generic and repetitive—Jane circles back to the same fear about the future multiple times, the characters lack distinctive voices, and the exchanges rely on clichéd phrases rather than specific, vivid detail that would make the argument feel emotionally authentic."
+    },
+    "six_word_story": {
+      "score": 5,
+      "rationale": "The piece tells a clear, emotionally resonant story with a coherent arc, but the sentiment of a musician wanting to be buried with their instrument is a familiar, well-worn trope that lacks originality or distinctive voice."
+    }
+  }
+}
