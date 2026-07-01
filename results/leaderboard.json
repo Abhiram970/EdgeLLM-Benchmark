@@ -294,25 +294,25 @@
     "code_pass_at_1": 0.667
   },
   "smollm3-3b": {
-    "context_retention": 0.464,
-    "context_retention_stale_rate": 0.0,
+    "context_retention": 0.745,
+    "context_retention_stale_rate": 0.029,
     "summarization_claim_survival": {
-      "prose": 0.9,
-      "mathematical": 0.8,
+      "prose": 1.0,
+      "mathematical": 0.7,
       "scientific": 0.9
     },
-    "summarization_faithfulness_drop": 0.05,
-    "summarization_mean_rouge_l": 0.195,
+    "summarization_faithfulness_drop": 0.2,
+    "summarization_mean_rouge_l": 0.356,
     "open_book_accuracy": 1.0,
     "open_book_by_tier": {
       "easy": 1.0,
       "medium": 1.0,
       "hard": 1.0
     },
-    "structured_strict": 0.167,
-    "structured_lenient": 0.333,
-    "creative_constraints": 0.0,
-    "code_pass_at_1": 0.167
+    "structured_strict": 1.0,
+    "structured_lenient": 1.0,
+    "creative_constraints": 0.5,
+    "code_pass_at_1": 0.333
   },
   "sonnet-claude-4-6": {
     "context_retention": null,

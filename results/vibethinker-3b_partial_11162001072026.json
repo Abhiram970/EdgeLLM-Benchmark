@@ -1,0 +1,219 @@
+{
+  "model": "vibethinker-3b",
+  "timestamp": "2026-07-01T11:12:36.895291",
+  "decode_spec": {
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "think": true,
+    "max_factor": 8.0,
+    "task_max_factors": {
+      "creative_generation": 14.0,
+      "code_generation": 14.0
+    }
+  },
+  "smoke": false,
+  "tasks": {
+    "creative_generation": {
+      "task": "creative_generation",
+      "mean_constraint_pass_rate": 0.5,
+      "results": [
+        {
+          "type": "article",
+          "text": "",
+          "word_count": 0,
+          "line_count": 0,
+          "constraints": [
+            "has headline",
+            "~200 words",
+            "journalistic tone"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 44.67,
+          "tokens_per_sec": 126.9,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "poem_question_word",
+          "text": "",
+          "word_count": 0,
+          "line_count": 0,
+          "constraints": [
+            "12 lines",
+            "each line starts with question word"
+          ],
+          "constraint_checks": {
+            "line_count_exact": false,
+            "all_lines_start_question_word": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 21.55,
+          "tokens_per_sec": 124.8,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "short_story",
+          "text": "",
+          "word_count": 0,
+          "line_count": 0,
+          "constraints": [
+            "starts with given sentence",
+            "~150 words",
+            "complete arc"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": false,
+            "starts_with_required": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 31.93,
+          "tokens_per_sec": 128.1,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "acrostic",
+          "text": "Oceans call across the endless blue.  \nCalm breezes whisper through the trees.  \nEthereal tides dance beneath the sun.  \nAnchors stand as stone and hope.  \nNight falls, and stars reflect the sea.",
+          "word_count": 31,
+          "line_count": 5,
+          "constraints": [
+            "5 lines",
+            "acrostic spells OCEAN"
+          ],
+          "constraint_checks": {
+            "line_count_exact": true,
+            "acrostic_ok": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 6.64,
+          "tokens_per_sec": 135.0,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "dialogue",
+          "text": "Eli: We can't ignore the house's history; it's more than just a room.\nSarah: Selling now would bring cash for education or a new home.\nEli: The roof needs repair, and nobody knows how to fix it.\nSarah: Market rates are soaring, and developers might erase our legacy.\nEli: Maybe we should keep it and host community gatherings.\nSarah: But selling later at peak price could still preserve the value.\nEli: A premium would turn this house into a commodity, not a family treasure.\nSarah: Let's set a timeline, decide when to sell, and then keep it as a home.\nEli: Planning together will ensure we honor both money and memory.\nSarah: I'm with you—let's make this decision thoughtfully.",
+          "word_count": 119,
+          "line_count": 10,
+          "constraints": [
+            "10 lines",
+            "name: prefix each line"
+          ],
+          "constraint_checks": {
+            "line_count_exact": true,
+            "all_lines_have_name_colon": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 16.29,
+          "tokens_per_sec": 133.8,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "six_word_story",
+          "text": "She discovered secret portal and jumped",
+          "word_count": 6,
+          "line_count": 1,
+          "constraints": [
+            "exactly 6 words"
+          ],
+          "constraint_checks": {
+            "exact_word_count": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 5.19,
+          "tokens_per_sec": 134.3,
+          "human_score": null,
+          "judge_score": null
+        }
+      ],
+      "elapsed_s": 126.3
+    },
+    "code_generation": {
+      "task": "code_generation",
+      "pass_at_1": 0.0,
+      "executed_pass_at_1": 0.0,
+      "results": [
+        {
+          "name": "perl_word_count",
+          "language": "perl",
+          "code": "#!/usr/bin Perl\nuse strict;\nuse warnings;\n\nmy $filename = $ARGV[0];\nif (!defined $filename) {\n    print \"Usage: $\\$_{1}\\n\";\n    exit 0;\n}\n\nopen($filename, 'r') or die \"Failed to open $filename: $EERC, $err\\n\", $filename;\n\nmy %freq;\nwhile (my $line = read lines $filename) {\n    for my $word (split(/\\s+/,$line)) {\n        next if $word == '';\n        $word -> lower;\n        $freq{$word}++;\n    }\n}\n\n# Sort by descending frequency, break ties alphabetically\nmy @sorted = sort (\n    @keys %freq,\n    { sub { $a => $b => $freq{$b} - $freq{$a}}, $a -> cmp $b }\n);\n\nfor my i (0..2) {\n    if ($i < @sorted) {\n        print \"$sorted[$i]: $freq[$sorted[$i]]\\n\";\n    } else {\n        break;\n    }\n}\n\nclose;",
+          "passed": false,
+          "exec_output": "Can't exec /usr/bin at C:\\Users\\ADITSO~1\\AppData\\Local\\Temp\\tmp7dg7u7ss\\s.pl line 1.\n",
+          "latency_s": 28.31,
+          "tokens_per_sec": 132.5,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "perl_csv_filter",
+          "language": "perl",
+          "code": "#!/usr/bin/perl15\nuse strict;\nuse warnings;\n\nmy $file = $\\ARGV[0];\nfor my $line ( <$file> ):\n    my ($name, age, city) = split //,,$line;\n    if (int($age) > 30) {\n        print $line\\n;\n    }\n}",
+          "passed": false,
+          "exec_output": "Bareword found where operator expected (Missing operator before \"ARGV\"?) at C:\\Users\\ADITSO~1\\AppData\\Local\\Temp\\tmp6cqn_slo\\s.pl line 5, near \"$\\ARGV\"\nsyntax error at C:\\Users\\ADITSO~1\\AppData\\Local\\Temp\\tmp6cqn_slo\\s.pl line 5, near \"$\\ARGV\"\nExecution of C:\\Users\\ADITSO~1\\AppData\\Local\\Temp\\tmp6cqn_slo\\s.pl aborted due to compilation errors.\n",
+          "latency_s": 23.33,
+          "tokens_per_sec": 132.8,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "perl_regex_extract",
+          "language": "perl",
+          "code": "#!/usr/bin/perl\nuse strict;\nuse warnings;\n\nmy $filename = $ARGV[0];\nmy $pattern = /[\\w.\\%+-]+@[\\w.-]+\\.[A-Za-z]{2,}/s;\ngrep -o \"$pattern\" $filename",
+          "passed": false,
+          "exec_output": "Scalar found where operator expected (Missing operator before \"$filename\"?) at C:\\Users\\ADITSO~1\\AppData\\Local\\Temp\\tmpa59dgpxt\\s.pl line 7, near \"\"$pattern\" $filename\"\nsyntax error at C:\\Users\\ADITSO~1\\AppData\\Local\\Temp\\tmpa59dgpxt\\s.pl line 7, near \"\"$pattern\" $filename\"\nExecution of C:\\Users\\ADITSO~1\\AppData\\Local\\Temp\\tmpa59dgpxt\\s.pl aborted due to compilation errors.\n",
+          "latency_s": 9.67,
+          "tokens_per_sec": 134.4,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "ruby_array_dedupe_sort",
+          "language": "ruby",
+          "code": "#!/usr/bin/env ruby\nnums = File.read( ARGV[0] ).strip.split(',') .map(&:to_int).unique\nnums.sort_by { |n| -n }\nputs nums.join(',')\n```",
+          "passed": false,
+          "exec_output": "e.read( ARGV[0] ).strip.split(',') .map(&:to_int).unique\n> 3  nums.sort_by { |n| -n }\n> 4  puts nums.join(',')\n> 5  ```\nC:/Users/ADITSO~1/AppData/Local/Temp/tmph6s7r9xj/s.rb:5: syntax errors found (SyntaxError)\n  3 | nums.sort_by { |n| -n }\n\n  4 | puts nums.join(',')\n\n> 5 | ```\n    |   ^ expected a closing delimiter for the `%x` or backtick string\n    |   ^ unexpected '`', expecting end-of-input\n\n",
+          "latency_s": 8.81,
+          "tokens_per_sec": 134.3,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "ruby_hash_group",
+          "language": "ruby",
+          "code": "# Group words by their first letter (case‑insensitive) and print them\n# Format: letter: word1,word2,...\n# Words keep their original order; output lines sorted by letter.\n\nfilename = ARGV[0]\nFile.open(filename, 'r') or exit 1\n\nwords = File.read(filename).split('\\n')\ngroups = Hash.new { |k, _| [] }\n\nwords.each do |raw|\n  word = raw.strip\n  next if word.empty?\n  first_char = raw[0]\n  key = first_char.lowercase\n  groups[key] << word\nend\n\nHash.keys.sort { |k| k }.each do |key|\n  puts #{key}: #{groups[key].join(',')}\nend",
+          "passed": false,
+          "exec_output": "C:/Users/ADITSO~1/AppData/Local/Temp/tmp2jdzm119/s.rb:15:in 'block in <main>': undefined method 'lowercase' for an instance of String (NoMethodError)\n\n  key = first_char.lowercase\n\n                  ^^^^^^^^^^\n\tfrom C:/Users/ADITSO~1/AppData/Local/Temp/tmp2jdzm119/s.rb:11:in 'Array#each'\n\tfrom C:/Users/ADITSO~1/AppData/Local/Temp/tmp2jdzm119/s.rb:11:in '<main>'\n",
+          "latency_s": 16.09,
+          "tokens_per_sec": 133.6,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "ruby_class_stack",
+          "language": "ruby",
+          "code": "class Stack\n  @stack = []\n  def push(item)\n    @stack.push(item)\n  end\n  def pop\n    return nil if @stack.empty?\n    @stack.pop\n  end\n  def peek\n    @stack[-1] unless @stack.empty?\n  end\nend\n\nstack = Stack.new\nstack.push(1)\nstack.push(2)\nstack.push(3)\n\nputs stack.peek\nputs stack.pop\nputs stack.peek",
+          "passed": false,
+          "exec_output": "C:/Users/ADITSO~1/AppData/Local/Temp/tmpvj56a3rw/s.rb:4:in 'Stack#push': undefined method 'push' for nil (NoMethodError)\n\n    @stack.push(item)\n\n          ^^^^^\n\tfrom C:/Users/ADITSO~1/AppData/Local/Temp/tmpvj56a3rw/s.rb:16:in '<main>'\n",
+          "latency_s": 9.95,
+          "tokens_per_sec": 134.8,
+          "reasoning_truncated": false
+        }
+      ],
+      "elapsed_s": 97.7
+    }
+  },
+  "total_elapsed_s": 224.0,
+  "headline": {
+    "context_retention": null,
+    "context_retention_stale_rate": null,
+    "summarization_claim_survival": null,
+    "summarization_faithfulness_drop": null,
+    "summarization_mean_rouge_l": null,
+    "open_book_accuracy": null,
+    "open_book_by_tier": null,
+    "structured_strict": null,
+    "structured_lenient": null,
+    "creative_constraints": 0.5,
+    "code_pass_at_1": 0.0
+  }
+}

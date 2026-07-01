@@ -1,19 +1,19 @@
 {
   "model": "vibethinker-3b",
   "judge_model": "claude-sonnet-4-6",
-  "timestamp": "2026-07-01T02:43:42.221602Z",
+  "timestamp": "2026-07-01T05:55:59.747161Z",
   "task2_faithfulness": {
     "sum_prose_frenchrev": {
       "score": 8,
-      "rationale": "The summary accurately captures most key facts including the bourgeoisie's rise, feudal decline, peasant conditions, population doubling between 1715-1800, and France's 26 million inhabitants, but slightly misattributes 'sharp social tension' as a conclusion not explicitly stated in the source, and omits the mention that the feudal regime had already disappeared in parts of Europe and that some peasants owned land and had improved education."
+      "rationale": "The summary accurately captures most key facts including the bourgeoisie's rise, feudal decline, peasant conditions, population doubling between 1715-1800, and France's 26 million inhabitants, but slightly misrepresents the passage by implying the 'particular causes' were explained in the excerpt when the source only mentions they exist without detailing them, and adds an interpretive phrase ('sharp social tension') not explicitly stated in the source."
     },
     "sum_prose_industrial": {
       "score": 9,
-      "rationale": "The summary accurately preserves all key facts from the source passage including the wealth distribution, middle class enlargement, replacement of domestic system, conditions leading to trade unions, economic transformation, new industries, and both phases of the Industrial Revolution with correct dates and geographic scope, with only a very minor interpretive addition of 'production techniques' not explicitly stated in the source."
+      "rationale": "The summary accurately preserves all key facts from the source passage including the wealth distribution, middle class enlargement, replacement of domestic system, conditions leading to trade unions, economic transformation, new industries including automobiles, and both phases of the Industrial Revolution with correct dates and geographic scope, with only a very minor paraphrase of 'new ways of organizing work' as 'production techniques' that slightly softens specificity."
     },
     "sum_math_calculus": {
       "score": 7,
-      "rationale": ""
+      "rationale": "The summary accurately captures most key facts but contains a subtle inaccuracy: it states that integrating a function is the inverse of finding the area under its graph, whereas the source says finding derivatives is the inverse of finding areas—and also slightly misattributes the view of integration as summation of rectangles solely to Leibniz when the source more broadly attributes the fundamental theorem to both Newton and Leibniz, while correctly noting Leibniz introduced the integral notation for that reason."
     },
     "sum_math_pythagorean": {
       "score": 7,
@@ -21,11 +21,11 @@
     },
     "sum_sci_tectonics": {
       "score": 9,
-      "rationale": "The summary accurately preserves virtually all key facts from the source—lithosphere thickness, asthenosphere description, plate counts, movement rates, boundary interaction types, seismic/volcanic activity, mountain formation, and continental drift—with only a minor omission that earthquakes and volcanoes can also occur in plate interiors."
+      "rationale": "The summary accurately preserves virtually all key facts from the source—lithosphere thickness, asthenosphere description, plate counts, movement rates, boundary interaction types, seismic/volcanic activity, mountain formation, and continental drift—with only a minor omission of the caveat that earthquakes and volcanoes can also occur in plate interiors."
     },
     "sum_sci_dna": {
       "score": 9,
-      "rationale": "The summary accurately preserves all key facts from the source—nucleotide composition, phosphodiester backbone, specific base pairing, antiparallel orientation, the 1953 Watson-Crick discovery with Franklin and Wilkins' contributions, and the double-helix structure—with only a minor rewording of Franklin and Wilkins' role from 'biophysicists' aided by their 'work' to 'data,' which is a slight but inconsequential simplification."
+      "rationale": "The summary accurately preserves all key facts from the source—nucleotide composition, phosphodiester backbone, specific base pairing, antiparallel orientation, the 1953 Watson-Crick discovery with Franklin and Wilkins' contributions, and the double-helix model's impact—with only a minor rewording of Franklin and Wilkins' role from 'biophysicists' to a vaguer 'data' reference, which slightly understates their described contribution."
     }
   },
   "task5_quality": {
@@ -35,7 +35,7 @@
     },
     "poem_question_word": {
       "score": 5,
-      "rationale": "The piece has some evocative imagery (neon and rain, lights pulsing like a restless heart) but feels incomplete at only 9 lines, includes an awkward grammatical construction ('it carries echo'), and relies on generic urban-night clichés without developing a truly distinctive voice or sustained emotional arc."
+      "rationale": "The piece has some evocative imagery (neon and rain, lights pulsing like a restless heart) but feels incomplete at only 9 lines, includes an awkward grammatical construction ('it carries echo'), and relies on generic urban-night clichés without developing a truly distinctive voice."
     },
     "short_story": {
       "score": null,
@@ -43,7 +43,7 @@
     },
     "acrostic": {
       "score": 7,
-      "rationale": "The poem maintains a coherent oceanic atmosphere with some genuinely evocative imagery (the whispering secrets, the starry horizon), though 'effloresces' in line three feels forced and overwrought, and the fourth line is noticeably weaker and more prosaic than the rest."
+      "rationale": "The poem maintains a coherent oceanic atmosphere with some genuinely evocative imagery (\"Oceans whisper secrets to the sunrise,\" \"Night's gentle nudge\"), though \"effloresces\" in line three feels forced and overwrought, and line four is comparatively flat and generic."
     },
     "dialogue": {
       "score": 4,
