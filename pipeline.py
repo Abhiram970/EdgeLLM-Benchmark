@@ -60,7 +60,6 @@ MODELS = [
     "qwen25-1b5",
     "deepseek-r1-1b5",
     "deepscaler-1b5",
-    "nemotron-1b5",
     "llama3.2:3b",
     "qwen2.5-coder:3b",
     "ministral-3:3b",

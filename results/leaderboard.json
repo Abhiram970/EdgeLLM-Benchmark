@@ -125,27 +125,6 @@
     "creative_constraints": 0.833,
     "code_pass_at_1": 0.333
   },
-  "nemotron-1b5": {
-    "context_retention": 0.143,
-    "context_retention_stale_rate": 0.057,
-    "summarization_claim_survival": {
-      "prose": 0.6,
-      "mathematical": 0.7,
-      "scientific": 0.5
-    },
-    "summarization_faithfulness_drop": 0.0,
-    "summarization_mean_rouge_l": 0.21,
-    "open_book_accuracy": 0.278,
-    "open_book_by_tier": {
-      "easy": 0.333,
-      "medium": 0.167,
-      "hard": 0.333
-    },
-    "structured_strict": 0.0,
-    "structured_lenient": 0.167,
-    "creative_constraints": 0.0,
-    "code_pass_at_1": 0.0
-  },
   "phi4-mini": {
     "context_retention": 0.538,
     "context_retention_stale_rate": 0.0,
