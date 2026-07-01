@@ -1134,32 +1134,32 @@
     },
     "creative_generation": {
       "task": "creative_generation",
-      "mean_constraint_pass_rate": 0.167,
+      "mean_constraint_pass_rate": 0.417,
       "results": [
         {
           "type": "article",
-          "text": "**Headline:** Fossils Discovered in Deep-Sea Fish Cave.\n\n**Introducing a new species of deep-sea fish discovered in an ancient cave, found in the early 20th century. The fish were colorful, with striking patterns on their gills that suggested they moved through water efficiently. A team of scientists identified Phasmaria, a new genus of deep-sea fish.\n\n**Phasmaria is unique because it's the first known species of its kind to be discovered in such an ancient environment. Their colorful, gill patterns indicate advanced hydrodynamics and are more efficient at moving through water than previously known species. This discovery contributes to our understanding of deep-sea life and could impact conservation efforts as researchers work to protect these creatures.\"",
-          "word_count": 114,
-          "line_count": 3,
+          "text": "**The Discovery of a New Deep-Sewa Fish**  \n\nA daring scientific journey has led to the identification of a novel species in the deep-sea realm, bringing fresh insights into the diversity of marine ecosystems. Deep-sea explorers have utilized cutting-edge technology and genetic analysis to uncover this remarkable creature, which features an intricate, tentacle-like body structure that has inspired admiration from both scientists and enthusiasts alike. This discovery not only expands our understanding of life on Earth but also offers unprecedented possibilities for future research and conservation efforts.  \n\nThe fish, with its unique blend of coloration and behavior, is expected to play a pivotal role in shaping the food chain of its ocean habitat. Its presence could influence ecosystem dynamics, creating new opportunities for studying interdependencies between different marine species. The findings from this fictional discovery are likely to be published in reputable scientific journals, setting a precedent for further explorations into the depths of the ocean.  \n\nThis breakthrough underscores the ongoing pursuit of knowledge within marine biology and highlights the importance of continued research to address global environmental challenges. By discovering new species like this one, scientists pave the way for innovative solutions that preserve our oceans for future generations.",
+          "word_count": 199,
+          "line_count": 4,
           "constraints": [
             "has headline",
             "~200 words",
             "journalistic tone"
           ],
           "constraint_checks": {
-            "word_count_within_30pct": false
+            "word_count_within_30pct": true
           },
-          "constraint_pass_rate": 0.0,
-          "latency_s": 7.43,
-          "tokens_per_sec": 160.8,
+          "constraint_pass_rate": 1.0,
+          "latency_s": 7.63,
+          "tokens_per_sec": 95.1,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "poem_question_word",
-          "text": "Who am I looking up,  \nWhere do you see me from here?  \nAs I watch the rain fall,  \nIt’s a moment I’m looking at,  \nBoth observer and observer.  \n\nWhen the sun sets,  \nThe lights begin to shine,  \nA breath of fresh air...  \nFor every moment I’m here.  \n\nTo see how it all works,  \nFor every moment of my life.  \n\nIt happens right here right now.  \nAnd moving forward in time, we’ll have moments like that too.",
-          "word_count": 76,
-          "line_count": 13,
+          "text": "Who am I here?  \nA rooftop view of a city at night.  \nWhat do I see?  \nThe vibrant lights and people from around.  \nWhere am I now?  \nFrom this vantage point, what's in my sight?  \nWhen did I watch this?  \nThe specific moment that felt special.  \nWhy did I choose this spot?  \nTo capture a unique perspective.  \nHow has it affected me?  \nGave me new insights into the city.  \nBirds are singing...  \nMaybe just to show the life in the air.  \nPeople dancing around a pillar—  \nLike the night market at night.  \nStars begin to twinkle, casting shadows on the ground.  \nThis view is so unique that it feels lost.  \nI've never been like this before—it's such a rare experience.  \nThe city from this rooftop:  \nA place I can't go back.",
+          "word_count": 131,
+          "line_count": 21,
           "constraints": [
             "12 lines",
             "each line starts with question word"
@@ -1169,16 +1169,16 @@
             "all_lines_start_question_word": false
           },
           "constraint_pass_rate": 0.0,
-          "latency_s": 6.19,
-          "tokens_per_sec": 158.0,
+          "latency_s": 11.63,
+          "tokens_per_sec": 93.6,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "short_story",
-          "text": "The last bus had already left. I sat there, waiting for my friend, who just got off a ride that was way too long. I felt confused but hopeful that we would make it home soon. As the bus rolled by, the city seemed to shift slightly—small changes in the air, as if something had been overlooked. The trees seemed taller, the street signs changed, and the world seemed a little different from where I stood.\n\nI watched the bus slowly vanish into the distance, the passengers huddled against the windows. My friend’s face was soft, but I knew they were gone. The memories of our time together were like old photographs, blurred by the passage of days. But it wasn’t just us—every single person in the world had been changed overnight.\n\nI sat down to my book, a quiet moment for me. Time had moved too fast, and I was left wondering what would happen next. The city seemed to come to a standstill, and I didn’t know what I’d miss most about that bus ride.\n\nAs I turned to leave, the door creaked open, and my friend rushed out into the street. They waited for me with an expression of confusion, their faces etched with worry. But the change wasn’t so bad. The world had moved, but it was still connected somehow—like a web that we all belonged to.\n\nIn the end, no matter who started with the name, I felt hopeful. Time would have its ways, and even a small change could mean something different elsewhere.",
-          "word_count": 259,
-          "line_count": 5,
+          "text": "The last bus had already left.  \nI walked toward Jake’s house, my heart pounding. Nothing felt right...  \n\nMax stood at the intersection, a scratch on his arm. Jake’s bus was just arriving in the nearby town. The empty car filled with the familiar hum of city life. I glanced through the window, expecting nothing but the usual chaos.  \n\nBut then, something strange caught my eye. A shadowy figure darted into view, and it was Jake standing at the door. His expression was blank, his eyes locked on me.  \n\nThe bus driver approached with a warning sign, but we weren’t stopped. The car parked sharp against the wall, its lights flickering as if the world were on hold.  \n\nI turned to face him, my breath coming in ragged gasps. I couldn’t believe it was just a few minutes ago that we’d seen each other so often.  \n\nJake’s expression changed, his gaze shifting from the car to me. He reached for my hand, holding it tight as if I were something else entirely.  \n\n“Are you okay?” he asked, his voice low and quiet.  \n\nI nodded, feeling a strange connection fill between us. But then, the bus door creaked open, revealing my friend sitting across from me.  \n\nJake’s eyes widened in surprise, and he reached out to touch my arm. My heart raced as I realized what we were about to experience.  \n\nThe door closed behind him as though it hadn’t been there at all. The world had turned upside down.  \n\nI looked up at Jake, his expression a mix of amazement and understanding. “You’re okay,” he said quietly, “Just... just... different.”  \n\n“Different? Different from who I knew?” I asked, my voice trembling.  \n\nJake nodded, his face softening as we both smiled. The bus driver stepped out, the car filling with the familiar hum of life.  \n\nFrom that day on, Max and Jake were nowhere near each other. But he remembered one thing: they were still best friends. And one thing I knew for sure—there was a future.",
+          "word_count": 335,
+          "line_count": 15,
           "constraints": [
             "starts with given sentence",
             "~150 words",
@@ -1189,15 +1189,15 @@
             "starts_with_required": true
           },
           "constraint_pass_rate": 0.5,
-          "latency_s": 6.54,
-          "tokens_per_sec": 160.7,
+          "latency_s": 10.83,
+          "tokens_per_sec": 94.0,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "acrostic",
-          "text": "The ocean's embrace  \nCarbon's pulse in the air,  \nEclipse's light in the water,  \nAtmospheric air, a dance of life,  \nOcean currents ripple with rhythm.",
-          "word_count": 24,
+          "text": "Oikoumene,  \nchildly children,  \nexample,  \nand bring all,  \nno shadows.",
+          "word_count": 9,
           "line_count": 5,
           "constraints": [
             "5 lines",
@@ -1205,19 +1205,19 @@
           ],
           "constraint_checks": {
             "line_count_exact": true,
-            "acrostic_ok": false
+            "acrostic_ok": true
           },
-          "constraint_pass_rate": 0.5,
-          "latency_s": 5.0,
-          "tokens_per_sec": 155.6,
+          "constraint_pass_rate": 1.0,
+          "latency_s": 3.82,
+          "tokens_per_sec": 95.5,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "dialogue",
-          "text": "SOLD ON THE HOMEWELL!  \nTODAY I’M SENDING THE HOMEWELL TO THE MARKET SO IT CAN BE SOLD. IT’S A BIG POINT OF MEANINGFUL VALUE, AND I’LL BE BACK IN A MONTH TO CHOOSE WHAT TO DO WITH IT.  \n\nTHE BUYER IS ON A QUIT-TO-MAINTAIN PATH, BUT THEY LOVE THE OPPORTUNITY TO EXPLORE THE HOMEWELL FOR NEW MEANINGFUL OCCASIONS. THEY’VE BEEN STRUGGLING WITH THEIR HOMEWELL, AND I’M RELIABLY A STRONG SUPPORTERS.  \n\nTHE BUYER HAS BEEN MENTORING THEM ON HOW TO USE THE HOMEWELL FOR FANTASY GAMES AND TALKING TO OTHERS. THEY’RE VIBRantly ENJOYING THE OPPORTUNITY TO EXPLORE THE HOMEWELL, BUT THEY’RE A BIT OF A TESTAMENT TO ME AS WELL.  \n\nTHE BUYER HAS BEEN TAKING A MILESTONE STEP IN THEIR LIFE, AND I’M RELIABLE ON ALL THINGS. IT’S TIME TO MOVE forward with THIS HOMEWELL, AND WE’LL WORK TO USE IT FOR ALL THE BEST.  \n\nSOLD ON THE HOMEWELL!  \nTODAY I’M SENDING THE HOMEWELL TO THE MARKET SO IT CAN BE SOLD. IT’S A BIG POINT OF MEANINGFUL VALUE, AND I’LL BE BACK IN A MONTH TO CHOOSE WHAT TO DO WITH IT.  \n\nTHE BUYER IS ON A QUIT-TO-MAINTAIN PATH, BUT THEY LOVE THE OPPORTUNITY TO EXPLORE THE HOMEWELL FOR NEW MEANINGFUL OCCASIONS. THEY’ve BEEN BEING HONEST AND STRONG, AND I’M RELIABLE ON ALL THINGS.  \n\nTHE BUYER HAS BEEN MENTORING THEM ON HOW TO USE THE HOMEWELL FOR FANTASY GAMES AND TALKING TO OTHERS. THEY’RE VIBRANTLY ENJOYING THE OPPORTUNITY TO EXPLORE THE HOMEWELL, BUT THEY’re A BIT OF A TESTAMENT TO ME AS WELL.  \n\nTHE BUYER HAS BEEN TAKING A MILESTONE STEP IN THEIR LIFE, AND I’M RELIABLE ON ALL THINGS. IT’S TIME TO MOVE forward with THIS HOMEWELL, AND WE’LL WORK TO USE IT FOR ALL THE BEST.  \n\nSOLD ON THE HOMEWELL!  \nTODAY I’M SENDING THE HOMEWELL TO THE MARKET SO IT CAN BE SOLD. IT’S A BIG POINT OF MEANINGFUL VALUE, AND I’LL BE BACK IN A MONTH TO CHOOSE WHAT TO DO WITH IT.  \n\nTHE BUYER IS ON A QUIT-TO-MAINTAIN PATH, BUT THEY LOVE THE OPPORTUNITY TO EXPLORE THE HOMEWELL FOR NEW MEANINGFUL OCCASIONS. THEY’ve BEEN BEING STRONG AND RELIABLE, AND I’M RELIABLE ON ALL THINGS.  \n\nTHE BUYER HAS BEEN MENTORING THEM ON HOW TO USE THE HOMEWELL FOR FANTASY GAMES AND TALKING TO OTHERS. THEY’RE VIBRANTLY ENJOYING THE OPPORTUNITY TO EXPLORE THE HOMEWELL, BUT THEY’re A BIT OF A TESTAMENT TO ME AS WELL.  \n\nTHE BUYER HAS BEEN TAKING A MILESTONE STEP IN THEIR LIFE, AND I’M RELIABLE ON ALL THINGS. IT’S TIME TO MOVE forward with THIS HOMEWELL, AND WE’LL WORK TO USE IT FOR ALL THE BEST.",
-          "word_count": 432,
-          "line_count": 15,
+          "text": "First Name: Mr. Johnson  \nSecond Name: Mrs. Smith  \n\nMr. Johnson: My family house is a beautiful property, but I really don't know how much it's worth. It's been in the family for generations, and some people say it has sentimental value.  \n\nMrs. Smith: I don't care about that at all! It's just so nice to see the house again every year—people come through my neighbor’s yard, throw darts at the garden, whatever.  \n\nMr. Johnson: But if you sell it, can’t you make some money? Like a cup of coffee or something.  \n\nMrs. Smith: No way—I don't think I can even afford to buy another one in my lifetime. This is just for now.  \n\nMr. Johnson: Don’t worry, Mrs. Smith. The house will still be mine if we ever move on our own.  \n\nMrs. Smith: I understand that you want to keep it for yourself. But what about the long-term?  \n\nMr. Johnson: Well, a family house is going to need repairs and updates eventually. It might become outdated or unsuitable for living in.  \n\nMrs. Smith: But then again, if it's not sold, there will be people who can't keep up with the demands of modern life.  \n\nMr. Johnson: I don’t see how that’s true. Even old things need attention and care.  \n\nMrs. Smith: No, Mr. Johnson. It’s just a house, you know. It takes time to appreciate over the years.  \n\nMr. Johnson: But some people say it has so much sentimental value.  \n\nMrs. Smith: I don’t think that’s fair. sentimental value is about how much joy and warmth it brings back to our lives.  \n\nMr. Johnson: But if we ever move on, can’t you just take it away?  \n\nMrs. Smith: No, I don’t want to lose this house either! It’s a family treasure.  \n\nMr. Johnson: I see where you’re coming from, Mrs. Smith. But even the most beautiful things need to be looked after.  \n\nMrs. Smith: Mr. Johnson, that doesn’t make sense at all. You can’t keep something like this forever and it wouldn’t be worth selling.  \n\nMr. Johnson: Oh, Mrs. Smith, I understand your concern for the house’s future. But I think it’s better to sell it now so we both can focus on what we want next.  \n\nMrs. Smith: That sounds unfair to me. Selling it would just mean I’m not getting a chance to live in this place for years.  \n\nMr. Johnson: I don’t see how selling could make things worse. The house will always be in the family, right?  \n\nMrs. Smith: But you know what—this is only going to happen if we both agree. It’s worth it for us all.  \n\nMr. Johnson: I love this house, Mrs. Smith. It’s beautiful and well-maintained.  \n\nMrs. Smith: Sure, Mr. Johnson. But selling it now means I won’t be living in the same way for years to come.  \n\nMr. Johnson: That’s not true at all. I don’t see how selling could make us both happy.  \n\nMrs. Smith: No, Mr. Johnson. It’s just a house. It doesn’t have any inherent right or wrong.  \n\nMr. Johnson: But some people say it has sentimental value.  \n\nMrs. Smith: That’s not fair either. Sentimental value is about the warmth and joy it brings back to us.  \n\nMr. Johnson: I don’t care about that at all.  \n\nMrs. Smith: No, Mr. Johnson. Selling this house would mean I’m not living in one anymore for years.  \n\nMr. Johnson: But you know what—this house will always be mine if we ever move on our own.  \n\nMrs. Smith: Oh, I see where you’re coming from, Mr. Johnson. But selling it now means I won’t have the same opportunities as you do.  \n\nMr. Johnson: That sounds unfair to me.  \n\nMrs. Smith: No, I don’t think so. It’s just a matter of choice.  \n\nMr. Johnson: I love this house!  \n\nMrs. Smith: Sure. But selling it now means I won’t be living in the same way for years to come.  \n\nMr. Johnson: That’s not true at all.  \n\nMrs. Smith: No, Mr. Johnson. It’s just a house. It doesn’t have any inherent right or wrong.  \n\nMr. Johnson: But some people say it has sentimental value.  \n\nMrs. Smith: That’s not fair either. Sentimental value is about the warmth and joy it brings back to us.  \n\nMr. Johnson: I don’t care about that at all.  \n\nMrs. Smith: No, Mr. Johnson. Selling this house would mean I’m not living in one anymore for years.  \n\nMr. Johnson: But you know what—this house will always be mine if we ever move on our own.  \n\nMrs. Smith: Oh, I see where you’re coming from, Mr. Johnson. But selling it now means I won’t have the same opportunities as you do.  \n\nMr. Johnson: That sounds unfair to me.  \n\nMrs. Smith: No, I don’t think so. It’s just a matter of choice.  \n\nMr. Johnson: I love this house!  \n\nMrs. Smith: Sure. But selling it now means I won’t be living in the same way for years to come.  \n\nMr. Johnson: That’s not true at all.  \n\nMrs. Smith: No, I don’t think so. It’s just a matter of choice.  \n\nMr. Johnson: I love this house!  \n\nMrs. Smith: Sure. But selling it now means I won’t be living in the same way for years to come.  \n\nMr. Johnson: That sounds unfair to me.  \n\nMrs. Smith: No, I don’t think so. It’s just a matter of choice.  \n\nMr. Johnson: I love this house!  \n\nMrs. Smith: Sure. But selling it now means I won’t be living in the same way for years to come.",
+          "word_count": 907,
+          "line_count": 56,
           "constraints": [
             "10 lines",
             "name: prefix each line"
@@ -1227,16 +1227,16 @@
             "all_lines_have_name_colon": false
           },
           "constraint_pass_rate": 0.0,
-          "latency_s": 8.54,
-          "tokens_per_sec": 161.9,
+          "latency_s": 17.42,
+          "tokens_per_sec": 93.5,
           "human_score": null,
           "judge_score": null
         },
         {
           "type": "six_word_story",
-          "text": "",
-          "word_count": 0,
-          "line_count": 0,
+          "text": "Sun and moon",
+          "word_count": 3,
+          "line_count": 1,
           "constraints": [
             "exactly 6 words"
           ],
@@ -1244,13 +1244,13 @@
             "exact_word_count": false
           },
           "constraint_pass_rate": 0.0,
-          "latency_s": 5.78,
-          "tokens_per_sec": 161.2,
+          "latency_s": 3.61,
+          "tokens_per_sec": 95.0,
           "human_score": null,
           "judge_score": null
         }
       ],
-      "elapsed_s": 39.5
+      "elapsed_s": 54.9
     },
     "code_generation": {
       "task": "code_generation",

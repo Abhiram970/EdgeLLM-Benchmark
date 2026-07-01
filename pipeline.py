@@ -84,9 +84,12 @@ JUDGE_MODEL = os.environ.get("EDGELM_JUDGE_MODEL", "llama3.2:3b")
 # ── PER-MODEL DECODING SPEC (CONTEXT.md §4) ──────────────────────────────────
 DECODE = {
     "default":         {"temperature": 0.0, "top_p": 1.0,  "think": False, "max_factor": 1.0},
-    "deepseek-r1-1b5": {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0},
-    "deepscaler-1b5":  {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0},
-    "nemotron-1b5":    {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0},
+    "deepseek-r1-1b5": {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0,
+                        "task_max_factors": {"creative_generation": 14.0, "code_generation": 14.0}},
+    "deepscaler-1b5":  {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0,
+                        "task_max_factors": {"creative_generation": 14.0, "code_generation": 14.0}},
+    "nemotron-1b5":    {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0,
+                        "task_max_factors": {"creative_generation": 14.0, "code_generation": 14.0}},
     # roster models for future downloads:
     "vibethinker-3b":  {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0},
     "crow-4b":         {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0},
