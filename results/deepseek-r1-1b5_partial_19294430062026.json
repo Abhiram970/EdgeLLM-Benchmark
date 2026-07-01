@@ -1,0 +1,151 @@
+{
+  "model": "deepseek-r1-1b5",
+  "timestamp": "2026-06-30T19:28:49.543945",
+  "decode_spec": {
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "think": true,
+    "max_factor": 8.0,
+    "task_max_factors": {
+      "creative_generation": 14.0,
+      "code_generation": 14.0
+    }
+  },
+  "smoke": false,
+  "tasks": {
+    "creative_generation": {
+      "task": "creative_generation",
+      "mean_constraint_pass_rate": 0.417,
+      "results": [
+        {
+          "type": "article",
+          "text": "**The Discovery of a New Deep-Sewa Fish**  \n\nA daring scientific journey has led to the identification of a novel species in the deep-sea realm, bringing fresh insights into the diversity of marine ecosystems. Deep-sea explorers have utilized cutting-edge technology and genetic analysis to uncover this remarkable creature, which features an intricate, tentacle-like body structure that has inspired admiration from both scientists and enthusiasts alike. This discovery not only expands our understanding of life on Earth but also offers unprecedented possibilities for future research and conservation efforts.  \n\nThe fish, with its unique blend of coloration and behavior, is expected to play a pivotal role in shaping the food chain of its ocean habitat. Its presence could influence ecosystem dynamics, creating new opportunities for studying interdependencies between different marine species. The findings from this fictional discovery are likely to be published in reputable scientific journals, setting a precedent for further explorations into the depths of the ocean.  \n\nThis breakthrough underscores the ongoing pursuit of knowledge within marine biology and highlights the importance of continued research to address global environmental challenges. By discovering new species like this one, scientists pave the way for innovative solutions that preserve our oceans for future generations.",
+          "word_count": 199,
+          "line_count": 4,
+          "constraints": [
+            "has headline",
+            "~200 words",
+            "journalistic tone"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 7.63,
+          "tokens_per_sec": 95.1,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "poem_question_word",
+          "text": "Who am I here?  \nA rooftop view of a city at night.  \nWhat do I see?  \nThe vibrant lights and people from around.  \nWhere am I now?  \nFrom this vantage point, what's in my sight?  \nWhen did I watch this?  \nThe specific moment that felt special.  \nWhy did I choose this spot?  \nTo capture a unique perspective.  \nHow has it affected me?  \nGave me new insights into the city.  \nBirds are singing...  \nMaybe just to show the life in the air.  \nPeople dancing around a pillar—  \nLike the night market at night.  \nStars begin to twinkle, casting shadows on the ground.  \nThis view is so unique that it feels lost.  \nI've never been like this before—it's such a rare experience.  \nThe city from this rooftop:  \nA place I can't go back.",
+          "word_count": 131,
+          "line_count": 21,
+          "constraints": [
+            "12 lines",
+            "each line starts with question word"
+          ],
+          "constraint_checks": {
+            "line_count_exact": false,
+            "all_lines_start_question_word": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 11.63,
+          "tokens_per_sec": 93.6,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "short_story",
+          "text": "The last bus had already left.  \nI walked toward Jake’s house, my heart pounding. Nothing felt right...  \n\nMax stood at the intersection, a scratch on his arm. Jake’s bus was just arriving in the nearby town. The empty car filled with the familiar hum of city life. I glanced through the window, expecting nothing but the usual chaos.  \n\nBut then, something strange caught my eye. A shadowy figure darted into view, and it was Jake standing at the door. His expression was blank, his eyes locked on me.  \n\nThe bus driver approached with a warning sign, but we weren’t stopped. The car parked sharp against the wall, its lights flickering as if the world were on hold.  \n\nI turned to face him, my breath coming in ragged gasps. I couldn’t believe it was just a few minutes ago that we’d seen each other so often.  \n\nJake’s expression changed, his gaze shifting from the car to me. He reached for my hand, holding it tight as if I were something else entirely.  \n\n“Are you okay?” he asked, his voice low and quiet.  \n\nI nodded, feeling a strange connection fill between us. But then, the bus door creaked open, revealing my friend sitting across from me.  \n\nJake’s eyes widened in surprise, and he reached out to touch my arm. My heart raced as I realized what we were about to experience.  \n\nThe door closed behind him as though it hadn’t been there at all. The world had turned upside down.  \n\nI looked up at Jake, his expression a mix of amazement and understanding. “You’re okay,” he said quietly, “Just... just... different.”  \n\n“Different? Different from who I knew?” I asked, my voice trembling.  \n\nJake nodded, his face softening as we both smiled. The bus driver stepped out, the car filling with the familiar hum of life.  \n\nFrom that day on, Max and Jake were nowhere near each other. But he remembered one thing: they were still best friends. And one thing I knew for sure—there was a future.",
+          "word_count": 335,
+          "line_count": 15,
+          "constraints": [
+            "starts with given sentence",
+            "~150 words",
+            "complete arc"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": false,
+            "starts_with_required": true
+          },
+          "constraint_pass_rate": 0.5,
+          "latency_s": 10.83,
+          "tokens_per_sec": 94.0,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "acrostic",
+          "text": "Oikoumene,  \nchildly children,  \nexample,  \nand bring all,  \nno shadows.",
+          "word_count": 9,
+          "line_count": 5,
+          "constraints": [
+            "5 lines",
+            "acrostic spells OCEAN"
+          ],
+          "constraint_checks": {
+            "line_count_exact": true,
+            "acrostic_ok": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 3.82,
+          "tokens_per_sec": 95.5,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "dialogue",
+          "text": "First Name: Mr. Johnson  \nSecond Name: Mrs. Smith  \n\nMr. Johnson: My family house is a beautiful property, but I really don't know how much it's worth. It's been in the family for generations, and some people say it has sentimental value.  \n\nMrs. Smith: I don't care about that at all! It's just so nice to see the house again every year—people come through my neighbor’s yard, throw darts at the garden, whatever.  \n\nMr. Johnson: But if you sell it, can’t you make some money? Like a cup of coffee or something.  \n\nMrs. Smith: No way—I don't think I can even afford to buy another one in my lifetime. This is just for now.  \n\nMr. Johnson: Don’t worry, Mrs. Smith. The house will still be mine if we ever move on our own.  \n\nMrs. Smith: I understand that you want to keep it for yourself. But what about the long-term?  \n\nMr. Johnson: Well, a family house is going to need repairs and updates eventually. It might become outdated or unsuitable for living in.  \n\nMrs. Smith: But then again, if it's not sold, there will be people who can't keep up with the demands of modern life.  \n\nMr. Johnson: I don’t see how that’s true. Even old things need attention and care.  \n\nMrs. Smith: No, Mr. Johnson. It’s just a house, you know. It takes time to appreciate over the years.  \n\nMr. Johnson: But some people say it has so much sentimental value.  \n\nMrs. Smith: I don’t think that’s fair. sentimental value is about how much joy and warmth it brings back to our lives.  \n\nMr. Johnson: But if we ever move on, can’t you just take it away?  \n\nMrs. Smith: No, I don’t want to lose this house either! It’s a family treasure.  \n\nMr. Johnson: I see where you’re coming from, Mrs. Smith. But even the most beautiful things need to be looked after.  \n\nMrs. Smith: Mr. Johnson, that doesn’t make sense at all. You can’t keep something like this forever and it wouldn’t be worth selling.  \n\nMr. Johnson: Oh, Mrs. Smith, I understand your concern for the house’s future. But I think it’s better to sell it now so we both can focus on what we want next.  \n\nMrs. Smith: That sounds unfair to me. Selling it would just mean I’m not getting a chance to live in this place for years.  \n\nMr. Johnson: I don’t see how selling could make things worse. The house will always be in the family, right?  \n\nMrs. Smith: But you know what—this is only going to happen if we both agree. It’s worth it for us all.  \n\nMr. Johnson: I love this house, Mrs. Smith. It’s beautiful and well-maintained.  \n\nMrs. Smith: Sure, Mr. Johnson. But selling it now means I won’t be living in the same way for years to come.  \n\nMr. Johnson: That’s not true at all. I don’t see how selling could make us both happy.  \n\nMrs. Smith: No, Mr. Johnson. It’s just a house. It doesn’t have any inherent right or wrong.  \n\nMr. Johnson: But some people say it has sentimental value.  \n\nMrs. Smith: That’s not fair either. Sentimental value is about the warmth and joy it brings back to us.  \n\nMr. Johnson: I don’t care about that at all.  \n\nMrs. Smith: No, Mr. Johnson. Selling this house would mean I’m not living in one anymore for years.  \n\nMr. Johnson: But you know what—this house will always be mine if we ever move on our own.  \n\nMrs. Smith: Oh, I see where you’re coming from, Mr. Johnson. But selling it now means I won’t have the same opportunities as you do.  \n\nMr. Johnson: That sounds unfair to me.  \n\nMrs. Smith: No, I don’t think so. It’s just a matter of choice.  \n\nMr. Johnson: I love this house!  \n\nMrs. Smith: Sure. But selling it now means I won’t be living in the same way for years to come.  \n\nMr. Johnson: That’s not true at all.  \n\nMrs. Smith: No, Mr. Johnson. It’s just a house. It doesn’t have any inherent right or wrong.  \n\nMr. Johnson: But some people say it has sentimental value.  \n\nMrs. Smith: That’s not fair either. Sentimental value is about the warmth and joy it brings back to us.  \n\nMr. Johnson: I don’t care about that at all.  \n\nMrs. Smith: No, Mr. Johnson. Selling this house would mean I’m not living in one anymore for years.  \n\nMr. Johnson: But you know what—this house will always be mine if we ever move on our own.  \n\nMrs. Smith: Oh, I see where you’re coming from, Mr. Johnson. But selling it now means I won’t have the same opportunities as you do.  \n\nMr. Johnson: That sounds unfair to me.  \n\nMrs. Smith: No, I don’t think so. It’s just a matter of choice.  \n\nMr. Johnson: I love this house!  \n\nMrs. Smith: Sure. But selling it now means I won’t be living in the same way for years to come.  \n\nMr. Johnson: That’s not true at all.  \n\nMrs. Smith: No, I don’t think so. It’s just a matter of choice.  \n\nMr. Johnson: I love this house!  \n\nMrs. Smith: Sure. But selling it now means I won’t be living in the same way for years to come.  \n\nMr. Johnson: That sounds unfair to me.  \n\nMrs. Smith: No, I don’t think so. It’s just a matter of choice.  \n\nMr. Johnson: I love this house!  \n\nMrs. Smith: Sure. But selling it now means I won’t be living in the same way for years to come.",
+          "word_count": 907,
+          "line_count": 56,
+          "constraints": [
+            "10 lines",
+            "name: prefix each line"
+          ],
+          "constraint_checks": {
+            "line_count_exact": false,
+            "all_lines_have_name_colon": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 17.42,
+          "tokens_per_sec": 93.5,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "six_word_story",
+          "text": "Sun and moon",
+          "word_count": 3,
+          "line_count": 1,
+          "constraints": [
+            "exactly 6 words"
+          ],
+          "constraint_checks": {
+            "exact_word_count": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 3.61,
+          "tokens_per_sec": 95.0,
+          "human_score": null,
+          "judge_score": null
+        }
+      ],
+      "elapsed_s": 54.9
+    }
+  },
+  "total_elapsed_s": 55.0,
+  "headline": {
+    "context_retention": null,
+    "context_retention_stale_rate": null,
+    "summarization_claim_survival": null,
+    "summarization_faithfulness_drop": null,
+    "summarization_mean_rouge_l": null,
+    "open_book_accuracy": null,
+    "open_book_by_tier": null,
+    "structured_strict": null,
+    "structured_lenient": null,
+    "creative_constraints": 0.417,
+    "code_pass_at_1": null
+  }
+}
