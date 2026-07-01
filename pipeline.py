@@ -91,7 +91,8 @@ DECODE = {
     "nemotron-1b5":    {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0,
                         "task_max_factors": {"creative_generation": 14.0, "code_generation": 14.0}},
     # roster models for future downloads:
-    "vibethinker-3b":  {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0},
+    "vibethinker-3b":  {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0,
+                        "task_max_factors": {"creative_generation": 14.0, "code_generation": 14.0}},
     "crow-4b":         {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0},
     "qwen35-4b":       {"temperature": 0.6, "top_p": 0.95, "think": True,  "max_factor": 8.0,
                         "task_max_factors": {"creative_generation": 14.0}},

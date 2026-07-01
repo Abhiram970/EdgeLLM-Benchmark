@@ -20840,7 +20840,11 @@
       "temperature": 0.6,
       "top_p": 0.95,
       "think": true,
-      "max_factor": 8.0
+      "max_factor": 8.0,
+      "task_max_factors": {
+        "creative_generation": 14.0,
+        "code_generation": 14.0
+      }
     },
     "smoke": false,
     "tasks": {
@@ -21969,7 +21973,7 @@
       },
       "creative_generation": {
         "task": "creative_generation",
-        "mean_constraint_pass_rate": 0.417,
+        "mean_constraint_pass_rate": 0.333,
         "results": [
           {
             "type": "article",
@@ -21985,27 +21989,27 @@
               "word_count_within_30pct": false
             },
             "constraint_pass_rate": 0.0,
-            "latency_s": 22.35,
-            "tokens_per_sec": 133.0,
+            "latency_s": 112.35,
+            "tokens_per_sec": 44.7,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "poem_question_word",
-            "text": "Who stands above the skyline, a silent observer?  \nWhat glitters below, a tapestry of neon and rain?  \nWhere do the streets whisper stories that never speak?  \nWhen the wind sweeps through the cranes, it carries echo?  \nWhy does the darkness feel like a breath of promise?  \nHow can the horizon seem so deeply infinite?  \nWho watches the lights pulse like a restless heart?  \nWhat shadows dance along the edges of hope?  \nWhere do the distant sirens blend with distant laughter",
-            "word_count": 80,
-            "line_count": 9,
+            "text": "",
+            "word_count": 0,
+            "line_count": 0,
             "constraints": [
               "12 lines",
               "each line starts with question word"
             ],
             "constraint_checks": {
               "line_count_exact": false,
-              "all_lines_start_question_word": true
+              "all_lines_start_question_word": false
             },
-            "constraint_pass_rate": 0.5,
-            "latency_s": 12.08,
-            "tokens_per_sec": 134.4,
+            "constraint_pass_rate": 0.0,
+            "latency_s": 164.61,
+            "tokens_per_sec": 46.2,
             "human_score": null,
             "judge_score": null
           },
@@ -22024,15 +22028,15 @@
               "starts_with_required": false
             },
             "constraint_pass_rate": 0.0,
-            "latency_s": 18.03,
-            "tokens_per_sec": 134.2,
+            "latency_s": 142.42,
+            "tokens_per_sec": 44.7,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "acrostic",
-            "text": "Oceans whisper secrets to the sunrise.  \nCalm waves caress the shore with gentle grace.  \nEthereal light effloresces upon the surface.  \nA single seashell adds color to the scene.  \nNight's gentle nudge reveals a starry horizon.",
-            "word_count": 35,
+            "text": "Oceans stretch beyond the horizon in endless blue.  \nCalm breezes whisper secrets across the surface.  \nEchoes of past tides rise like mist in the night.  \nAmidst the waves, a lone lighthouse guides the way.  \nNightfall paints the water with shades of quiet gold.",
+            "word_count": 43,
             "line_count": 5,
             "constraints": [
               "5 lines",
@@ -22043,15 +22047,15 @@
               "acrostic_ok": true
             },
             "constraint_pass_rate": 1.0,
-            "latency_s": 7.23,
-            "tokens_per_sec": 134.2,
+            "latency_s": 115.72,
+            "tokens_per_sec": 46.9,
             "human_score": null,
             "judge_score": null
           },
           {
             "type": "dialogue",
-            "text": "Alice: We can't ignore the debt accumulating on that old family house.  \nBob: But the market is booming, and we could sell for a profit.  \nAlice: The roof still creaks at my best friend's birthday party.  \nBob: And a new developer might buy it next year for a bigger sum.  \nAlice: We'd waste the memories that have defined this place.  \nBob: Maybe the kids will find a new home somewhere else.  \nAlice: Or we could renovate the existing rooms before selling.  \nBob: Renovating costs more time and money than a quick sale.  \nAlice: This house has seen more storms than it can weather.  \nBob: Let the market decide; we don't need to rush.",
-            "word_count": 113,
+            "text": "Eli: We can't waste time; the house has seen better centuries.\nMira: But it's in our financial situation, Eli.\nEli: The land is quiet, the roof still stands, that's value.\nMira: Value? People will pay millions for a historic façade.\nEli: Maybe they'll buy and keep the heritage, not just profit.\nMira: Heritage? This is family property, not a tourist trap.\nEli: I've got a loan to close it, and the mortgage is due soon.\nMira: Then you'd have to sell before I can stay in the house.\nEli: Or we could negotiate a hybrid purchase that keeps the soul.\nMira: Fine, but only if you agree to a 30% discount.",
+            "word_count": 111,
             "line_count": 10,
             "constraints": [
               "10 lines",
@@ -22062,8 +22066,8 @@
               "all_lines_have_name_colon": true
             },
             "constraint_pass_rate": 1.0,
-            "latency_s": 13.2,
-            "tokens_per_sec": 133.5,
+            "latency_s": 50.05,
+            "tokens_per_sec": 46.7,
             "human_score": null,
             "judge_score": null
           },
@@ -22079,13 +22083,13 @@
               "exact_word_count": false
             },
             "constraint_pass_rate": 0.0,
-            "latency_s": 3.68,
-            "tokens_per_sec": 135.0,
+            "latency_s": 48.91,
+            "tokens_per_sec": 47.3,
             "human_score": null,
             "judge_score": null
           }
         ],
-        "elapsed_s": 76.6
+        "elapsed_s": 634.1
       },
       "code_generation": {
         "task": "code_generation",
@@ -22098,38 +22102,38 @@
             "code": "",
             "passed": false,
             "exec_output": "",
-            "latency_s": 20.55,
-            "tokens_per_sec": 133.0,
+            "latency_s": 25.84,
+            "tokens_per_sec": 0.0,
             "reasoning_truncated": true
           },
           {
             "name": "perl_csv_filter",
             "language": "perl",
-            "code": "#!/usr/bin/perl\nuse strict;\nuse warnings;\n\nmy $filename = $ARGV[0] or die \"No file argument\";\n\nopen($filename, 'r') or die \"Cannot open file: $!\";\n\nwhile (my $line = fread($filename, 11)) {\n    my ($name, $age, $city) = regexp($line, /(\\S+),\\s*(\\S+),\\s*(\\S+)/);\n    if (defined $age && numeric($age) > 30) {\n        print $line;\n    }\n}\n\nclose($filename);",
+            "code": "#!/usr/bin/perl\nuse strict;\nuse warnings;\n\nmy $file = $\\Argv[0];\nif (!defined($file)) {\n    print \"Usage: $\\Argv[0] file.txt\\n\";\n    exit 1;\n}\n\nwhile (my $line = <*$file) {\n    my ($name, $age, $city) = split(',', $line);\n    # Skip lines that don't have exactly three fields\n    return 0 if $name == undefined or $age == undefined or $city == undefined;\n    if (numer($age) > 30) {\n        print \"$line\\n\";\n    }\n}",
             "passed": false,
-            "exec_output": "Can't use string (\"C:\\Users\\ADITSO~1\\AppData\\Local\\\"...) as a symbol ref while \"strict refs\" in use at C:\\Users\\ADITSO~1\\AppData\\Local\\Temp\\tmp1d9pn1kv\\s.pl line 7.\n",
-            "latency_s": 13.48,
-            "tokens_per_sec": 133.7,
+            "exec_output": "Bareword found where operator expected (Missing operator before \"Argv\"?) at C:\\Users\\jesse\\AppData\\Local\\Temp\\tmprsvj2xuu\\s.pl line 5, near \"$\\Argv\"\nsyntax error at C:\\Users\\jesse\\AppData\\Local\\Temp\\tmprsvj2xuu\\s.pl line 5, near \"$\\Argv\"\nExecution of C:\\Users\\jesse\\AppData\\Local\\Temp\\tmprsvj2xuu\\s.pl aborted due to compilation errors.\n",
+            "latency_s": 70.96,
+            "tokens_per_sec": 46.6,
             "reasoning_truncated": false
           },
           {
             "name": "perl_regex_extract",
             "language": "perl",
-            "code": "",
+            "code": "#!/usr/bin Perl\nuse strict;\nuse warnings;\n\nmy $file = $\\Arg[0];\nif ($file eq '') {\n    die \"Usage: $0 <filename>\"\n}\nopen($file, 'r') or die \"Cannot open file $file: $EER\";\nwhile (<$file) {\n    my @matches = /r'\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}/q @lines;\n    foreach my $m (@matches) {\n        print \"$m\\n\";\n    }\n}\nclose($file);",
             "passed": false,
-            "exec_output": "",
-            "latency_s": 20.61,
-            "tokens_per_sec": 132.9,
-            "reasoning_truncated": true
+            "exec_output": "Can't exec /usr/bin at C:\\Users\\jesse\\AppData\\Local\\Temp\\tmp38rhz84y\\s.pl line 1.\n",
+            "latency_s": 58.9,
+            "tokens_per_sec": 46.5,
+            "reasoning_truncated": false
           },
           {
             "name": "ruby_array_dedupe_sort",
             "language": "ruby",
-            "code": "File.read( ARGV[0] ) | do | line |\n  @nums = line.split( ',' ) .map(&:to_i) .unique\n  @nums.sort( descending? : true )\n  @nums.join( '' )\nend",
+            "code": "filename = ARGV[0]\ncontent = File.read(filename)\nnumbers = content.split(',').map { |s| s.strip.to_i }.to_set\nnumbers = numbers.sort(reverse: true)\nputs numbers.join(',')",
             "passed": false,
-            "exec_output": " ignoring it\n    |                           ^ unexpected ':', expecting end-of-input\n    |                           ^ unexpected ':'; expected a `)` to close the arguments\n    |                                  ^ unexpected ')', ignoring it\n    |                                  ^ unexpected ')', expecting end-of-input\n  4 |   @nums.join( '' )\n\n> 5 | end\n    | ^~~ unexpected 'end', ignoring it\n\n",
-            "latency_s": 7.24,
-            "tokens_per_sec": 133.8,
+            "exec_output": "C:/Users/jesse/AppData/Local/Temp/tmpchani_rb/s.rb:4:in `sort': wrong number of arguments (given 1, expected 0) (ArgumentError)\n\nnumbers = numbers.sort(reverse: true)\n\n                       ^^^^^^^^^^^^^\n\tfrom C:/Users/jesse/AppData/Local/Temp/tmpchani_rb/s.rb:4:in `<main>'\n",
+            "latency_s": 119.74,
+            "tokens_per_sec": 47.0,
             "reasoning_truncated": false
           },
           {
@@ -22138,22 +22142,22 @@
             "code": "",
             "passed": false,
             "exec_output": "",
-            "latency_s": 20.63,
-            "tokens_per_sec": 132.6,
+            "latency_s": 120.99,
+            "tokens_per_sec": 44.6,
             "reasoning_truncated": true
           },
           {
             "name": "ruby_class_stack",
             "language": "ruby",
-            "code": "class Stack\n  stack = []\n\n  private\n\n  def push(item)\n    stack << item\n  end\n\n  def pop\n    return stack.pop if !stack.empty?\n  end\n\n  def peek\n    stack[-1] if !stack.empty?\n  end\nend\n\nstack = Stack.new\nstack.push(1)\nstack.push(2)\nstack.push(3)\n\nputs stack.peek\nputs stack.pop\nputs stack.peek",
+            "code": "class Stack\n  def initialize\n    @stack = []\n  end\n\n  def push(item)\n    @stack = [item] + @stack\n  end\n\n  def pop\n    item = @stack[0]\n    @stack.delete(0)\n    item\n  end\n\n  def peek\n    @stack[0]\n  end\nend\n\ns = Stack.new\ns.push(1)\ns.push(2)\ns.push(3)\n\nputs s.peek\nputs s.pop\nputs s.peek",
             "passed": false,
-            "exec_output": "C:/Users/ADITSO~1/AppData/Local/Temp/tmp12cpnex9/s.rb:20:in '<main>': private method 'push' called for an instance of Stack (NoMethodError)\n\nstack.push(1)\n\n     ^^^^^\n",
-            "latency_s": 11.61,
-            "tokens_per_sec": 134.1,
+            "exec_output": "3\n3\n3\n",
+            "latency_s": 87.7,
+            "tokens_per_sec": 46.8,
             "reasoning_truncated": false
           }
         ],
-        "elapsed_s": 95.7
+        "elapsed_s": 484.7
       }
     },
     "total_elapsed_s": 1251.6,
@@ -22175,7 +22179,7 @@
       },
       "structured_strict": 1.0,
       "structured_lenient": 1.0,
-      "creative_constraints": 0.417,
+      "creative_constraints": 0.333,
       "code_pass_at_1": 0.0
     }
   }

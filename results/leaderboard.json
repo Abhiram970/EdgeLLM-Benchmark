@@ -353,7 +353,7 @@
     },
     "structured_strict": 1.0,
     "structured_lenient": 1.0,
-    "creative_constraints": 0.417,
+    "creative_constraints": 0.333,
     "code_pass_at_1": 0.0
   }
 }
