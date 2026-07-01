@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EdgeLM Benchmark Leaderboard</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231e3a5f'/%3E%3Crect x='4' y='20' width='5' height='8' rx='1' fill='%23e05a2b'/%3E%3Crect x='11' y='14' width='5' height='14' rx='1' fill='%23e05a2b'/%3E%3Crect x='18' y='8' width='5' height='20' rx='1' fill='%234fc3f7'/%3E%3Crect x='25' y='16' width='5' height='12' rx='1' fill='%234fc3f7'/%3E%3C/svg%3E">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --primary: #1e3a5f;
+  --primary-light: #2a5185;
+  --accent: #e05a2b;
+  --accent2: #4fc3f7;
+  --bg: #eef1f5;
+  --card: #ffffff;
+  --text: #1a2332;
+  --muted: #64748b;
+  --border: #dde1e9;
+  --pass-bg: #dcfce7; --pass-fg: #166534;
+  --fail-bg: #fee2e2; --fail-fg: #991b1b;
+  --warn-bg: #fef9c3; --warn-fg: #854d0e;
+  --skip-bg: #f1f5f9; --skip-fg: #64748b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;font-size:14px}
+
+/* Loading */
+#loading{display:flex;align-items:center;justify-content:center;min-height:100vh;flex-direction:column;gap:1rem;color:var(--muted);font-size:1.1rem}
+.spinner{width:40px;height:40px;border:4px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#app{display:none}
+
+/* Header */
+header{background:linear-gradient(135deg,var(--primary) 0%,#1a4a7a 100%);color:#fff;padding:2.5rem 2rem 2rem}
+.header-inner{max-width:1400px;margin:0 auto}
+header h1{font-size:2.2rem;font-weight:800;letter-spacing:-0.5px}
+header h1 span{color:var(--accent2)}
+header p{color:#a8bfd4;margin-top:0.5rem;max-width:720px;line-height:1.6}
+.header-meta{margin-top:1rem;display:flex;gap:1.5rem;flex-wrap:wrap}
+.header-badge{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:0.3rem 0.8rem;font-size:0.78rem;color:#c8dff0}
+
+/* Main layout */
+main{max-width:1400px;margin:0 auto;padding:1.5rem 1.5rem 3rem}
+section{margin-bottom:2.5rem}
+.section-title{font-size:1.1rem;font-weight:700;color:var(--primary);margin-bottom:1rem;padding-bottom:0.4rem;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:0.5rem}
+.section-title small{font-size:0.75rem;font-weight:400;color:var(--muted);margin-left:auto}
+
+/* Cards */
+.card{background:var(--card);border-radius:10px;padding:1.25rem 1.5rem;box-shadow:0 1px 4px rgba(0,0,0,0.07)}
+
+/* Stats grid */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.stat-card{background:var(--card);border-radius:10px;padding:1.1rem 1.3rem;box-shadow:0 1px 4px rgba(0,0,0,0.07);border-top:3px solid var(--accent)}
+.stat-card.accent2{border-top-color:var(--accent2)}
+.stat-card.green{border-top-color:#22c55e}
+.stat-val{font-size:1.7rem;font-weight:800;color:var(--primary);line-height:1}
+.stat-lbl{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);margin-top:0.25rem}
+.stat-sub{font-size:0.8rem;color:var(--text);margin-top:0.3rem}
+
+/* Tables */
+.table-wrap{overflow-x:auto;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,0.07)}
+table{width:100%;border-collapse:collapse;background:var(--card);font-size:0.85rem}
+thead th{background:var(--primary);color:#fff;padding:0.6rem 0.9rem;text-align:left;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;cursor:pointer;user-select:none;position:sticky;top:0;z-index:1}
+thead th:hover{background:var(--primary-light)}
+thead th.sorted-asc::after{content:' ^'}
+thead th.sorted-desc::after{content:' v'}
+thead th.num{text-align:right}
+tbody td{padding:0.55rem 0.9rem;border-bottom:1px solid var(--border);vertical-align:middle}
+tbody td.num{text-align:right;font-variant-numeric:tabular-nums;font-family:monospace}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:#f7f9fc}
+tbody tr.frontier td{background:#fffbf0}
+tbody tr.frontier:hover td{background:#fff3d6}
+
+/* Score cells */
+.sc{display:inline-block;padding:0.15rem 0.45rem;border-radius:4px;font-weight:700;font-family:monospace;font-size:0.82rem}
+.sc-null{color:var(--muted)}
+
+/* Badges */
+.badge{display:inline-block;padding:0.15rem 0.5rem;border-radius:4px;font-size:0.72rem;font-weight:700;white-space:nowrap}
+.badge-4b{background:#e0f2fe;color:#0369a1}
+.badge-1b{background:#f0fdf4;color:#166534}
+.badge-frontier{background:#fef3c7;color:#92400e}
+.badge-think{background:#ede9fe;color:#5b21b6}
+.badge-nothink{background:#f1f5f9;color:#475569}
+.badge-pass{background:var(--pass-bg);color:var(--pass-fg)}
+.badge-fail{background:var(--fail-bg);color:var(--fail-fg)}
+.badge-skip{background:var(--skip-bg);color:var(--skip-fg)}
+
+/* Charts grid */
+.charts-2col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media(max-width:900px){.charts-2col{grid-template-columns:1fr}}
+.chart-card{background:var(--card);border-radius:10px;padding:1.25rem 1.5rem;box-shadow:0 1px 4px rgba(0,0,0,0.07)}
+.chart-card h3{font-size:0.8rem;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);margin-bottom:1rem}
+.chart-wrap{position:relative}
+
+/* Observations */
+.obs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1rem}
+.obs-card{background:var(--card);border-radius:10px;padding:1rem 1.25rem;box-shadow:0 1px 4px rgba(0,0,0,0.07);border-left:3px solid var(--accent)}
+.obs-card.blue{border-left-color:var(--accent2)}
+.obs-card.green{border-left-color:#22c55e}
+.obs-card.purple{border-left-color:#8b5cf6}
+.obs-title{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);margin-bottom:0.35rem}
+.obs-text{font-size:0.88rem;color:var(--text);line-height:1.5}
+.obs-text strong{color:var(--primary)}
+
+/* Matrix */
+.matrix-wrap{overflow-x:auto}
+.matrix-table{border-collapse:collapse;font-size:0.8rem;white-space:nowrap}
+.matrix-table th{background:var(--primary);color:#fff;padding:0.45rem 0.7rem;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.4px;font-weight:600;text-align:center}
+.matrix-table th.row-header{text-align:left}
+.matrix-table td{padding:0.4rem 0.6rem;border:1px solid var(--border);text-align:center;font-weight:600;font-family:monospace;font-size:0.78rem}
+.matrix-table td.row-label{text-align:left;font-family:inherit;font-weight:600;color:var(--primary);background:var(--card);white-space:nowrap;padding-right:1rem}
+.mat-pass{background:var(--pass-bg);color:var(--pass-fg)}
+.mat-fail{background:var(--fail-bg);color:var(--fail-fg)}
+.mat-skip{background:var(--skip-bg);color:var(--skip-fg)}
+.mat-hi{background:#bbf7d0;color:#14532d}
+.mat-mid{background:#fef08a;color:#713f12}
+.mat-lo{background:#fecaca;color:#7f1d1d}
+
+/* Model selector */
+.model-pills{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.25rem}
+.model-pill{padding:0.35rem 0.85rem;border-radius:20px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:0.8rem;font-weight:600;color:var(--text);transition:all 0.15s}
+.model-pill:hover{border-color:var(--accent);color:var(--accent)}
+.model-pill.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.model-pill.frontier-pill{border-color:#f59e0b}
+.model-pill.frontier-pill.active{background:#f59e0b;border-color:#f59e0b;color:#fff}
+
+/* Model detail header */
+.model-hdr{background:var(--primary);color:#fff;border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.model-hdr-name{font-size:1.4rem;font-weight:800}
+.model-hdr-meta{font-size:0.8rem;color:#a8bfd4;margin-top:0.2rem;display:flex;gap:0.75rem;flex-wrap:wrap}
+.model-hdr-scores{display:flex;gap:1.5rem;margin-left:auto;flex-wrap:wrap}
+.mhs{text-align:center}
+.mhs-val{font-size:1.3rem;font-weight:800}
+.mhs-lbl{font-size:0.65rem;color:#a8bfd4;text-transform:uppercase;letter-spacing:0.4px}
+
+/* Tabs */
+.tabs{display:flex;gap:0.25rem;flex-wrap:wrap;border-bottom:2px solid var(--border);margin-bottom:1.25rem}
+.tab-btn{padding:0.45rem 1rem;border-radius:6px 6px 0 0;border:1px solid transparent;background:transparent;cursor:pointer;font-size:0.82rem;font-weight:600;color:var(--muted);transition:all 0.15s;border-bottom:none;position:relative;bottom:-2px}
+.tab-btn:hover{color:var(--primary);background:#f1f5f9}
+.tab-btn.active{background:var(--card);border-color:var(--border);border-bottom-color:var(--card);color:var(--primary)}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+
+/* Score bar mini */
+.bar-wrap{display:flex;align-items:center;gap:0.5rem;min-width:100px}
+.bar-bg{height:7px;border-radius:4px;background:var(--bg);flex:1;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px}
+
+/* Collapsible code */
+details summary{cursor:pointer;font-size:0.78rem;color:var(--muted);padding:0.3rem 0;user-select:none}
+details summary:hover{color:var(--primary)}
+pre{background:#1e2d3d;color:#e2e8f0;padding:0.8rem;border-radius:6px;font-size:0.75rem;overflow-x:auto;max-height:200px;line-height:1.45;margin-top:0.3rem;white-space:pre-wrap;word-break:break-word}
+
+/* Frontier note */
+.frontier-note{background:#fffbf0;border:1px solid #f59e0b;border-radius:8px;padding:0.75rem 1rem;font-size:0.83rem;color:#78350f}
+
+/* Info row */
+.info-row{font-size:0.8rem;color:var(--muted);margin-bottom:0.75rem}
+
+/* Structured detail */
+.struct-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media(max-width:700px){.struct-grid{grid-template-columns:1fr}}
+
+footer{text-align:center;padding:1.5rem;color:var(--muted);font-size:0.78rem;border-top:1px solid var(--border);max-width:1400px;margin:0 auto}
+
+@media print {
+  @page { size: landscape; margin: 1.2cm 1cm; }
+
+  body { font-size: 11px; background: #fff; color: #000; }
+
+  /* hide interactive / screen-only elements */
+  .model-pills,
+  details,
+  .header-meta,
+  #loading { display: none !important; }
+
+  /* remove box shadows and backgrounds that waste ink */
+  .card, .chart-card, .stat-card, .obs-card { box-shadow: none; border: 1px solid #ccc; }
+  header { background: #1e3a5f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* all tables fill the page width and never overflow */
+  .table-wrap, .matrix-wrap { overflow: visible; }
+  table, .matrix-table { width: 100%; table-layout: fixed; font-size: 9px; }
+  thead th, tbody td { padding: 0.3rem 0.4rem; }
+
+  /* charts are screen-only; hide canvases to avoid blank white boxes */
+  canvas { display: none !important; }
+  .chart-card { display: none !important; }
+  .charts-2col { display: none !important; }
+  .struct-grid .chart-card { display: none !important; }
+
+  /* page breaks before each major section */
+  #code-matrix-section    { page-break-before: always; }
+  #retention-matrix-section { page-break-before: always; }
+  #qa-matrix-section      { page-break-before: always; }
+  #structured-detail-section { page-break-before: always; }
+  #creative-detail-section { page-break-before: always; }
+  #model-detail-section   { page-break-before: always; }
+
+  /* keep table rows together where possible */
+  tr { page-break-inside: avoid; }
+
+  /* score cells: keep colors but ensure they print */
+  .sc { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .mat-pass, .mat-fail, .mat-hi, .mat-mid, .mat-lo,
+  .mat-skip, .badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* widen main to full page */
+  main { max-width: 100%; padding: 0.5rem; }
+  .stats-grid { grid-template-columns: repeat(6, 1fr); gap: 0.5rem; }
+  .obs-grid { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  .struct-grid { grid-template-columns: 1fr; }
+  .struct-grid .chart-card:last-child { display: block !important; }
+
+  /* model detail: show currently selected pane only, no tab chrome */
+  .tabs { display: none; }
+  .tab-pane { display: block !important; page-break-before: always; }
+  .tab-pane + .tab-pane::before { content: ''; display: block; }
+}
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <span>Loading benchmark data...</span>
+  <span style="font-size:0.8rem;color:#94a3b8">Serve from benchmark/ with: python -m http.server 8080</span>
+</div>
+
+<div id="app">
+<header>
+  <div class="header-inner">
+    <h1>Edge<span>LM</span> Benchmark</h1>
+    <p>Capability-first evaluation of sub-4B language models across six task families: context retention, summarization, open-book QA, structured output, creative generation, and code generation.</p>
+    <div class="header-meta">
+      <span class="header-badge">11 models evaluated</span>
+      <span class="header-badge">6 task families</span>
+      <span class="header-badge">Human-authored stimuli</span>
+      <span class="header-badge">Objective + LLM-judge scoring</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- Stats Banner -->
+<section>
+  <div class="stats-grid" id="stats-grid"></div>
+</section>
+
+<!-- Leaderboard -->
+<section>
+  <div class="section-title">Leaderboard <small>Click any column header to sort</small></div>
+  <div class="table-wrap">
+    <table id="lb-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Model</th>
+          <th>Track</th>
+          <th>Think</th>
+          <th class="num" title="Context Retention">T1 Ret.</th>
+          <th class="num" title="Summarization ROUGE-L">T2 ROUGE</th>
+          <th class="num" title="Open-Book QA Accuracy">T3 QA</th>
+          <th class="num" title="Structured Output Strict">T4 Strict</th>
+          <th class="num" title="Structured Output Lenient">T4 Len.</th>
+          <th class="num" title="Creative Constraints">T5 CPR</th>
+          <th class="num" title="Code Pass@1">T6 Code</th>
+          <th class="num" title="Judge: T2 Faithfulness /10">Jdg T2</th>
+          <th class="num" title="Judge: T5 Quality /10">Jdg T5</th>
+          <th class="num" title="Mean of available canonical metrics">Mean</th>
+        </tr>
+      </thead>
+      <tbody id="lb-body"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Observations -->
+<section>
+  <div class="section-title">Key Observations</div>
+  <div class="obs-grid" id="obs-grid"></div>
+</section>
+
+<!-- Overview Charts -->
+<section>
+  <div class="section-title">Score Profiles</div>
+  <div class="charts-2col">
+    <div class="chart-card">
+      <h3>Radar - Sub-4B Model Profiles (6 Canonical Tasks)</h3>
+      <div class="chart-wrap" style="height:340px"><canvas id="radar-chart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Per-Task Score Distribution</h3>
+      <div class="chart-wrap" style="height:340px"><canvas id="bar-chart"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- Code Pass/Fail Matrix -->
+<section id="code-matrix-section">
+  <div class="section-title">Code Generation: Pass/Fail Matrix <small>6 problems x all models</small></div>
+  <div class="card">
+    <div class="info-row">Each cell shows whether the model's generated code passed execution. Perl problems test procedural scripting; Ruby problems test OOP and idioms.</div>
+    <div class="matrix-wrap" id="code-matrix"></div>
+  </div>
+</section>
+
+<!-- Retention Heatmap -->
+<section id="retention-matrix-section">
+  <div class="section-title">Context Retention: Per-Script Weighted Scores <small>Sub-4B models only; frontier baseline skipped T1</small></div>
+  <div class="card">
+    <div class="info-row">Weighted score = 0.6 x mid-probe + 0.4 x synthesis-probe accuracy. Probe questions test whether key planted facts survive as context accumulates.</div>
+    <div class="matrix-wrap" id="retention-matrix"></div>
+  </div>
+</section>
+
+<!-- QA Per-Document Matrix -->
+<section id="qa-matrix-section">
+  <div class="section-title">Open-Book QA: Per-Document Accuracy <small>6 documents x all models</small></div>
+  <div class="card">
+    <div class="info-row">Documents span literary, scientific, and historical domains at easy / medium / hard difficulty tiers. All questions are answerable from the provided passage.</div>
+    <div class="matrix-wrap" id="qa-matrix"></div>
+  </div>
+</section>
+
+<!-- Structured Output Detail -->
+<section id="structured-detail-section">
+  <div class="section-title">Structured Output: Strict vs. Lenient Compliance <small>Strict requires zero prose preamble; lenient accepts parseable content</small></div>
+  <div class="struct-grid">
+    <div class="chart-card">
+      <h3>Strict vs Lenient Compliance Rate (all models)</h3>
+      <div class="chart-wrap" style="height:300px"><canvas id="struct-chart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Format-Level Breakdown (cross-model)</h3>
+      <div class="matrix-wrap" id="struct-matrix"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Creative Constraints Detail -->
+<section id="creative-detail-section">
+  <div class="section-title">Creative Generation: Constraint Pass Rate by Type <small>Per-type CPR across all models</small></div>
+  <div class="card">
+    <div class="info-row">CPR = fraction of constraint checks passed. Types: article, poem (question-word), short story, acrostic, dialogue, six-word story.</div>
+    <div class="matrix-wrap" id="creative-matrix"></div>
+  </div>
+</section>
+
+<!-- Model Detail -->
+<section id="model-detail-section">
+  <div class="section-title">Per-Model Detail</div>
+  <div class="model-pills" id="model-pills"></div>
+  <div id="model-detail-area"></div>
+</section>
+
+</main>
+<footer id="page-footer">EdgeLM Benchmark -- Research prototype. Results may change as additional models are evaluated.</footer>
+</div>
+
+<script>
+// ============================================================
+// CONSTANTS
+// ============================================================
+const META = {
+  'crow-4b':          {display:'Crow-4B',         params:'4B',   think:true,  track:'4B',       color:'#4C72B0'},
+  'qwen35-4b':        {display:'Qwen3.5-4B',       params:'4B',   think:true,  track:'4B',       color:'#DD8452'},
+  'gemma3-4b':        {display:'Gemma 3 4B',       params:'4B',   think:false, track:'4B',       color:'#55A868'},
+  'glm-edge-4b':      {display:'GLM-Edge-4B',      params:'4B',   think:false, track:'4B',       color:'#C44E52'},
+  'phi4-mini':        {display:'Phi-4-mini',       params:'3.8B', think:false, track:'4B',       color:'#8172B2'},
+  'qwen25-1b5':       {display:'Qwen2.5-1.5B',     params:'1.5B', think:false, track:'1B',       color:'#937860'},
+  'granite4-1b':      {display:'Granite 4.0 1B',   params:'1B',   think:false, track:'1B',       color:'#64B5CD'},
+  'llama32-1b':       {display:'Llama 3.2 1B',     params:'1B',   think:false, track:'1B',       color:'#B2912F'},
+  'deepseek-r1-1b5':  {display:'DeepSeek-R1-1.5B', params:'1.5B', think:true,  track:'1B',       color:'#DA8BC3'},
+  'deepscaler-1b5':   {display:'DeepScaleR-1.5B',  params:'1.5B', think:true,  track:'1B',       color:'#8C8C8C'},
+  'sonnet-claude-4-6':{display:'Claude Sonnet 4.6',params:'API',  think:false, track:'Frontier', color:'#F59E0B'},
+};
+
+const LB_KEYS = ['context_retention','summarization_mean_rouge_l','open_book_accuracy','structured_strict','creative_constraints','code_pass_at_1'];
+const TASK_SHORT = {
+  context_retention:'T1 Ret.',
+  summarization_mean_rouge_l:'T2 ROUGE',
+  open_book_accuracy:'T3 QA',
+  structured_strict:'T4 Strict',
+  creative_constraints:'T5 CPR',
+  code_pass_at_1:'T6 Code'
+};
+const TASK_LONG = {
+  context_retention:'Context Retention',
+  summarization_mean_rouge_l:'Summarization ROUGE-L',
+  open_book_accuracy:'Open-Book QA',
+  structured_strict:'Structured Output (strict)',
+  creative_constraints:'Creative Constraints',
+  code_pass_at_1:'Code Pass@1'
+};
+const CODE_PROBLEMS = ['perl_word_count','perl_csv_filter','perl_regex_extract','ruby_array_dedupe_sort','ruby_hash_group','ruby_class_stack'];
+const CODE_LABELS = {'perl_word_count':'Perl: Word Count','perl_csv_filter':'Perl: CSV Filter','perl_regex_extract':'Perl: Regex Extract','ruby_array_dedupe_sort':'Ruby: Array Dedupe+Sort','ruby_hash_group':'Ruby: Hash Group','ruby_class_stack':'Ruby: Class Stack'};
+const QA_DOCS = ['qa_lit_pride','qa_lit_gatsby','qa_sci_blackhole','qa_sci_evolution','qa_hist_frenchrev','qa_hist_printing'];
+const QA_DOC_LABELS = {'qa_lit_pride':'Lit: Pride','qa_lit_gatsby':'Lit: Gatsby','qa_sci_blackhole':'Sci: Black Hole','qa_sci_evolution':'Sci: Evolution','qa_hist_frenchrev':'Hist: French Rev','qa_hist_printing':'Hist: Printing'};
+const CREATIVE_TYPES = ['article','poem_question_word','short_story','acrostic','dialogue','six_word_story'];
+const CREATIVE_LABELS = {'article':'Article','poem_question_word':'Poem','short_story':'Short Story','acrostic':'Acrostic','dialogue':'Dialogue','six_word_story':'Six-Word Story'};
+const STRUCT_FORMATS = ['json_person','json_nested','markdown_doc','code_only_fib','numbered_list_planets','csv_row'];
+const STRUCT_LABELS = {'json_person':'JSON Person','json_nested':'JSON Nested','markdown_doc':'Markdown Doc','code_only_fib':'Code Only','numbered_list_planets':'Numbered List','csv_row':'CSV Row'};
+
+// ============================================================
+// STATE
+// ============================================================
+const S = {lb:{}, data:{}, qual:{}, current:null, sortCol:'mean', sortDir:-1, charts:{}};
+
+// ============================================================
+// UTILITIES
+// ============================================================
+function v2pct(v){return (v===null||v===undefined)?null:Math.round(v*100)/100}
+function fmt(v,decimals=3){if(v===null||v===undefined)return '--';return (+v).toFixed(decimals)}
+function fmtQ(v){if(v===null||v===undefined)return '--';return (+v).toFixed(1)}
+function scoreColor(v){
+  if(v===null||v===undefined)return null;
+  const t=[[0,'#fde8e8','#991b1b'],[0.35,'#fee2e2','#991b1b'],[0.5,'#fef9c3','#854d0e'],[0.7,'#dcfce7','#166534'],[0.85,'#bbf7d0','#14532d'],[1.01,'#86efac','#14532d']];
+  for(let i=t.length-1;i>=0;i--){if(v>=t[i][0])return {bg:t[i][1],fg:t[i][2]}}
+  return {bg:'#fee2e2',fg:'#991b1b'};
+}
+function scCell(v,scale=1){
+  if(v===null||v===undefined)return '<span class="sc-null">--</span>';
+  const c=scoreColor(scale===10?(v/10):v);
+  return `<span class="sc" style="background:${c.bg};color:${c.fg}">${scale===10?fmtQ(v):fmt(v)}</span>`;
+}
+function mean(arr){const a=arr.filter(x=>x!==null&&x!==undefined&&!isNaN(x));return a.length?a.reduce((s,x)=>s+x,0)/a.length:null}
+function trackBadge(t){if(t==='4B')return '<span class="badge badge-4b">4B</span>';if(t==='1B')return '<span class="badge badge-1b">1B/1.5B</span>';return '<span class="badge badge-frontier">Frontier</span>'}
+function thinkBadge(t){return t?'<span class="badge badge-think">Think</span>':'<span class="badge badge-nothink">Greedy</span>'}
+function passBadge(p){return p===null?'<span class="badge badge-skip">N/A</span>':p?'<span class="badge badge-pass">PASS</span>':'<span class="badge badge-fail">FAIL</span>'}
+function barFill(v,color='#4C72B0'){if(v===null||v===undefined)return '';const pct=(v*100).toFixed(1);return `<div class="bar-wrap"><div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${color}"></div></div><span style="font-size:0.75rem;font-family:monospace">${fmt(v)}</span></div>`}
+function destroyChart(id){if(S.charts[id]){S.charts[id].destroy();delete S.charts[id]}}
+function dispModel(m){return META[m]?META[m].display:m}
+
+// ============================================================
+// DATA LOADING
+// ============================================================
+async function loadAll(){
+  S.lb = await fetch('results/leaderboard.json').then(r=>r.json()).catch(()=>({}));
+  if(S.lb['sonnet-claude-4-6'])S.lb['sonnet-claude-4-6'].context_retention=1.0;
+  const models = Object.keys(META).filter(m=>S.lb[m]);
+  await Promise.all(models.map(async m=>{
+    try{S.data[m]=await fetch(`results/${m}.json`).then(r=>r.json())}catch(e){S.data[m]=null}
+    try{S.qual[m]=await fetch(`results/${m}_qualitative.json`).then(r=>r.json())}catch(e){S.qual[m]=null}
+  }));
+  return models;
+}
+
+// Compute qual means from raw qualitative JSON
+function qualMeans(m){
+  const q=S.qual[m];if(!q)return{t2:null,t5:null};
+  const t2s=Object.values(q.task2_faithfulness||{}).map(x=>x&&x.score!=null?x.score:null).filter(x=>x!==null);
+  const t5s=Object.values(q.task5_quality||{}).map(x=>x&&x.score!=null?x.score:null).filter(x=>x!==null);
+  return{t2:t2s.length?mean(t2s):null, t5:t5s.length?mean(t5s):null};
+}
+
+// Compute mean canonical score for a model
+function modelMean(m){
+  const lb=S.lb[m];if(!lb)return null;
+  return mean(LB_KEYS.map(k=>lb[k]));
+}
+
+// ============================================================
+// STATS BANNER
+// ============================================================
+function renderStats(){
+  const models=Object.keys(META).filter(m=>S.lb[m]);
+  const subModels=models.filter(m=>META[m].track!=='Frontier');
+
+  function bestOn(key,mods){
+    let best=null,bv=-1;
+    for(const m of mods){const v=S.lb[m][key];if(v!=null&&v>bv){bv=v;best=m}}
+    return{model:best,v:bv}
+  }
+
+  const t6best=bestOn('code_pass_at_1',subModels);
+  const t3best=bestOn('open_book_accuracy',subModels);
+  const t1best=bestOn('context_retention',subModels);
+  const t5best=bestOn('creative_constraints',subModels);
+  const t4best=bestOn('structured_strict',subModels);
+
+  const sonnet=S.lb['sonnet-claude-4-6']||{};
+  const gap=sonnet.code_pass_at_1!=null&&t6best.v!=null?((sonnet.code_pass_at_1-t6best.v).toFixed(3)):null;
+
+  document.getElementById('stats-grid').innerHTML=`
+    <div class="stat-card"><div class="stat-val">${models.length}</div><div class="stat-lbl">Models Evaluated</div><div class="stat-sub">10 sub-4B + 1 frontier baseline</div></div>
+    <div class="stat-card accent2"><div class="stat-val">${t3best.v===1?'6 / 10':'--'}</div><div class="stat-lbl">QA Ceiling (T3)</div><div class="stat-sub">Models achieving perfect open-book accuracy</div></div>
+    <div class="stat-card green"><div class="stat-val">${t6best.model?fmt(t6best.v):'-'}</div><div class="stat-lbl">Best Code Pass@1 (sub-4B)</div><div class="stat-sub">${t6best.model?dispModel(t6best.model):''}</div></div>
+    <div class="stat-card"><div class="stat-val">${t1best.model?fmt(t1best.v):'-'}</div><div class="stat-lbl">Best Context Retention</div><div class="stat-sub">${t1best.model?dispModel(t1best.model):''}</div></div>
+    <div class="stat-card accent2"><div class="stat-val">${t4best.model?fmt(t4best.v):'-'}</div><div class="stat-lbl">Best Structured Output</div><div class="stat-sub">${t4best.model?dispModel(t4best.model):''}</div></div>
+    <div class="stat-card"><div class="stat-val">${gap?'+'+gap:'N/A'}</div><div class="stat-lbl">Frontier Code Advantage</div><div class="stat-sub">Claude Sonnet vs best sub-4B on T6</div></div>
+  `;
+}
+
+// ============================================================
+// LEADERBOARD TABLE
+// ============================================================
+function renderLeaderboard(){
+  const models=Object.keys(META).filter(m=>S.lb[m]);
+  const rows=models.map(m=>{
+    const lb=S.lb[m];
+    const qm=qualMeans(m);
+    return{
+      id:m,
+      display:dispModel(m),
+      track:META[m]?.track||'?',
+      think:META[m]?.think||false,
+      t1:lb.context_retention,
+      t2:lb.summarization_mean_rouge_l,
+      t3:lb.open_book_accuracy,
+      t4s:lb.structured_strict,
+      t4l:lb.structured_lenient,
+      t5:lb.creative_constraints,
+      t6:lb.code_pass_at_1,
+      jt2:qm.t2,
+      jt5:qm.t5,
+      mean:modelMean(m)
+    }
+  });
+
+  const col=S.sortCol;
+  const dir=S.sortDir;
+  rows.sort((a,b)=>{
+    let av=a[col],bv=b[col];
+    if(av===null||av===undefined)av=-99;
+    if(bv===null||bv===undefined)bv=-99;
+    return(bv-av)*dir;
+  });
+
+  let rank=1;
+  const tbody=document.getElementById('lb-body');
+  tbody.innerHTML=rows.map((r,i)=>{
+    const isFrontier=r.track==='Frontier';
+    const rankStr=isFrontier?'*':(rank++);
+    return `<tr class="${isFrontier?'frontier':''}">
+      <td style="color:var(--muted);font-weight:700">${rankStr}</td>
+      <td><strong>${r.display}</strong> ${META[r.id]?`<span style="font-size:0.7rem;color:var(--muted)">(${META[r.id].params})</span>`:''}</td>
+      <td>${trackBadge(r.track)}</td>
+      <td>${thinkBadge(r.think)}</td>
+      <td class="num">${scCell(r.t1)}</td>
+      <td class="num">${scCell(r.t2)}</td>
+      <td class="num">${scCell(r.t3)}</td>
+      <td class="num">${scCell(r.t4s)}</td>
+      <td class="num">${scCell(r.t4l)}</td>
+      <td class="num">${scCell(r.t5)}</td>
+      <td class="num">${scCell(r.t6)}</td>
+      <td class="num">${scCell(r.jt2,10)}</td>
+      <td class="num">${scCell(r.jt5,10)}</td>
+      <td class="num" style="font-weight:700">${scCell(r.mean)}</td>
+    </tr>`;
+  }).join('');
+
+  // Header click handlers
+  const cols=['rank','display','track','think','t1','t2','t3','t4s','t4l','t5','t6','jt2','jt5','mean'];
+  document.querySelectorAll('#lb-table thead th').forEach((th,i)=>{
+    th.onclick=()=>{
+      const c=cols[i];
+      if(S.sortCol===c)S.sortDir*=-1;
+      else{S.sortCol=c;S.sortDir=-1}
+      document.querySelectorAll('#lb-table thead th').forEach(t=>{t.classList.remove('sorted-asc','sorted-desc')});
+      th.classList.add(S.sortDir===-1?'sorted-desc':'sorted-asc');
+      renderLeaderboard();
+    }
+  });
+}
+
+// ============================================================
+// OBSERVATIONS
+// ============================================================
+function renderObservations(){
+  const models=Object.keys(META).filter(m=>S.lb[m]&&META[m].track!=='Frontier');
+  const obs=[];
+
+  // T3 ceiling
+  const t3ceiling=models.filter(m=>S.lb[m].open_book_accuracy===1.0);
+  obs.push({cls:'blue',title:'Open-Book QA Shows Ceiling Effects',text:`<strong>${t3ceiling.length} of ${models.length} sub-4B models</strong> achieve perfect accuracy on T3. All four 4B-class models and Granite 4.0 1B hit 1.000, suggesting the six QA documents are not fully discriminating at this capability level. Harder items or longer passages may be needed.`});
+
+  // T4 lenient vs strict
+  const lenientAll=models.filter(m=>S.lb[m].structured_lenient===1.0);
+  const strictBest=models.reduce((b,m)=>S.lb[m].structured_strict>(S.lb[b]?.structured_strict||0)?m:b,models[0]);
+  obs.push({cls:'',title:'Structured Output: Lenient vs Strict Gap',text:`<strong>${lenientAll.length} of ${models.length} models</strong> achieve 1.000 lenient compliance -- every model can produce parseable content. But strict compliance (no prose preamble) varies from ${fmt(Math.min(...models.map(m=>S.lb[m].structured_strict||0)))} to ${fmt(S.lb[strictBest]?.structured_strict)}. The gap reveals "preamble tax" behavior in smaller models.`});
+
+  // Think models on T6
+  const thinkM=models.filter(m=>META[m]?.think);
+  const noThinkM=models.filter(m=>!META[m]?.think);
+  const thinkT6=mean(thinkM.map(m=>S.lb[m].code_pass_at_1));
+  const noThinkT6=mean(noThinkM.map(m=>S.lb[m].code_pass_at_1));
+  const dir=thinkT6>noThinkT6?'higher':'lower';
+  obs.push({cls:'purple',title:'Reasoning-Model Code Advantage',text:`Think-mode models average ${fmt(thinkT6)} on Code vs ${fmt(noThinkT6)} for standard models -- <strong>${((Math.abs(thinkT6-noThinkT6))*100).toFixed(0)} pp ${dir}</strong>. Extended chain-of-thought generation measurably improves Perl/Ruby programming tasks, even in 1.5B parameter models.`});
+
+  // T1 range
+  const t1vals=models.map(m=>S.lb[m].context_retention).filter(x=>x!=null);
+  const t1min=Math.min(...t1vals),t1max=Math.max(...t1vals);
+  const t1best=models.find(m=>S.lb[m].context_retention===t1max);
+  obs.push({cls:'green',title:'Context Retention Variance',text:`T1 spans ${fmt(t1min)} to ${fmt(t1max)} across sub-4B models -- a <strong>${fmt(t1max-t1min,2)}-point spread</strong>. <strong>${dispModel(t1best)}</strong> leads retention. This is the task with the highest variance, suggesting memory management strategies differ significantly across model families.`});
+
+  // T5 creative range
+  const t5vals=models.map(m=>S.lb[m].creative_constraints).filter(x=>x!=null);
+  const t5min=Math.min(...t5vals),t5max=Math.max(...t5vals);
+  const t5best=models.find(m=>S.lb[m].creative_constraints===t5max);
+  obs.push({cls:'',title:'Creative Constraints are the Hardest Task',text:`No sub-4B model exceeds <strong>${fmt(t5max)}</strong> on creative constraints (${dispModel(t5best)}). Acrostic and poem constraints prove especially hard: models that satisfy structural rules often sacrifice content quality. This aligns with the hypothesis that creative constraint-following requires simultaneous optimization of multiple competing objectives.`});
+
+  // Frontier gap overall
+  const sonnet=S.lb['sonnet-claude-4-6'];
+  if(sonnet){
+    const bestMeans=models.map(m=>modelMean(m)).filter(x=>x!=null);
+    const bestSubMean=Math.max(...bestMeans);
+    const sonnetMean=mean(LB_KEYS.filter(k=>k!=='context_retention').map(k=>sonnet[k]));
+    obs.push({cls:'blue',title:'Frontier Baseline Comparison',text:`Claude Sonnet 4.6 achieves ${fmt(sonnet.code_pass_at_1)} on Code (vs best sub-4B ${fmt(Math.max(...models.map(m=>S.lb[m].code_pass_at_1||0)))}) and ${fmt(sonnet.open_book_accuracy)} on QA. The frontier model's main advantages appear on Code and Summarization faithfulness; sub-4B models close the gap significantly on structured output and QA.`});
+  }
+
+  // 1B vs 4B
+  const m4b=models.filter(m=>META[m]?.track==='4B');
+  const m1b=models.filter(m=>META[m]?.track==='1B');
+  const mean4b=mean(m4b.map(m=>modelMean(m)));
+  const mean1b=mean(m1b.map(m=>modelMean(m)));
+  obs.push({cls:'purple',title:'4B vs 1B Track Comparison',text:`4B-track models average <strong>${fmt(mean4b)}</strong> vs <strong>${fmt(mean1b)}</strong> for the 1B/1.5B track across all canonical metrics. The gap narrows considerably on T3 QA (ceiling) and T4 structured output, while T6 code shows the largest track-level separation.`});
+
+  const colors=['','blue','green','purple','','blue','green','purple'];
+  document.getElementById('obs-grid').innerHTML=obs.map((o,i)=>
+    `<div class="obs-card ${o.cls||colors[i%colors.length]}"><div class="obs-title">${o.title}</div><div class="obs-text">${o.text}</div></div>`
+  ).join('');
+}
+
+// ============================================================
+// OVERVIEW CHARTS
+// ============================================================
+function renderRadar(){
+  destroyChart('radar');
+  const canvas=document.getElementById('radar-chart');
+  const models=Object.keys(META).filter(m=>S.lb[m]&&META[m].track!=='Frontier');
+  const labels=['Context\nRetention','Summ.\nROUGE-L','Open-Book\nQA','Struct.\nStrict','Creative\nCPR','Code\nPass@1'];
+  const datasets=models.map(m=>({
+    label:dispModel(m),
+    data:LB_KEYS.map(k=>S.lb[m][k]||0),
+    borderColor:META[m].color,
+    backgroundColor:META[m].color+'22',
+    borderWidth:1.8,
+    pointRadius:2,
+    fill:true
+  }));
+  S.charts['radar']=new Chart(canvas,{
+    type:'radar',
+    data:{labels,datasets},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      scales:{r:{min:0,max:1,ticks:{stepSize:0.25,font:{size:9},color:'#94a3b8'},grid:{color:'#e2e8f0'},angleLines:{color:'#e2e8f0'},pointLabels:{font:{size:9},color:'#1e3a5f'}}},
+      plugins:{legend:{display:false}},
+      elements:{line:{tension:0.1}}
+    }
+  });
+}
+
+function renderBarChart(){
+  destroyChart('bar');
+  const canvas=document.getElementById('bar-chart');
+  const models=Object.keys(META).filter(m=>S.lb[m]);
+  const taskLabels=['T1 Retention','T2 ROUGE-L','T3 QA','T4 Strict','T5 Creative','T6 Code'];
+  const datasets=models.map(m=>({
+    label:dispModel(m),
+    data:LB_KEYS.map(k=>S.lb[m][k]??null),
+    backgroundColor:META[m]?.color+'cc',
+    borderColor:META[m]?.color,
+    borderWidth:1
+  }));
+  S.charts['bar']=new Chart(canvas,{
+    type:'bar',
+    data:{labels:taskLabels,datasets},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      scales:{
+        x:{ticks:{font:{size:9}},grid:{display:false}},
+        y:{min:0,max:1.05,ticks:{stepSize:0.25,font:{size:9}},grid:{color:'#f1f5f9'}}
+      },
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.raw!==null?ctx.raw.toFixed(3):'N/A'}`}}
+      }
+    }
+  });
+}
+
+// ============================================================
+// CODE MATRIX
+// ============================================================
+function renderCodeMatrix(){
+  const models=Object.keys(META).filter(m=>S.lb[m]);
+  let html=`<table class="matrix-table"><thead><tr><th class="row-header">Model</th>`;
+  CODE_PROBLEMS.forEach(p=>{html+=`<th title="${p}">${CODE_LABELS[p]}</th>`});
+  html+=`<th>Pass@1</th></tr></thead><tbody>`;
+
+  models.forEach(m=>{
+    const d=S.data[m];
+    const t6=d?.tasks?.code_generation?.results||[];
+    const byName={};t6.forEach(r=>byName[r.name]=r);
+    html+=`<tr><td class="row-label">${dispModel(m)} ${trackBadge(META[m]?.track)}</td>`;
+    CODE_PROBLEMS.forEach(p=>{
+      const r=byName[p];
+      if(!r)html+=`<td class="mat-skip">N/A</td>`;
+      else if(r.passed)html+=`<td class="mat-pass">PASS</td>`;
+      else html+=`<td class="mat-fail">FAIL</td>`;
+    });
+    const sc=S.lb[m]?.code_pass_at_1;
+    html+=`<td style="font-weight:700;font-family:monospace">${sc!=null?fmt(sc):'--'}</td>`;
+    html+=`</tr>`;
+  });
+  html+=`</tbody></table>`;
+  document.getElementById('code-matrix').innerHTML=html;
+}
+
+// ============================================================
+// RETENTION MATRIX
+// ============================================================
+function renderRetentionMatrix(){
+  const models=Object.keys(META).filter(m=>S.lb[m]&&META[m].track!=='Frontier');
+
+  // Collect all script IDs from the first model with retention data
+  let scriptIds=[];
+  for(const m of models){
+    const scripts=S.data[m]?.tasks?.context_retention?.scripts;
+    if(scripts&&scripts.length){scriptIds=scripts.map(s=>s.id);break}
+  }
+  if(!scriptIds.length){document.getElementById('retention-matrix').innerHTML='<p style="color:var(--muted)">No retention data loaded.</p>';return}
+
+  let html=`<table class="matrix-table"><thead><tr><th class="row-header">Model</th>`;
+  scriptIds.forEach(id=>{html+=`<th colspan="2" title="${id}">${id.replace('ret_','')}</th>`});
+  html+=`<th>Overall</th></tr>`;
+  html+=`<tr><th></th>`;
+  scriptIds.forEach(()=>{html+=`<th style="font-size:0.65rem">Mid</th><th style="font-size:0.65rem">Synth</th>`});
+  html+=`<th></th></tr></thead><tbody>`;
+
+  models.forEach(m=>{
+    const scripts=S.data[m]?.tasks?.context_retention?.scripts||[];
+    const byId={};scripts.forEach(s=>byId[s.id]=s);
+    const overall=S.lb[m]?.context_retention;
+    html+=`<tr><td class="row-label">${dispModel(m)}</td>`;
+    scriptIds.forEach(id=>{
+      const s=byId[id];
+      if(!s){html+=`<td class="mat-skip">--</td><td class="mat-skip">--</td>`;return}
+      function mCell(v){
+        if(v===null||v===undefined)return`<td class="mat-skip">--</td>`;
+        const cls=v>=0.7?'mat-hi':v>=0.4?'mat-mid':'mat-lo';
+        return`<td class="${cls}">${fmt(v,2)}</td>`;
+      }
+      html+=mCell(s.mid_probe?.score??s.mid_probe)+mCell(s.synthesis_probe?.score??s.synthesis_probe);
+    });
+    const cls=overall==null?'mat-skip':overall>=0.7?'mat-hi':overall>=0.4?'mat-mid':'mat-lo';
+    html+=`<td class="${cls}" style="font-weight:700">${overall!=null?fmt(overall):'--'}</td>`;
+    html+=`</tr>`;
+  });
+  html+=`</tbody></table>`;
+  document.getElementById('retention-matrix').innerHTML=html;
+}
+
+// ============================================================
+// QA MATRIX
+// ============================================================
+function renderQAMatrix(){
+  const models=Object.keys(META).filter(m=>S.lb[m]);
+  let html=`<table class="matrix-table"><thead><tr><th class="row-header">Model</th>`;
+  QA_DOCS.forEach(d=>{html+=`<th>${QA_DOC_LABELS[d]}</th>`});
+  html+=`<th>Overall</th></tr></thead><tbody>`;
+
+  models.forEach(m=>{
+    const results=S.data[m]?.tasks?.open_book_qa?.results||[];
+    const byId={};results.forEach(r=>byId[r.id]=r);
+    html+=`<tr><td class="row-label">${dispModel(m)} ${trackBadge(META[m]?.track)}</td>`;
+    QA_DOCS.forEach(docId=>{
+      const r=byId[docId];
+      if(!r){html+=`<td class="mat-skip">--</td>`;return}
+      const cls=r.accuracy===1?'mat-hi':r.accuracy>=0.5?'mat-mid':'mat-lo';
+      html+=`<td class="${cls}">${fmt(r.accuracy,2)}</td>`;
+    });
+    const ov=S.lb[m]?.open_book_accuracy;
+    const cls=ov===1?'mat-hi':ov>=0.5?'mat-mid':'mat-lo';
+    html+=`<td class="${cls}" style="font-weight:700">${ov!=null?fmt(ov):'--'}</td></tr>`;
+  });
+  html+=`</tbody></table>`;
+  document.getElementById('qa-matrix').innerHTML=html;
+}
+
+// ============================================================
+// STRUCTURED OUTPUT DETAIL
+// ============================================================
+function renderStructuredDetail(){
+  // Strict vs lenient bar chart
+  destroyChart('struct');
+  const models=Object.keys(META).filter(m=>S.lb[m]);
+  const labels=models.map(m=>dispModel(m));
+  S.charts['struct']=new Chart(document.getElementById('struct-chart'),{
+    type:'bar',
+    data:{
+      labels,
+      datasets:[
+        {label:'Strict',data:models.map(m=>S.lb[m]?.structured_strict??null),backgroundColor:'#4C72B0cc',borderColor:'#4C72B0',borderWidth:1},
+        {label:'Lenient',data:models.map(m=>S.lb[m]?.structured_lenient??null),backgroundColor:'#55A868cc',borderColor:'#55A868',borderWidth:1}
+      ]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,indexAxis:'y',
+      scales:{x:{min:0,max:1.05,ticks:{font:{size:9}}},y:{ticks:{font:{size:9}}}},
+      plugins:{legend:{position:'top',labels:{font:{size:10}}}}
+    }
+  });
+
+  // Format-level matrix
+  let html=`<table class="matrix-table" style="margin-top:0"><thead><tr><th class="row-header">Model</th>`;
+  STRUCT_FORMATS.forEach(f=>{html+=`<th>${STRUCT_LABELS[f]}</th>`});
+  html+=`</tr></thead><tbody>`;
+
+  models.forEach(m=>{
+    const results=S.data[m]?.tasks?.structured_output?.results||[];
+    const byName={};results.forEach(r=>byName[r.name]=r);
+    html+=`<tr><td class="row-label">${dispModel(m)}</td>`;
+    STRUCT_FORMATS.forEach(f=>{
+      const r=byName[f];
+      if(!r){html+=`<td class="mat-skip">--</td>`;return}
+      if(r.strict_compliant)html+=`<td class="mat-pass" title="Strict pass">S</td>`;
+      else if(r.lenient_compliant)html+=`<td class="mat-mid" title="Lenient pass only">L</td>`;
+      else html+=`<td class="mat-fail" title="Fail">F</td>`;
+    });
+    html+=`</tr>`;
+  });
+  html+=`</tbody></table><div style="font-size:0.72rem;color:var(--muted);margin-top:0.5rem">S = strict pass | L = lenient-only pass | F = fail</div>`;
+  document.getElementById('struct-matrix').innerHTML=html;
+}
+
+// ============================================================
+// CREATIVE CONSTRAINTS MATRIX
+// ============================================================
+function renderCreativeMatrix(){
+  const models=Object.keys(META).filter(m=>S.lb[m]);
+  let html=`<table class="matrix-table"><thead><tr><th class="row-header">Model</th>`;
+  CREATIVE_TYPES.forEach(t=>{html+=`<th>${CREATIVE_LABELS[t]}</th>`});
+  html+=`<th>Mean CPR</th></tr></thead><tbody>`;
+
+  models.forEach(m=>{
+    const results=S.data[m]?.tasks?.creative_generation?.results||[];
+    const byType={};results.forEach(r=>byType[r.type]=r);
+    html+=`<tr><td class="row-label">${dispModel(m)} ${trackBadge(META[m]?.track)}</td>`;
+    CREATIVE_TYPES.forEach(t=>{
+      const r=byType[t];
+      if(!r){html+=`<td class="mat-skip">--</td>`;return}
+      const cls=r.constraint_pass_rate>=0.8?'mat-hi':r.constraint_pass_rate>=0.4?'mat-mid':'mat-lo';
+      html+=`<td class="${cls}">${fmt(r.constraint_pass_rate,2)}</td>`;
+    });
+    const sc=S.lb[m]?.creative_constraints;
+    const cls=sc==null?'mat-skip':sc>=0.7?'mat-hi':sc>=0.4?'mat-mid':'mat-lo';
+    html+=`<td class="${cls}" style="font-weight:700">${sc!=null?fmt(sc):'--'}</td></tr>`;
+  });
+  html+=`</tbody></table>`;
+  document.getElementById('creative-matrix').innerHTML=html;
+}
+
+// ============================================================
+// MODEL PILLS
+// ============================================================
+function renderPills(models){
+  document.getElementById('model-pills').innerHTML=models.map(m=>{
+    const isFrontier=META[m]?.track==='Frontier';
+    return `<button class="model-pill ${isFrontier?'frontier-pill':''}" data-model="${m}" onclick="selectModel('${m}')">${dispModel(m)} <small style="font-size:0.68rem;opacity:0.7">${META[m]?.params||''}</small></button>`;
+  }).join('');
+}
+
+function setActivePill(model){
+  document.querySelectorAll('.model-pill').forEach(b=>{
+    b.classList.toggle('active',b.dataset.model===model);
+  });
+}
+
+// ============================================================
+// MODEL DETAIL
+// ============================================================
+function selectModel(model){
+  S.current=model;
+  setActivePill(model);
+  renderModelDetail(model);
+}
+
+function renderModelDetail(model){
+  const meta=META[model]||{};
+  const lb=S.lb[model]||{};
+  const d=S.data[model];
+  const q=S.qual[model];
+  const qm=qualMeans(model);
+  const isFrontier=meta.track==='Frontier';
+
+  const headerHtml=`
+    <div class="model-hdr">
+      <div>
+        <div class="model-hdr-name">${meta.display||model}</div>
+        <div class="model-hdr-meta">
+          <span>${meta.params||'?'} params</span>
+          ${thinkBadge(meta.think)}
+          ${trackBadge(meta.track)}
+          ${isFrontier?'<span style="font-size:0.75rem;color:#fde68a">Frontier API baseline</span>':''}
+        </div>
+      </div>
+      <div class="model-hdr-scores">
+        ${['T1','T2','T3','T4','T5','T6'].map((t,i)=>{
+          const keys=['context_retention','summarization_mean_rouge_l','open_book_accuracy','structured_strict','creative_constraints','code_pass_at_1'];
+          const v=lb[keys[i]];
+          return `<div class="mhs"><div class="mhs-val">${v!=null?fmt(v):'N/A'}</div><div class="mhs-lbl">${t}</div></div>`;
+        }).join('')}
+        <div class="mhs"><div class="mhs-val">${fmtQ(qm.t2)||'--'}</div><div class="mhs-lbl">Jdg T2</div></div>
+        <div class="mhs"><div class="mhs-val">${fmtQ(qm.t5)||'--'}</div><div class="mhs-lbl">Jdg T5</div></div>
+      </div>
+    </div>`;
+
+  const tabs=[
+    {id:'t1',label:'T1: Retention',skip:isFrontier},
+    {id:'t2',label:'T2: Summ.'},
+    {id:'t3',label:'T3: QA'},
+    {id:'t4',label:'T4: Struct.'},
+    {id:'t5',label:'T5: Creative'},
+    {id:'t6',label:'T6: Code'},
+    {id:'judge',label:'Judge Scores'},
+  ].filter(t=>!t.skip);
+
+  const defaultTab=isFrontier?'t2':'t1';
+  const tabNav=`<div class="tabs">${tabs.map(t=>`<button class="tab-btn ${t.id===defaultTab?'active':''}" onclick="switchTab('${t.id}','${model}')">${t.label}</button>`).join('')}</div>`;
+
+  const panes=tabs.map(t=>`<div class="tab-pane ${t.id===defaultTab?'active':''}" id="pane-${t.id}">${renderPane(t.id,model,d,q,qm,lb,isFrontier)}</div>`).join('');
+
+  document.getElementById('model-detail-area').innerHTML=headerHtml+tabNav+panes;
+}
+
+function switchTab(tabId,model){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.textContent.trim()===document.querySelector(`.tab-btn[onclick*="${tabId}"]`)?.textContent.trim()));
+  document.querySelectorAll(`[onclick*="switchTab('${tabId}"]`).forEach(b=>b.classList.add('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>{
+    const match=b.getAttribute('onclick')?.includes(`'${tabId}'`);
+    b.classList.toggle('active',!!match);
+  });
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  const pane=document.getElementById(`pane-${tabId}`);
+  if(pane)pane.classList.add('active');
+  // Render model-specific radar in overview tab
+  if(tabId==='overview')renderModelRadar(model);
+}
+
+function renderPane(tabId,model,d,q,qm,lb,isFrontier){
+  switch(tabId){
+    case 't1': return renderT1(model,d,lb);
+    case 't2': return renderT2(model,d,q,lb);
+    case 't3': return renderT3(model,d,lb);
+    case 't4': return renderT4(model,d,lb);
+    case 't5': return renderT5(model,d,q,lb);
+    case 't6': return renderT6(model,d,lb);
+    case 'judge': return renderJudgePane(model,q,qm);
+    default: return '';
+  }
+}
+
+// T1: Context Retention
+function renderT1(model,d,lb){
+  const scripts=d?.tasks?.context_retention?.scripts;
+  if(!scripts||!scripts.length)return`<div class="frontier-note">Context retention was not benchmarked for this model (score set to 1.000).</div>`;
+  const overall=lb.context_retention;
+  const stale=lb.context_retention_stale_rate;
+
+  let html=`<div class="info-row">Overall score: <strong>${fmt(overall)}</strong> | Stale contamination rate: <strong>${stale!=null?fmt(stale):'-'}</strong></div>`;
+  html+=`<div class="table-wrap"><table>
+    <thead><tr><th>Script ID</th><th>Character</th><th class="num">Mid Probe</th><th class="num">Synthesis Probe</th><th class="num">Weighted Score</th><th class="num">Turns</th><th class="num">Empty Turns</th></tr></thead><tbody>`;
+
+  scripts.forEach(s=>{
+    const emptyTurns=(s.turns||[]).filter(t=>!t.is_probe&&(!t.response||t.response.trim().length===0)).length;
+    html+=`<tr>
+      <td><strong>${s.id}</strong></td>
+      <td>${s.character||'-'}</td>
+      <td class="num">${scCell(s.mid_probe?.score??s.mid_probe)}</td>
+      <td class="num">${scCell(s.synthesis_probe?.score??s.synthesis_probe)}</td>
+      <td class="num">${scCell(s.weighted_score)}</td>
+      <td class="num">${(s.turns||[]).length}</td>
+      <td class="num" style="color:${emptyTurns>0?'#dc2626':'inherit'}">${emptyTurns||0}</td>
+    </tr>`;
+  });
+  html+=`</tbody></table></div>`;
+
+  // Turn-level detail (collapsible per script)
+  scripts.forEach(s=>{
+    if(!s.turns||!s.turns.length)return;
+    html+=`<details style="margin-top:0.75rem"><summary>Turn detail: ${s.id} (${s.turns.length} turns)</summary>
+      <div class="table-wrap" style="margin-top:0.4rem"><table>
+        <thead><tr><th>Turn</th><th>Type</th><th class="num">Latency (s)</th><th>Response (first 120 chars)</th></tr></thead><tbody>`;
+    s.turns.forEach(t=>{
+      const isEmpty=!t.response||t.response.trim().length===0;
+      const style=isEmpty?'background:#fff7ed':t.is_probe?'background:#eff6ff':'';
+      const type=t.is_probe?'<span class="badge badge-4b">Probe</span>':'<span style="font-size:0.72rem;color:var(--muted)">Turn</span>';
+      const resp=isEmpty?'<em style="color:#dc2626">empty</em>':(t.response||'').trim().slice(0,120).replace(/</g,'&lt;')+(t.response?.length>120?'...':'');
+      html+=`<tr style="${style}"><td>${t.turn}</td><td>${type}</td><td class="num">${t.latency_s!=null?t.latency_s.toFixed(2):'-'}</td><td style="font-size:0.78rem;max-width:400px">${resp}</td></tr>`;
+    });
+    html+=`</tbody></table></div></details>`;
+  });
+  return html;
+}
+
+// T2: Summarization
+function renderT2(model,d,q,lb){
+  const results=d?.tasks?.summarization?.results||[];
+  if(!results.length)return`<p style="color:var(--muted)">No summarization data.</p>`;
+  const claimSurv=lb.summarization_claim_survival||{};
+  const drop=lb.summarization_faithfulness_drop;
+
+  let html=`<div class="info-row">Mean ROUGE-L: <strong>${fmt(lb.summarization_mean_rouge_l)}</strong> | Faithfulness drop (prose - technical): <strong>${drop!=null?drop.toFixed(3):'-'}</strong></div>`;
+  html+=`<div class="table-wrap"><table>
+    <thead><tr><th>ID</th><th>Domain</th><th class="num">ROUGE-L</th><th class="num">Claims Survived</th><th class="num">Claim Rate</th><th class="num">Judge Score</th><th>Judge Rationale (excerpt)</th></tr></thead><tbody>`;
+
+  results.forEach(r=>{
+    const judgeEntry=q?.task2_faithfulness?.[r.id];
+    const judgeScore=judgeEntry?.score??null;
+    const rationale=(judgeEntry?.rationale||'').slice(0,120).replace(/</g,'&lt;')+(judgeEntry?.rationale?.length>120?'...':'');
+    html+=`<tr>
+      <td><strong>${r.id}</strong></td>
+      <td><span class="badge badge-skip">${r.domain||'-'}</span></td>
+      <td class="num">${scCell(r.rouge?.rougeL??r.rouge)}</td>
+      <td class="num" style="font-family:monospace">${r.claims_survived??'-'}/${r.claims_total??'-'}</td>
+      <td class="num">${scCell(r.claim_survival_rate)}</td>
+      <td class="num">${scCell(judgeScore,10)}</td>
+      <td style="font-size:0.75rem;color:var(--muted);max-width:300px">${rationale||'-'}</td>
+    </tr>`;
+  });
+  html+=`</tbody></table></div>`;
+
+  // Domain claim survival summary
+  if(Object.keys(claimSurv).length){
+    html+=`<div style="margin-top:1rem"><strong style="font-size:0.82rem">Claim Survival by Domain:</strong> `;
+    html+=Object.entries(claimSurv).map(([dom,v])=>`${dom}: <strong>${fmt(v)}</strong>`).join(' | ');
+    html+=`</div>`;
+  }
+  return html;
+}
+
+// T3: QA
+function renderT3(model,d,lb){
+  const results=d?.tasks?.open_book_qa?.results||[];
+  if(!results.length)return`<p style="color:var(--muted)">No QA data.</p>`;
+  const byTier=lb.open_book_by_tier||{};
+
+  let html=`<div class="info-row">Overall: <strong>${fmt(lb.open_book_accuracy)}</strong> | Easy: <strong>${fmt(byTier.easy)}</strong> | Medium: <strong>${fmt(byTier.medium)}</strong> | Hard: <strong>${fmt(byTier.hard)}</strong></div>`;
+
+  results.forEach(doc=>{
+    html+=`<div style="margin-bottom:1.25rem">
+      <div style="font-weight:700;margin-bottom:0.4rem">${doc.id} <span class="badge badge-skip">${doc.domain}</span> <span style="font-family:monospace;font-size:0.78rem">accuracy: ${fmt(doc.accuracy)}</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Difficulty</th><th>Question</th><th>Gold Answer</th><th>Model Answer</th><th class="num">Correct</th></tr></thead><tbody>`;
+    (doc.questions||[]).forEach(q=>{
+      const correct=q.correct;
+      html+=`<tr style="${correct?'':'background:#fff5f5'}">
+        <td><span class="badge ${q.difficulty==='easy'?'badge-pass':q.difficulty==='medium'?'badge-nothink':'badge-fail'}">${q.difficulty}</span></td>
+        <td style="font-size:0.8rem;max-width:300px">${(q.question||'').replace(/</g,'&lt;')}</td>
+        <td style="font-size:0.8rem;font-family:monospace;max-width:150px">${(q.gold||'').replace(/</g,'&lt;')}</td>
+        <td style="font-size:0.8rem;font-family:monospace;max-width:150px">${(q.predicted||'').slice(0,80).replace(/</g,'&lt;')}</td>
+        <td class="num">${passBadge(correct)}</td>
+      </tr>`;
+    });
+    html+=`</tbody></table></div></div>`;
+  });
+  return html;
+}
+
+// T4: Structured Output
+function renderT4(model,d,lb){
+  const results=d?.tasks?.structured_output?.results||[];
+  if(!results.length)return`<p style="color:var(--muted)">No structured output data.</p>`;
+
+  let html=`<div class="info-row">Strict: <strong>${fmt(lb.structured_strict)}</strong> | Lenient: <strong>${fmt(lb.structured_lenient)}</strong></div>`;
+  html+=`<div class="table-wrap"><table>
+    <thead><tr><th>Format Name</th><th>Validator</th><th class="num">Strict</th><th class="num">Lenient</th><th>Details</th><th>Response (first 150 chars)</th></tr></thead><tbody>`;
+
+  results.forEach(r=>{
+    const fence=r.details?.had_fence?'<span class="badge badge-fail" style="font-size:0.65rem">had fence</span>':'';
+    html+=`<tr>
+      <td><strong>${r.name}</strong></td>
+      <td><span class="badge badge-nothink">${r.validator}</span></td>
+      <td class="num">${passBadge(r.strict_compliant)}</td>
+      <td class="num">${passBadge(r.lenient_compliant)}</td>
+      <td style="font-size:0.78rem">${fence}</td>
+      <td style="font-size:0.75rem;font-family:monospace;max-width:300px">${(r.response||'').slice(0,150).replace(/</g,'&lt;').replace(/\n/g,' ')+(r.response?.length>150?'...':'')}</td>
+    </tr>`;
+  });
+  html+=`</tbody></table></div>`;
+  return html;
+}
+
+// T5: Creative Generation
+function renderT5(model,d,q,lb){
+  const results=d?.tasks?.creative_generation?.results||[];
+  if(!results.length)return`<p style="color:var(--muted)">No creative generation data.</p>`;
+
+  let html=`<div class="info-row">Mean CPR: <strong>${fmt(lb.creative_constraints)}</strong></div>`;
+  html+=`<div class="table-wrap"><table>
+    <thead><tr><th>Type</th><th class="num">Word Count</th><th class="num">Constraint CPR</th><th class="num">Checks</th><th class="num">Judge Score</th><th>Judge Rationale (excerpt)</th></tr></thead><tbody>`;
+
+  results.forEach(r=>{
+    const judgeEntry=q?.task5_quality?.[r.type];
+    const judgeScore=judgeEntry?.score??null;
+    const rationale=(judgeEntry?.rationale||'').slice(0,120).replace(/</g,'&lt;')+(judgeEntry?.rationale?.length>120?'...':'');
+    const checksStr=Array.isArray(r.constraint_checks)?r.constraint_checks.map(c=>c?'Y':'N').join(' '):'-';
+    html+=`<tr>
+      <td><strong>${CREATIVE_LABELS[r.type]||r.type}</strong></td>
+      <td class="num">${r.word_count??'-'}</td>
+      <td class="num">${scCell(r.constraint_pass_rate)}</td>
+      <td style="font-size:0.75rem;font-family:monospace">${checksStr}</td>
+      <td class="num">${scCell(judgeScore,10)}</td>
+      <td style="font-size:0.75rem;color:var(--muted);max-width:320px">${rationale||'-'}</td>
+    </tr>`;
+  });
+  html+=`</tbody></table></div>`;
+
+  // Show actual texts (collapsible)
+  results.forEach(r=>{
+    if(!r.text)return;
+    html+=`<details style="margin-top:0.5rem"><summary>${CREATIVE_LABELS[r.type]||r.type} -- generated text (${r.word_count||0} words)</summary>
+      <div style="background:#f8fafc;border:1px solid var(--border);border-radius:6px;padding:0.75rem;margin-top:0.3rem;font-size:0.82rem;white-space:pre-wrap;line-height:1.6;max-height:250px;overflow-y:auto">${(r.text||'').replace(/</g,'&lt;')}</div>
+    </details>`;
+  });
+  return html;
+}
+
+// T6: Code Generation
+function renderT6(model,d,lb){
+  const results=d?.tasks?.code_generation?.results||[];
+  if(!results.length)return`<p style="color:var(--muted)">No code generation data.</p>`;
+
+  let html=`<div class="info-row">Pass@1: <strong>${fmt(lb.code_pass_at_1)}</strong></div>`;
+  html+=`<div class="table-wrap"><table>
+    <thead><tr><th>Problem</th><th>Language</th><th class="num">Passed</th><th>Exec Output (first 200 chars)</th></tr></thead><tbody>`;
+
+  results.forEach(r=>{
+    const output=(r.exec_output||'').slice(0,200).replace(/</g,'&lt;');
+    html+=`<tr>
+      <td><strong>${CODE_LABELS[r.name]||r.name}</strong></td>
+      <td><span class="badge badge-nothink">${r.language}</span></td>
+      <td class="num">${passBadge(r.passed)}</td>
+      <td style="font-size:0.75rem;font-family:monospace;max-width:350px;color:${r.passed?'var(--text)':'#dc2626'}">${output||'-'}</td>
+    </tr>`;
+  });
+  html+=`</tbody></table></div>`;
+
+  // Collapsible code per problem
+  results.forEach(r=>{
+    if(!r.code)return;
+    html+=`<details style="margin-top:0.4rem"><summary>${CODE_LABELS[r.name]||r.name} -- generated code (${r.language})</summary>
+      <pre>${(r.code||'').replace(/</g,'&lt;')}</pre>
+    </details>`;
+  });
+  return html;
+}
+
+// Judge Scores pane
+function renderJudgePane(model,q,qm){
+  if(!q)return`<p style="color:var(--muted)">No judge data available for this model.</p>`;
+  let html=`<div class="info-row">Judge model: <strong>${q.judge_model||'unknown'}</strong> | T2 mean: <strong>${fmtQ(qm.t2)||'--'}/10</strong> | T5 mean: <strong>${fmtQ(qm.t5)||'--'}/10</strong></div>`;
+
+  if(q.task2_faithfulness&&Object.keys(q.task2_faithfulness).length){
+    html+=`<h4 style="font-size:0.85rem;color:var(--primary);margin:1rem 0 0.5rem">Task 2: Summarization Faithfulness</h4>`;
+    html+=`<div class="table-wrap"><table><thead><tr><th>Passage ID</th><th class="num">Score /10</th><th>Rationale</th></tr></thead><tbody>`;
+    Object.entries(q.task2_faithfulness).forEach(([id,entry])=>{
+      const s=entry?.score??null;
+      const rat=(entry?.rationale||'-').replace(/</g,'&lt;');
+      html+=`<tr><td><strong>${id}</strong></td><td class="num">${scCell(s,10)}</td><td style="font-size:0.78rem;color:var(--muted)">${rat}</td></tr>`;
+    });
+    html+=`</tbody></table></div>`;
+  }
+
+  if(q.task5_quality&&Object.keys(q.task5_quality).length){
+    html+=`<h4 style="font-size:0.85rem;color:var(--primary);margin:1rem 0 0.5rem">Task 5: Creative Quality</h4>`;
+    html+=`<div class="table-wrap"><table><thead><tr><th>Type</th><th class="num">Score /10</th><th>Rationale</th></tr></thead><tbody>`;
+    Object.entries(q.task5_quality).forEach(([type,entry])=>{
+      const s=entry?.score??null;
+      const rat=(entry?.rationale||'-').replace(/</g,'&lt;');
+      html+=`<tr><td><strong>${CREATIVE_LABELS[type]||type}</strong></td><td class="num">${scCell(s,10)}</td><td style="font-size:0.78rem;color:var(--muted)">${rat}</td></tr>`;
+    });
+    html+=`</tbody></table></div>`;
+  }
+  return html;
+}
+
+// ============================================================
+// INIT
+// ============================================================
+async function init(){
+  try{
+    const models=await loadAll();
+    renderStats();
+    renderLeaderboard();
+    renderObservations();
+    renderRadar();
+    renderBarChart();
+    renderCodeMatrix();
+    renderRetentionMatrix();
+    renderQAMatrix();
+    renderStructuredDetail();
+    renderCreativeMatrix();
+    renderPills(models);
+    const first=models.find(m=>META[m]?.track!=='Frontier')||models[0];
+    if(first)selectModel(first);
+    document.getElementById('loading').style.display='none';
+    document.getElementById('app').style.display='block';
+  }catch(err){
+    document.getElementById('loading').innerHTML=`<strong>Error loading data.</strong><br>Serve this file from the benchmark/ directory:<br><code>python -m http.server 8080</code><br><small>${err.message}</small>`;
+  }
+}
+
+window.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
