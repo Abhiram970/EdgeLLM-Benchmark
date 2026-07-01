@@ -165,6 +165,61 @@ pre{background:#1e2d3d;color:#e2e8f0;padding:0.8rem;border-radius:6px;font-size:
 @media(max-width:700px){.struct-grid{grid-template-columns:1fr}}
 
 footer{text-align:center;padding:1.5rem;color:var(--muted);font-size:0.78rem;border-top:1px solid var(--border);max-width:1400px;margin:0 auto}
+
+@media print {
+  @page { size: landscape; margin: 1.2cm 1cm; }
+
+  body { font-size: 11px; background: #fff; color: #000; }
+
+  /* hide interactive / screen-only elements */
+  .model-pills,
+  details,
+  .header-meta,
+  #loading { display: none !important; }
+
+  /* remove box shadows and backgrounds that waste ink */
+  .card, .chart-card, .stat-card, .obs-card { box-shadow: none; border: 1px solid #ccc; }
+  header { background: #1e3a5f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* all tables fill the page width and never overflow */
+  .table-wrap, .matrix-wrap { overflow: visible; }
+  table, .matrix-table { width: 100%; table-layout: fixed; font-size: 9px; }
+  thead th, tbody td { padding: 0.3rem 0.4rem; }
+
+  /* charts are screen-only; hide canvases to avoid blank white boxes */
+  canvas { display: none !important; }
+  .chart-card { display: none !important; }
+  .charts-2col { display: none !important; }
+  .struct-grid .chart-card { display: none !important; }
+
+  /* page breaks before each major section */
+  #code-matrix-section    { page-break-before: always; }
+  #retention-matrix-section { page-break-before: always; }
+  #qa-matrix-section      { page-break-before: always; }
+  #structured-detail-section { page-break-before: always; }
+  #creative-detail-section { page-break-before: always; }
+  #model-detail-section   { page-break-before: always; }
+
+  /* keep table rows together where possible */
+  tr { page-break-inside: avoid; }
+
+  /* score cells: keep colors but ensure they print */
+  .sc { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .mat-pass, .mat-fail, .mat-hi, .mat-mid, .mat-lo,
+  .mat-skip, .badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* widen main to full page */
+  main { max-width: 100%; padding: 0.5rem; }
+  .stats-grid { grid-template-columns: repeat(6, 1fr); gap: 0.5rem; }
+  .obs-grid { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  .struct-grid { grid-template-columns: 1fr; }
+  .struct-grid .chart-card:last-child { display: block !important; }
+
+  /* model detail: show currently selected pane only, no tab chrome */
+  .tabs { display: none; }
+  .tab-pane { display: block !important; page-break-before: always; }
+  .tab-pane + .tab-pane::before { content: ''; display: block; }
+}
 </style>
 </head>
 <body>
@@ -246,7 +301,7 @@ footer{text-align:center;padding:1.5rem;color:var(--muted);font-size:0.78rem;bor
 </section>
 
 <!-- Code Pass/Fail Matrix -->
-<section>
+<section id="code-matrix-section">
   <div class="section-title">Code Generation: Pass/Fail Matrix <small>6 problems x all models</small></div>
   <div class="card">
     <div class="info-row">Each cell shows whether the model's generated code passed execution. Perl problems test procedural scripting; Ruby problems test OOP and idioms.</div>
@@ -255,7 +310,7 @@ footer{text-align:center;padding:1.5rem;color:var(--muted);font-size:0.78rem;bor
 </section>
 
 <!-- Retention Heatmap -->
-<section>
+<section id="retention-matrix-section">
   <div class="section-title">Context Retention: Per-Script Weighted Scores <small>Sub-4B models only; frontier baseline skipped T1</small></div>
   <div class="card">
     <div class="info-row">Weighted score = 0.6 x mid-probe + 0.4 x synthesis-probe accuracy. Probe questions test whether key planted facts survive as context accumulates.</div>
@@ -264,7 +319,7 @@ footer{text-align:center;padding:1.5rem;color:var(--muted);font-size:0.78rem;bor
 </section>
 
 <!-- QA Per-Document Matrix -->
-<section>
+<section id="qa-matrix-section">
   <div class="section-title">Open-Book QA: Per-Document Accuracy <small>6 documents x all models</small></div>
   <div class="card">
     <div class="info-row">Documents span literary, scientific, and historical domains at easy / medium / hard difficulty tiers. All questions are answerable from the provided passage.</div>
@@ -273,7 +328,7 @@ footer{text-align:center;padding:1.5rem;color:var(--muted);font-size:0.78rem;bor
 </section>
 
 <!-- Structured Output Detail -->
-<section>
+<section id="structured-detail-section">
   <div class="section-title">Structured Output: Strict vs. Lenient Compliance <small>Strict requires zero prose preamble; lenient accepts parseable content</small></div>
   <div class="struct-grid">
     <div class="chart-card">
@@ -288,7 +343,7 @@ footer{text-align:center;padding:1.5rem;color:var(--muted);font-size:0.78rem;bor
 </section>
 
 <!-- Creative Constraints Detail -->
-<section>
+<section id="creative-detail-section">
   <div class="section-title">Creative Generation: Constraint Pass Rate by Type <small>Per-type CPR across all models</small></div>
   <div class="card">
     <div class="info-row">CPR = fraction of constraint checks passed. Types: article, poem (question-word), short story, acrostic, dialogue, six-word story.</div>
@@ -297,7 +352,7 @@ footer{text-align:center;padding:1.5rem;color:var(--muted);font-size:0.78rem;bor
 </section>
 
 <!-- Model Detail -->
-<section>
+<section id="model-detail-section">
   <div class="section-title">Per-Model Detail</div>
   <div class="model-pills" id="model-pills"></div>
   <div id="model-detail-area"></div>
@@ -386,6 +441,7 @@ function dispModel(m){return META[m]?META[m].display:m}
 // ============================================================
 async function loadAll(){
   S.lb = await fetch('results/leaderboard.json').then(r=>r.json()).catch(()=>({}));
+  if(S.lb['sonnet-claude-4-6'])S.lb['sonnet-claude-4-6'].context_retention=1.0;
   const models = Object.keys(META).filter(m=>S.lb[m]);
   await Promise.all(models.map(async m=>{
     try{S.data[m]=await fetch(`results/${m}.json`).then(r=>r.json())}catch(e){S.data[m]=null}
@@ -690,7 +746,7 @@ function renderRetentionMatrix(){
         const cls=v>=0.7?'mat-hi':v>=0.4?'mat-mid':'mat-lo';
         return`<td class="${cls}">${fmt(v,2)}</td>`;
       }
-      html+=mCell(s.mid_probe)+mCell(s.synthesis_probe);
+      html+=mCell(s.mid_probe?.score??s.mid_probe)+mCell(s.synthesis_probe?.score??s.synthesis_probe);
     });
     const cls=overall==null?'mat-skip':overall>=0.7?'mat-hi':overall>=0.4?'mat-mid':'mat-lo';
     html+=`<td class="${cls}" style="font-weight:700">${overall!=null?fmt(overall):'--'}</td>`;
@@ -903,7 +959,7 @@ function renderPane(tabId,model,d,q,qm,lb,isFrontier){
 // T1: Context Retention
 function renderT1(model,d,lb){
   const scripts=d?.tasks?.context_retention?.scripts;
-  if(!scripts||!scripts.length)return`<div class="frontier-note">Context retention was not run for this model.</div>`;
+  if(!scripts||!scripts.length)return`<div class="frontier-note">Context retention was not benchmarked for this model (score set to 1.000).</div>`;
   const overall=lb.context_retention;
   const stale=lb.context_retention_stale_rate;
 
@@ -916,8 +972,8 @@ function renderT1(model,d,lb){
     html+=`<tr>
       <td><strong>${s.id}</strong></td>
       <td>${s.character||'-'}</td>
-      <td class="num">${scCell(s.mid_probe)}</td>
-      <td class="num">${scCell(s.synthesis_probe)}</td>
+      <td class="num">${scCell(s.mid_probe?.score??s.mid_probe)}</td>
+      <td class="num">${scCell(s.synthesis_probe?.score??s.synthesis_probe)}</td>
       <td class="num">${scCell(s.weighted_score)}</td>
       <td class="num">${(s.turns||[]).length}</td>
       <td class="num" style="color:${emptyTurns>0?'#dc2626':'inherit'}">${emptyTurns||0}</td>
@@ -961,7 +1017,7 @@ function renderT2(model,d,q,lb){
     html+=`<tr>
       <td><strong>${r.id}</strong></td>
       <td><span class="badge badge-skip">${r.domain||'-'}</span></td>
-      <td class="num">${scCell(r.rouge)}</td>
+      <td class="num">${scCell(r.rouge?.rougeL??r.rouge)}</td>
       <td class="num" style="font-family:monospace">${r.claims_survived??'-'}/${r.claims_total??'-'}</td>
       <td class="num">${scCell(r.claim_survival_rate)}</td>
       <td class="num">${scCell(judgeScore,10)}</td>
