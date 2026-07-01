@@ -50,8 +50,8 @@
       "rationale": "The dialogue is coherent and emotionally grounded with clear character voices and escalating tension, but relies on familiar tropes (deathbed promise, money vs. sentiment) without offering fresh angles or particularly distinctive language."
     },
     "six_word_story": {
-      "score": 10,
-      "rationale": "This is the legendary Hemingway apocryphal six-word story, achieving extraordinary emotional depth and implied tragedy through stark minimalism — a masterclass in what is left unsaid."
+      "score": 2,
+      "rationale": "Reproduced Hemingway's apocryphal story verbatim ('Baby shoes for sale, never worn.') rather than generating an original piece. The prompt asks for a creative six-word story; lifting a famous existing work does not satisfy the creative generation criterion regardless of that work's intrinsic quality."
     }
   }
 }
