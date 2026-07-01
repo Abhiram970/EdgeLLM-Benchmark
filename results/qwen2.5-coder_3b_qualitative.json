@@ -1,0 +1,57 @@
+{
+  "model": "qwen2.5-coder_3b",
+  "judge_model": "claude-sonnet-4-6",
+  "timestamp": "2026-07-01T02:42:19.144586Z",
+  "task2_faithfulness": {
+    "sum_prose_frenchrev": {
+      "score": 8,
+      "rationale": "The summary accurately captures most key facts including the social structure causes, bourgeoisie aspirations, peasant conditions, population growth, and France's status as most populated, but omits specific details like the population doubling between 1715 and 1800, the mortality rate reduction starting around 1730, and the mention of merchants/manufacturers/professionals as components of the bourgeoisie."
+    },
+    "sum_prose_industrial": {
+      "score": 7,
+      "rationale": "The summary captures most key facts accurately but contains minor inaccuracies: the second Industrial Revolution's end date is given as 1900 rather than 'early 20th century,' and the summary omits the trade union movement, the domestic system replacement, and the specific mention that the second revolution included continental Europe and Japan alongside Britain and North America."
+    },
+    "sum_math_calculus": {
+      "score": 8,
+      "rationale": "The summary accurately captures the fundamental theorem of calculus, Newton's discovery about F′(t) = f(t), and Leibniz's integral notation, but omits the specific example of integrating x² to get x³/3 + C, the explanation of dx as an infinitely small increment, and the connection to solving differential equations mentioned at the end of the passage."
+    },
+    "sum_math_pythagorean": {
+      "score": 8,
+      "rationale": "The summary accurately captures the core facts about the theorem's definition, Babylonian origins, and Indian texts, but omits details like Pythagorean triples, the specific calculation of √2, Euclid's Elements reference, and Iamblichus's account of Pythagoras learning from Thales, and slightly misrepresents the dating of Pythagoras (500/490 BCE rendered as 490 BCE)."
+    },
+    "sum_sci_tectonics": {
+      "score": 8,
+      "rationale": "The summary accurately captures the core concepts including the lithosphere/asthenosphere distinction, plate movement rates, and major geological effects, but omits specific details like the approximate thickness of the lithosphere (100 km), the specific number of plate categories (seven large, six or seven medium, several small), and slightly imprecise phrasing ('interacts with each other' instead of plates interacting along boundaries where they converge, diverge, or slip past one another)."
+    },
+    "sum_sci_dna": {
+      "score": 8,
+      "rationale": "The summary accurately captures most key facts but omits that adenine and guanine are purines while cytosine and thymine are pyrimidines, incorrectly implies the four nucleotides are the monomers themselves rather than components of nucleotides (deoxyribose sugar + phosphate group + nitrogenous base), and omits the contributions of Rosalind Franklin and Maurice Wilkins to Watson and Crick's discovery."
+    }
+  },
+  "task5_quality": {
+    "article": {
+      "score": 6,
+      "rationale": "The article is competently written with a clear journalistic structure and plausible details, but relies on generic phrasing ('groundbreaking,' 'scratching the surface'), an uninspired species name ('Deep Sea Wonder'), and a repetitive closing quote that adds little, making it functional but unremarkable."
+    },
+    "poem_question_word": {
+      "score": 4,
+      "rationale": "The piece is only 10 lines (not 12), relies on generic, predictable imagery about city nights without developing any distinctive voice or specific sensory detail, and several lines feel like filler questions rather than crafted poetic observations."
+    },
+    "short_story": {
+      "score": 3,
+      "rationale": "The piece is generic and mechanical, relying on vague, clichéd tension (mysterious masked figures, a convenient rescuer) with no distinctive voice, an abrupt and incomplete ending mid-sentence, and contradictory details (empty square vs. crowded streets) that undermine coherence."
+    },
+    "acrostic": {
+      "score": 6,
+      "rationale": "The poem covers expected ocean imagery with adequate fluency, but relies on generic phrases ('vast expanse,' 'world of wonder') and the final line's shift to 'mysteries to share' feels slightly awkward, leaving the piece competent but unremarkable."
+    },
+    "dialogue": {
+      "score": 4,
+      "rationale": "The dialogue is largely flat and generic, with characters making repetitive, underdeveloped points, a notable internal inconsistency (Alice refers to 'me or Bob' despite being in conversation with Bob), and no distinctive voice, emotional depth, or creative tension to elevate it beyond a mechanical exchange."
+    },
+    "six_word_story": {
+      "score": 3,
+      "rationale": "This is a completely generic, clichéd image with no narrative tension, distinctive voice, or creative surprise — it reads as a filler sentence rather than a crafted story."
+    }
+  }
+}

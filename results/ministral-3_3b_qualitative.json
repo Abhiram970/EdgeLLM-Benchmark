@@ -1,0 +1,57 @@
+{
+  "model": "ministral-3_3b",
+  "judge_model": "claude-sonnet-4-6",
+  "timestamp": "2026-07-01T02:42:57.782909Z",
+  "task2_faithfulness": {
+    "sum_prose_frenchrev": {
+      "score": 6,
+      "rationale": "The summary captures most key facts accurately but introduces an unsupported claim in the final paragraph—that the revolution's 'particular brutality' stemmed from feudal remnants clashing with middle-class and peasant aspirations—which is an inference not stated in the source passage, which only mentions that particular causes explain the violence without specifying them, and the summary also omits the detail about higher standards of living reducing adult mortality rates from around 1730."
+    },
+    "sum_prose_industrial": {
+      "score": 9,
+      "rationale": "The summary accurately preserves all key facts from the source passage including wealth distribution, middle class growth, displacement of workers including women and children, subsistence wages, trade union origins, economic transformation, new industries like automobiles, and both phases of the Industrial Revolution with correct dates and geographic scope, with no hallucinations or distortions."
+    },
+    "sum_math_calculus": {
+      "score": 9,
+      "rationale": ""
+    },
+    "sum_math_pythagorean": {
+      "score": 9,
+      "rationale": "The summary accurately preserves all key facts including the theorem's formula, Pythagoras's dates, Babylonian tablets' timeframe, √2 calculation, Pythagorean triples example, the Baudhayana Sulba-sutra reference, and Euclid's Elements proposition number, with only the minor omission of Iamblichus's account of Pythagoras being introduced to mathematics by Thales and Anaximander."
+    },
+    "sum_sci_tectonics": {
+      "score": 9,
+      "rationale": "The summary accurately preserves nearly all key facts from the source, including the 1960s origin, lithosphere definition, plate count (seven large, several medium, many small), movement rates, boundary interaction types, and geological consequences, with only a minor omission of the ~100 km thickness detail and the asthenosphere description."
+    },
+    "sum_sci_dna": {
+      "score": 9,
+      "rationale": "The summary accurately preserves all key facts including nucleotide composition, phosphodiester backbone, specific base pairing rules, the 1953 discovery by Watson and Crick with contributions from Franklin and Wilkins, and the antiparallel double helix structure, with only the minor omission of explicitly stating the strands wind in opposite (antiparallel) directions and the classification of bases as purines/pyrimidines."
+    }
+  },
+  "task5_quality": {
+    "article": {
+      "score": 7,
+      "rationale": "The piece demonstrates solid journalistic craft with a convincing fictional species name, specific details (depth, measurements, location), and a well-structured narrative arc, but the voice remains somewhat generic and the closing conservation message feels like a formulaic addition rather than an organic part of the story."
+    },
+    "poem_question_word": {
+      "score": 7,
+      "rationale": "The poem captures a genuinely atmospheric mood with some evocative imagery ('shadows stretch like whispered names,' 'the moon press closer, softer') and a contemplative voice, though a few lines feel more generic ('the heart learn to pause and see') and the piece ends somewhat abruptly at ten lines rather than building to a stronger conclusion."
+    },
+    "short_story": {
+      "score": 6,
+      "rationale": "The piece has atmospheric detail and a mysterious tone, but the narrative logic is muddled (the note says midnight yet he waits six hours until dawn, and the ending's philosophical flourish feels unearned given the unresolved plot threads), leaving it evocative but incoherent."
+    },
+    "acrostic": {
+      "score": 6,
+      "rationale": "The poem is fluent and coherent with pleasant imagery, but relies on generic ocean tropes (whispered secrets, golden waves, endless dreams) without offering a distinctive voice or surprising turn of phrase that would elevate it beyond the predictable."
+    },
+    "dialogue": {
+      "score": 6,
+      "rationale": "The dialogue has a clear conflict and moves forward logically, but relies heavily on repetitive rhetorical questions and echoing the previous speaker's last word, which feels formulaic and limits authentic character voice."
+    },
+    "six_word_story": {
+      "score": 5,
+      "rationale": "The phrase evokes a clear image and mild tension, but reads more like a scene description or headline than a crafted story with voice or narrative arc."
+    }
+  }
+}
