@@ -1,0 +1,640 @@
+{
+  "model": "sonnet-claude-4-6",
+  "api_model": "claude-sonnet-4-6",
+  "timestamp": "2026-06-30T21:11:56.622865",
+  "frontier": true,
+  "tasks": {
+    "summarization": {
+      "task": "summarization",
+      "claim_survival_by_domain": {
+        "prose": 0.9,
+        "mathematical": 1.0,
+        "scientific": 0.8
+      },
+      "faithfulness_drop_prose_minus_technical": 0.0,
+      "mean_rouge_l": 0.49,
+      "results": [
+        {
+          "id": "sum_prose_frenchrev",
+          "domain": "prose",
+          "source": "https://www.britannica.com/event/French-Revolution",
+          "summary": "The French Revolution stemmed from both general causes shared across the Western world and specific factors that made it uniquely violent and significant. Socially, the declining feudal system created tensions as a growing, prosperous bourgeoisie sought political power, while many peasants wanted to shed the last remnants of feudalism to secure full land ownership rights. However, roughly half of the peasant population remained poor or landless, deepening social inequality. Europe's population had also doubled between 1715 and 1800, driven by improved living standards and lower adult mortality rates. This population surge was especially acute in France, which was Europe's most populous nation with 26 million inhabitants in 1789, intensifying the pressures that would fuel the Revolution.",
+          "rouge": {
+            "rouge1": 0.6168,
+            "rouge2": 0.2925,
+            "rougeL": 0.4766
+          },
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 5.62,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_prose_industrial",
+          "domain": "prose",
+          "source": "https://www.britannica.com/event/Industrial-Revolution",
+          "summary": "The Industrial Revolution transformed agricultural and handicraft-based economies into ones driven by large-scale industry, mechanized manufacturing, and factory systems, ultimately increasing and more widely distributing wealth and enlarging the middle class. However, the shift from the domestic system of production to the factory system forced large numbers of workers, including women and children, into long, dangerous hours of labor at subsistence wages, giving rise to the trade union movement in the mid-19th century. New machines, power sources, and organizational methods made industries more productive, while entirely new industries, such as the automobile industry, also emerged. Historians divide the Industrial Revolution into two phases: the first, lasting from the mid-18th century to around 1830, was largely confined to Britain, while the second, spanning the mid-19th century to the early 20th century, spread to continental Europe, North America, and Japan.",
+          "rouge": {
+            "rouge1": 0.6556,
+            "rouge2": 0.3431,
+            "rougeL": 0.473
+          },
+          "claims_survived": 4,
+          "claims_total": 5,
+          "claim_survival_rate": 0.8,
+          "latency_s": 4.0,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_math_calculus",
+          "domain": "mathematical",
+          "source": "https://www.britannica.com/science/calculus-mathematics",
+          "summary": "Newton and Leibniz discovered that differentiation and finding areas under curves are inverse operations, a principle known as the fundamental theorem of calculus. Specifically, if F(t) represents the area under a curve y = f(x) from 0 to t, then F′(t) = f(t). This means that to find the area under a curve, one must find a function F whose derivative equals the original function — a process called integration. For example, the area under y = x² is found by determining that its integral is x³/3 + C, written as ∫x²dx. Leibniz developed this notation, using the elongated S symbol (∫) to represent the summation of infinitely many thin rectangles under the curve, and recognizing that integration is equivalent to solving a differential equation.",
+          "rouge": {
+            "rouge1": 0.6154,
+            "rouge2": 0.4272,
+            "rougeL": 0.5096
+          },
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 4.14,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_math_pythagorean",
+          "domain": "mathematical",
+          "source": "https://www.britannica.com/science/Pythagorean-theorem",
+          "summary": "The Pythagorean theorem states that in a right triangle, the sum of the squares of the two legs equals the square of the hypotenuse, expressed as a² + b² = c². Although commonly attributed to the Greek philosopher Pythagoras (c. 570–500/490 BCE), the theorem is actually much older, with evidence of its use found in Babylonian tablets dating back to approximately 1900–1600 BCE. It was also referenced in the ancient Indian text the Baudhayana Sulba-sutra, written between 800 and 400 BCE. Despite its older origins, the theorem became credited to Pythagoras, who was reportedly introduced to mathematics by Thales of Miletus and his pupil Anaximander. The theorem also appears as Proposition 47 in Book I of Euclid's Elements.",
+          "rouge": {
+            "rouge1": 0.5865,
+            "rouge2": 0.4078,
+            "rougeL": 0.5096
+          },
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 4.06,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_sci_tectonics",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/plate-tectonics",
+          "summary": "Plate tectonics, a theory formulated in the 1960s, describes Earth's rigid outer layer (the lithosphere) as being broken into seven large plates, several medium-sized plates, and smaller ones, all sitting atop a partially molten layer called the asthenosphere. These plates move relative to each other at rates of 5 to 10 cm per year, interacting at their boundaries by converging, diverging, or sliding past one another. These interactions are responsible for most of Earth's seismic and volcanic activity, as well as the formation of mountains and oceans. Continents are embedded within these plates and drift passively along with them, resulting in dramatic changes to Earth's geography over millions of years.",
+          "rouge": {
+            "rouge1": 0.5473,
+            "rouge2": 0.2513,
+            "rougeL": 0.4478
+          },
+          "claims_survived": 3,
+          "claims_total": 5,
+          "claim_survival_rate": 0.6,
+          "latency_s": 5.35,
+          "reasoning_truncated": false
+        },
+        {
+          "id": "sum_sci_dna",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/DNA",
+          "summary": "DNA is composed of two strands made up of nucleotide monomers, each consisting of a deoxyribose sugar, a phosphate group, and one of four nitrogenous bases: adenine, guanine, cytosine, and thymine. The strands are held together by a phosphate-sugar backbone and hydrogen bonds between complementary base pairs, where adenine bonds only with thymine and cytosine only with guanine. In 1953, James Watson and Francis Crick, building on the work of Rosalind Franklin and Maurice Wilkins, discovered that DNA takes the form of a double helix — two strands wound around each other in opposite directions. This landmark discovery greatly advanced the scientific understanding of DNA replication and how hereditary information controls cellular activities.",
+          "rouge": {
+            "rouge1": 0.6465,
+            "rouge2": 0.2959,
+            "rougeL": 0.5253
+          },
+          "claims_survived": 5,
+          "claims_total": 5,
+          "claim_survival_rate": 1.0,
+          "latency_s": 3.98,
+          "reasoning_truncated": false
+        }
+      ],
+      "elapsed_s": 28.8
+    },
+    "open_book_qa": {
+      "task": "open_book_qa",
+      "overall_accuracy": 1.0,
+      "accuracy_by_tier": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 1.0
+      },
+      "results": [
+        {
+          "id": "qa_lit_pride",
+          "domain": "literary",
+          "source": "https://www.britannica.com/topic/Pride-and-Prejudice",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "According to the passage, what two words describe the personalities of Lydia and Kitty?",
+              "gold": "Flighty and immature.",
+              "predicted": "According to the passage, Lydia and Kitty are described as **flighty** and **immature**.",
+              "correct": true,
+              "latency_s": 1.64,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "Who is the heroine of the novel, and what is her nickname?",
+              "gold": "Elizabeth Bennet, nicknamed “Lizzy.”",
+              "predicted": "Based on the passage, the heroine of the novel is **Elizabeth**, and her nickname is **\"Lizzy.\"**",
+              "correct": true,
+              "latency_s": 1.78,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Based on the passage, which trait does Elizabeth share with her father, and what does that imply about her view of society?",
+              "gold": "She shares her father's distaste for conventional views about the importance of wealth and rank, implying she does not judge people by social status.",
+              "predicted": "Based on the passage, Elizabeth shares her father's **distaste for the conventional views of society regarding the importance of wealth and rank**. This implies that she does not place high value on social status or material wealth, setting her apart from the typical societal expectations of her time.",
+              "correct": true,
+              "latency_s": 2.4,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_lit_gatsby",
+          "domain": "literary",
+          "source": "https://www.britannica.com/topic/The-Great-Gatsby",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "Where did Gatsby and Daisy originally meet in their youth?",
+              "gold": "Kentucky.",
+              "predicted": "Based on the passage, Gatsby and Daisy originally met in their youth in **Kentucky**.",
+              "correct": true,
+              "latency_s": 1.5,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "What does the green light at the end of Daisy's dock symbolize?",
+              "gold": "Gatsby's unattainable dream and ambition.",
+              "predicted": "According to the passage, the green light at the end of Daisy Buchanan's dock symbolizes **Gatsby's unattainable dream and ambition**.",
+              "correct": true,
+              "latency_s": 1.45,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "According to the passage, what is the difference between West Egg and East Egg, and which society ultimately triumphs?",
+              "gold": "West Egg represents brash, materialistic 'new money' and East Egg refined, inherited 'old money'; the old-money society ultimately triumphs.",
+              "predicted": "According to the passage, **West Egg** represents **\"new money\"** with its brashness and materialism, while **East Egg** represents **\"old money\"** with its refinement and inherited wealth. The **\"old money\" society ultimately triumphs**, as self-made millionaire Jay Gatsby's pursuit of the American Dream ends in disaster.",
+              "correct": true,
+              "latency_s": 2.46,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_sci_blackhole",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/black-hole",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "According to the passage, what is the Schwarzschild radius of a black hole with a mass 10 times that of the Sun?",
+              "gold": "30 km.",
+              "predicted": "According to the passage, the Schwarzschild radius of a black hole with a mass 10 times that of the Sun would be **30 km (18.6 miles)**.",
+              "correct": true,
+              "latency_s": 1.84,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "According to the passage, why can not even light escape from inside the event horizon?",
+              "gold": "Because inside the event horizon the escape velocity exceeds the speed of light.",
+              "predicted": "According to the passage, light cannot escape from inside the event horizon because the **escape velocity exceeds the speed of light** in that region, making it impossible for even rays of light to escape into space.",
+              "correct": true,
+              "latency_s": 2.08,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Using the passage, what would happen to the Schwarzschild radius if the mass of the collapsing star were doubled, and why?",
+              "gold": "It would roughly double, because the Schwarzschild radius is proportional to the mass of the collapsing star.",
+              "predicted": "Based on the passage, if the mass of the collapsing star were doubled, the Schwarzschild radius would also double, because the passage states that \"the size of the Schwarzschild radius is proportional to the mass of the collapsing star.\"",
+              "correct": true,
+              "latency_s": 2.12,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_sci_evolution",
+          "domain": "scientific",
+          "source": "https://www.britannica.com/science/evolution-scientific-theory",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "According to the passage, through what four factors can differential reproduction occur?",
+              "gold": "Survival rates, fertility, mating success, or other life cycle aspects.",
+              "predicted": "According to the passage, differential reproduction can occur due to differences in:\n\n1. **Survival rates**\n2. **Fertility**\n3. **Mating success**\n4. **Other life cycle aspects**",
+              "correct": true,
+              "latency_s": 1.91,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "What happens to variations that enhance an organism's survival and reproduction?",
+              "gold": "They are preserved and passed on to future generations.",
+              "predicted": "According to the passage, variations that enhance an organism's survival and ability to reproduce are **preserved and passed on to future generations**.",
+              "correct": true,
+              "latency_s": 1.69,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Based on the passage, explain how a beneficial mutation becomes common in a population over time.",
+              "gold": "A beneficial mutation improves survival and reproduction, so natural selection favors it, causing it to increase in frequency over generations.",
+              "predicted": "Based on the passage, a beneficial mutation improves an organism's ability to survive and reproduce. Because it is advantageous, natural selection favors it, causing it to increase in frequency over generations as it is passed on to future generations through selective reproduction.",
+              "correct": true,
+              "latency_s": 1.86,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_hist_frenchrev",
+          "domain": "historical",
+          "source": "https://www.britannica.com/event/French-Revolution",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "What role did the rulers claim to justify taxing the privileged classes?",
+              "gold": "Enlightened despots.",
+              "predicted": "Based on the passage, the rulers claimed the role of **\"enlightened despots\"** to justify taxing the nobles and clergy.",
+              "correct": true,
+              "latency_s": 1.9,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "Which two groups had usually been exempt from taxation before the rulers tried to tax them?",
+              "gold": "The nobles and the clergy.",
+              "predicted": "Based on the passage, the two groups that had usually been exempt from taxation were the **nobles and clergy**.",
+              "correct": true,
+              "latency_s": 1.52,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "According to the passage, how was the American Revolution connected to the same backlash occurring in Europe?",
+              "gold": "The same aristocratic reaction against taxation appeared in North America, where the backlash contributed to the American Revolution, which began with a refusal to pay a tax imposed by the king of Great Britain.",
+              "predicted": "According to the passage, the American Revolution was part of the same backlash against rulers attempting to tax previously exempt privileged bodies, as it **began with the refusal to pay a tax imposed by the king of Great Britain**.",
+              "correct": true,
+              "latency_s": 1.82,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        },
+        {
+          "id": "qa_hist_printing",
+          "domain": "historical",
+          "source": "https://www.britannica.com/topic/printing-press",
+          "questions": [
+            {
+              "difficulty": "easy",
+              "question": "What mechanism did Gutenberg's press use to exert pressure on the paper?",
+              "gold": "A long handle turning a heavy wooden screw.",
+              "predicted": "According to the passage, a **long handle was used to turn a heavy wooden screw**, which exerted downward pressure against the paper laid over the type on a wooden platen.",
+              "correct": true,
+              "latency_s": 2.0,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "medium",
+              "question": "What ancient device was the medieval paper press modeled after?",
+              "gold": "The ancient wine-and-olive press of the Mediterranean area.",
+              "predicted": "The medieval paper press was modeled after the **ancient wine-and-olive press of the Mediterranean area**.",
+              "correct": true,
+              "latency_s": 1.5,
+              "reasoning_truncated": false
+            },
+            {
+              "difficulty": "hard",
+              "question": "Based on the passage, what evidence shows that movable-type printing existed outside Europe before Gutenberg's Bible?",
+              "gold": "Jikji, a book of Buddhist teachings, was printed from movable type in Korea in 1377—before Gutenberg's 1455 Bible.",
+              "predicted": "Based on the passage, the book **Jikji** — a collection of Buddhist priests' teachings — was printed by hand from movable type in **Korea in 1377**, which is approximately 78 years before Gutenberg's Bible was printed in 1455.",
+              "correct": true,
+              "latency_s": 6.86,
+              "reasoning_truncated": false
+            }
+          ],
+          "accuracy": 1.0
+        }
+      ],
+      "elapsed_s": 38.4
+    },
+    "structured_output": {
+      "task": "structured_output",
+      "strict_compliance_rate": 0.5,
+      "lenient_compliance_rate": 1.0,
+      "results": [
+        {
+          "name": "json_person",
+          "validator": "json",
+          "strict_compliant": false,
+          "lenient_compliant": true,
+          "details": {
+            "required": [
+              "name",
+              "age",
+              "city"
+            ],
+            "had_fence": true
+          },
+          "response": "```json\n{\n  \"name\": \"Marcus Delgado\",\n  \"age\": 34,\n  \"city\": \"Portland\"\n}\n```",
+          "latency_s": 1.51,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "json_nested",
+          "validator": "json",
+          "strict_compliant": false,
+          "lenient_compliant": true,
+          "details": {
+            "required": [
+              "title",
+              "year",
+              "authors"
+            ],
+            "had_fence": true
+          },
+          "response": "```json\n{\n  \"title\": \"\",\n  \"year\": \"\",\n  \"authors\": []\n}\n```",
+          "latency_s": 1.88,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "markdown_doc",
+          "validator": "markdown",
+          "strict_compliant": false,
+          "lenient_compliant": true,
+          "details": {
+            "has_header": true,
+            "has_bold": true,
+            "has_bullet": true,
+            "non_md_lines": 3
+          },
+          "response": "# How Photosynthesis Works\n\nPhotosynthesis is the process by which plants convert light energy into chemical energy stored as sugar. It primarily takes place in the **chloroplast**, an organelle found in plant cells.\n\n## The Basic Process\n\nPlants take in raw materials and use sunlight to produce food through the following steps:\n\n- **Light absorption:** Chlorophyll pigments in the chloroplast capture energy from sunlight\n- **Water splitting:** Water molecules absorbed through the roots are broken apart, releasing oxygen as a byproduct\n- **Carbon dioxide fixation:** CO₂ taken in through tiny pores called stomata is converted into glucose\n- **Energy storage:** The glucose produced is used to fuel the plant's growth and cellular functions\n\n## The Overall Equation\n\nThe process can be summarized as:\n\n> 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂\n\nThis means that for every six molecules of carbon dioxide and water consumed, one molecule of **glucose** and six molecules of oxygen are produced. The oxygen released is what makes photosynthesis essential not just",
+          "latency_s": 6.03,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "code_only_fib",
+          "validator": "code_only",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "has_function": true,
+            "no_backticks": true
+          },
+          "response": "def fibonacci(n):\n    if n <= 0:\n        raise ValueError(\"n must be a positive integer\")\n    if n == 1:\n        return 0\n    if n == 2:\n        return 1\n    a, b = 0, 1\n    for _ in range(2, n):\n        a, b = b, a + b\n    return b",
+          "latency_s": 2.42,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "numbered_list_planets",
+          "validator": "numbered_list",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "numbered": 5,
+            "total_lines": 5,
+            "expected": 5
+          },
+          "response": "1. Mercury\n2. Venus\n3. Earth\n4. Mars\n5. Jupiter",
+          "latency_s": 4.6,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "csv_row",
+          "validator": "csv_line",
+          "strict_compliant": true,
+          "lenient_compliant": true,
+          "details": {
+            "lines": 1,
+            "expected_fields": 3
+          },
+          "response": "apple,red,1.29",
+          "latency_s": 1.83,
+          "reasoning_truncated": false
+        }
+      ],
+      "elapsed_s": 18.3
+    },
+    "creative_generation": {
+      "task": "creative_generation",
+      "mean_constraint_pass_rate": 0.417,
+      "results": [
+        {
+          "type": "article",
+          "text": "# Scientists Discover Glowing Deep-Sea Fish With Transparent Skull in Pacific Ocean\n\nMarine biologists have announced the discovery of a remarkable new deep-sea fish species found nearly 3,000 meters below the surface of the North Pacific Ocean. The creature, formally named *Lucerna vitrea*, or the \"lantern glass fish,\" was first captured on camera by a remotely operated vehicle during a research expedition led by the Oceanic Discovery Institute last month.\n\nThe fish measures approximately 30 centimeters in length and possesses several extraordinary features that have excited the scientific community. Most notably, its skull is almost entirely transparent, allowing observers to see its brain and sensory organs clearly. The animal also produces a soft blue bioluminescent glow along its lateral line, which researchers believe may serve as a communication tool in the pitch-black environment.\n\n\"We have never seen a combination of traits quite like this,\" said Dr. Priya Nambiar, lead marine biologist on the expedition. \"The transparent cranium alone makes this one of the most unusual vertebrates ever documented.\"\n\nThe discovery was made approximately 400 kilometers off the coast of Japan. Researchers plan to conduct further dives to study the species' behavior and population size. Their findings will be published next month in the journal *Deep-Sea Research*.",
+          "word_count": 206,
+          "line_count": 5,
+          "constraints": [
+            "has headline",
+            "~200 words",
+            "journalistic tone"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 7.53,
+          "reasoning_truncated": false,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "poem_question_word",
+          "text": "Here is a 12-line poem about watching a city at night from a rooftop:\n\nWho left those windows burning gold against the dark?\nWhat stories move behind the curtains no one opens?\nWhere does the hum of traffic finally lose itself?\nWhen did the streets below forget that I was watching?\nWhy do the distant sirens feel like someone else's grief?\nHow many people are awake and staring at their ceilings?\nWho decided that a city should never fully sleep?\nWhat is the name of that particular shade of orange sky?\nWhere does a person go when every room feels too familiar?\nWhen does the wind up here begin to feel like an answer?\nWhy does the vastness make the body feel so quiet?\nHow strange to stand above it all and still feel small.",
+          "word_count": 135,
+          "line_count": 13,
+          "constraints": [
+            "12 lines",
+            "each line starts with question word"
+          ],
+          "constraint_checks": {
+            "line_count_exact": false,
+            "all_lines_start_question_word": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 5.81,
+          "reasoning_truncated": false,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "short_story",
+          "text": "# Stranded\n\nThe last bus had already left. Maya stared at the empty stop, rain beginning to tap against her shoulders like impatient fingers. Her phone showed 11:47 PM, and the nearest taxi was forty minutes away.\n\nShe pulled her jacket tighter and noticed a small diner still glowing across the street. Inside, an elderly man sat alone, nursing coffee and reading a folded newspaper.\n\nShe pushed open the door. The warmth hit her immediately.\n\n\"Sit anywhere, honey,\" called a woman from behind the counter. \"Coffee?\"\n\n\"Please,\" Maya said, sliding into the booth opposite the old man. He glanced up and smiled.\n\n\"Missed the last bus too?\" he asked.\n\nMaya laughed, surprised. \"That obvious?\"\n\n\"Happened to me every Thursday for thirty years.\" He extended his hand. \"I'm Gerald.\"\n\nBy the time her taxi arrived, Maya had heard Gerald's entire life story — and realized she hadn't minded missing that bus at all.",
+          "word_count": 152,
+          "line_count": 10,
+          "constraints": [
+            "starts with given sentence",
+            "~150 words",
+            "complete arc"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": true,
+            "starts_with_required": false
+          },
+          "constraint_pass_rate": 0.5,
+          "latency_s": 6.32,
+          "reasoning_truncated": false,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "acrostic",
+          "text": "Here is an acrostic poem spelling OCEAN:\n\n**O**ver the waves the seabirds cry and soar,\n**C**rashing tides wear down the ancient shore,\n**E**ndless blue stretches beyond our sight,\n**A**nd moonlit waters shimmer through the night,\n**N**ature breathes in every rolling roar.",
+          "word_count": 41,
+          "line_count": 6,
+          "constraints": [
+            "5 lines",
+            "acrostic spells OCEAN"
+          ],
+          "constraint_checks": {
+            "line_count_exact": false,
+            "acrostic_ok": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 3.01,
+          "reasoning_truncated": false,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "dialogue",
+          "text": "Here is a 10-line dialogue between two characters arguing about whether to sell the old family house:\n\nMaria: We need to sell this house, Daniel. The repairs alone are costing us thousands every year.\nDaniel: You can't put a price on where we grew up, Maria. This place holds everything we have left of Mom and Dad.\nMaria: Memories don't pay property taxes, and I'm tired of watching this house fall apart around us.\nDaniel: So your solution is to hand it over to some stranger who will tear it down and build condos?\nMaria: At least then we'd have money to actually live our lives instead of being slaves to this crumbling building.\nDaniel: I promised Dad on his deathbed that we would keep this house in the family. Does that mean nothing to you?\nMaria: That promise was made out of grief, Daniel. Dad would want us to be financially stable, not sentimental fools.\nDaniel: You always reduce everything to money. Some things are worth more than what they sell for.\nMaria: And some things are worth letting go of so we can finally move forward with our lives.\nDaniel: Fine, but if we sell, I want you to know that we are losing something we can never get back.",
+          "word_count": 212,
+          "line_count": 11,
+          "constraints": [
+            "10 lines",
+            "name: prefix each line"
+          ],
+          "constraint_checks": {
+            "line_count_exact": false,
+            "all_lines_have_name_colon": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 7.65,
+          "reasoning_truncated": false,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "six_word_story",
+          "text": "Baby shoes for sale, never worn.",
+          "word_count": 6,
+          "line_count": 1,
+          "constraints": [
+            "exactly 6 words"
+          ],
+          "constraint_checks": {
+            "exact_word_count": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 1.33,
+          "reasoning_truncated": false,
+          "human_score": null,
+          "judge_score": null
+        }
+      ],
+      "elapsed_s": 31.6
+    },
+    "code_generation": {
+      "task": "code_generation",
+      "pass_at_1": 1.0,
+      "executed_pass_at_1": 1.0,
+      "results": [
+        {
+          "name": "perl_word_count",
+          "language": "perl",
+          "code": "#!/usr/bin/perl\nuse strict;\nuse warnings;\n\nmy $filename = $ARGV[0];\ndie \"Usage: $0 <filename>\\n\" unless defined $filename;\nopen(my $fh, '<', $filename) or die \"Cannot open file '$filename': $!\\n\";\n\nmy %freq;\nwhile (my $line = <$fh>) {\n    chomp $line;\n    my @words = split /\\s+/, $line;\n    for my $word (@words) {\n        next if $word eq '';\n        $word = lc($word);\n        $freq{$word}++;\n    }\n}\nclose($fh);\n\nmy @sorted = sort { $freq{$b} <=> $freq{$a} || $a cmp $b } keys %freq;\n\nmy $count = 0;\nfor my $word (@sorted) {\n    last if $count >= 3;\n    print \"$word: $freq{$word}\\n\";\n    $count++;\n}",
+          "passed": true,
+          "exec_output": "the: 4\ncat: 3\nsat: 2\n",
+          "latency_s": 3.8,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "perl_csv_filter",
+          "language": "perl",
+          "code": "#!/usr/bin/perl\nuse strict;\nuse warnings;\n\nmy $filename = $ARGV[0];\n\nopen(my $fh, '<', $filename) or die \"Cannot open file '$filename': $!\";\n\nwhile (my $line = <$fh>) {\n    chomp $line;\n    my @fields = split(/,/, $line);\n    if (defined $fields[1] && $fields[1] =~ /^\\d+$/ && $fields[1] > 30) {\n        print \"$line\\n\";\n    }\n}\n\nclose($fh);",
+          "passed": true,
+          "exec_output": "Bob,42,Chicago\nCarl,35,Denver\n",
+          "latency_s": 2.97,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "perl_regex_extract",
+          "language": "perl",
+          "code": "#!/usr/bin/perl\nuse strict;\nuse warnings;\n\nmy $filename = $ARGV[0];\n\nopen(my $fh, '<', $filename) or die \"Cannot open file '$filename': $!\";\n\nwhile (my $line = <$fh>) {\n    while ($line =~ /([a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,})/g) {\n        print \"$1\\n\";\n    }\n}\n\nclose($fh);",
+          "passed": true,
+          "exec_output": "alice@example.com\nbob.smith@test.org\ncarl_d@company.co.uk\n",
+          "latency_s": 2.67,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "ruby_array_dedupe_sort",
+          "language": "ruby",
+          "code": "filename = ARGV[0]\ncontent = File.read(filename).strip\nnumbers = content.split(',').map(&:to_i)\nunique_sorted = numbers.uniq.sort.reverse\nputs unique_sorted.join(',')",
+          "passed": true,
+          "exec_output": "9,7,4,2,1\n",
+          "latency_s": 2.01,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "ruby_hash_group",
+          "language": "ruby",
+          "code": "filename = ARGV[0]\ngroups = {}\n\nFile.foreach(filename) do |line|\n  word = line.chomp\n  next if word.empty?\n  letter = word[0].downcase\n  groups[letter] ||= []\n  groups[letter] << word\nend\n\ngroups.sort.each do |letter, words|\n  puts \"#{letter}: #{words.join(',')}\"\nend",
+          "passed": true,
+          "exec_output": "a: apple,avocado\nb: banana,blueberry\nc: cherry\n",
+          "latency_s": 2.36,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "ruby_class_stack",
+          "language": "ruby",
+          "code": "class Stack\n  def initialize\n    @data = []\n  end\n\n  def push(item)\n    @data.push(item)\n  end\n\n  def pop\n    @data.pop\n  end\n\n  def peek\n    @data.last\n  end\nend\n\nstack = Stack.new\nstack.push(1)\nstack.push(2)\nstack.push(3)\nputs stack.peek\nputs stack.pop\nputs stack.peek",
+          "passed": true,
+          "exec_output": "3\n3\n2\n",
+          "latency_s": 2.26,
+          "reasoning_truncated": false
+        }
+      ],
+      "elapsed_s": 16.7
+    }
+  },
+  "total_elapsed_s": 133.7,
+  "headline": {
+    "context_retention": null,
+    "context_retention_stale_rate": null,
+    "summarization_claim_survival": {
+      "prose": 0.9,
+      "mathematical": 1.0,
+      "scientific": 0.8
+    },
+    "summarization_faithfulness_drop": 0.0,
+    "summarization_mean_rouge_l": 0.49,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 0.5,
+    "structured_lenient": 1.0,
+    "creative_constraints": 0.417,
+    "code_pass_at_1": 1.0
+  }
+}

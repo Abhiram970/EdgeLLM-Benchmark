@@ -1,0 +1,57 @@
+{
+  "model": "sonnet-claude-4-6",
+  "judge_model": "claude-sonnet-4-6",
+  "timestamp": "2026-07-01T01:14:33.691693Z",
+  "task2_faithfulness": {
+    "sum_prose_frenchrev": {
+      "score": 9,
+      "rationale": "The summary accurately preserves nearly all key facts from the source, including the bourgeoisie's rise, peasants' desire to shed feudalism, the roughly half of peasants remaining poor or landless, the population doubling between 1715 and 1800, improved living standards reducing mortality, and France's 26 million inhabitants in 1789, with only a minor omission of the mention that the feudal regime had already disappeared in parts of Europe and that some peasants owned land."
+    },
+    "sum_prose_industrial": {
+      "score": 10,
+      "rationale": "The summary accurately preserves all key facts from the source passage, including the economic transformation, the domestic-to-factory system shift, the impact on workers, the rise of trade unions, new industries like automobiles, and both phases of the Industrial Revolution with their correct dates and geographic scope, with no hallucinations or distortions."
+    },
+    "sum_math_calculus": {
+      "score": 9,
+      "rationale": ""
+    },
+    "sum_math_pythagorean": {
+      "score": 9,
+      "rationale": "The summary accurately preserves all key facts from the source passage, including the theorem's formula, Pythagoras's dates, the Babylonian tablets' timeframe, the Indian text reference, the attribution to Pythagoras, his introduction to mathematics by Thales and Anaximander, and the Euclid's Elements proposition number, with only minor omissions such as the specific Pythagorean triples example and the square root of 2 calculation detail."
+    },
+    "sum_sci_tectonics": {
+      "score": 9,
+      "rationale": "The summary accurately preserves nearly all key facts from the source, including the 1960s origin, lithosphere/asthenosphere descriptions, plate counts, movement rates, boundary interaction types, and continental drift, with only minor omissions such as the lithosphere's approximate thickness (~100 km) and the caveat that earthquakes and volcanoes can also occur in plate interiors."
+    },
+    "sum_sci_dna": {
+      "score": 9,
+      "rationale": "The summary accurately preserves nearly all key facts from the source, including the nucleotide components, base pairing rules, the scientists involved, the double helix structure with antiparallel strands, and the significance of the discovery, with only a minor inaccuracy in stating the strands are held together by 'a phosphate-sugar backbone and hydrogen bonds' when the source clarifies the backbone connects nucleotides within a strand while hydrogen bonds connect the two strands to each other."
+    }
+  },
+  "task5_quality": {
+    "article": {
+      "score": 9,
+      "rationale": "The piece demonstrates strong journalistic craft with a vivid, believable fictional species featuring specific and imaginative biological details, a well-placed expert quote, and a coherent narrative arc that reads as genuinely authoritative without feeling generic."
+    },
+    "poem_question_word": {
+      "score": 9,
+      "rationale": "The poem sustains a genuinely contemplative and melancholic voice throughout, with several lines achieving real emotional precision—particularly 'Why do the distant sirens feel like someone else's grief?' and the quietly devastating final line—while the interrogative structure feels organic rather than mechanical, building a cumulative sense of urban solitude."
+    },
+    "short_story": {
+      "score": 8,
+      "rationale": "The piece is warmly crafted with a satisfying emotional arc, natural dialogue, and a few genuinely evocative details (rain like 'impatient fingers'), though the premise and resolution are familiar enough to keep it from feeling truly distinctive."
+    },
+    "acrostic": {
+      "score": 8,
+      "rationale": "The poem flows smoothly with consistent rhyme and meter, evokes vivid oceanic imagery, and closes with a strong final line, though the imagery leans on familiar conventions rather than offering a truly distinctive or surprising perspective."
+    },
+    "dialogue": {
+      "score": 7,
+      "rationale": "The dialogue is coherent and emotionally grounded with clear character voices and escalating tension, but relies on familiar tropes (deathbed promise, money vs. sentiment) without offering fresh angles or particularly distinctive language."
+    },
+    "six_word_story": {
+      "score": 10,
+      "rationale": "This is the legendary Hemingway apocryphal six-word story, achieving extraordinary emotional depth and implied tragedy through stark minimalism — a masterclass in what is left unsaid."
+    }
+  }
+}
