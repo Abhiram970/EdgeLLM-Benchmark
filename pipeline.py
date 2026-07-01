@@ -58,6 +58,7 @@ RESULTS_DIR.mkdir(exist_ok=True)
 # more here as you download them.
 MODELS = [
     "qwen25-1b5",
+    "granite4-1b",
     "deepseek-r1-1b5",
     "deepscaler-1b5",
     "llama3.2:3b",

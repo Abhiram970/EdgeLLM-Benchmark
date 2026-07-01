@@ -104,6 +104,27 @@
     "creative_constraints": 0.917,
     "code_pass_at_1": 0.5
   },
+  "granite4-1b": {
+    "context_retention": 0.448,
+    "context_retention_stale_rate": 0.057,
+    "summarization_claim_survival": {
+      "prose": 0.9,
+      "mathematical": 0.9,
+      "scientific": 0.8
+    },
+    "summarization_faithfulness_drop": 0.05,
+    "summarization_mean_rouge_l": 0.373,
+    "open_book_accuracy": 0.944,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 0.833
+    },
+    "structured_strict": 0.833,
+    "structured_lenient": 0.833,
+    "creative_constraints": 0.833,
+    "code_pass_at_1": 0.333
+  },
   "llama32-1b": {
     "context_retention": 0.421,
     "context_retention_stale_rate": 0.029,
