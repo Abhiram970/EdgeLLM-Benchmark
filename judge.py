@@ -104,11 +104,17 @@ def call_judge(prompt: str, retries: int = 3) -> dict | None:
 
 
 MIN_WORDS = 15
+# These types are short by design — only null if completely empty
+SHORT_FORM_TYPES = {"six_word_story", "acrostic"}
 
 
-def _too_short(text: str) -> bool:
-    """Return True if content is empty or below the minimum word threshold."""
-    return len(str(text).split()) < MIN_WORDS
+def _too_short(text: str, content_type: str = "") -> bool:
+    """Return True if content is empty or below the minimum word threshold.
+    Short-form types (six_word_story, acrostic) are only nulled if truly empty."""
+    words = len(str(text).split())
+    if content_type in SHORT_FORM_TYPES:
+        return words == 0
+    return words < MIN_WORDS
 
 
 def judge_task2(results: list) -> dict:
@@ -149,7 +155,7 @@ def judge_task5(results: list) -> dict:
             print(f"  [skip] no prompt found for type={item_type}")
             continue
         content = r.get("text", "")
-        if _too_short(content):
+        if _too_short(content, content_type=item_type):
             scores[item_type] = {"score": None, "rationale": "skipped: output too short or empty"}
             print(f"  judging {item_type}... score=None (too short)")
             continue
