@@ -82,6 +82,7 @@ tbody tr.frontier:hover td{background:#fff3d6}
 .badge-4b{background:#e0f2fe;color:#0369a1}
 .badge-1b{background:#f0fdf4;color:#166534}
 .badge-frontier{background:#fef3c7;color:#92400e}
+.badge-3b{background:#e8f4f0;color:#1a5c44}
 .badge-think{background:#ede9fe;color:#5b21b6}
 .badge-nothink{background:#f1f5f9;color:#475569}
 .badge-pass{background:var(--pass-bg);color:var(--pass-fg)}
@@ -236,7 +237,7 @@ footer{text-align:center;padding:1.5rem;color:var(--muted);font-size:0.78rem;bor
     <h1>Edge<span>LM</span> Benchmark</h1>
     <p>Capability-first evaluation of sub-4B language models across six task families: context retention, summarization, open-book QA, structured output, creative generation, and code generation.</p>
     <div class="header-meta">
-      <span class="header-badge">11 models evaluated</span>
+      <span class="header-badge">17 models evaluated</span>
       <span class="header-badge">6 task families</span>
       <span class="header-badge">Human-authored stimuli</span>
       <span class="header-badge">Objective + LLM-judge scoring</span>
@@ -435,7 +436,7 @@ function scCell(v,scale=1){
   return `<span class="sc" style="background:${c.bg};color:${c.fg}">${scale===10?fmtQ(v):fmt(v)}</span>`;
 }
 function mean(arr){const a=arr.filter(x=>x!==null&&x!==undefined&&!isNaN(x));return a.length?a.reduce((s,x)=>s+x,0)/a.length:null}
-function trackBadge(t){if(t==='4B')return '<span class="badge badge-4b">4B</span>';if(t==='1B')return '<span class="badge badge-1b">1B/1.5B</span>';return '<span class="badge badge-frontier">Frontier</span>'}
+function trackBadge(t){if(t==='4B')return '<span class="badge badge-4b">4B</span>';if(t==='1B')return '<span class="badge badge-1b">1B/1.5B</span>';if(t==='3B')return '<span class="badge badge-3b">3B</span>';return '<span class="badge badge-frontier">Frontier</span>'}
 function thinkBadge(t){return t?'<span class="badge badge-think">Think</span>':'<span class="badge badge-nothink">Greedy</span>'}
 function passBadge(p){return p===null?'<span class="badge badge-skip">N/A</span>':p?'<span class="badge badge-pass">PASS</span>':'<span class="badge badge-fail">FAIL</span>'}
 function barFill(v,color='#4C72B0'){if(v===null||v===undefined)return '';const pct=(v*100).toFixed(1);return `<div class="bar-wrap"><div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${color}"></div></div><span style="font-size:0.75rem;font-family:monospace">${fmt(v)}</span></div>`}
@@ -493,8 +494,8 @@ function renderStats(){
   const gap=sonnet.code_pass_at_1!=null&&t6best.v!=null?((sonnet.code_pass_at_1-t6best.v).toFixed(3)):null;
 
   document.getElementById('stats-grid').innerHTML=`
-    <div class="stat-card"><div class="stat-val">${models.length}</div><div class="stat-lbl">Models Evaluated</div><div class="stat-sub">10 sub-4B + 1 frontier baseline</div></div>
-    <div class="stat-card accent2"><div class="stat-val">${t3best.v===1?'6 / 10':'--'}</div><div class="stat-lbl">QA Ceiling (T3)</div><div class="stat-sub">Models achieving perfect open-book accuracy</div></div>
+    <div class="stat-card"><div class="stat-val">${models.length}</div><div class="stat-lbl">Models Evaluated</div><div class="stat-sub">16 sub-4B (5×4B, 6×3B, 5×1B) + 1 frontier</div></div>
+    <div class="stat-card accent2"><div class="stat-val">${t3best.v===1?`${subModels.filter(m=>S.lb[m].open_book_accuracy===1.0).length} / ${subModels.length}`:'--'}</div><div class="stat-lbl">QA Ceiling (T3)</div><div class="stat-sub">Models achieving perfect open-book accuracy</div></div>
     <div class="stat-card green"><div class="stat-val">${t6best.model?fmt(t6best.v):'-'}</div><div class="stat-lbl">Best Code Pass@1 (sub-4B)</div><div class="stat-sub">${t6best.model?dispModel(t6best.model):''}</div></div>
     <div class="stat-card"><div class="stat-val">${t1best.model?fmt(t1best.v):'-'}</div><div class="stat-lbl">Best Context Retention</div><div class="stat-sub">${t1best.model?dispModel(t1best.model):''}</div></div>
     <div class="stat-card accent2"><div class="stat-val">${t4best.model?fmt(t4best.v):'-'}</div><div class="stat-lbl">Best Structured Output</div><div class="stat-sub">${t4best.model?dispModel(t4best.model):''}</div></div>
@@ -583,7 +584,9 @@ function renderObservations(){
 
   // T3 ceiling
   const t3ceiling=models.filter(m=>S.lb[m].open_book_accuracy===1.0);
-  obs.push({cls:'blue',title:'Open-Book QA Shows Ceiling Effects',text:`<strong>${t3ceiling.length} of ${models.length} sub-4B models</strong> achieve perfect accuracy on T3. All four 4B-class models and Granite 4.0 1B hit 1.000, suggesting the six QA documents are not fully discriminating at this capability level. Harder items or longer passages may be needed.`});
+  const t3by4b=models.filter(m=>META[m].track==='4B'&&S.lb[m].open_book_accuracy===1.0);
+  const t3by3b=models.filter(m=>META[m].track==='3B'&&S.lb[m].open_book_accuracy===1.0);
+  obs.push({cls:'blue',title:'Open-Book QA Shows Ceiling Effects',text:`<strong>${t3ceiling.length} of ${models.length} sub-4B models</strong> achieve perfect accuracy on T3 — ${t3by3b.length} of 6 3B models and ${t3by4b.length} of 5 4B models. The spread is across tracks: QA documents are not fully discriminating at this capability level. Harder items or longer passages may be needed.`});
 
   // T4 lenient vs strict
   const lenientAll=models.filter(m=>S.lb[m].structured_lenient===1.0);
@@ -596,7 +599,10 @@ function renderObservations(){
   const thinkT6=mean(thinkM.map(m=>S.lb[m].code_pass_at_1));
   const noThinkT6=mean(noThinkM.map(m=>S.lb[m].code_pass_at_1));
   const dir=thinkT6>noThinkT6?'higher':'lower';
-  obs.push({cls:'purple',title:'Reasoning-Model Code Advantage',text:`Think-mode models average ${fmt(thinkT6)} on Code vs ${fmt(noThinkT6)} for standard models -- <strong>${((Math.abs(thinkT6-noThinkT6))*100).toFixed(0)} pp ${dir}</strong>. Extended chain-of-thought generation measurably improves Perl/Ruby programming tasks, even in 1.5B parameter models.`});
+  const thinkNote=thinkT6>=noThinkT6
+    ?'Extended chain-of-thought helps on Perl/Ruby: reasoning traces allow models to plan before generating code.'
+    :'Results are mixed: larger think models (Crow-4B, Qwen3.5-4B) score well, but smaller think models (DeepScaleR, VibeThinker-3B) score 0.000 — reasoning overhead exhausts the token budget before code is produced.';
+  obs.push({cls:'purple',title:`Think-Model Code: ${thinkT6>=noThinkT6?'Advantage':'Mixed Results'}`,text:`Think-mode models average ${fmt(thinkT6)} on Code vs ${fmt(noThinkT6)} for standard models -- <strong>${((Math.abs(thinkT6-noThinkT6))*100).toFixed(0)} pp ${dir}</strong>. ${thinkNote}`});
 
   // T1 range
   const t1vals=models.map(m=>S.lb[m].context_retention).filter(x=>x!=null);
@@ -616,15 +622,19 @@ function renderObservations(){
     const bestMeans=models.map(m=>modelMean(m)).filter(x=>x!=null);
     const bestSubMean=Math.max(...bestMeans);
     const sonnetMean=mean(LB_KEYS.filter(k=>k!=='context_retention').map(k=>sonnet[k]));
-    obs.push({cls:'blue',title:'Frontier Baseline Comparison',text:`Claude Sonnet 4.6 achieves ${fmt(sonnet.code_pass_at_1)} on Code (vs best sub-4B ${fmt(Math.max(...models.map(m=>S.lb[m].code_pass_at_1||0)))}) and ${fmt(sonnet.open_book_accuracy)} on QA. The frontier model's main advantages appear on Code and Summarization faithfulness; sub-4B models close the gap significantly on structured output and QA.`});
+    const bestT4s=Math.max(...models.map(m=>S.lb[m].structured_strict||0));
+    const bestT5=Math.max(...models.map(m=>S.lb[m].creative_constraints||0));
+    obs.push({cls:'blue',title:'Frontier Baseline Comparison',text:`Claude Sonnet 4.6 leads only on Code (${fmt(sonnet.code_pass_at_1)} vs best sub-4B ${fmt(Math.max(...models.map(m=>S.lb[m].code_pass_at_1||0)))}) and Summarization ROUGE-L. Sub-4B models match it on QA (${fmt(sonnet.open_book_accuracy)} vs ${fmt(Math.max(...models.map(m=>S.lb[m].open_book_accuracy||0)))}), and <em>exceed</em> it on Structured Output (${fmt(bestT4s)} vs ${fmt(sonnet.structured_strict)}) and Creative Constraints (${fmt(bestT5)} vs ${fmt(sonnet.creative_constraints)}). The frontier gap is narrower than expected across most task families.`});
   }
 
   // 1B vs 4B
   const m4b=models.filter(m=>META[m]?.track==='4B');
+  const m3b=models.filter(m=>META[m]?.track==='3B');
   const m1b=models.filter(m=>META[m]?.track==='1B');
   const mean4b=mean(m4b.map(m=>modelMean(m)));
+  const mean3b=mean(m3b.map(m=>modelMean(m)));
   const mean1b=mean(m1b.map(m=>modelMean(m)));
-  obs.push({cls:'purple',title:'4B vs 1B Track Comparison',text:`4B-track models average <strong>${fmt(mean4b)}</strong> vs <strong>${fmt(mean1b)}</strong> for the 1B/1.5B track across all canonical metrics. The gap narrows considerably on T3 QA (ceiling) and T4 structured output, while T6 code shows the largest track-level separation.`});
+  obs.push({cls:'purple',title:'Track Comparison: 4B vs 3B vs 1B',text:`Averaged across all metrics: 4B-track <strong>${fmt(mean4b)}</strong>, 3B-track <strong>${fmt(mean3b)}</strong>, 1B/1.5B track <strong>${fmt(mean1b)}</strong>. The 3B models punch close to or above 4B on QA and structured output, while T6 code shows the largest track-level spread. The 3B↔4B gap is narrow; the drop to 1B/1.5B is more pronounced.`});
 
   const colors=['','blue','green','purple','','blue','green','purple'];
   document.getElementById('obs-grid').innerHTML=obs.map((o,i)=>
