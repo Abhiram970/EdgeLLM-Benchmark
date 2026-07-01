@@ -103,6 +103,14 @@ def call_judge(prompt: str, retries: int = 3) -> dict | None:
     return None
 
 
+MIN_WORDS = 15
+
+
+def _too_short(text: str) -> bool:
+    """Return True if content is empty or below the minimum word threshold."""
+    return len(str(text).split()) < MIN_WORDS
+
+
 def judge_task2(results: list) -> dict:
     scores = {}
     for r in results:
@@ -111,9 +119,14 @@ def judge_task2(results: list) -> dict:
         if not passage_entry:
             print(f"  [skip] no passage found for id={item_id}")
             continue
+        content = r.get("summary", "")
+        if _too_short(content):
+            scores[item_id] = {"score": None, "rationale": "skipped: output too short or empty"}
+            print(f"  judging {item_id} (domain={r.get('domain')})... score=None (too short)")
+            continue
         prompt = (
             f"SOURCE PASSAGE:\n{passage_entry['text']}\n\n"
-            f"SUMMARY TO RATE:\n{r['summary']}\n\n"
+            f"SUMMARY TO RATE:\n{content}\n\n"
             f"{TASK2_RUBRIC}"
         )
         print(f"  judging {item_id} (domain={r.get('domain')})...", end=" ", flush=True)
@@ -135,11 +148,16 @@ def judge_task5(results: list) -> dict:
         if not creative_entry:
             print(f"  [skip] no prompt found for type={item_type}")
             continue
+        content = r.get("text", "")
+        if _too_short(content):
+            scores[item_type] = {"score": None, "rationale": "skipped: output too short or empty"}
+            print(f"  judging {item_type}... score=None (too short)")
+            continue
         constraints_str = ", ".join(r.get("constraints", []))
         prompt = (
             f"ORIGINAL PROMPT:\n{creative_entry['prompt']}\n\n"
             f"CONSTRAINTS (for context only — do NOT score constraint satisfaction):\n{constraints_str}\n\n"
-            f"PIECE TO RATE:\n{r['text']}\n\n"
+            f"PIECE TO RATE:\n{content}\n\n"
             f"{TASK5_RUBRIC}"
         )
         print(f"  judging {item_type}...", end=" ", flush=True)

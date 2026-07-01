@@ -1,0 +1,57 @@
+{
+  "model": "granite4-1b",
+  "judge_model": "claude-sonnet-4-6",
+  "timestamp": "2026-07-01T00:40:57.589194Z",
+  "task2_faithfulness": {
+    "sum_prose_frenchrev": {
+      "score": 7,
+      "rationale": "The summary captures the core themes accurately but omits several specific details from the source (e.g., the population doubling between 1715 and 1800, France having 26 million inhabitants in 1789, the role of improved peasant landowners wanting to eliminate feudalism, and the mortality rate reduction from 1730), and slightly misattributes population growth as a direct cause of economic challenges rather than framing it as an acute problem for France specifically."
+    },
+    "sum_prose_industrial": {
+      "score": 9,
+      "rationale": "The summary accurately captures all key facts from the source passage including wealth distribution, middle class expansion, harsh factory conditions, trade union formation, economic transformation, mechanization, the automobile industry example, and both phases of the Industrial Revolution with correct timeframes, with only a minor imprecision in describing the first Industrial Revolution's end date as 'early 19th century' rather than 'about 1830' and omitting that the first phase was 'mostly confined to Britain.'"
+    },
+    "sum_math_calculus": {
+      "score": 8,
+      "rationale": "The summary accurately captures the fundamental theorem of calculus, the inverse relationship between derivatives and areas, and the integral symbol's meaning, but omits the specific example of y = x² and its integral x³/3 + C, and slightly misattributes the integral symbol's origin (it was Leibniz who introduced it, based on his summation concept, which the summary implies was a joint discovery)."
+    },
+    "sum_math_pythagorean": {
+      "score": 7,
+      "rationale": ""
+    },
+    "sum_sci_tectonics": {
+      "score": 7,
+      "rationale": "The summary captures the core concepts accurately but omits key details such as the asthenosphere, the existence of medium-sized and small plates (stating only seven large plates), the lithosphere's thickness (~100 km), and the fact that continents are embedded in plates and drift passively, while correctly conveying plate movement rates, boundary interactions, and geological phenomena."
+    },
+    "sum_sci_dna": {
+      "score": 8,
+      "rationale": "The summary accurately captures most key facts including nucleotide composition, phosphodiester bonds, base pairing rules, and the 1953 double-helix discovery, but omits the contributions of Rosalind Franklin and Maurice Wilkins, and the detail that the two strands wind in antiparallel directions."
+    }
+  },
+  "task5_quality": {
+    "article": {
+      "score": 6,
+      "rationale": "The article is competently written with a clear journalistic structure and plausible fictional details, but relies on generic phrasing ('extraordinary breakthrough,' 'groundbreaking observation,' 'vast biodiversity') and lacks the specific, vivid storytelling that would elevate it beyond a formulaic news template."
+    },
+    "poem_question_word": {
+      "score": 4,
+      "rationale": "The poem relies heavily on generic, abstract observations ('vibrant spectacle,' 'symphony of lights and sounds') and shifts awkwardly into second-person address mid-poem, undermining coherence and voice, while the imagery remains flat and interchangeable rather than evoking a specific, felt experience of a city at night."
+    },
+    "short_story": {
+      "score": 4,
+      "rationale": "The story has a basic narrative arc but feels mechanical and contrived—the coincidental appearance of a childhood friend is an unearned resolution, the prose is generic and flat, and phrases like 'always returned during these times' are awkwardly vague, undermining coherence and voice throughout."
+    },
+    "acrostic": {
+      "score": 4,
+      "rationale": "The poem is mechanically constructed with generic, encyclopedia-like descriptions of the ocean that lack any distinctive voice, imagery, or emotional resonance, reading more like a list of facts than a cohesive creative piece."
+    },
+    "dialogue": {
+      "score": 3,
+      "rationale": "The dialogue is mechanical and generic, lacking distinct character voices or names (using numbers instead of names), with stilted, formal phrasing that reads more like a pros-and-cons list than a genuine argument between two people with emotional stakes."
+    },
+    "six_word_story": {
+      "score": null,
+      "rationale": "skipped: output too short or empty"
+    }
+  }
+}

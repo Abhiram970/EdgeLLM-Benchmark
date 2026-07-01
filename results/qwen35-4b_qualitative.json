@@ -1,0 +1,57 @@
+{
+  "model": "qwen35-4b",
+  "judge_model": "claude-sonnet-4-6",
+  "timestamp": "2026-07-01T00:43:29.171992Z",
+  "task2_faithfulness": {
+    "sum_prose_frenchrev": {
+      "score": 9,
+      "rationale": "The summary accurately preserves all key facts including the bourgeoisie's political aspirations, peasants' land rights demands, the mortality rate reduction from 1730, population doubling between 1715 and 1800, and France's 26 million inhabitants in 1789, with only minor omissions such as the specific mention of merchants/manufacturers/professionals and the feudal regime's decline since the Middle Ages."
+    },
+    "sum_prose_industrial": {
+      "score": 9,
+      "rationale": "The summary accurately preserves all key facts from the source including the economic transformation, middle class growth, factory conditions, trade union movement, and both phases of the Industrial Revolution with correct dates and geographic scope, with only a minor omission that Britain was also part of the second Industrial Revolution alongside continental Europe, North America, and Japan."
+    },
+    "sum_math_calculus": {
+      "score": 8,
+      "rationale": "The summary accurately captures the core concepts including the fundamental theorem of calculus, the inverse relationship between derivatives and areas, Leibniz's notation, and the connection to differential equations, but slightly misattributes the discovery as primarily Newton's when the source credits both equally, and omits the specific example detail that the integral of x² is x³/3 + C."
+    },
+    "sum_math_pythagorean": {
+      "score": 7,
+      "rationale": "The summary accurately captures the core theorem, its historical origins, and key examples, but incorrectly attributes Pythagoras's continued credit to 'later formalization in Euclid's Elements' when the source simply states it is proposition 47 in Euclid's Elements without implying that's the reason for the credit, and omits the detail about Iamblichus and Pythagoras being introduced to mathematics by Thales of Miletus and Anaximander."
+    },
+    "sum_sci_tectonics": {
+      "score": 9,
+      "rationale": "The summary accurately preserves nearly all key facts including the 1960s origin, lithosphere/asthenosphere distinction, plate movement rates, boundary interaction types, seismic/volcanic activity, mountain formation, ocean formation, and continental drift, with only minor omissions such as the lithosphere's ~100 km thickness and the specific breakdown of plate sizes (seven large, six or seven medium, several small)."
+    },
+    "sum_sci_dna": {
+      "score": 9,
+      "rationale": "The summary accurately preserves all key facts including nucleotide composition, phosphodiester backbone, specific base pairing rules, the 1953 discovery, the double-helix antiparallel structure, and the significance of the discovery, with only a minor omission of the specific classification of bases as purines and pyrimidines and the slight reordering of Watson/Crick's role versus Franklin/Wilkins's contributory role."
+    }
+  },
+  "task5_quality": {
+    "article": {
+      "score": 7,
+      "rationale": "The piece is well-crafted with specific, imaginative details (magnetic navigation, anaerobic metabolism, bioluminescent symbiosis) and a credible journalistic voice, but the final two sentences feel generic and slightly repetitive, diluting an otherwise strong execution."
+    },
+    "poem_question_word": {
+      "score": null,
+      "rationale": "skipped: output too short or empty"
+    },
+    "short_story": {
+      "score": null,
+      "rationale": "skipped: output too short or empty"
+    },
+    "acrostic": {
+      "score": null,
+      "rationale": "skipped: output too short or empty"
+    },
+    "dialogue": {
+      "score": 7,
+      "rationale": "The dialogue maintains clear conflict and distinct voices with some vivid lines, but occasionally lapses into generic phrasing and the emotional stakes feel somewhat underdeveloped across the exchange."
+    },
+    "six_word_story": {
+      "score": null,
+      "rationale": "skipped: output too short or empty"
+    }
+  }
+}

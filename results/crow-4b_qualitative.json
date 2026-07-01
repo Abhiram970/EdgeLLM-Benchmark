@@ -1,0 +1,57 @@
+{
+  "model": "crow-4b",
+  "judge_model": "claude-sonnet-4-6",
+  "timestamp": "2026-07-01T00:41:38.461067Z",
+  "task2_faithfulness": {
+    "sum_prose_frenchrev": {
+      "score": 8,
+      "rationale": "The summary accurately captures most key facts including the bourgeoisie's rise, population doubling between 1715 and 1800, France's 26 million inhabitants, and the divided peasantry, but omits the specific detail that the mortality rate reduction began around 1730 and slightly oversimplifies the peasant situation by not mentioning that some peasants already owned land and sought to eliminate feudal vestiges."
+    },
+    "sum_prose_industrial": {
+      "score": 9,
+      "rationale": "The summary accurately preserves all key facts from the source including the two-part division of the Industrial Revolution, the timeframes, geographic regions, economic transformation, emergence of new industries like automobiles, the replacement of the domestic system with factory work affecting women and children, subsistence wages, dangerous conditions, and the rise of trade unions, with only a minor omission of the mention that the Industrial Revolution enlarged the middle class and increased overall wealth."
+    },
+    "sum_math_calculus": {
+      "score": 9,
+      "rationale": "The summary accurately preserves all key facts from the source, including the fundamental theorem of calculus, the specific example of integrating x² to get x³/3 + C, Leibniz's notation rationale, and the equivalence of integration with solving differential equations, with only a minor omission of the explicit mention that ∫ stands for 'sum' and dx represents an infinitely small increment."
+    },
+    "sum_math_pythagorean": {
+      "score": 9,
+      "rationale": "The summary accurately captures all major facts including the theorem's formula, its association with Pythagoras, the Babylonian tablets, the Indian Baudhayana Sulba-sutra, and Euclid's Elements reference, with only minor omissions such as the specific details about Pythagorean triples, the square root of 2 calculation, and Iamblichus's account of Pythagoras being introduced to mathematics by Thales and Anaximander."
+    },
+    "sum_sci_tectonics": {
+      "score": 8,
+      "rationale": "The summary accurately captures the core concepts but omits the lithosphere's thickness (~100 km), the distinction between six or seven medium-sized plates versus 'several smaller plates,' the mention that earthquakes and volcanoes can occur in plate interiors, and the detail that continents are embedded in plates and drift passively, though no hallucinations are present."
+    },
+    "sum_sci_dna": {
+      "score": 9,
+      "rationale": "The summary accurately preserves all key facts including the nucleotide composition, specific base pairing rules, the double-helix discovery by Watson and Crick in 1953 with Franklin and Wilkins' contributions, and the antiparallel structure, with only a minor omission of the phosphodiester bond terminology and the explicit mention of purines/pyrimidines classification."
+    }
+  },
+  "task5_quality": {
+    "article": {
+      "score": 6,
+      "rationale": "The article reads competently as a news piece with a clear structure and some vivid details (the blue bioluminescence, the unique pressure-survival organ), but it undermines itself with a scientific contradiction—claiming the fish converts 'sunlight trapped in deep currents' at the bottom of the Mariana Trench where no sunlight penetrates—and the prose remains largely generic and formulaic without a distinctive journalistic voice or memorable imagery."
+    },
+    "poem_question_word": {
+      "score": 2,
+      "rationale": "This is not a finished poem but rather a visible drafting process with incomplete lines, self-interruptions, and meta-commentary, making it incoherent and unengaging as a creative piece."
+    },
+    "short_story": {
+      "score": 5,
+      "rationale": "The piece establishes atmosphere effectively but undermines itself with logical inconsistencies (the 'stranger' who apparently knows Elias), an awkward line ('The train had missed it'), and a resolution that feels rushed and generic rather than emotionally earned."
+    },
+    "acrostic": {
+      "score": 1,
+      "rationale": "This is not a poem at all — it's a visible drafting and planning process with no completed creative piece, just fragmented line attempts, self-corrections, and meta-commentary."
+    },
+    "dialogue": {
+      "score": 7,
+      "rationale": "The dialogue has a clear emotional arc and good character contrast, with some clever lines (especially the garden/job prospects exchange), though a few lines feel slightly forced or expository rather than naturally conversational."
+    },
+    "six_word_story": {
+      "score": 1,
+      "rationale": "This is not a story at all — it's a visible brainstorming/reasoning process that never produces a finished creative piece, making it entirely incoherent as a submission."
+    }
+  }
+}
