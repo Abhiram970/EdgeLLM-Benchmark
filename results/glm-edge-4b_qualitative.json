@@ -1,0 +1,57 @@
+{
+  "model": "glm-edge-4b",
+  "judge_model": "claude-sonnet-4-6",
+  "timestamp": "2026-07-01T00:52:44.133745Z",
+  "task2_faithfulness": {
+    "sum_prose_frenchrev": {
+      "score": 7,
+      "rationale": "The summary captures the core themes accurately but omits several specific details from the source, including the role of peasants (both those who owned land and the roughly half who remained poor or landless), the specific mention of merchants/manufacturers/professionals as the bourgeoisie, and the fact that the mortality rate reduction began around 1730, while also slightly oversimplifying the population growth cause by attributing it solely to improved living standards rather than acknowledging 'other factors.'"
+    },
+    "sum_prose_industrial": {
+      "score": 9,
+      "rationale": "The summary accurately captures all major points including wealth distribution, middle class growth, factory system exploitation, trade union movement origins, economic transformation, new industries, and both periods of the Industrial Revolution, with only minor omissions such as the specific mention of women and children workers and the subsistence wages detail."
+    },
+    "sum_math_calculus": {
+      "score": 9,
+      "rationale": "The summary accurately captures all key facts from the passage including the fundamental theorem, Newton's area function derivative relationship, Leibniz's notation and summation interpretation, the specific example of integrating x² to get x³/3 + C, and the connection to differential equations, with only a minor omission of the elongated S symbolism explanation."
+    },
+    "sum_math_pythagorean": {
+      "score": 8,
+      "rationale": "The summary accurately captures all key facts from the source passage, but adds a minor unsupported inference that Pythagoras 'may have popularized' the theorem, which is not stated in the original text."
+    },
+    "sum_sci_tectonics": {
+      "score": 8,
+      "rationale": "The summary accurately captures the core concepts including the timeframe, lithosphere thickness, asthenosphere relationship, plate interactions, and continental drift, but omits specific details like the exact number of plates (seven large, six or seven medium, several small) and the typical movement rates of 5 to 10 cm per year, and uses 'floats' which slightly misrepresents the relationship compared to the source's more precise description."
+    },
+    "sum_sci_dna": {
+      "score": 8,
+      "rationale": "The summary accurately captures most key facts including nucleotide composition, phosphodiester bonds, base pairing specificity, and the 1953 discovery, but slightly misrepresents Franklin and Wilkins's role (describing them as co-discoverers 'along with' Watson and Crick rather than as biophysicists who aided the work), and omits the antiparallel nature of the double helix."
+    }
+  },
+  "task5_quality": {
+    "article": {
+      "score": 6,
+      "rationale": "The piece is competently written with a clear journalistic structure and plausible fictional details, but relies on generic phrasing ('extraordinary,' 'groundbreaking research,' 'beauty and diversity') and a predictable conservation-message ending that keeps it firmly in adequate, unremarkable territory."
+    },
+    "poem_question_word": {
+      "score": 3,
+      "rationale": "The piece is only half the required length (6 lines instead of 12), relies on generic imagery and predictable observations about city nights, and lacks a distinctive voice or any surprising turns of thought that would elevate it beyond a mechanical exercise."
+    },
+    "short_story": {
+      "score": 5,
+      "rationale": "The story has a clear arc and functional prose, but relies on generic imagery, flat characterization, and a rushed, anticlimactic resolution that lacks any distinctive voice or creative spark."
+    },
+    "acrostic": {
+      "score": 4,
+      "rationale": "The poem relies heavily on generic ocean imagery and clichéd phrasing ('world untold,' 'colors bold,' 'dance so grand'), and the final two lines awkwardly repeat 'vast,' revealing a mechanical, rhyme-forced construction rather than genuine craft or distinctive voice."
+    },
+    "dialogue": {
+      "score": 6,
+      "rationale": "The dialogue is coherent and flows logically, but relies on generic, predictable exchanges about heritage versus progress without developing distinctive character voices or offering any surprising turns of phrase or perspective."
+    },
+    "six_word_story": {
+      "score": 4,
+      "rationale": "The piece describes a simple action sequence with no tension, surprise, or emotional resonance—the lion's retreat is unexplained and the narrative feels flat and mechanical rather than evocative."
+    }
+  }
+}

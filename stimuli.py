@@ -662,7 +662,7 @@ CREATIVE_TASKS = [
     {"type": "dialogue",
      "prompt": "Write a 10-line dialogue between two characters arguing about whether to sell an old family house. Each line must start with the speaker's name followed by a colon. Exactly 10 lines.",
      "constraints": ["10 lines", "name: prefix each line"],
-     "target_lines": 10, "line_prefix_colon": True, "max_tokens": 220},
+     "target_lines": 10, "line_prefix_colon": True, "max_tokens": 350},
     {"type": "six_word_story",
      "prompt": "Write a complete story in exactly six words. Return ONLY the six words.",
      "constraints": ["exactly 6 words"],
@@ -671,12 +671,11 @@ CREATIVE_TASKS = [
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# TASK 6 -- CODE GENERATION  (6 problems; Python executed, obscure langs static)
+# TASK 6 -- CODE GENERATION  (6 problems; Perl + Ruby, both executed)
 # Canonical CS exercises. The MODEL writes the solution; only the spec + tests are
-# authored here. Python/Perl get real execution where the runtime is available;
-# C# is static-checked. `test` (Python) = a harness fragment appended after the
-# model's code that must print EDGELM_PASS. `static` (other langs) = substrings/
-# predicate checked against the generated code.
+# authored here. Perl and Ruby both get real execution against a fixture file and
+# expected substrings (`exec_perl` / `exec_ruby`). `static` = a fallback
+# keyword/pattern predicate checked against the generated code.
 # ─────────────────────────────────────────────────────────────────────────────
 
 CODE_TASKS = [

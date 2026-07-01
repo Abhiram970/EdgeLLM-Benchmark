@@ -1,0 +1,147 @@
+{
+  "model": "qwen35-4b",
+  "timestamp": "2026-06-30T14:38:24.767328",
+  "decode_spec": {
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "think": true,
+    "max_factor": 14.0
+  },
+  "smoke": false,
+  "tasks": {
+    "creative_generation": {
+      "task": "creative_generation",
+      "mean_constraint_pass_rate": 0.333,
+      "results": [
+        {
+          "type": "article",
+          "text": "**Scientists Unveil 'Abyssal Glimmer' in Mariana Trench**\n\nResearchers aboard the deep-sea vessel *Oceanic Horizon* recently discovered a previously unknown species of fish during an expedition into the Pacific Ocean's deep trench system. Dubbed *Luminaria abyssalis*, the creature measures just three inches but boasts striking, pulsating blue bioluminescence that illuminates its surroundings in total darkness. Unlike related barbeloids found at shallower depths, this specimen thrives under immense pressure and exhibits a unique metabolic rate capable of sustaining energy without oxygen reserves for days. The fish appears to navigate by sensing magnetic fields rather than light, an adaptation crucial for survival in the pitch-black abyss. Dr. Elena Rostova, lead marine biologist on the mission, noted the discovery challenges current understanding of deep-sea evolution. \"The light patterns suggest a symbiotic relationship with bacteria that haven't been seen before,\" she explained.\n\nThe find adds to the growing list of biodiversity secrets hidden beneath the ocean's surface and prompts immediate calls for international protection under new marine conservation laws. Further analysis is required to ensure no harm comes from the discovery, as this ecosystem remains largely unexplored by human activity. This discovery highlights the vast mysteries remaining in global waters. Scientists hope to catalog its genetic code in the coming months.",
+          "word_count": 206,
+          "line_count": 3,
+          "constraints": [
+            "has headline",
+            "~200 words",
+            "journalistic tone"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 131.61,
+          "tokens_per_sec": 30.0,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "poem_question_word",
+          "text": "",
+          "word_count": 0,
+          "line_count": 0,
+          "constraints": [
+            "12 lines",
+            "each line starts with question word"
+          ],
+          "constraint_checks": {
+            "line_count_exact": false,
+            "all_lines_start_question_word": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 84.99,
+          "tokens_per_sec": 29.9,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "short_story",
+          "text": "",
+          "word_count": 0,
+          "line_count": 0,
+          "constraints": [
+            "starts with given sentence",
+            "~150 words",
+            "complete arc"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": false,
+            "starts_with_required": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 134.9,
+          "tokens_per_sec": 29.2,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "acrostic",
+          "text": "",
+          "word_count": 0,
+          "line_count": 0,
+          "constraints": [
+            "5 lines",
+            "acrostic spells OCEAN"
+          ],
+          "constraint_checks": {
+            "line_count_exact": false,
+            "acrostic_ok": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 47.4,
+          "tokens_per_sec": 30.0,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "dialogue",
+          "text": "Elias: The mortgage is eating into our savings every single month.\nSarah: But this house holds the memories of our entire childhood.\nElias: Memories don't pay for new roof repairs or plumbing leaks.\nSarah: You can't just demolish a family history with a hammer and trowel.\nElias: I'm suggesting we sell to stop the bleeding before it's too late.\nSarah: Then who will remember us when the new owners walk through these doors?\nElias: We can't afford to live in a house that doesn't fit our budget anymore.\nSarah: You don't have to sell it if you're willing to wait out the storm.\nElias: Waiting costs us years, and we are already drowning in debt.\nSarah: I'm not asking for a mortgage waiver, I'm asking for some time.",
+          "word_count": 128,
+          "line_count": 10,
+          "constraints": [
+            "10 lines",
+            "name: prefix each line"
+          ],
+          "constraint_checks": {
+            "line_count_exact": true,
+            "all_lines_have_name_colon": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 91.62,
+          "tokens_per_sec": 29.6,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "six_word_story",
+          "text": "",
+          "word_count": 0,
+          "line_count": 0,
+          "constraints": [
+            "exactly 6 words"
+          ],
+          "constraint_checks": {
+            "exact_word_count": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 19.46,
+          "tokens_per_sec": 29.9,
+          "human_score": null,
+          "judge_score": null
+        }
+      ],
+      "elapsed_s": 510.0
+    }
+  },
+  "total_elapsed_s": 510.0,
+  "headline": {
+    "context_retention": null,
+    "context_retention_stale_rate": null,
+    "summarization_claim_survival": null,
+    "summarization_faithfulness_drop": null,
+    "summarization_mean_rouge_l": null,
+    "open_book_accuracy": null,
+    "open_book_by_tier": null,
+    "structured_strict": null,
+    "structured_lenient": null,
+    "creative_constraints": 0.333,
+    "code_pass_at_1": null
+  }
+}

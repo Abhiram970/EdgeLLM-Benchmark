@@ -1,0 +1,57 @@
+{
+  "model": "granite4-1b",
+  "judge_model": "claude-sonnet-4-6",
+  "timestamp": "2026-07-01T00:52:06.163991Z",
+  "task2_faithfulness": {
+    "sum_prose_frenchrev": {
+      "score": 7,
+      "rationale": "The summary captures the core themes accurately but omits several specific details (e.g., the population doubling between 1715 and 1800, France having 26 million inhabitants in 1789, peasants wanting to eliminate feudalism to gain full landowner rights) and slightly misattributes the economic challenges to population growth alone rather than the broader context described in the passage."
+    },
+    "sum_prose_industrial": {
+      "score": 9,
+      "rationale": "The summary accurately captures all major points from the source passage including wealth distribution, middle class expansion, harsh factory conditions, trade union formation, economic transformation, new industries, and the two phases of the Industrial Revolution, with only minor imprecision in describing the first phase as 'from the 18th to the early 19th century' rather than 'mid-18th century to about 1830.'"
+    },
+    "sum_math_calculus": {
+      "score": 8,
+      "rationale": "The summary accurately captures the fundamental theorem of calculus, the inverse relationship between derivatives and areas, and the integral symbol's meaning, but omits the specific example of y = x² and its integral x³/3 + C, and slightly misattributes the integral symbol's origin (only Leibniz introduced it, not both Newton and Leibniz)."
+    },
+    "sum_math_pythagorean": {
+      "score": 7,
+      "rationale": ""
+    },
+    "sum_sci_tectonics": {
+      "score": 7,
+      "rationale": "The summary captures the core concepts accurately but omits key details such as the formulation date (1960s), the asthenosphere, the lithosphere's thickness (~100 km), the distinction between medium-sized and small plates (only mentioning seven large plates), and the fact that continents are embedded in plates and drift passively."
+    },
+    "sum_sci_dna": {
+      "score": 8,
+      "rationale": "The summary accurately captures most key facts including nucleotide composition, phosphodiester bonds, base pairing rules, and the 1953 double-helix discovery, but omits the contributions of Rosalind Franklin and Maurice Wilkins, and the detail that the two strands wind in antiparallel directions."
+    }
+  },
+  "task5_quality": {
+    "article": {
+      "score": 6,
+      "rationale": "The article is competently written with a clear journalistic structure and plausible fictional details, but relies on generic phrasing ('extraordinary breakthrough,' 'groundbreaking observation,' 'vast biodiversity') and lacks the vivid specificity or distinctive voice that would elevate it beyond a formulaic news template."
+    },
+    "poem_question_word": {
+      "score": 4,
+      "rationale": "The poem relies heavily on generic, abstract observations ('vibrant spectacle,' 'symphony of lights and sounds') and shifts awkwardly into direct address mid-poem, undermining coherence and voice, while the imagery remains flat and interchangeable rather than evoking a specific, felt experience of a city at night."
+    },
+    "short_story": {
+      "score": 4,
+      "rationale": "The story has a basic coherent arc but feels mechanical and generic, with flat characterization (Jack's convenient appearance strains credibility), clichéd phrasing, and little distinctive voice or creative tension to elevate it beyond a formulaic plot summary."
+    },
+    "acrostic": {
+      "score": 4,
+      "rationale": "The poem is mechanically constructed with generic, encyclopedia-like statements about the ocean that lack vivid imagery, emotional resonance, or a distinctive voice, reading more like a list of facts than a cohesive creative piece."
+    },
+    "dialogue": {
+      "score": 3,
+      "rationale": "The dialogue is mechanical and generic, with no character names, flat and interchangeable voices, overly formal phrasing that feels like a debate outline rather than a real argument, and no emotional tension or distinctive personality to make it engaging."
+    },
+    "six_word_story": {
+      "score": 4,
+      "rationale": "The sentence is grammatically correct and coherent but relies on generic, clichéd imagery ('vibrant hues') with no distinctive voice, surprise, or narrative tension that would make a six-word story memorable."
+    }
+  }
+}

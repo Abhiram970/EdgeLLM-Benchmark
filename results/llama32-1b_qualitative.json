@@ -1,0 +1,57 @@
+{
+  "model": "llama32-1b",
+  "judge_model": "claude-sonnet-4-6",
+  "timestamp": "2026-06-30T21:33:46.518330Z",
+  "task2_faithfulness": {
+    "sum_prose_frenchrev": {
+      "score": 6,
+      "rationale": "The summary captures the core ideas but contains a causal distortion (the feudal regime's decline did not directly cause population increase; rather, higher living standards reduced mortality), omits key details like the roughly half of peasants who remained poor or landless, and the population doubling between 1715 and 1800, while also mischaracterizing France as 'an ideal location' for revolution rather than the most acutely affected by these pressures."
+    },
+    "sum_prose_industrial": {
+      "score": 9,
+      "rationale": "The summary accurately captures all major facts from the source passage including the wealth distribution effects, factory system replacement of domestic production, poor working conditions, trade union movement origins, economic transformation, and both Industrial Revolutions' timeframes and locations, with only minor omissions such as the mention of new industries like automobiles and the second Industrial Revolution's timeframe extending to the early 20th century."
+    },
+    "sum_math_calculus": {
+      "score": 8,
+      "rationale": "The summary accurately captures the fundamental theorem of calculus, the F′(t) = f(t) relationship, and Leibniz's interpretation of integration, but slightly misattributes the x³/3 + C example specifically to the general concept rather than clarifying it as the integral of x², and omits mention of the integral notation (∫x²dx), the elongated S symbolism, and the final point equating integration with solving a differential equation."
+    },
+    "sum_math_pythagorean": {
+      "score": 7,
+      "rationale": "The summary accurately captures most key facts but contains a minor distortion in the last sentence, implying Pythagoras was introduced to mathematics by Thales and Anaximander without attributing this claim to Iamblichus, and also omits the specific detail that the theorem is proposition 47 from Book I of Euclid's Elements."
+    },
+    "sum_sci_tectonics": {
+      "score": 7,
+      "rationale": ""
+    },
+    "sum_sci_dna": {
+      "score": 6,
+      "rationale": ""
+    }
+  },
+  "task5_quality": {
+    "article": {
+      "score": 6,
+      "rationale": "The article is competently written with a clear journalistic structure and coherent narrative, but relies on generic phrasing ('groundbreaking discovery,' 'sent shockwaves,' 'working tirelessly') and lacks the specific imaginative details—a distinctive species name, unusual biological traits, or a compelling hook—that would elevate it beyond a formulaic template."
+    },
+    "poem_question_word": {
+      "score": 4,
+      "rationale": "The poem relies heavily on generic, interchangeable imagery (concrete jungle, sea of lights, finding one's true self) and several lines feel padded or awkward in their phrasing, while the repetition of nearly identical lines ('How can something so beautiful/vast be confined to a single rooftop') reveals a lack of genuine creative development across the piece."
+    },
+    "short_story": {
+      "score": 4,
+      "rationale": "The piece suffers from internal contradictions (the bus has left yet 'is on its way'), vague and generic imagery, and a flat emotional arc that never builds meaningful tension or resolution, resulting in a mechanical feel despite some atmospheric attempts."
+    },
+    "acrostic": {
+      "score": 5,
+      "rationale": "The poem is competent and coherent but relies on generic ocean imagery and predictable rhymes (cease/peace, remain/domain/sustained) without offering any distinctive voice or surprising imagery to elevate it beyond the formulaic."
+    },
+    "dialogue": {
+      "score": 3,
+      "rationale": "The dialogue is largely incoherent and contradictory — characters switch positions mid-argument (Emily starts pro-keeping but then worries about 'losing profits'), arguments don't build logically, and the exchange feels like randomly assembled sentences rather than a genuine, coherent dispute about selling a family home."
+    },
+    "six_word_story": {
+      "score": 4,
+      "rationale": "The sentence is grammatically correct and evokes a vague sense of atmosphere, but 'slowly' as a tacked-on adverb feels redundant and mechanical, and the imagery is too generic to create genuine tension or distinctiveness."
+    }
+  }
+}

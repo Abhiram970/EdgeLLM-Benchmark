@@ -1,56 +1,140 @@
 {
-  "hermes3-llama32-3b": {
-    "context_retention": 0.627,
-    "context_retention_stale_rate": 0.029,
+  "crow-4b": {
+    "context_retention": 0.809,
+    "context_retention_stale_rate": 0.0,
     "summarization_claim_survival": {
-      "prose": 1.0,
-      "mathematical": 0.9,
+      "prose": 0.8,
+      "mathematical": 0.8,
       "scientific": 0.9
     },
-    "summarization_faithfulness_drop": 0.1,
-    "summarization_mean_rouge_l": 0.453,
+    "summarization_faithfulness_drop": -0.05,
+    "summarization_mean_rouge_l": 0.394,
     "open_book_accuracy": 1.0,
     "open_book_by_tier": {
       "easy": 1.0,
       "medium": 1.0,
       "hard": 1.0
     },
-    "structured_strict": 1.0,
+    "structured_strict": 0.667,
     "structured_lenient": 1.0,
-    "creative_constraints": 0.5,
-    "code_pass_at_1": 0.333
+    "creative_constraints": 0.417,
+    "code_pass_at_1": 0.667
   },
-  "llama3.2:3b": {
-    "context_retention": 0.733,
+  "deepscaler-1b5": {
+    "context_retention": 0.411,
     "context_retention_stale_rate": 0.0,
     "summarization_claim_survival": {
-      "prose": 0.9,
-      "mathematical": 0.9,
-      "scientific": 0.7
+      "prose": 0.8,
+      "mathematical": 0.8,
+      "scientific": 0.9
     },
-    "summarization_faithfulness_drop": 0.1,
-    "summarization_mean_rouge_l": 0.383,
+    "summarization_faithfulness_drop": -0.05,
+    "summarization_mean_rouge_l": 0.402,
+    "open_book_accuracy": 0.833,
+    "open_book_by_tier": {
+      "easy": 0.833,
+      "medium": 1.0,
+      "hard": 0.667
+    },
+    "structured_strict": 0.333,
+    "structured_lenient": 0.833,
+    "creative_constraints": 0.417,
+    "code_pass_at_1": 0.0
+  },
+  "deepseek-r1-1b5": {
+    "context_retention": 0.243,
+    "context_retention_stale_rate": 0.029,
+    "summarization_claim_survival": {
+      "prose": 0.8,
+      "mathematical": 0.9,
+      "scientific": 0.8
+    },
+    "summarization_faithfulness_drop": -0.05,
+    "summarization_mean_rouge_l": 0.422,
+    "open_book_accuracy": 0.722,
+    "open_book_by_tier": {
+      "easy": 0.833,
+      "medium": 0.833,
+      "hard": 0.5
+    },
+    "structured_strict": 0.333,
+    "structured_lenient": 0.833,
+    "creative_constraints": 0.167,
+    "code_pass_at_1": 0.167
+  },
+  "gemma3-4b": {
+    "context_retention": 0.675,
+    "context_retention_stale_rate": 0.0,
+    "summarization_claim_survival": {
+      "prose": 0.8,
+      "mathematical": 0.9,
+      "scientific": 0.9
+    },
+    "summarization_faithfulness_drop": -0.1,
+    "summarization_mean_rouge_l": 0.34,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 0.333,
+    "structured_lenient": 1.0,
+    "creative_constraints": 0.5,
+    "code_pass_at_1": 0.5
+  },
+  "glm-edge-4b": {
+    "context_retention": 0.279,
+    "context_retention_stale_rate": 0.0,
+    "summarization_claim_survival": {
+      "prose": 0.7,
+      "mathematical": 1.0,
+      "scientific": 0.8
+    },
+    "summarization_faithfulness_drop": -0.2,
+    "summarization_mean_rouge_l": 0.413,
     "open_book_accuracy": 0.944,
     "open_book_by_tier": {
       "easy": 1.0,
       "medium": 1.0,
       "hard": 0.833
     },
-    "structured_strict": 0.667,
+    "structured_strict": 0.333,
     "structured_lenient": 1.0,
-    "creative_constraints": 0.667,
-    "code_pass_at_1": 0.333
+    "creative_constraints": 0.917,
+    "code_pass_at_1": 0.5
   },
-  "ministral-3:3b": {
-    "context_retention": 0.669,
-    "context_retention_stale_rate": 0.0,
+  "granite4-1b": {
+    "context_retention": 0.448,
+    "context_retention_stale_rate": 0.057,
     "summarization_claim_survival": {
       "prose": 0.9,
-      "mathematical": 1.0,
+      "mathematical": 0.9,
       "scientific": 0.8
     },
-    "summarization_faithfulness_drop": 0.0,
-    "summarization_mean_rouge_l": 0.458,
+    "summarization_faithfulness_drop": 0.05,
+    "summarization_mean_rouge_l": 0.373,
+    "open_book_accuracy": 0.944,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 0.833
+    },
+    "structured_strict": 0.833,
+    "structured_lenient": 0.833,
+    "creative_constraints": 0.833,
+    "code_pass_at_1": 0.333
+  },
+  "llama32-1b": {
+    "context_retention": 0.421,
+    "context_retention_stale_rate": 0.029,
+    "summarization_claim_survival": {
+      "prose": 1.0,
+      "mathematical": 0.9,
+      "scientific": 0.7
+    },
+    "summarization_faithfulness_drop": 0.2,
+    "summarization_mean_rouge_l": 0.351,
     "open_book_accuracy": 1.0,
     "open_book_by_tier": {
       "easy": 1.0,
@@ -58,71 +142,92 @@
       "hard": 1.0
     },
     "structured_strict": 0.5,
-    "structured_lenient": 0.833,
-    "creative_constraints": 0.417,
-    "code_pass_at_1": 1.0
-  },
-  "qwen2.5-coder:3b": {
-    "context_retention": 0.568,
-    "context_retention_stale_rate": 0.0,
-    "summarization_claim_survival": {
-      "prose": 0.7,
-      "mathematical": 0.9,
-      "scientific": 0.9
-    },
-    "summarization_faithfulness_drop": -0.2,
-    "summarization_mean_rouge_l": 0.362,
-    "open_book_accuracy": 1.0,
-    "open_book_by_tier": {
-      "easy": 1.0,
-      "medium": 1.0,
-      "hard": 1.0
-    },
-    "structured_strict": 0.667,
     "structured_lenient": 1.0,
-    "creative_constraints": 0.667,
-    "code_pass_at_1": 0.5
+    "creative_constraints": 0.833,
+    "code_pass_at_1": 0.333
   },
-  "smollm3-3b": {
-    "context_retention": 0.746,
+  "phi4-mini": {
+    "context_retention": 0.538,
     "context_retention_stale_rate": 0.0,
     "summarization_claim_survival": {
       "prose": 0.9,
-      "mathematical": 1.0,
-      "scientific": 0.9
+      "mathematical": 0.9,
+      "scientific": 1.0
     },
     "summarization_faithfulness_drop": -0.05,
-    "summarization_mean_rouge_l": 0.203,
-    "open_book_accuracy": 1.0,
+    "summarization_mean_rouge_l": 0.347,
+    "open_book_accuracy": 0.944,
     "open_book_by_tier": {
       "easy": 1.0,
       "medium": 1.0,
-      "hard": 1.0
+      "hard": 0.833
     },
     "structured_strict": 0.167,
-    "structured_lenient": 0.333,
-    "creative_constraints": 0.167,
-    "code_pass_at_1": 0.167
+    "structured_lenient": 1.0,
+    "creative_constraints": 0.417,
+    "code_pass_at_1": 0.5
   },
-  "vibethinker-3b": {
-    "context_retention": 0.653,
+  "qwen25-1b5": {
+    "context_retention": 0.604,
     "context_retention_stale_rate": 0.0,
     "summarization_claim_survival": {
-      "prose": 1.0,
-      "mathematical": 0.9,
+      "prose": 0.9,
+      "mathematical": 0.8,
       "scientific": 0.8
     },
-    "summarization_faithfulness_drop": 0.15,
-    "summarization_mean_rouge_l": 0.509,
-    "open_book_accuracy": 0.833,
+    "summarization_faithfulness_drop": 0.1,
+    "summarization_mean_rouge_l": 0.412,
+    "open_book_accuracy": 0.944,
     "open_book_by_tier": {
-      "easy": 0.833,
-      "medium": 0.833,
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 0.833
+    },
+    "structured_strict": 0.333,
+    "structured_lenient": 0.833,
+    "creative_constraints": 0.833,
+    "code_pass_at_1": 0.167
+  },
+  "qwen35-4b": {
+    "context_retention": 0.799,
+    "context_retention_stale_rate": 0.0,
+    "summarization_claim_survival": {
+      "prose": 0.9,
+      "mathematical": 0.8,
+      "scientific": 0.9
+    },
+    "summarization_faithfulness_drop": 0.05,
+    "summarization_mean_rouge_l": 0.434,
+    "open_book_accuracy": 0.944,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
       "hard": 0.833
     },
     "structured_strict": 1.0,
     "structured_lenient": 1.0,
-    "creative_constraints": 0.0,
-    "code_pass_at_1": 0.0
+    "creative_constraints": 0.333,
+    "code_pass_at_1": 0.667
+  },
+  "sonnet-claude-4-6": {
+    "context_retention": null,
+    "context_retention_stale_rate": null,
+    "summarization_claim_survival": {
+      "prose": 0.9,
+      "mathematical": 1.0,
+      "scientific": 0.8
+    },
+    "summarization_faithfulness_drop": 0.0,
+    "summarization_mean_rouge_l": 0.49,
+    "open_book_accuracy": 1.0,
+    "open_book_by_tier": {
+      "easy": 1.0,
+      "medium": 1.0,
+      "hard": 1.0
+    },
+    "structured_strict": 0.5,
+    "structured_lenient": 1.0,
+    "creative_constraints": 0.417,
+    "code_pass_at_1": 1.0
   }
 }

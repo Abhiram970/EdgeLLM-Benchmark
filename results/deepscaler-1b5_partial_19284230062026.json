@@ -1,0 +1,99 @@
+{
+  "model": "deepscaler-1b5",
+  "timestamp": "2026-06-30T19:24:15.350402",
+  "decode_spec": {
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "think": true,
+    "max_factor": 8.0,
+    "task_max_factors": {
+      "creative_generation": 14.0,
+      "code_generation": 14.0
+    }
+  },
+  "smoke": false,
+  "tasks": {
+    "code_generation": {
+      "task": "code_generation",
+      "pass_at_1": 0.0,
+      "executed_pass_at_1": 0.0,
+      "results": [
+        {
+          "name": "perl_word_count",
+          "language": "perl",
+          "code": "use strict;\nuse warnings;\n\n$filename = $args[0];\n$lines = sys.stdin.read().split('\\n');\n\n$freq_hash = Hash.new(0);\n\nforeach ($lines as $line) {\n    $line = ltrim($line);\n    if ($line === '') { continue; }\n    $words = $line.split(' ');\n    foreach ($words as $word) {\n        $lower_word = strtolower($word);\n        $freq_hash[$lower_word]++;\n    }\n}\n\n$keys = $freq_hash->keys();\n$values = $freq_hash->values();\n\n// Sort the keys by descending frequency\n$sorted_keys = $keys.sort_by { |k| -$freq_hash[$k] };\n\n// Get top 3 words\n$top_words = array_slice($sorted_keys, 0, 3);\n\nforeach ($top_words as $word) {\n    echo \"$word: \" . $freq_hash[$word] . \"\\n\";\n}",
+          "passed": false,
+          "exec_output": "\\jesse\\AppData\\Local\\Temp\\tmp5otl3uyd\\s.pl line 7.\nGlobal symbol \"$lines\" requires explicit package name (did you forget to declare \"my $lines\"?) at C:\\Users\\jesse\\AppData\\Local\\Temp\\tmp5otl3uyd\\s.pl line 9.\nsyntax error at C:\\Users\\jesse\\AppData\\Local\\Temp\\tmp5otl3uyd\\s.pl line 9, near \"$lines as \"\nExecution of C:\\Users\\jesse\\AppData\\Local\\Temp\\tmp5otl3uyd\\s.pl aborted due to compilation errors.\n",
+          "latency_s": 46.08,
+          "tokens_per_sec": 91.0,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "perl_csv_filter",
+          "language": "perl",
+          "code": "",
+          "passed": false,
+          "exec_output": "",
+          "latency_s": 49.77,
+          "tokens_per_sec": 90.7,
+          "reasoning_truncated": true
+        },
+        {
+          "name": "perl_regex_extract",
+          "language": "perl",
+          "code": "use Text::Line;\n\n$filename = $args[0];\n$f = open($filename, 'r');\nif ($f->is_open()) {\n    $content = fread($f);\n} else {\n    $content = '';\n}\nwhile (f->count($f)) {\n    $line = fget($f);\n    if ($line) {\n        preg_match('/\\b[A-Za-z]+\\@[\\w.]+/', $line, $matches);\n        foreach (array_filter($matches[1]) as $email) {\n            print $email . \"\\n\";\n        }\n    }\n}",
+          "passed": false,
+          "exec_output": "m in @INC (you may need to install the Text::Line module) (@INC entries checked: /usr/lib/perl5/site_perl /usr/share/perl5/site_perl /usr/lib/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib/perl5/core_perl /usr/share/perl5/core_perl) at C:\\Users\\jesse\\AppData\\Local\\Temp\\tmpgrj2xyw1\\s.pl line 1.\nBEGIN failed--compilation aborted at C:\\Users\\jesse\\AppData\\Local\\Temp\\tmpgrj2xyw1\\s.pl line 1.\n",
+          "latency_s": 49.27,
+          "tokens_per_sec": 90.9,
+          "reasoning_truncated": false
+        },
+        {
+          "name": "ruby_array_dedupe_sort",
+          "language": "ruby",
+          "code": "",
+          "passed": false,
+          "exec_output": "",
+          "latency_s": 43.6,
+          "tokens_per_sec": 90.7,
+          "reasoning_truncated": true
+        },
+        {
+          "name": "ruby_hash_group",
+          "language": "ruby",
+          "code": "",
+          "passed": false,
+          "exec_output": "",
+          "latency_s": 49.83,
+          "tokens_per_sec": 90.5,
+          "reasoning_truncated": true
+        },
+        {
+          "name": "ruby_class_stack",
+          "language": "ruby",
+          "code": "class Stack\n  def push(item)\n    stack << item\n  end\n\n  def pop\n    stack.pop\n  end\n\n  def peek\n    stack.last\n  end\nend\n\nmy_stack = Stack.new\n\n# Push numbers onto the stack in order\nmy_stack.push(1)\nmy_stack.push(2)\nmy_stack.push(3)\n\n# Perform operations and print results\nputs my_stack.peek # Peek after all pushes\nmy_stack.pop # Remove top item\nputs my_stack.peek # Peek after popping once\nmy_stack.peak # Peek again to ensure it's the last element",
+          "passed": false,
+          "exec_output": "C:/Users/jesse/AppData/Local/Temp/tmpvff8jv7t/s.rb:3:in `push': undefined local variable or method `stack' for an instance of Stack (NameError)\n\n    stack << item\n\n    ^^^^^\n\tfrom C:/Users/jesse/AppData/Local/Temp/tmpvff8jv7t/s.rb:18:in `<main>'\n",
+          "latency_s": 27.64,
+          "tokens_per_sec": 92.6,
+          "reasoning_truncated": false
+        }
+      ],
+      "elapsed_s": 266.7
+    }
+  },
+  "total_elapsed_s": 266.7,
+  "headline": {
+    "context_retention": null,
+    "context_retention_stale_rate": null,
+    "summarization_claim_survival": null,
+    "summarization_faithfulness_drop": null,
+    "summarization_mean_rouge_l": null,
+    "open_book_accuracy": null,
+    "open_book_by_tier": null,
+    "structured_strict": null,
+    "structured_lenient": null,
+    "creative_constraints": null,
+    "code_pass_at_1": 0.0
+  }
+}

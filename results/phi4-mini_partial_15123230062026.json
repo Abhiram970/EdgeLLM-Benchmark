@@ -1,0 +1,147 @@
+{
+  "model": "phi4-mini",
+  "timestamp": "2026-06-30T15:11:50.423052",
+  "decode_spec": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "think": false,
+    "max_factor": 1.0
+  },
+  "smoke": false,
+  "tasks": {
+    "creative_generation": {
+      "task": "creative_generation",
+      "mean_constraint_pass_rate": 0.417,
+      "results": [
+        {
+          "type": "article",
+          "text": "**Deep-Sea Discovery: New Species 'Lumina Glimmerfish' Illuminates Ocean Depths**\n\nScientists have made an astonishing breakthrough in marine biology with the identification and documentation of a previously unknown species, dubbed \"Lumina Glimmerfish,\" discovered at depths exceeding 3,000 meters beneath Earth's oceans.\n\nThe Lumina Glimmerfish was first spotted by researchers aboard the research vessel 'Ocean Explorer' during routine deep-sea expeditions. This bioluminescent fish exhibits an extraordinary ability to emit a radiant glow that illuminates its surroundings in shades of blue and green light—a phenomenon believed to be used for both communication with other Lumina Glimmerfish individuals as well as attracting prey.\n\nThe discovery was made by Dr. Emily Waters, marine ecologist at the Global Marine Institute (GMI), who led an international team on a groundbreaking expedition aimed at exploring uncharted territories of our planet's oceans. The species' unique luminescence is attributed to specialized cells called photophores located along its body and tail fin.\n\nThe Lumina Glimmerfish measures approximately 15 centimeters in length, with translucent skin that allows light from within the fish itself or surrounding water sources to pass through it effortlessly—a rare trait among deep-sea creatures. This adaptation not only aids their survival but also contributes significantly to our understanding of bioluminescent organisms and how they interact with each other.\n\nDr. Waters expressed excitement over this discovery, stating that \"the Lumina Glimmerfish is a testament to the unexplored biodiversity hidden in Earth's oceans.\" She emphasized its potential impact on scientific knowledge about deep-sea ecosystems: “This new species could help us understand more complex food webs and ecological relationships at extreme depths.”\n\nThe team collected samples for further study",
+          "word_count": 267,
+          "line_count": 7,
+          "constraints": [
+            "has headline",
+            "~200 words",
+            "journalistic tone"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 20.45,
+          "tokens_per_sec": 38.1,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "poem_question_word",
+          "text": "Who can hear the whispers in this urban expanse?  \nWhat secrets do these towering lights conceal beneath their glow so bright and vast?  \nWhere does one find solace amidst such endless motion below us all at night’s embrace?\n\nWhen stars dare to peek through a sky ablaze with neon's gleam, what stories unfold above our heads tonight?\nWhy are we drawn here on this rooftop high where dreams collide in silent reverie beneath the city lights’ glow?  \nHow does one capture moments fleeting as shadows dance upon concrete and steel under moon’s tender gaze?\n\nWho am I to question why night cloaks cities with such enigmatic allure, painting them silvered hues of mystery?\nWhat echoes linger from footsteps past that wander through this labyrinthine maze below us all at rest tonight?\nWhere do dreams take flight in the stillness when city lights flicker like fireflies’ gentle glow?  \nWhen does one",
+          "word_count": 150,
+          "line_count": 10,
+          "constraints": [
+            "12 lines",
+            "each line starts with question word"
+          ],
+          "constraint_checks": {
+            "line_count_exact": false,
+            "all_lines_start_question_word": true
+          },
+          "constraint_pass_rate": 0.5,
+          "latency_s": 5.02,
+          "tokens_per_sec": 39.9,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "short_story",
+          "text": "\"The last bus had already left.\" Emily stood at her doorstep in despair; she missed it by mere seconds as dusk settled over Maple Street.\n\nDetermined not to let this defeat win, she sprinted down Elm Avenue until the library's lights flickered on—a beacon of hope amidst growing darkness. Inside, bookshelves loomed like silent sentinels guarding knowledge and escape from reality.\n\n\nIn a quiet corner sat Mr. Thompson; his eyes twinkling with mischief as he noticed her distress.\n\n\"Need to borrow something?\" He asked without looking up until she nodded vigorously—his favorite part of the day was helping others find solace in stories, even if it meant bending rules for them once or twice.\n\n\nHours passed like minutes under Mr. Thompson's patient guidance; Emily discovered worlds beyond hers within pages that whispered secrets and dreams.\n\nAs midnight approached with a gentle chime from an unseen clock tower outside, she realized her heart had filled up on adventures she'd never imagined possible—filled to the brim by stories untold in books.\n\n\nWith gratitude brimming over his lips like morning dew upon grass blades after rain, Mr. Thompson handed back Emily's borrowed treasures.\n\n\"Remember,\" he said with a wink as if sharing an ancient secret between old friends, \"Every ending is just another beginning.\"\n\n\nOutside under starlit skies that seemed to applaud her newfound courage and curiosity for the night ahead promised endless",
+          "word_count": 230,
+          "line_count": 9,
+          "constraints": [
+            "starts with given sentence",
+            "~150 words",
+            "complete arc"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": false,
+            "starts_with_required": true
+          },
+          "constraint_pass_rate": 0.5,
+          "latency_s": 7.75,
+          "tokens_per_sec": 38.6,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "acrostic",
+          "text": "Oceans whisper tales untold, beneath waves so deep,\nCurrents carry secrets they keep.\nEndless blue stretches far and wide,\nA world alive with life inside.\nNature's beauty in every tide.",
+          "word_count": 30,
+          "line_count": 5,
+          "constraints": [
+            "5 lines",
+            "acrostic spells OCEAN"
+          ],
+          "constraint_checks": {
+            "line_count_exact": true,
+            "acrostic_ok": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 1.53,
+          "tokens_per_sec": 40.0,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "dialogue",
+          "text": "Alex: We should consider selling this ancient relic of our family's history.\nJordan: Selling it? It's not just property; it's heritage!\nAlex: But think of all we could do financially, Jordan! The market is ripe for such properties now.\nJordan: Financial gain shouldn't come at the cost of losing a piece of who we've been as families. \nAlex: I understand your sentiment but remember that this house has accumulated so much debt over time; selling it would be wise economically!\nJordan: But what about memories? What stories are we leaving behind if we're not here to tell them?\nAlex: Memories can always live on through photos and records, Jordan.\nJordan: True. Yet there's something irreplaceable in the physical space where generations have lived together...\nAlex: Perhaps it's time for a new chapter; this house has served us well but isn't growing our family any longer!\nJordan: Maybe you're right about growth... But what if we find another way to honor its legacy without selling it?\nAlex: We could rent out parts of it, keep the spirit alive while still benefiting financially.\nJordan: That might just work. Let's explore that option further before making a final decision on this matter!",
+          "word_count": 199,
+          "line_count": 12,
+          "constraints": [
+            "10 lines",
+            "name: prefix each line"
+          ],
+          "constraint_checks": {
+            "line_count_exact": false,
+            "all_lines_have_name_colon": true
+          },
+          "constraint_pass_rate": 0.5,
+          "latency_s": 6.49,
+          "tokens_per_sec": 39.6,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "six_word_story",
+          "text": "\"Lost dog reunites with family.\"",
+          "word_count": 5,
+          "line_count": 1,
+          "constraints": [
+            "exactly 6 words"
+          ],
+          "constraint_checks": {
+            "exact_word_count": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 0.71,
+          "tokens_per_sec": 45.0,
+          "human_score": null,
+          "judge_score": null
+        }
+      ],
+      "elapsed_s": 42.0
+    }
+  },
+  "total_elapsed_s": 42.0,
+  "headline": {
+    "context_retention": null,
+    "context_retention_stale_rate": null,
+    "summarization_claim_survival": null,
+    "summarization_faithfulness_drop": null,
+    "summarization_mean_rouge_l": null,
+    "open_book_accuracy": null,
+    "open_book_by_tier": null,
+    "structured_strict": null,
+    "structured_lenient": null,
+    "creative_constraints": 0.417,
+    "code_pass_at_1": null
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "model": "gemma3-4b",
+  "judge_model": "claude-sonnet-4-6",
+  "timestamp": "2026-07-01T00:50:47.939360Z",
+  "task2_faithfulness": {
+    "sum_prose_frenchrev": {
+      "score": 7,
+      "rationale": "The summary captures most key facts accurately but omits important details such as the distinction that about half the peasants remained poor or landless, the role of reduced adult mortality rates from around 1730, and the fact that France was the most populated country in Europe (not just that it had a large population)."
+    },
+    "sum_prose_industrial": {
+      "score": 9,
+      "rationale": "The summary accurately captures all major points from the source including wealth distribution, middle class growth, the shift from domestic to factory systems, harsh working conditions for women and children, the rise of trade unions, and the two phases of the Industrial Revolution with correct dates and geographic scope, with only minor omission of details like specific new industries (automobiles) and the transformation to mechanized manufacturing."
+    },
+    "sum_math_calculus": {
+      "score": 9,
+      "rationale": "The summary accurately captures all key facts including the fundamental theorem of calculus, the inverse relationship between differentiation and integration, the notation and meaning of the integral symbol, Leibniz's conceptualization of integration as summing infinitely thin rectangles, and the concrete example of integrating x² to get x³/3 + C, with only minor omissions such as the elongated S standing for 'sum' and the specific mention of dx as an infinitely small increment."
+    },
+    "sum_math_pythagorean": {
+      "score": 7,
+      "rationale": "The summary accurately captures the theorem's formula, Babylonian origins, and Indian/Pythagorean connections, but incorrectly attributes the theorem's credit to Pythagoras being 'due to its inclusion in Euclid's Elements' — the source never makes this causal claim, and the summary omits the specific detail about Iamblichus and Thales/Anaximander introducing Pythagoras to mathematics."
+    },
+    "sum_sci_tectonics": {
+      "score": 8,
+      "rationale": "The summary accurately captures the core concepts including the 1960s origin, lithosphere/asthenosphere relationship, plate movement rates, boundary interaction types, seismic/volcanic activity, and continental drift, but slightly misrepresents the asthenosphere as 'floating' plates and omits the specific detail that earthquakes and volcanoes can also occur in plate interiors, and the lithosphere's ~100 km thickness is not mentioned."
+    },
+    "sum_sci_dna": {
+      "score": 7,
+      "rationale": "The summary accurately captures most key facts including the nucleotide components, base pairing rules, the 1953 discovery, and the contributors, but contains a minor inaccuracy by stating the double helix is held by 'covalent bonds and hydrogen bonds' without clarifying that covalent bonds form the phosphate-sugar backbone while hydrogen bonds specifically hold the two strands together, and omits the specific detail that the two strands run antiparallel."
+    }
+  },
+  "task5_quality": {
+    "article": {
+      "score": 8,
+      "rationale": "The piece is well-crafted with convincing journalistic voice, specific and plausible scientific details (depth measurements, Latin nomenclature, researcher quotes), and a coherent narrative arc, though it stays within fairly conventional science-journalism conventions without offering any particularly surprising or distinctive creative flourishes."
+    },
+    "poem_question_word": {
+      "score": 7,
+      "rationale": "The poem captures the rooftop night-watching experience with some genuinely evocative images (velvet dark, shimmering mosaics, rising steam) and maintains a contemplative voice throughout, though several lines feel somewhat generic or padded to fit the constraint rather than driven by authentic poetic impulse."
+    },
+    "short_story": {
+      "score": 7,
+      "rationale": "The story has a warm, nostalgic voice and a satisfying emotional arc, but the resolution—a stranger appearing with the grandmother's favorite pie—feels conveniently magical without enough grounding, and the closing line leans toward a generic epiphany rather than something more distinctively earned."
+    },
+    "acrostic": {
+      "score": 6,
+      "rationale": "The poem is competent and coherent with pleasant imagery, but relies on predictable ocean clichés (coral reefs, azure depths, nurturing life) and the rhyme scheme feels forced rather than natural, resulting in a pleasant but generic piece lacking a distinctive voice."
+    },
+    "dialogue": {
+      "score": 6,
+      "rationale": "The dialogue is coherent and functional with a clear conflict, but it relies on predictable arguments and generic emotional beats without distinctive voice, nuance, or memorable phrasing—and the double colons (\"Liam: :\") suggest careless formatting."
+    },
+    "six_word_story": {
+      "score": 7,
+      "rationale": "A clean, emotionally resonant micro-narrative with satisfying cause-and-effect progression, though the comma-linked triplet structure feels somewhat formulaic for the six-word story genre."
+    }
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "model": "gemma3-4b",
+  "timestamp": "2026-06-30T15:10:38.673525",
+  "decode_spec": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "think": false,
+    "max_factor": 1.0
+  },
+  "smoke": false,
+  "tasks": {
+    "creative_generation": {
+      "task": "creative_generation",
+      "mean_constraint_pass_rate": 0.5,
+      "results": [
+        {
+          "type": "article",
+          "text": "**Bioluminescent ‘Phantom Angler’ Discovered in Mariana Trench**\n\nGUAM – A team of marine biologists aboard the research vessel *Challenger II* has announced the astonishing discovery of a previously unknown species of anglerfish dwelling at an unprecedented depth within the Mariana Trench. Dubbed the “Phantom Angler” ( *Melanocetus abyssalis lucens*), the fish exhibits striking bioluminescent patterns and unique hunting behaviors never before observed in anglerfish.\n\nThe creature, approximately 15 centimeters long, was captured on remotely operated vehicle (ROV) footage at a depth of 8,200 meters – nearly breaking previous records for anglerfish sightings.  Its most remarkable feature is a complex array of pulsating blue and green lights along its dorsal fin spines, believed to be used to lure prey in the perpetually dark depths.\n\n“This discovery highlights just how much remains unknown about our oceans,” said Dr. Evelyn Reed, lead researcher on the expedition. “The Phantom Angler’s adaptations demonstrate an incredible evolutionary pressure at these extreme depths.” \n\nScientists are currently analyzing tissue samples to determine the fish's exact genetic relationship to other anglerfish species and hope to learn more about its diet and reproductive habits. The discovery is fueling renewed interest in deep-sea exploration and conservation efforts.",
+          "word_count": 196,
+          "line_count": 5,
+          "constraints": [
+            "has headline",
+            "~200 words",
+            "journalistic tone"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 9.84,
+          "tokens_per_sec": 39.2,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "poem_question_word",
+          "text": "Okay, here’s a 12-line poem fulfilling your specific requirements – starting each line with a different interrogative word and avoiding rhyme:\n\nWho spills their laughter down below?\nWhat shimmering mosaics do the buildings hold?\nWhere does the distant hum begin to reside?\nWhen did the sky transform into velvet dark?\nWhy do these lights pulse with such insistent grace?\nHow far can one truly see from here? \nWho carries secrets in the rising steam?\nWhat stories are whispered on the breeze tonight?\nWhere do all those headlights ultimately flow?\nWhen does this quiet solitude begin to fade?\nWhy choose to watch, suspended and serene?\nHow vast is everything beneath me now?",
+          "word_count": 111,
+          "line_count": 13,
+          "constraints": [
+            "12 lines",
+            "each line starts with question word"
+          ],
+          "constraint_checks": {
+            "line_count_exact": false,
+            "all_lines_start_question_word": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 4.18,
+          "tokens_per_sec": 40.1,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "short_story",
+          "text": "The last bus had already left. Rain lashed against the windows of Oakhaven’s only diner, mirroring the storm brewing inside me. I'd been waiting for hours, clutching a crumpled postcard addressed to my grandmother – a single, hopeful sentence: “Thinking of you.”  She’d moved to the coast six months ago, and this was my last chance to see her before winter truly set in. \n\nA gruff waitress, Mabel, shuffled over, wiping down the counter with a weary sigh. \"Lost your ride, huh?\" she asked, offering me a lukewarm coffee. I nodded, defeated.  Suddenly, headlights cut through the rain. A beat-up pickup truck pulled up, and a smiling man emerged, holding a small, wicker basket. “Heard you were waiting,” he said, handing me a plate of warm blueberry pie – my grandmother’s favorite. \n\nThe storm outside seemed to fade as I realized some connections weren't dictated by schedules.",
+          "word_count": 147,
+          "line_count": 3,
+          "constraints": [
+            "starts with given sentence",
+            "~150 words",
+            "complete arc"
+          ],
+          "constraint_checks": {
+            "word_count_within_30pct": true,
+            "starts_with_required": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 5.54,
+          "tokens_per_sec": 39.7,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "acrostic",
+          "text": "Okay, here’s an acrostic poem using the word “OCEAN”:\n\n**O**ut on the waves, a boundless blue,\n**C**oral reefs in shimmering hue,\n**E**legant currents softly flow,\n**A**zure depths where secrets grow, \n**N**urturing life for all to know.",
+          "word_count": 36,
+          "line_count": 6,
+          "constraints": [
+            "5 lines",
+            "acrostic spells OCEAN"
+          ],
+          "constraint_checks": {
+            "line_count_exact": false,
+            "acrostic_ok": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 2.3,
+          "tokens_per_sec": 41.2,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "dialogue",
+          "text": "Here’s a 10-line dialogue fulfilling your request:\n\nLiam: : Honestly, Mom, we need to seriously consider selling this place. It’s bleeding us dry.\nMom: : Sell it? Liam, this house is our family history! You can't just put a price on that.\nLiam: : But the upkeep alone is crippling – the roof, the wiring…it’s a constant drain.\nMom: : We could fix things up, modernize a little. Memories are worth more than a new roof, you know.\nLiam: : Memories don't pay the bills, Mom! We have responsibilities now, and this house isn’t helping.\nMom: : It represents generations of our family, Liam! Your grandfather built this with his own two hands!\nLiam: : Grandpa would want us to be secure, not struggling to maintain a crumbling monument.\nMom: : Don't you dare reduce his legacy to just \"struggling\"! There’s sentimental value here.\nLiam: : Sentimental value doesn’t cover the property taxes, and frankly, it’s time for a fresh start.\nMom: : I still say no, Liam. This house stays in our family.",
+          "word_count": 174,
+          "line_count": 11,
+          "constraints": [
+            "10 lines",
+            "name: prefix each line"
+          ],
+          "constraint_checks": {
+            "line_count_exact": false,
+            "all_lines_have_name_colon": false
+          },
+          "constraint_pass_rate": 0.0,
+          "latency_s": 7.0,
+          "tokens_per_sec": 39.6,
+          "human_score": null,
+          "judge_score": null
+        },
+        {
+          "type": "six_word_story",
+          "text": "Lost keys, found love, forever changed.",
+          "word_count": 6,
+          "line_count": 1,
+          "constraints": [
+            "exactly 6 words"
+          ],
+          "constraint_checks": {
+            "exact_word_count": true
+          },
+          "constraint_pass_rate": 1.0,
+          "latency_s": 0.74,
+          "tokens_per_sec": 50.0,
+          "human_score": null,
+          "judge_score": null
+        }
+      ],
+      "elapsed_s": 29.6
+    }
+  },
+  "total_elapsed_s": 29.6,
+  "headline": {
+    "context_retention": null,
+    "context_retention_stale_rate": null,
+    "summarization_claim_survival": null,
+    "summarization_faithfulness_drop": null,
+    "summarization_mean_rouge_l": null,
+    "open_book_accuracy": null,
+    "open_book_by_tier": null,
+    "structured_strict": null,
+    "structured_lenient": null,
+    "creative_constraints": 0.5,
+    "code_pass_at_1": null
+  }
+}
